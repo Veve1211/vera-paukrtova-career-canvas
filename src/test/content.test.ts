@@ -47,7 +47,7 @@ describe("work experience", () => {
     const cs = content.cs.experience.items.map((e) => e.period?.split(" – ")[0]);
     const en = content.en.experience.items.map((e) => e.period?.split(" – ")[0]);
     expect(en).toEqual(cs);
-    expect(content.en.experience.items[0].period).toBe("11/2025 – present");
+    expect(content.en.experience.items[0]?.period).toBe("11/2025 – present");
   });
 
   it("marks only Allegro Group as the current job", () => {
