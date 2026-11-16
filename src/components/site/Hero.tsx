@@ -1,3 +1,5 @@
+import { Fragment } from "react";
+
 import { ArrowDown, ArrowUpRight, Linkedin } from "lucide-react";
 
 import { links } from "@/content/site";
@@ -107,7 +109,14 @@ export function Hero() {
           <Reveal delay={380} className="mt-14 grid gap-4 border-t border-border pt-6 sm:grid-cols-[auto_1fr] sm:items-baseline sm:gap-8">
             <p className="eyebrow text-muted-foreground">{t.hero.proofLabel}</p>
             <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between">
-              <p className="font-display text-lg text-foreground">{companies.join(" · ")}</p>
+              <p className="font-display text-lg text-foreground">
+                {companies.map((c, i) => (
+                  <Fragment key={c}>
+                    {i > 0 && " · "}
+                    <span className="whitespace-nowrap">{c}</span>
+                  </Fragment>
+                ))}
+              </p>
               <p className="text-sm text-primary">{t.hero.proofProjects}</p>
             </div>
           </Reveal>
