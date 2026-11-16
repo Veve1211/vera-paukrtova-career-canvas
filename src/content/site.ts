@@ -6,7 +6,6 @@
  *  - links.email       → your e-mail address
  *  - links.cvPdf       → path to the CV PDF, e.g. "/cv-vera-paukrtova.pdf" (put the file into /public)
  *  - project.github    → GitHub repository URL
- *  - experience.period → e.g. "2021 – 2023"
  *  - education.year    → e.g. "2016"
  */
 
@@ -59,9 +58,9 @@ const projectMeta = {
 
 const cs = {
   meta: {
-    title: "Věra Paukrtová — Customer Operations & QA | Digitální produkty s AI",
+    title: "Věra Paukrtová — zákaznické procesy, QA a aplikace tvořené s AI",
     description:
-      "Osobní web a interaktivní CV Věry Paukrtové. Zákaznické procesy, QA a UAT testování, vlastní webové aplikace vytvářené s pomocí AI.",
+      "Věra Paukrtová: vidí web očima zákazníka, hlídá kvalitu a s pomocí AI staví vlastní aplikace. Zkušenosti z Allegro Group, Ipsos, Zentivy, T-Mobile a automotive QA.",
   },
   skipLink: "Přeskočit na obsah",
   nav: [
@@ -80,7 +79,7 @@ const cs = {
     cvSoon: "CV ke stažení brzy",
     github: "GitHub",
     githubSoon: "GitHub repozitář brzy",
-    problem: "Řešený problém",
+    problem: "Proč vznikl",
     tech: "Technologie a přístup",
     current: "Aktuálně",
     backToTop: "Zpět nahoru",
@@ -91,9 +90,9 @@ const cs = {
     eyebrow: "Customer Operations & QA Specialist",
     eyebrowSecond: "Building Digital Products with AI",
     name: ["Věra", "Paukrtová"],
-    tagline: "People. Technology. Better Solutions.",
+    tagline: "Přemýšlím jako zákazník, hlídám kvalitu, tvořím s AI.",
     intro:
-      "Propojuji zkušenosti ze zákaznických procesů, kvality a testování s moderními digitálními technologiemi. Vyvíjím vlastní webové projekty s využitím AI a hledám příležitosti, kde mohu spojit analytické myšlení, kreativitu a praktická řešení.",
+      "Roky pracuji tam, kde se potkávají zákazníci, systémy a kvalita — od řízení kvality pro automotive přes testování v T-Mobile až po podporu prodejců v Allegro Group. Stejný pohled dnes dávám do vlastních aplikací, které tvořím s AI: vím, kde se uživatel zasekne, a chci to vyřešit dřív, než se to stane.",
     ctaProjects: "Prohlédnout projekty",
     ctaExperience: "Moje zkušenosti",
     ctaLinkedin: "LinkedIn",
@@ -113,28 +112,42 @@ const cs = {
   about: {
     index: "01",
     label: "O mně",
-    title: ["Mezi lidmi, procesy", "a technologiemi."],
+    title: ["Vidím web", "očima zákazníka."],
     paragraphs: [
-      "Moje kariéra nezačala v kódu, ale u lidí a procesů. Léta pracuji tam, kde se potkávají zákazníci, systémy a kvalita — od podpory prodejců na marketplace Allegro přes UAT testování CRM a webových aplikací v T-Mobile až po řízení kvality ve výrobě.",
-      "Díky tomu vím, jak software vypadá z druhé strany: kde se uživatel zasekne, kde proces drhne a proč je přesně popsaná chyba polovinou opravy. Tuhle zkušenost dnes přenáším do vlastních projektů. Aplikace navrhuji, stavím s pomocí AI, testuji a nasazuji — a s každou se posouvám v HTML, CSS, JavaScriptu i práci s Gitem.",
-      "Nepředstírám, že jsem seniorní programátorka. Jsem člověk, který umí problém rozebrat, věci dotáhnout do konce a s AI jako pracovním nástrojem udělat z nápadu funkční produkt.",
+      "Moje největší síla je jednoduchá: dokážu se okamžitě vžít do zákazníka. Podívám se na web očima člověka, kterého už něco naštvalo — a UX i funkční chyby najdu dřív, než narazí na skutečné lidi.",
+      "Naučila mě to praxe. Ve výrobě jsem pro Škodu, VW a BMW hledala skutečné příčiny reklamací, v T-Mobile jsem testovala aplikace před vydáním a dnes v Allegro Group každý den řeším, co prodejce opravdu trápí. Každá z těch rolí mě učila totéž: dívat se na věci z druhé strany.",
+      "Tenhle pohled teď přenáším do vlastních aplikací, které tvořím s AI. Nejsem seniorní programátorka a nepředstírám to. Umím ale z nápadu udělat něco, co funguje a co si můžete sami vyzkoušet.",
     ],
-    strengthsTitle: "Na čem stavím",
+    strengthsTitle: "Jak pracuji",
     strengths: [
-      { title: "Analytické myšlení", text: "Problém nejdřív rozložím na části, teprve pak hledám řešení." },
-      { title: "Preciznost a odpovědnost", text: "Z kvality a testování vím, že detail rozhoduje. Věci dotahuji." },
-      { title: "Komunikace a řešení problémů", text: "Technickou věc umím vysvětlit srozumitelně a vyslechnout druhou stranu." },
-      { title: "Testování systémů", text: "Testovací scénáře, evidence chyb a UAT v reálných projektech." },
-      { title: "Samostatnost", text: "Vlastní projekty vedu od nápadu přes testování až po nasazení." },
-      { title: "AI v praxi", text: "AI používám jako pracovní nástroj při návrhu, vývoji i ladění aplikací." },
-      { title: "Zájem o technologie", text: "Dlouhodobě mě baví hledat, jak procesy zjednodušit a zlepšit." },
+      {
+        title: "Oči naštvaného uživatele",
+        text: "Web proklikám tak, jak by ho proklikal někdo, kdo spěchá a nemá trpělivost. Tam se chyby ukážou nejdřív.",
+      },
+      {
+        title: "Výsledek před dokonalostí",
+        text: "„Důležitý je výsledek, i když je nedokonalý — jinak je to nekončící proces.“",
+      },
+      {
+        title: "Perfekcionistka jako první uživatelka",
+        text: "„Pokud se to líbí mně jako perfekcionistce, je to už minimálně jeden člověk, kterému se to líbí.“",
+      },
+      {
+        title: "Od nápadu po nasazení",
+        text: "Píšu prompty, navrhuji logiku, řídím nasazení na Railway a testuji v Playwrightu.",
+      },
+      {
+        title: "Na druhé straně je vždycky člověk",
+        text: "Prodejce, terénní pracovník nebo kolega v jiné zemi — každý potřebuje, aby věci prostě fungovaly.",
+      },
     ],
   },
   projects: {
     index: "02",
     label: "Selected Projects",
     title: ["Vlastní projekty,", "které si můžete vyzkoušet."],
-    intro: "Každý projekt navrhuji, vyvíjím s pomocí AI, testuji a nasazuji sama.",
+    intro:
+      "Píšu prompty, navrhuji logiku, nasazuji na Railway a testuji v Playwrightu. Nejvíc mě baví začátek, kdy se z myšlenky stává něco skutečného — a pak postupné dolaďování, dokud to není přesně takové, jaké to chci mít.",
     items: [
       {
         id: "cvecko",
@@ -142,11 +155,11 @@ const cs = {
         kind: "Webová aplikace",
         status: "live",
         statusLabel: "Živá aplikace",
-        summary: "Vlastní webová aplikace pro tvorbu profesionálních životopisů.",
+        summary: "Nástroj na životopisy, který jsem si postavila sama pro sebe — přesně podle svých představ.",
         problem:
-          "Sestavit přehledný a strukturovaný životopis bývá zdlouhavé. Cílem byl nástroj, který uživatelům tvorbu CV co nejvíc usnadní.",
+          "Běžné nástroje na tvorbu CV mi v jedné konkrétní věci prostě nefungovaly. Místo dalšího kompromisu jsem si postavila vlastní, který vypadá i funguje tak, jak potřebuji.",
         details:
-          "Návrh a tvorba nástroje, který uživatelům usnadňuje vytváření strukturovaného CV — stačí o sobě napsat pár vět.",
+          "CVéčko je pro mě začátek. Do budoucna se chci věnovat celému hledání práce — a myslet přitom i na lidi s roztroušenou sklerózou, aby z toho měli užitek i oni.",
         tech: ["AI-assisted development", "Webové technologie", "GitHub", "Railway"],
         urlLabel: "Otevřít cvecko.cz",
         ...projectMeta.cvecko,
@@ -157,11 +170,11 @@ const cs = {
         kind: "Interaktivní webová hra",
         status: "live",
         statusLabel: "Živá aplikace",
-        summary: "Interaktivní webová hra o českých panovnících s výběrem postav.",
+        summary: "Moje úplně první aplikace — webová hra o českých panovnících.",
         problem:
-          "Jak přiblížit českou historii hravě — místo memorování odpovídat na otázky, sbírat karty panovníků a objevovat jejich příběhy.",
+          "Česká historie mě bavila a pořád baví. Chtěla jsem, aby si k ní žáci a studenti našli cestu přirozeně — hrou místo memorování: odpovídají na otázky, sbírají karty panovníků a objevují jejich příběhy.",
         details:
-          "Samostatný kreativní projekt propojující logiku, interaktivitu a vývoj s pomocí AI.",
+          "Na Českém králi jsem si poprvé prošla celou cestu od nápadu až k živé aplikaci, kterou si může zahrát kdokoli.",
         tech: ["AI-assisted development", "GitHub", "Playwright", "Railway"],
         urlLabel: "Zahrát si Českého krále",
         ...projectMeta["cesky-kral"],
@@ -172,10 +185,10 @@ const cs = {
         kind: "Koncept platformy",
         status: "concept",
         statusLabel: "Ve vývoji / koncept",
-        summary: "Koncept platformy sdružující pracovní nabídky z různých zdrojů na jednom místě.",
+        summary: "Pracovní nabídky z různých zdrojů na jednom místě.",
         problem:
-          "Pracovní nabídky jsou roztříštěné po mnoha portálech a hledání znamená procházet stále dokola různé weby.",
-        details: "Projekt je ve fázi konceptu a návrhu. Technologie upřesním s postupem vývoje.",
+          "Nabídky práce jsou rozházené po mnoha portálech a hledání znamená procházet pořád dokola stejné weby. Kompleto navazuje na CVéčko — obojí se točí kolem hledání práce.",
+        details: "Projekt je zatím ve fázi konceptu a návrhu. Technologie upřesním, až se vývoj pohne dál.",
         tech: ["Koncept", "UX návrh", "AI-assisted development"],
         urlLabel: null,
         ...projectMeta.kompleto,
@@ -185,46 +198,55 @@ const cs = {
   experience: {
     index: "03",
     label: "Pracovní zkušenosti",
-    title: ["Praxe, ze které", "vychází každý projekt."],
-    intro: "Zákaznické procesy, testování a kvalita v mezinárodních firmách.",
+    title: ["Kde jsem se", "to naučila."],
+    intro: "Šest míst, jedna nit: vždycky jsem stála mezi lidmi a systémy a hlídala, aby věci fungovaly.",
     items: [
       {
-        company: "Allegro",
+        company: "Allegro Group",
         role: "Marketplace Support Specialist",
-        period: null,
+        period: "11/2025 – současnost",
         current: true,
         summary:
-          "Podpora marketplace prodejců, práce s interními systémy, zákaznické procesy a řešení složitých případů.",
-        tags: ["Marketplace", "Interní systémy", "Řešení případů"],
-      },
-      {
-        company: "T-Mobile",
-        role: "UAT Tester",
-        period: null,
-        summary: "Testování CRM a webových aplikací, tvorba testovacích scénářů a evidence chyb.",
-        tags: ["UAT", "CRM", "Bug reporting"],
-      },
-      {
-        company: "Zentiva",
-        role: "Digital HR Support / Webmaster",
-        period: null,
-        summary:
-          "Správa intranetového obsahu, podpora digitálních procesů a mezinárodní komunikace.",
-        tags: ["Intranet", "Digitální procesy", "Mezinárodní tým"],
+          "Pomáhám prodejcům na Mall.cz, Mall.sk a CZC — od reklamací až po logiku rušení objednávek. Pracuji v Daktele a Microsoft DAX a tři měsíce po sobě jsem si udržela 100% NPS skóre.",
+        tags: ["Mall.cz · Mall.sk · CZC", "Reklamace", "Daktela", "Microsoft DAX", "100% NPS · 3 měsíce v řadě"],
       },
       {
         company: "Ipsos",
         role: "Coordinator",
-        period: null,
-        summary: "Koordinace terénních projektů, organizace dat a komunikace.",
-        tags: ["Koordinace", "Data", "Komunikace"],
+        period: "3/2025 – 11/2025",
+        summary:
+          "Koordinovala jsem projekty sčítání dopravy a byla oporou pro stovky terénních pracovníků. Dohromady šlo o více než 7 000 segmentů.",
+        tags: ["Sčítání dopravy", "Stovky terénních pracovníků", "7 000+ segmentů"],
+      },
+      {
+        company: "Sigma AI",
+        role: "Transcriptor",
+        period: "1/2024 – 12/2024",
+        summary: "Přepisovala jsem audio data a kontrolovala jejich kvalitu — práce, ve které rozhoduje každé slovo.",
+        tags: ["Přepis audia", "Kontrola kvality", "Práce s daty"],
+      },
+      {
+        company: "Zentiva",
+        role: "Digital HR Support / Webmaster",
+        period: "1/2022 – 12/2022",
+        summary: "Spravovala jsem intranet pro pět zemí a podporovala mezinárodní digitální procesy v HR.",
+        tags: ["Intranet · 5 zemí", "Digitální HR", "Mezinárodní tým"],
+      },
+      {
+        company: "T-Mobile",
+        role: "UAT Tester",
+        period: "2/2021 – 12/2021",
+        summary:
+          "Testovala jsem CRM a webové aplikace, psala testovací scénáře a hlásila chyby dřív, než se release dostal k zákazníkům.",
+        tags: ["UAT", "CRM", "Testovací scénáře", "Bug reporting"],
       },
       {
         company: "Megatech Industries",
         role: "QA Engineer",
-        period: null,
-        summary: "Řízení kvality, dokumentace, reklamace a komunikace s výrobou.",
-        tags: ["Řízení kvality", "Dokumentace", "Reklamace"],
+        period: "1/2017 – 9/2020",
+        summary:
+          "Řídila jsem kvalitu pro Škodu, VW a BMW, řešila reklamace a hledala skutečné příčiny problémů — ne jen jejich projevy.",
+        tags: ["Automotive", "Reklamace", "Root cause analysis"],
       },
     ] satisfies Experience[],
   },
@@ -232,19 +254,19 @@ const cs = {
     index: "04",
     label: "Dovednosti",
     title: ["Co do týmu", "přináším."],
-    intro: "Bez nafouknutých úrovní — jen to, s čím skutečně pracuji.",
+    intro: "Bez nafouknutých úrovní — jen to, s čím opravdu pracuji.",
     groups: [
       {
         title: "AI & Digital Creation",
-        items: ["AI-assisted development", "Vibe coding", "Webové projekty", "Automatizace pracovních postupů"],
+        items: ["AI-assisted development", "Vibe coding", "Psaní promptů", "Návrh logiky aplikací", "Nasazení na Railway"],
       },
       {
         title: "Testing & Quality",
-        items: ["UAT testing", "QA", "Testovací scénáře", "Bug reporting", "Kontrola kvality"],
+        items: ["UAT testing", "QA", "Playwright", "Testovací scénáře", "Bug reporting", "Root cause analysis"],
       },
       {
         title: "Customer & Digital Operations",
-        items: ["Marketplace support", "Daktela", "Microsoft DAX", "CRM", "Komunikace", "Řešení problémů"],
+        items: ["Marketplace support", "Reklamace", "Daktela", "Microsoft DAX", "CRM", "Intranet"],
       },
       {
         title: "Web Development",
@@ -268,7 +290,7 @@ const cs = {
     index: "06",
     label: "Kontakt a příležitosti",
     title: "Let's create something meaningful.",
-    text: "Ráda se spojím s týmy a lidmi, kteří hledají kombinaci technického uvažování, důslednosti a lidského přístupu.",
+    text: "Hledám tým, kde se potká zákaznický pohled, péče o kvalitu a chuť tvořit nové věci s AI. Jestli takový máte, ráda si s vámi promluvím.",
     areasTitle: "Oblasti spolupráce",
     areas: ["Junior IT / Web Development", "QA & UAT Testing", "AI-assisted Projects", "Customer & Digital Operations"],
     linkedinCta: "Napište mi na LinkedIn",
@@ -276,7 +298,7 @@ const cs = {
     noEmail: "Nejrychleji mě zastihnete přes LinkedIn.",
   },
   footer: {
-    note: "Navrženo a vytvořeno s pomocí AI.",
+    note: "Navrženo a postaveno s AI — stejně jako moje aplikace.",
   },
 };
 
@@ -284,9 +306,9 @@ export type SiteContent = typeof cs;
 
 const en: SiteContent = {
   meta: {
-    title: "Věra Paukrtová — Customer Operations & QA | Building Digital Products with AI",
+    title: "Věra Paukrtová — Customer Operations, QA & Apps Built with AI",
     description:
-      "Personal website and interactive CV of Věra Paukrtová. Customer operations, QA and UAT testing, and her own web apps built with AI.",
+      "Věra Paukrtová sees a website through the customer's eyes, guards quality and builds her own apps with AI. Experience at Allegro Group, Ipsos, Zentiva, T-Mobile and in automotive QA.",
   },
   skipLink: "Skip to content",
   nav: [
@@ -305,7 +327,7 @@ const en: SiteContent = {
     cvSoon: "CV download coming soon",
     github: "GitHub",
     githubSoon: "GitHub repository coming soon",
-    problem: "The problem",
+    problem: "Why I built it",
     tech: "Technology & approach",
     current: "Current",
     backToTop: "Back to top",
@@ -316,9 +338,9 @@ const en: SiteContent = {
     eyebrow: "Customer Operations & QA Specialist",
     eyebrowSecond: "Building Digital Products with AI",
     name: ["Věra", "Paukrtová"],
-    tagline: "People. Technology. Better Solutions.",
+    tagline: "I think like a customer, guard quality, build with AI.",
     intro:
-      "I connect experience from customer operations, quality and testing with modern digital technology. I build my own web projects with AI and I'm looking for opportunities where analytical thinking, creativity and practical solutions come together.",
+      "For years I've worked where customers, systems and quality meet — from quality management in automotive, through testing at T-Mobile, to supporting sellers at Allegro Group. Today I bring the same perspective to the apps I build with AI: I know where users get stuck, and I want to fix it before it happens.",
     ctaProjects: "View projects",
     ctaExperience: "My experience",
     ctaLinkedin: "LinkedIn",
@@ -332,28 +354,42 @@ const en: SiteContent = {
   about: {
     index: "01",
     label: "About",
-    title: ["Between people,", "processes and technology."],
+    title: ["I see a website", "through the customer's eyes."],
     paragraphs: [
-      "My career didn't start in code — it started with people and processes. For years I've worked where customers, systems and quality meet: from supporting sellers on the Allegro marketplace, through UAT testing of CRM and web applications at T-Mobile, to quality management in manufacturing.",
-      "That's why I know what software looks like from the other side: where users get stuck, where a process grinds, and why a precisely described bug is half of the fix. Today I bring that experience into my own projects. I design applications, build them with AI, test and deploy them — and each one moves me forward in HTML, CSS, JavaScript and working with Git.",
-      "I don't pretend to be a senior developer. I'm someone who can break a problem down, see things through, and — with AI as a working tool — turn an idea into a working product.",
+      "My biggest strength is simple: I can put myself in the customer's shoes instantly. I look at a website the way someone who's already annoyed would — and I catch UX and functional bugs before they ever reach real people.",
+      "Practice taught me that. In manufacturing I traced the real causes of complaints for Škoda, VW and BMW, at T-Mobile I tested applications before release, and today at Allegro Group I deal every day with what actually bothers sellers. Every one of those roles taught me the same thing: look at things from the other side.",
+      "Now I bring that perspective to my own apps, which I build with AI. I'm not a senior developer and I don't pretend to be. But I can turn an idea into something that works — something you can try for yourself.",
     ],
-    strengthsTitle: "What I build on",
+    strengthsTitle: "How I work",
     strengths: [
-      { title: "Analytical thinking", text: "I break a problem into parts first, and only then look for a solution." },
-      { title: "Precision & ownership", text: "Quality and testing taught me that details decide. I follow through." },
-      { title: "Communication & problem solving", text: "I explain technical matters clearly and listen to the other side." },
-      { title: "Systems testing", text: "Test scenarios, defect tracking and UAT on real projects." },
-      { title: "Independence", text: "I take my own projects from idea through testing to deployment." },
-      { title: "AI in practice", text: "I use AI as a working tool for designing, building and debugging apps." },
-      { title: "Passion for technology", text: "I've long enjoyed finding ways to simplify and improve processes." },
+      {
+        title: "Through an annoyed user's eyes",
+        text: "I click through a website the way someone in a hurry with no patience would. That's where bugs show up first.",
+      },
+      {
+        title: "Results over perfection",
+        text: "“What matters is the result, even an imperfect one — otherwise it's a never-ending process.”",
+      },
+      {
+        title: "A perfectionist as the first user",
+        text: "“If I like it as a perfectionist, that's already at least one person who likes it.”",
+      },
+      {
+        title: "From idea to deployment",
+        text: "I write the prompts, design the logic, run deployment on Railway and test with Playwright.",
+      },
+      {
+        title: "There's always a person on the other side",
+        text: "A seller, a field worker or a colleague in another country — everyone needs things to simply work.",
+      },
     ],
   },
   projects: {
     index: "02",
     label: "Selected Projects",
     title: ["Projects of my own", "you can try yourself."],
-    intro: "I design, build with AI, test and deploy every project myself.",
+    intro:
+      "I write the prompts, design the logic, deploy on Railway and test with Playwright. What I love most is the very beginning, when an idea turns into something real — and then the gradual fine-tuning until it's exactly what I want.",
     items: [
       {
         id: "cvecko",
@@ -361,11 +397,11 @@ const en: SiteContent = {
         kind: "Web application",
         status: "live",
         statusLabel: "Live app",
-        summary: "My own web application for creating professional CVs.",
+        summary: "A CV tool I built for myself — exactly the way I wanted it.",
         problem:
-          "Putting together a clear, well-structured CV takes time. The goal was a tool that makes creating a CV as easy as possible.",
+          "The usual CV builders just didn't work for me on one specific thing. Instead of settling for another compromise, I built my own that looks and works the way I need.",
         details:
-          "Designing and building a tool that helps people create a structured CV — all it takes is a few sentences about yourself.",
+          "CVéčko is a starting point. Next, I want to focus on the whole job-search journey — with people living with multiple sclerosis in mind, so it's useful for them too.",
         tech: ["AI-assisted development", "Web technologies", "GitHub", "Railway"],
         urlLabel: "Open cvecko.cz",
         ...projectMeta.cvecko,
@@ -376,10 +412,11 @@ const en: SiteContent = {
         kind: "Interactive web game",
         status: "live",
         statusLabel: "Live app",
-        summary: "An interactive web game about Czech rulers with character selection.",
+        summary: "My very first app — a web game about Czech rulers.",
         problem:
-          "How to bring Czech history closer in a playful way — answering questions, collecting ruler cards and discovering their stories instead of memorising.",
-        details: "An independent creative project combining logic, interactivity and AI-assisted development.",
+          "Czech history has always fascinated me, and it still does. I wanted pupils and students to find their way to it naturally — through play instead of memorising: answering questions, collecting ruler cards and discovering their stories.",
+        details:
+          "With Český král I went through the whole journey for the first time — from an idea to a live app anyone can play.",
         tech: ["AI-assisted development", "GitHub", "Playwright", "Railway"],
         urlLabel: "Play Český král",
         ...projectMeta["cesky-kral"],
@@ -390,10 +427,10 @@ const en: SiteContent = {
         kind: "Platform concept",
         status: "concept",
         statusLabel: "In development / Concept",
-        summary: "A platform concept bringing job offers from different sources into one place.",
+        summary: "Job offers from different sources, all in one place.",
         problem:
-          "Job offers are scattered across many portals, and searching means going through the same websites over and over.",
-        details: "The project is in the concept and design phase. The technology will be defined as development progresses.",
+          "Job offers are scattered across many portals, and searching means going through the same websites over and over. Kompleto follows on from CVéčko — both revolve around finding work.",
+        details: "The project is still in the concept and design phase. I'll define the technology as development moves forward.",
         tech: ["Concept", "UX design", "AI-assisted development"],
         urlLabel: null,
         ...projectMeta.kompleto,
@@ -403,45 +440,55 @@ const en: SiteContent = {
   experience: {
     index: "03",
     label: "Experience",
-    title: ["The practice behind", "every project."],
-    intro: "Customer operations, testing and quality in international companies.",
+    title: ["Where I", "learned it."],
+    intro: "Six places, one common thread: I've always stood between people and systems, making sure things work.",
     items: [
       {
-        company: "Allegro",
+        company: "Allegro Group",
         role: "Marketplace Support Specialist",
-        period: null,
+        period: "11/2025 – present",
         current: true,
         summary:
-          "Supporting marketplace sellers, working with internal systems, customer processes and resolving complex cases.",
-        tags: ["Marketplace", "Internal systems", "Case resolution"],
-      },
-      {
-        company: "T-Mobile",
-        role: "UAT Tester",
-        period: null,
-        summary: "Testing CRM and web applications, writing test scenarios and tracking defects.",
-        tags: ["UAT", "CRM", "Bug reporting"],
-      },
-      {
-        company: "Zentiva",
-        role: "Digital HR Support / Webmaster",
-        period: null,
-        summary: "Managing intranet content, supporting digital processes and international communication.",
-        tags: ["Intranet", "Digital processes", "International team"],
+          "I support sellers on Mall.cz, Mall.sk and CZC — from complaints to the logic behind order cancellations. I work in Daktela and Microsoft DAX, and I kept a 100% NPS score for three months in a row.",
+        tags: ["Mall.cz · Mall.sk · CZC", "Complaints", "Daktela", "Microsoft DAX", "100% NPS · 3 months running"],
       },
       {
         company: "Ipsos",
         role: "Coordinator",
-        period: null,
-        summary: "Coordinating field projects, organising data and communication.",
-        tags: ["Coordination", "Data", "Communication"],
+        period: "3/2025 – 11/2025",
+        summary:
+          "I coordinated traffic-count projects and was the go-to support for hundreds of field workers — over 7,000 segments in total.",
+        tags: ["Traffic counts", "Hundreds of field workers", "7,000+ segments"],
+      },
+      {
+        company: "Sigma AI",
+        role: "Transcriptor",
+        period: "1/2024 – 12/2024",
+        summary: "I transcribed audio data and checked its quality — work where every single word matters.",
+        tags: ["Audio transcription", "Quality control", "Data work"],
+      },
+      {
+        company: "Zentiva",
+        role: "Digital HR Support / Webmaster",
+        period: "1/2022 – 12/2022",
+        summary: "I managed the intranet for five countries and supported international digital HR processes.",
+        tags: ["Intranet · 5 countries", "Digital HR", "International team"],
+      },
+      {
+        company: "T-Mobile",
+        role: "UAT Tester",
+        period: "2/2021 – 12/2021",
+        summary:
+          "I tested CRM and web applications, wrote test scenarios and reported bugs before a release reached customers.",
+        tags: ["UAT", "CRM", "Test scenarios", "Bug reporting"],
       },
       {
         company: "Megatech Industries",
         role: "QA Engineer",
-        period: null,
-        summary: "Quality management, documentation, complaints handling and communication with production.",
-        tags: ["Quality management", "Documentation", "Complaints"],
+        period: "1/2017 – 9/2020",
+        summary:
+          "I managed quality for Škoda, VW and BMW, handled complaints and looked for the real root causes of problems — not just their symptoms.",
+        tags: ["Automotive", "Complaints", "Root cause analysis"],
       },
     ] satisfies Experience[],
   },
@@ -449,19 +496,19 @@ const en: SiteContent = {
     index: "04",
     label: "Skills",
     title: ["What I bring", "to a team."],
-    intro: "No inflated levels — just what I actually work with.",
+    intro: "No inflated levels — just what I really work with.",
     groups: [
       {
         title: "AI & Digital Creation",
-        items: ["AI-assisted development", "Vibe coding", "Web projects", "Workflow automation"],
+        items: ["AI-assisted development", "Vibe coding", "Prompt writing", "App logic design", "Deployment on Railway"],
       },
       {
         title: "Testing & Quality",
-        items: ["UAT testing", "QA", "Test scenarios", "Bug reporting", "Quality control"],
+        items: ["UAT testing", "QA", "Playwright", "Test scenarios", "Bug reporting", "Root cause analysis"],
       },
       {
         title: "Customer & Digital Operations",
-        items: ["Marketplace support", "Daktela", "Microsoft DAX", "CRM", "Communication", "Problem solving"],
+        items: ["Marketplace support", "Complaints", "Daktela", "Microsoft DAX", "CRM", "Intranet"],
       },
       {
         title: "Web Development",
@@ -485,7 +532,7 @@ const en: SiteContent = {
     index: "06",
     label: "Contact & opportunities",
     title: "Let's create something meaningful.",
-    text: "I'd love to connect with teams and people looking for a combination of technical thinking, diligence and a human approach.",
+    text: "I'm looking for a team where a customer's perspective, care for quality and the drive to build new things with AI come together. If that sounds like yours, I'd love to talk.",
     areasTitle: "Areas of collaboration",
     areas: cs.contact.areas,
     linkedinCta: "Message me on LinkedIn",
@@ -493,7 +540,7 @@ const en: SiteContent = {
     noEmail: "The fastest way to reach me is LinkedIn.",
   },
   footer: {
-    note: "Designed and built with AI.",
+    note: "Designed and built with AI — just like my apps.",
   },
 };
 

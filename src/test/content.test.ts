@@ -29,3 +29,28 @@ describe("site content", () => {
     expect(en.nav.map((n) => n.id)).toEqual(cs.nav.map((n) => n.id));
   });
 });
+
+describe("work experience", () => {
+  it("shows Věra's real roles and dates, newest first", () => {
+    const rows = content.cs.experience.items.map((e) => [e.company, e.role, e.period]);
+    expect(rows).toEqual([
+      ["Allegro Group", "Marketplace Support Specialist", "11/2025 – současnost"],
+      ["Ipsos", "Coordinator", "3/2025 – 11/2025"],
+      ["Sigma AI", "Transcriptor", "1/2024 – 12/2024"],
+      ["Zentiva", "Digital HR Support / Webmaster", "1/2022 – 12/2022"],
+      ["T-Mobile", "UAT Tester", "2/2021 – 12/2021"],
+      ["Megatech Industries", "QA Engineer", "1/2017 – 9/2020"],
+    ]);
+  });
+
+  it("uses the same dates in English", () => {
+    const cs = content.cs.experience.items.map((e) => e.period?.split(" – ")[0]);
+    const en = content.en.experience.items.map((e) => e.period?.split(" – ")[0]);
+    expect(en).toEqual(cs);
+    expect(content.en.experience.items[0].period).toBe("11/2025 – present");
+  });
+
+  it("marks only Allegro Group as the current job", () => {
+    expect(content.cs.experience.items.filter((e) => e.current).map((e) => e.company)).toEqual(["Allegro Group"]);
+  });
+});
