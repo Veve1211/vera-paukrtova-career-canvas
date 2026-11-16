@@ -17,17 +17,20 @@ const screenshots: Partial<Record<Project["id"], string>> = {
 function KompletoPreview() {
   // Abstract illustration of the concept: offers from several sources merging into one list.
   return (
-    <div aria-hidden className="relative flex size-full items-center justify-center overflow-hidden bg-night p-6 sm:p-10">
+    <div aria-hidden className="relative flex size-full items-center justify-center overflow-hidden bg-night p-5 sm:p-10">
       <div className="absolute inset-0 hairline-grid opacity-[0.07]" />
       <div className="absolute -top-20 -right-20 size-72 rounded-full bg-violet/40 blur-3xl" />
-      <div className="relative grid w-full max-w-md gap-3">
+      <div className="relative grid w-full max-w-md gap-2 sm:gap-3">
         {[0, 1, 2, 3].map((i) => (
           <div
             key={i}
-            className="flex items-center gap-4 rounded-xl border border-night-foreground/10 bg-night-foreground/[0.04] p-4 backdrop-blur"
+            className={cn(
+              "flex items-center gap-3 rounded-xl border border-night-foreground/10 bg-night-foreground/[0.04] p-2.5 backdrop-blur sm:gap-4 sm:p-4",
+              i === 3 && "hidden sm:flex",
+            )}
             style={{ marginLeft: `${(i % 2) * 1.5}rem`, opacity: 1 - i * 0.16 }}
           >
-            <span className="size-9 shrink-0 rounded-lg bg-veil" />
+            <span className="size-7 shrink-0 rounded-lg bg-veil sm:size-9" />
             <div className="flex-1 space-y-2">
               <span className="block h-2 w-3/5 rounded-full bg-night-foreground/60" />
               <span className="block h-2 w-2/5 rounded-full bg-night-foreground/20" />
@@ -36,7 +39,7 @@ function KompletoPreview() {
           </div>
         ))}
       </div>
-      <span className="font-display absolute bottom-5 left-6 text-3xl text-orchid/80 italic sm:text-4xl">Kompleto</span>
+      <span className="font-display absolute bottom-5 left-6 hidden text-4xl text-orchid/80 italic sm:block">Kompleto</span>
     </div>
   );
 }

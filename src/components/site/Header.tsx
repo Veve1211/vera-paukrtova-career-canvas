@@ -77,11 +77,11 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-500",
+        "fixed inset-x-0 top-0 z-50 transition-[background-color,border-color] duration-300",
         open
           ? "border-b border-border/70 bg-background"
           : scrolled
-            ? "border-b border-border/70 bg-background/80 backdrop-blur-xl"
+            ? "border-b border-border/70 bg-background/[0.97] backdrop-blur-xl"
             : "border-b border-transparent",
       )}
     >
