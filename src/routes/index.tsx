@@ -29,7 +29,6 @@ export const Route = createFileRoute("/")({
       { property: "og:image:height", content: "630" },
       { property: "og:image:alt", content: "Věra Paukrtová — AI-assisted Web Developer | QA & Customer Experience" },
       { property: "og:locale", content: "cs_CZ" },
-      { property: "og:locale:alternate", content: "en_GB" },
       { property: "profile:first_name", content: "Věra" },
       { property: "profile:last_name", content: "Paukrtová" },
       { name: "twitter:card", content: "summary_large_image" },
