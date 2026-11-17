@@ -3,11 +3,12 @@
  * Edit this file to update the content — both languages (cs / en) side by side.
  *
  * Fill-in-later fields (keep `null` until you have the real value — the site hides them):
- *  - links.email       → your e-mail address (the contact section shows it once set)
- *  - links.cvPdf       → path to the CV PDF, e.g. "/cv-vera-paukrtova.pdf" (put the file into /public);
- *                        the "Download CV" button appears only once this is set
+ *  - links.cvPdf       → the "Download CV" button appears only when this file really exists in /public
  *  - project.github    → GitHub repository URL (the link appears only once set)
  *  - education.year    → e.g. "2016"
+ *
+ * Texts containing "[DOPLNIT]" are visible placeholders for numbers that are not known yet —
+ * replace them with real values (never invent them).
  */
 
 export type Lang = "cs" | "en";
@@ -16,8 +17,19 @@ export const siteUrl = "https://vera-paukrtova-career-canvas.lovable.app";
 
 export const links = {
   linkedin: "https://www.linkedin.com/in/vera-paukrtova/",
-  email: null as string | null,
-  cvPdf: null as string | null,
+  email: "paukrtovavera@seznam.cz" as string | null,
+  github: "https://github.com/Veve1211",
+  /** Shown only when the file exists in /public (checked in the browser, see useCvAvailable). */
+  cvPdf: "/cv-vera-paukrtova.pdf" as string | null,
+};
+
+/** Companies shown in the hero proof line (the full list stays in the experience section). */
+const heroCompanies = ["Allegro Group", "T-Mobile", "Zentiva", "Megatech Industries"];
+
+/** Screenshots in /public/projects — a placeholder frame is shown when a file is missing. */
+export const projectScreenshots: Partial<Record<ProjectId, string>> = {
+  cvecko: "/projects/cvecko.png",
+  "cesky-kral": "/projects/cesky-kral.png",
 };
 
 export type ProjectId = "cvecko" | "cesky-kral" | "kompleto";
@@ -30,8 +42,12 @@ export type Project = {
   statusLabel: string;
   /** What the app does. */
   summary: string;
-  /** Which problem it solves. */
+  /** Which problem it solves — one short line. */
   problem: string;
+  /** Why the project was created (longer, personal). */
+  story: string | null;
+  /** Measurable results; "[DOPLNIT …]" until real numbers are known. */
+  results: string | null;
   /** Věra's role in the project. */
   role: string;
   /** Current state of the project. */
@@ -56,6 +72,12 @@ export type Experience = {
   tags: string[];
 };
 
+export type Service = {
+  icon: "web" | "app" | "qa" | "cx";
+  title: string;
+  text: string;
+};
+
 export type Education = {
   provider: string;
   title: string;
@@ -73,13 +95,14 @@ const highlights = ["Web Development", "AI-assisted Applications", "QA Testing",
 
 const cs = {
   meta: {
-    title: "Věra Paukrtová — AI-assisted Web Developer | QA & Customer Experience",
+    title: "Věra Paukrtová – weby a AI aplikace | QA & testování",
     description:
-      "Věra Paukrtová tvoří weby a AI-assisted aplikace a propojuje je s praxí z QA, UAT testování a zákaznické zkušenosti. Projekty CVéčko a Český král.",
+      "Stavím weby a aplikace s AI – a pořádně je otestuju. Praxe v UAT testování, QA a zákaznické péči mi pomáhá najít chyby dřív, než na ně narazí uživatel.",
   },
   skipLink: "Přeskočit na obsah",
   nav: [
     { id: "projekty", label: "Projekty" },
+    { id: "spoluprace", label: "Spolupráce" },
     { id: "pristup", label: "Co přináším" },
     { id: "zkusenosti", label: "Zkušenosti" },
     { id: "vzdelani", label: "Vzdělání" },
@@ -94,7 +117,9 @@ const cs = {
     downloadCv: "Stáhnout CV",
     github: "GitHub",
     whatItDoes: "Co aplikace dělá",
-    problem: "Jaký problém řeší",
+    problem: "Problém, který řeší",
+    story: "Proč vznikla",
+    results: "Výsledky",
     role: "Moje role",
     state: "Aktuální stav",
     tech: "Technologie",
@@ -107,20 +132,21 @@ const cs = {
     desktopView: "počítačová verze",
     mobileView: "mobilní verze",
     conceptIllustration: "Ilustrace konceptu — nejde o snímek aplikace",
+    screenshotAlt: "Snímek obrazovky aplikace",
+    screenshotMissing: "Snímek obrazovky se připravuje",
   },
   hero: {
     name: "Věra Paukrtová",
     role: "AI-assisted Web Developer | QA & Customer Experience",
-    title: ["Tvořím weby a AI-assisted aplikace,", "které dávají smysl lidem."],
-    intro:
-      "Propojuji tvorbu digitálních produktů s praktickými zkušenostmi ze zákaznické podpory a QA. Díky tomu přemýšlím nejen nad tím, jak aplikaci vytvořit, ale především jak bude fungovat pro skutečné uživatele.",
-    ctaProjects: "Prohlédnout moje projekty",
-    ctaContact: "Kontaktovat mě",
+    title: ["Stavím weby a aplikace s AI –", "a pořádně je otestuju."],
+    intro: "Praxe v UAT testování, QA a zákaznické péči mi pomáhá najít chyby dřív, než na ně narazí uživatel.",
+    ctaProjects: "Moje projekty",
+    ctaContact: "Napište mi",
     highlightsLabel: "Zaměření",
     highlights,
     seal: "Přemýšlím jako zákazník, hlídám kvalitu, tvořím s AI.",
     proofLabel: "Praxe z",
-    proofProjects: "2 živé aplikace · 1 koncept",
+    proofCompanies: heroCompanies,
   },
   projects: {
     index: "01",
@@ -137,8 +163,10 @@ const cs = {
         statusLabel: "Živá aplikace",
         summary:
           "Napíšete o sobě pár vět a AI z nich poskládá přehledný životopis — bez vyplňování formulářů. Vyberete si vzhled a výsledek dostanete jako PDF ve formátu A4.",
-        problem:
+        problem: "Napsat životopis bez vyplňování formulářů – stačí o sobě napsat pár vět.",
+        story:
           "Běžné nástroje na tvorbu CV mi v jedné konkrétní věci nefungovaly. Místo dalšího kompromisu jsem si postavila vlastní, který vypadá i funguje přesně podle mých představ.",
+        results: "[DOPLNIT počet vygenerovaných CV / uživatelů]",
         role: "Nápad, návrh funkcí a uživatelského postupu, AI-assisted vývoj přes prompty, testování a nasazení.",
         state:
           "Aplikace je v provozu. Do budoucna ji chci rozšířit na celou cestu hledáním práce — s myšlenkou i na lidi s roztroušenou sklerózou.",
@@ -154,8 +182,10 @@ const cs = {
         statusLabel: "Živá aplikace",
         summary:
           "Hráč odpovídá na otázky o českých panovnících a sbírá je jako karty. Ve hře je denní výzva, rychlé kvízy, žebříček i vlastní erb.",
-        problem:
+        problem: "Česká historie pro žáky a studenty – hrou, ne memorováním.",
+        story:
           "Česká historie mě bavila a pořád baví. Chtěla jsem, aby si k ní žáci a studenti našli cestu přirozeně — hrou, ne memorováním.",
+        results: "[DOPLNIT počet hráčů / odehraných kvízů]",
         role: "Moje úplně první aplikace: návrh herní logiky, prompty pro AI, testování v Playwrightu a nasazení na Railway.",
         state: "Hra je v provozu a zahrát si ji může kdokoli. Byla to moje první cesta od nápadu až k živé aplikaci.",
         tech: ["Next.js", "Railway", "Playwright", "AI-assisted development"],
@@ -167,10 +197,12 @@ const cs = {
         name: "Kompleto",
         kind: "Koncept platformy",
         status: "concept",
-        statusLabel: "Koncept",
+        statusLabel: "Ve vývoji",
         summary: "Připravovaný koncept platformy, která má sdružit pracovní nabídky z různých zdrojů na jednom místě.",
-        problem:
+        problem: "Nabídky práce rozházené po mnoha portálech – na jednom místě.",
+        story:
           "Nabídky práce jsou rozházené po mnoha portálech a hledání znamená procházet pořád dokola stejné weby.",
+        results: null,
         role: "Nápad a návrh konceptu — co má platforma umět a jak by ji lidé používali.",
         state:
           "Jde o koncept ve fázi návrhu, ne o hotovou aplikaci. Technologie upřesním, až se vývoj pohne dál.",
@@ -179,13 +211,42 @@ const cs = {
         ...projectMeta.kompleto,
       },
     ] satisfies Project[],
+    githubMore: "Další projekty na GitHubu",
+  },
+  services: {
+    index: "02",
+    label: "Oblasti spolupráce",
+    title: ["Oblasti", "spolupráce."],
+    cta: "Napište mi",
+    items: [
+      {
+        icon: "web",
+        title: "Tvorba webových stránek",
+        text: "Přehledný web pro firmu nebo živnostníka, od návrhu po spuštění.",
+      },
+      {
+        icon: "app",
+        title: "Vývoj AI-assisted aplikací",
+        text: "Nástroj na míru, který šetří čas vám nebo vašim zákazníkům.",
+      },
+      {
+        icon: "qa",
+        title: "QA a uživatelské testování",
+        text: "Otestuji vaši aplikaci před spuštěním – testovací scénáře, UAT, Playwright.",
+      },
+      {
+        icon: "cx",
+        title: "Zlepšování zákaznické zkušenosti",
+        text: "Projdu váš web očima zákazníka a ukážu, kde lidé váznou.",
+      },
+    ] satisfies Service[],
   },
   approach: {
-    index: "02",
+    index: "03",
     label: "Co přináším do projektů",
     title: ["Jeden přístup,", "tři úhly pohledu."],
     intro:
-      "Dokážu se okamžitě vžít do zákazníka. Podívám se na web očima člověka, kterého už něco naštvalo — a UX i funkční chyby najdu dřív, než se dostanou ke skutečným lidem. Nejsem seniorní programátorka a nepředstírám to. Navrhuji, co a proč má aplikace dělat, vedu při vývoji AI, testuji a nasazuji.",
+      "Dokážu se okamžitě vžít do zákazníka. Podívám se na web očima člověka, kterého už něco naštvalo — a UX i funkční chyby najdu dřív, než se dostanou ke skutečným lidem. Navrhuji, co a proč má aplikace dělat, vedu při vývoji AI, testuji a nasazuji.",
     pillars: [
       {
         index: "01",
@@ -210,15 +271,12 @@ const cs = {
     summary:
       "Dohromady to znamená, že nápad dovedu do funkční podoby, otestuji ho a ověřím, jestli dává smysl lidem, kteří ho budou používat.",
     principlesTitle: "Jak pracuji",
-    principles: [
-      "Důležitý je výsledek, i když je nedokonalý – jinak je to nekončící proces.",
-      "Pokud se to líbí mně jako perfekcionistce, je to už minimálně jeden člověk, kterému se to líbí.",
-    ],
-    learningTitle: "Kde se stále učím",
-    learning: ["HTML", "CSS", "JavaScript", "Git", "GitHub", "Základy Pythonu"],
+    principles: ["Pokud se to líbí mně jako perfekcionistce, je to už minimálně jeden člověk, kterému se to líbí."],
+    toolsTitle: "Pracuji s:",
+    tools: ["Next.js", "HTML", "CSS", "JavaScript", "Git", "GitHub", "Railway", "Playwright", "Python (základy)"],
   },
   experience: {
-    index: "03",
+    index: "04",
     label: "Pracovní zkušenosti",
     title: ["Praxe, která mě naučila", "myslet na uživatele."],
     intro:
@@ -231,10 +289,10 @@ const cs = {
         current: true,
         featured: true,
         summary:
-          "Pomáhám prodejcům na Mall.cz, Mall.sk a CZC — od reklamací až po logiku rušení objednávek. Pracuji v Daktele a Microsoft DAX a tři měsíce po sobě jsem si udržela 100% NPS skóre.",
+          "Pomáhám prodejcům na Mall.cz, Mall.sk a CZC — od reklamací až po logiku rušení objednávek. Pracuji v Daktele a Microsoft DAX. NPS 100 tři měsíce po sobě ([DOPLNIT] hodnocení).",
         transfer:
           "Každý den vidím, kde se lidé v procesu ztrácejí a proč. Učí mě to navrhovat postupy a rozhraní, které uživatelům nepřekážejí.",
-        tags: ["Mall.cz · Mall.sk · CZC", "Zákaznické procesy", "Reklamace", "Daktela", "Microsoft DAX", "100% NPS · 3 měsíce v řadě"],
+        tags: ["Mall.cz · Mall.sk · CZC", "Zákaznické procesy", "Reklamace", "Daktela", "Microsoft DAX", "NPS 100 tři měsíce po sobě ([DOPLNIT] hodnocení)"],
       },
       {
         company: "Ipsos",
@@ -287,7 +345,7 @@ const cs = {
     ] satisfies Experience[],
   },
   education: {
-    index: "04",
+    index: "05",
     label: "Vzdělání a kurzy",
     title: ["Vzdělání", "a kurzy."],
     items: [
@@ -298,15 +356,24 @@ const cs = {
     ] satisfies Education[],
   },
   contact: {
-    index: "05",
-    label: "Kontakt a spolupráce",
-    title: ["Máte nápad na web", "nebo digitální aplikaci?"],
-    text: "Ráda se zapojím do tvorby webových stránek, AI-assisted aplikací nebo projektů, kde mohu propojit vývoj, testování a zákaznickou zkušenost. Jsem otevřená projektové spolupráci i příležitostem v digitálních týmech.",
-    areasTitle: "Kde se ráda zapojím",
-    areas: ["Tvorba webových stránek", "AI-assisted aplikace", "Testování a QA", "Zákaznická zkušenost"],
-    linkedinCta: "Napište mi na LinkedIn",
-    emailCta: "Napsat e-mail",
-    noEmail: "Nejrychleji mě zastihnete přes LinkedIn.",
+    index: "06",
+    label: "Kontakt",
+    title: ["Pojďme společně vytvořit", "něco, co funguje."],
+    subtitle: "Máte nápad na web, aplikaci nebo digitální projekt?",
+    text: "Vytvářím webové stránky a AI-assisted aplikace. Díky zkušenostem ze zákaznické podpory a QA přemýšlím nejen nad jejich vzhledem a funkcemi, ale také nad tím, jak se budou skutečně používat. Ráda se zapojím do zajímavého projektu, spolupráce nebo digitálního týmu.",
+    emailCta: "Napište mi e-mail",
+    emailLabel: "E-mail",
+    copy: "Zkopírovat e-mail",
+    copied: "Zkopírováno",
+    form: {
+      title: "Nebo mi napište rovnou tady",
+      name: "Jméno",
+      email: "Váš e-mail",
+      message: "Zpráva",
+      submit: "Odeslat",
+      note: "Po odeslání se otevře váš e-mailový program s předvyplněnou zprávou.",
+      subject: "Poptávka z webu",
+    },
   },
   footer: {
     note: "Navrženo a postaveno s AI — stejně jako moje aplikace.",
@@ -317,13 +384,14 @@ export type SiteContent = typeof cs;
 
 const en: SiteContent = {
   meta: {
-    title: "Věra Paukrtová — AI-assisted Web Developer | QA & Customer Experience",
+    title: "Věra Paukrtová – websites & AI apps | QA & testing",
     description:
-      "Věra Paukrtová builds websites and AI-assisted apps, backed by hands-on experience in QA, UAT testing and customer experience. Projects: CVéčko and Český král.",
+      "I build websites and apps with AI — and test them properly. Hands-on experience in UAT testing, QA and customer care helps me catch bugs before your users do.",
   },
   skipLink: "Skip to content",
   nav: [
     { id: "projekty", label: "Projects" },
+    { id: "spoluprace", label: "Services" },
     { id: "pristup", label: "What I bring" },
     { id: "zkusenosti", label: "Experience" },
     { id: "vzdelani", label: "Education" },
@@ -339,6 +407,8 @@ const en: SiteContent = {
     github: "GitHub",
     whatItDoes: "What the app does",
     problem: "The problem it solves",
+    story: "Why I built it",
+    results: "Results",
     role: "My role",
     state: "Current status",
     tech: "Technology",
@@ -351,20 +421,21 @@ const en: SiteContent = {
     desktopView: "desktop view",
     mobileView: "mobile view",
     conceptIllustration: "Concept illustration — not a screenshot of an app",
+    screenshotAlt: "Screenshot of",
+    screenshotMissing: "Screenshot coming soon",
   },
   hero: {
     name: "Věra Paukrtová",
     role: "AI-assisted Web Developer | QA & Customer Experience",
-    title: ["I build websites and AI-assisted apps", "that make sense to people."],
-    intro:
-      "I combine building digital products with hands-on experience in customer support and QA. That's why I think not only about how to build an app, but above all about how it will work for real users.",
-    ctaProjects: "See my projects",
+    title: ["I build websites and apps with AI —", "and test them properly."],
+    intro: "Hands-on experience in UAT testing, QA and customer care helps me catch bugs before your users ever run into them.",
+    ctaProjects: "My projects",
     ctaContact: "Get in touch",
     highlightsLabel: "Focus",
     highlights,
     seal: "I think like a customer, guard quality, build with AI.",
     proofLabel: "Experience at",
-    proofProjects: "2 live apps · 1 concept",
+    proofCompanies: heroCompanies,
   },
   projects: {
     index: "01",
@@ -381,8 +452,10 @@ const en: SiteContent = {
         statusLabel: "Live app",
         summary:
           "You write a few sentences about yourself and AI turns them into a clear CV — no forms to fill in. You pick a design and get the result as an A4 PDF.",
-        problem:
+        problem: "Writing a CV without filling in forms — a few sentences about yourself are enough.",
+        story:
           "The usual CV builders just didn't work for me on one specific thing. Instead of settling for another compromise, I built my own that looks and works exactly the way I want.",
+        results: "[DOPLNIT number of CVs generated / users]",
         role: "Idea, feature and user-flow design, AI-assisted development through prompts, testing and deployment.",
         state:
           "The app is live. Next, I want to extend it to the whole job-search journey — with people living with multiple sclerosis in mind too.",
@@ -398,8 +471,10 @@ const en: SiteContent = {
         statusLabel: "Live app",
         summary:
           "Players answer questions about Czech rulers and collect them as cards. The game has a daily challenge, quick quizzes, a leaderboard and a personal coat of arms.",
-        problem:
+        problem: "Czech history for pupils and students — learned through play, not memorising.",
+        story:
           "Czech history has always fascinated me, and it still does. I wanted pupils and students to find their way to it naturally — through play, not memorising.",
+        results: "[DOPLNIT number of players / quizzes played]",
         role: "My very first app: game logic design, prompts for the AI, testing with Playwright and deployment on Railway.",
         state: "The game is live and anyone can play it. It was my first journey from an idea all the way to a live app.",
         tech: ["Next.js", "Railway", "Playwright", "AI-assisted development"],
@@ -411,9 +486,11 @@ const en: SiteContent = {
         name: "Kompleto",
         kind: "Platform concept",
         status: "concept",
-        statusLabel: "Concept",
+        statusLabel: "In development",
         summary: "An upcoming platform concept that would bring job offers from different sources together in one place.",
-        problem: "Job offers are scattered across many portals, and searching means going through the same websites over and over.",
+        problem: "Job offers scattered across many portals — brought together in one place.",
+        story: "Job offers are scattered across many portals, and searching means going through the same websites over and over.",
+        results: null,
         role: "Idea and concept design — what the platform should do and how people would use it.",
         state: "This is a concept in the design phase, not a finished app. I'll define the technology as development moves forward.",
         tech: [],
@@ -421,13 +498,42 @@ const en: SiteContent = {
         ...projectMeta.kompleto,
       },
     ] satisfies Project[],
+    githubMore: "More projects on GitHub",
+  },
+  services: {
+    index: "02",
+    label: "Ways to work together",
+    title: ["How I can", "help you."],
+    cta: "Get in touch",
+    items: [
+      {
+        icon: "web",
+        title: "Websites",
+        text: "A clear website for your business or freelance work, from design to launch.",
+      },
+      {
+        icon: "app",
+        title: "AI-assisted app development",
+        text: "A custom tool that saves time for you or your customers.",
+      },
+      {
+        icon: "qa",
+        title: "QA & user testing",
+        text: "I'll test your app before launch — test scenarios, UAT, Playwright.",
+      },
+      {
+        icon: "cx",
+        title: "Better customer experience",
+        text: "I'll go through your website as a customer would and show you where people get stuck.",
+      },
+    ] satisfies Service[],
   },
   approach: {
-    index: "02",
+    index: "03",
     label: "What I bring to projects",
     title: ["One approach,", "three perspectives."],
     intro:
-      "I can put myself in the customer's shoes instantly. I look at a website the way someone who's already annoyed would — and I catch UX and functional bugs before they reach real people. I'm not a senior developer and I don't pretend to be. I decide what an app should do and why, guide the AI through development, test and deploy.",
+      "I can put myself in the customer's shoes instantly. I look at a website the way someone who's already annoyed would — and I catch UX and functional bugs before they reach real people. I decide what an app should do and why, guide the AI through development, test and deploy.",
     pillars: [
       {
         index: "01",
@@ -452,15 +558,12 @@ const en: SiteContent = {
     summary:
       "Put together, it means I can take an idea to a working product, test it and check that it makes sense to the people who will use it.",
     principlesTitle: "How I work",
-    principles: [
-      "What matters is the result, even an imperfect one — otherwise it's a never-ending process.",
-      "If I like it as a perfectionist, that's already at least one person who likes it.",
-    ],
-    learningTitle: "Where I'm still learning",
-    learning: ["HTML", "CSS", "JavaScript", "Git", "GitHub", "Python basics"],
+    principles: ["If I like it as a perfectionist, that's already at least one person who likes it."],
+    toolsTitle: "I work with:",
+    tools: ["Next.js", "HTML", "CSS", "JavaScript", "Git", "GitHub", "Railway", "Playwright", "Python (basics)"],
   },
   experience: {
-    index: "03",
+    index: "04",
     label: "Experience",
     title: ["Experience that taught me", "to think about users."],
     intro:
@@ -473,10 +576,10 @@ const en: SiteContent = {
         current: true,
         featured: true,
         summary:
-          "I support sellers on Mall.cz, Mall.sk and CZC — from complaints to the logic behind order cancellations. I work in Daktela and Microsoft DAX, and I kept a 100% NPS score for three months in a row.",
+          "I support sellers on Mall.cz, Mall.sk and CZC — from complaints to the logic behind order cancellations. I work in Daktela and Microsoft DAX. NPS 100 three months in a row ([DOPLNIT] ratings).",
         transfer:
           "Every day I see where people get lost in a process, and why. It teaches me to design flows and interfaces that stay out of users' way.",
-        tags: ["Mall.cz · Mall.sk · CZC", "Customer processes", "Complaints", "Daktela", "Microsoft DAX", "100% NPS · 3 months running"],
+        tags: ["Mall.cz · Mall.sk · CZC", "Customer processes", "Complaints", "Daktela", "Microsoft DAX", "NPS 100 three months in a row ([DOPLNIT] ratings)"],
       },
       {
         company: "Ipsos",
@@ -529,7 +632,7 @@ const en: SiteContent = {
     ] satisfies Experience[],
   },
   education: {
-    index: "04",
+    index: "05",
     label: "Education & courses",
     title: ["Education", "and courses."],
     items: [
@@ -540,15 +643,24 @@ const en: SiteContent = {
     ] satisfies Education[],
   },
   contact: {
-    index: "05",
-    label: "Contact & collaboration",
-    title: ["Have an idea for a website", "or a digital app?"],
-    text: "I'd love to get involved in building websites, AI-assisted apps or projects where I can combine development, testing and customer experience. I'm open to project collaboration as well as opportunities in digital teams.",
-    areasTitle: "Where I'd love to help",
-    areas: ["Building websites", "AI-assisted apps", "Testing & QA", "Customer experience"],
-    linkedinCta: "Message me on LinkedIn",
-    emailCta: "Send an e-mail",
-    noEmail: "The fastest way to reach me is LinkedIn.",
+    index: "06",
+    label: "Contact",
+    title: ["Let's build something", "that works."],
+    subtitle: "Got an idea for a website, an app or a digital project?",
+    text: "I build websites and AI-assisted apps. Thanks to my background in customer support and QA, I think not only about how they look and what they do, but also about how people will actually use them. I'd love to join an interesting project, collaboration or digital team.",
+    emailCta: "Send me an e-mail",
+    emailLabel: "E-mail",
+    copy: "Copy e-mail",
+    copied: "Copied",
+    form: {
+      title: "Or write to me right here",
+      name: "Name",
+      email: "Your e-mail",
+      message: "Message",
+      submit: "Send",
+      note: "Sending opens your e-mail app with the message pre-filled.",
+      subject: "Website enquiry",
+    },
   },
   footer: {
     note: "Designed and built with AI — just like my apps.",
