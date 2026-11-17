@@ -77,6 +77,9 @@ export function Approach() {
                 </Reveal>
               ))}
             </div>
+            <Reveal delay={160}>
+              <p className="mt-5 text-sm text-night-foreground/75">{a.principlesAuthor}</p>
+            </Reveal>
           </div>
           <Reveal delay={120} className="lg:col-span-4">
             <h3 className="eyebrow text-orchid">{a.learningTitle}</h3>

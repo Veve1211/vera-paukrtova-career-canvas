@@ -138,18 +138,22 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             <dt className="eyebrow text-primary">{t.ui.whatItDoes}</dt>
             <dd className="mt-2 text-base leading-relaxed text-foreground">{project.summary}</dd>
           </div>
-          <div>
-            <dt className="eyebrow text-primary">{t.ui.problem}</dt>
-            <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">{project.problem}</dd>
-          </div>
+          {project.problem && (
+            <div>
+              <dt className="eyebrow text-primary">{t.ui.problem}</dt>
+              <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">{project.problem}</dd>
+            </div>
+          )}
           <div>
             <dt className="eyebrow text-primary">{t.ui.role}</dt>
             <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">{project.role}</dd>
           </div>
-          <div>
-            <dt className="eyebrow text-primary">{t.ui.state}</dt>
-            <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">{project.state}</dd>
-          </div>
+          {project.state && (
+            <div>
+              <dt className="eyebrow text-primary">{t.ui.state}</dt>
+              <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">{project.state}</dd>
+            </div>
+          )}
           {project.tech.length > 0 && (
             <div>
               <dt className="eyebrow text-primary">{t.ui.tech}</dt>
