@@ -19,7 +19,15 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     document.documentElement.lang = lang;
-    document.title = content[lang].meta.title;
+    const { title, description } = content[lang].meta;
+    document.title = title;
+    // Keep the description and Open Graph tags in the chosen language (Czech is what crawlers see).
+    const setMeta = (selector: string, value: string) => document.querySelector(selector)?.setAttribute("content", value);
+    setMeta('meta[name="description"]', description);
+    setMeta('meta[property="og:title"]', title);
+    setMeta('meta[property="og:description"]', description);
+    setMeta('meta[name="twitter:title"]', title);
+    setMeta('meta[name="twitter:description"]', description);
   }, [lang]);
 
   const setLang = useCallback((next: Lang) => {

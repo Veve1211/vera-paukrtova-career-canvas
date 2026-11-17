@@ -16,8 +16,9 @@ describe("site content", () => {
     });
   });
 
-  it("does not show a made-up e-mail before the real one is added", () => {
-    expect(links.email === null || /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(links.email)).toBe(true);
+  it("uses Věra's real e-mail and GitHub", () => {
+    expect(links.email).toBe("paukrtovavera@seznam.cz");
+    expect(links.github).toBe("https://github.com/Veve1211");
   });
 
   it("has a complete English version for every Czech section", () => {
@@ -28,6 +29,8 @@ describe("site content", () => {
     expect(en.experience.items.map((e) => e.featured)).toEqual(cs.experience.items.map((e) => e.featured));
     expect(en.education.items).toHaveLength(cs.education.items.length);
     expect(en.nav.map((n) => n.id)).toEqual(cs.nav.map((n) => n.id));
+    expect(en.services.items.map((s) => s.icon)).toEqual(cs.services.items.map((s) => s.icon));
+    expect(en.approach.tools).toHaveLength(cs.approach.tools.length);
   });
 });
 
@@ -59,7 +62,8 @@ describe("work experience", () => {
 describe("portfolio positioning", () => {
   it("uses the agreed professional title and headline", () => {
     expect(content.cs.hero.role).toBe("AI-assisted Web Developer | QA & Customer Experience");
-    expect(content.cs.hero.title.join(" ")).toBe("Tvořím weby a AI-assisted aplikace, které dávají smysl lidem.");
+    expect(content.cs.hero.title.join(" ")).toBe("Stavím weby a aplikace s AI – a pořádně je otestuju.");
+    expect(content.cs.hero.proofCompanies).toEqual(["Allegro Group", "T-Mobile", "Zentiva", "Megatech Industries"]);
     expect(content.cs.hero.highlights).toEqual(["Web Development", "AI-assisted Applications", "QA Testing", "Customer Experience"]);
   });
 
@@ -69,11 +73,28 @@ describe("portfolio positioning", () => {
     expect(ids.indexOf("projekty")).toBeLessThan(ids.indexOf("zkusenosti"));
   });
 
-  it("marks Kompleto as a concept without a live link", () => {
+  it("puts the collaboration section between projects and approach", () => {
+    const ids = content.cs.nav.map((n) => n.id);
+    expect(ids.slice(0, 3)).toEqual(["projekty", "spoluprace", "pristup"]);
+  });
+
+  it("marks Kompleto as in development, last, without a live link", () => {
     for (const lang of ["cs", "en"] as const) {
-      const kompleto = content[lang].projects.items.find((p) => p.id === "kompleto");
+      const items = content[lang].projects.items;
+      const kompleto = items.at(-1);
+      expect(kompleto?.id).toBe("kompleto");
       expect(kompleto?.status).toBe("concept");
       expect(kompleto?.url).toBeNull();
+    }
+    expect(content.cs.projects.items.at(-1)?.statusLabel).toBe("Ve vývoji");
+  });
+
+  it("keeps unknown numbers as visible [DOPLNIT] placeholders instead of inventing them", () => {
+    for (const lang of ["cs", "en"] as const) {
+      const c = content[lang];
+      const results = c.projects.items.filter((p) => p.status === "live").map((p) => p.results);
+      for (const r of results) expect(r).toContain("[DOPLNIT");
+      expect(c.experience.items[0]?.summary).toContain("[DOPLNIT]");
     }
   });
 
@@ -83,7 +104,8 @@ describe("portfolio positioning", () => {
   });
 
   it("uses the requested contact heading", () => {
-    expect(content.cs.contact.title.join(" ")).toBe("Máte nápad na web nebo digitální aplikaci?");
+    expect(content.cs.contact.title.join(" ")).toBe("Pojďme společně vytvořit něco, co funguje.");
+    expect(content.cs.contact.form.subject).toBe("Poptávka z webu");
   });
 
   it("never presents Věra as a senior developer in her title or headline", () => {

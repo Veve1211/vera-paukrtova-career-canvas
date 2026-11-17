@@ -62,11 +62,11 @@ export function Approach() {
         </Reveal>
 
         <div className="mt-16 grid gap-10 lg:grid-cols-12">
-          <div className="lg:col-span-8">
+          <div className="lg:col-span-6">
             <Reveal>
               <h3 className="eyebrow text-orchid">{a.principlesTitle}</h3>
             </Reveal>
-            <div className="mt-6 grid gap-5 sm:grid-cols-2">
+            <div className="mt-6 grid gap-5">
               {a.principles.map((quote, i) => (
                 <Reveal as="figure" key={quote} delay={i * 80} className="border-l border-orchid/50 pl-5">
                   <blockquote className="font-display text-xl leading-snug sm:text-2xl">
@@ -78,11 +78,11 @@ export function Approach() {
               ))}
             </div>
           </div>
-          <Reveal delay={120} className="lg:col-span-4">
-            <h3 className="eyebrow text-orchid">{a.learningTitle}</h3>
+          <Reveal delay={120} className="lg:col-span-5 lg:col-start-8">
+            <h3 className="eyebrow text-orchid">{a.toolsTitle}</h3>
             <ul className="mt-6 flex flex-wrap gap-2">
-              {a.learning.map((item) => (
-                <li key={item} className="rounded-full border border-dashed border-night-foreground/30 px-3 py-1 text-sm text-night-foreground/90">
+              {a.tools.map((item) => (
+                <li key={item} className="rounded-full border border-night-foreground/25 px-3 py-1 text-sm text-night-foreground/90">
                   {item}
                 </li>
               ))}

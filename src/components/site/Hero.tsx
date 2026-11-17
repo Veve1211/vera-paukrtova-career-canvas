@@ -48,7 +48,7 @@ function Portrait() {
 export function Hero() {
   const { t } = useI18n();
   const h = t.hero;
-  const companies = t.experience.items.map((e) => e.company);
+  const companies = h.proofCompanies;
 
   return (
     <section id="top" aria-labelledby="hero-title" className="relative overflow-hidden pt-28 pb-20 sm:pt-36 lg:pt-40 lg:pb-28">
@@ -103,17 +103,14 @@ export function Hero() {
 
           <Reveal delay={340} className="mt-10 grid gap-3 border-t border-border pt-6 sm:grid-cols-[auto_1fr] sm:items-baseline sm:gap-8">
             <p className="eyebrow text-muted-foreground">{h.proofLabel}</p>
-            <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between">
-              <p className="font-display text-base text-foreground sm:text-lg">
-                {companies.map((c, i) => (
-                  <Fragment key={c}>
-                    {i > 0 && " · "}
-                    <span className="whitespace-nowrap">{c}</span>
-                  </Fragment>
-                ))}
-              </p>
-              <p className="text-sm font-medium text-primary">{h.proofProjects}</p>
-            </div>
+            <p className="font-display text-base text-foreground sm:text-lg">
+              {companies.map((c, i) => (
+                <Fragment key={c}>
+                  {i > 0 && " · "}
+                  <span className="whitespace-nowrap">{c}</span>
+                </Fragment>
+              ))}
+            </p>
           </Reveal>
         </div>
 
