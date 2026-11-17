@@ -261,12 +261,17 @@ export function Projects() {
         <SectionHeading index={p.index} label={p.label} title={p.title} intro={p.intro} />
         <div className="mt-14 grid gap-8 sm:mt-16 sm:gap-10">
           {/* Live apps first, projects in development at the end. */}
-          {[...p.items]
+          {[...(p.items as Project[])]
             .sort((a, b) => Number(a.status === "concept") - Number(b.status === "concept"))
             .map((project, i) => (
               <ProjectCard key={project.id} project={project} index={i} />
             ))}
         </div>
+        {p.upcoming && (
+          <p className="mt-8 text-center text-sm text-muted-foreground">
+            <span className="font-medium text-foreground">{p.upcoming.label}</span> {p.upcoming.text}
+          </p>
+        )}
         <Reveal className="mt-10 flex justify-center sm:mt-12">
           <a
             href={links.github}

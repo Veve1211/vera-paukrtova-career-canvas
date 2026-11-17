@@ -142,6 +142,14 @@ export function Contact() {
               )}
 
               <ul className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-medium">
+                {email && (
+                  <li>
+                    <a href={`mailto:${email}`} className="inline-flex min-h-11 items-center gap-2 hover:text-orchid">
+                      <Mail className="size-4" aria-hidden />
+                      {c.emailLabel}: {email}
+                    </a>
+                  </li>
+                )}
                 <li>
                   <a href={links.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 hover:text-orchid">
                     <Linkedin className="size-4" aria-hidden />

@@ -60,10 +60,15 @@ function CompactJob({ job, delay }: { job: Job; delay: number }) {
         <h4 className="font-display mt-2 text-2xl text-foreground">{job.company}</h4>
         <p className="mt-1 text-sm font-medium text-foreground">{job.role}</p>
       </div>
-      <div className="md:col-span-8">
-        <p className="text-base leading-relaxed text-muted-foreground">{job.summary}</p>
-        <p className="mt-2 border-l-2 border-primary/40 pl-3 text-sm leading-relaxed text-foreground">{job.transfer}</p>
-      </div>
+      {/* Short entries (role + company + year only) have no description. */}
+      {(job.summary || job.transfer) && (
+        <div className="md:col-span-8">
+          {job.summary && <p className="text-base leading-relaxed text-muted-foreground">{job.summary}</p>}
+          {job.transfer && (
+            <p className="mt-2 border-l-2 border-primary/40 pl-3 text-sm leading-relaxed text-foreground">{job.transfer}</p>
+          )}
+        </div>
+      )}
     </Reveal>
   );
 }
