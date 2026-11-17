@@ -18,7 +18,7 @@ Kompletní strukturu obsahu, texty, projekty (Český král, CVéčko, Kompleto)
 
 This project was built with [Lovable](https://lovable.dev).
 
-**Live app**: https://vera-paukrtova-career-canvas.lovable.app
+**Live app**: https://verapaukrtova.cz
 
 ## Build with Lovable
 
