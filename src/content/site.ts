@@ -13,7 +13,7 @@
 
 export type Lang = "cs" | "en";
 
-export const siteUrl = "https://vera-paukrtova-career-canvas.lovable.app";
+export const siteUrl = "https://verapaukrtova.cz";
 
 export const links = {
   linkedin: "https://www.linkedin.com/in/vera-paukrtova/",

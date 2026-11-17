@@ -2,7 +2,6 @@ import { Fragment } from "react";
 
 import { ArrowDown, ArrowRight } from "lucide-react";
 
-import portrait from "@/assets/portrait.jpg.asset.json";
 import { useI18n } from "@/lib/i18n";
 
 import { Reveal } from "./Reveal";
@@ -14,7 +13,7 @@ function Portrait() {
     <div className="relative mx-auto w-full max-w-[20rem] sm:max-w-sm lg:max-w-none">
       <div className="arch relative aspect-[4/5] overflow-hidden border border-primary/15 bg-veil shadow-lift">
         <img
-          src={portrait.url}
+          src="/portrait.jpg"
           alt={t.ui.portraitAlt}
           width={1024}
           height={1280}
