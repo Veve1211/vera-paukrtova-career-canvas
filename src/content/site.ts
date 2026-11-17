@@ -229,10 +229,10 @@ const cs = {
         current: true,
         featured: true,
         summary:
-          "Pomáhám prodejcům na Mall.cz, Mall.sk a CZC — od reklamací až po logiku rušení objednávek. Pracuji v Daktele a Microsoft DAX a tři měsíce po sobě jsem si udržela 100% NPS skóre.",
+          "Pomáhám prodejcům na Mall.cz, Mall.sk a CZC — od reklamací až po logiku rušení objednávek. Pracuji v Daktele a Microsoft DAX.",
         transfer:
           "Každý den vidím, kde se lidé v procesu ztrácejí a proč. Učí mě to navrhovat postupy a rozhraní, které uživatelům nepřekážejí.",
-        tags: ["Mall.cz · Mall.sk · CZC", "Zákaznické procesy", "Reklamace", "Daktela", "Microsoft DAX", "100% NPS · 3 měsíce v řadě"],
+        tags: ["Mall.cz · Mall.sk · CZC", "Zákaznické procesy", "Reklamace", "Daktela", "Microsoft DAX"],
       },
       {
         company: "Ipsos",
@@ -468,10 +468,10 @@ const en: SiteContent = {
         current: true,
         featured: true,
         summary:
-          "I support sellers on Mall.cz, Mall.sk and CZC — from complaints to the logic behind order cancellations. I work in Daktela and Microsoft DAX, and I kept a 100% NPS score for three months in a row.",
+          "I support sellers on Mall.cz, Mall.sk and CZC — from complaints to the logic behind order cancellations. I work in Daktela and Microsoft DAX.",
         transfer:
           "Every day I see where people get lost in a process, and why. It teaches me to design flows and interfaces that stay out of users' way.",
-        tags: ["Mall.cz · Mall.sk · CZC", "Customer processes", "Complaints", "Daktela", "Microsoft DAX", "100% NPS · 3 months running"],
+        tags: ["Mall.cz · Mall.sk · CZC", "Customer processes", "Complaints", "Daktela", "Microsoft DAX"],
       },
       {
         company: "Ipsos",
