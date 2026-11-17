@@ -1,19 +1,17 @@
 import { Fragment } from "react";
 
-import { ArrowDown, ArrowUpRight, Linkedin } from "lucide-react";
+import { ArrowDown, ArrowRight } from "lucide-react";
 
 import portrait from "@/assets/portrait.jpg.asset.json";
-import { links } from "@/content/site";
 import { useI18n } from "@/lib/i18n";
 
 import { Reveal } from "./Reveal";
 
 function Portrait() {
   const { t } = useI18n();
-  const ring = `${t.hero.tagline} · `;
+  const ring = `${t.hero.seal} · `;
   return (
-    <div className="relative mx-auto w-full max-w-[22rem] sm:max-w-sm lg:max-w-none">
-      {/* Arched portrait frame */}
+    <div className="relative mx-auto w-full max-w-[20rem] sm:max-w-sm lg:max-w-none">
       <div className="arch relative aspect-[4/5] overflow-hidden border border-primary/15 bg-veil shadow-lift">
         <img
           src={portrait.url}
@@ -27,8 +25,8 @@ function Portrait() {
         />
       </div>
 
-      {/* Rotating tagline seal */}
-      <div aria-hidden className="absolute -bottom-8 -left-6 size-32 sm:-left-10 sm:size-36">
+      {/* Tagline seal */}
+      <div aria-hidden className="absolute -bottom-8 -left-6 size-28 sm:-left-10 sm:size-36">
         <div className="grid size-full place-items-center rounded-full bg-night text-night-foreground shadow-lift">
           <svg viewBox="0 0 120 120" className="absolute inset-0 size-full animate-spin-slow">
             <defs>
@@ -43,76 +41,70 @@ function Portrait() {
           <span className="font-display text-2xl text-orchid italic">VP</span>
         </div>
       </div>
-
-      <div aria-hidden className="absolute -top-5 right-4 size-14 animate-float-slow rounded-full border border-primary/25 bg-background/40 backdrop-blur" />
     </div>
   );
 }
 
 export function Hero() {
   const { t } = useI18n();
+  const h = t.hero;
   const companies = t.experience.items.map((e) => e.company);
 
   return (
-    <section id="top" className="relative overflow-hidden pt-32 pb-24 sm:pt-40 lg:pt-44 lg:pb-32">
+    <section id="top" aria-labelledby="hero-title" className="relative overflow-hidden pt-28 pb-20 sm:pt-36 lg:pt-40 lg:pb-28">
       <div aria-hidden className="pointer-events-none absolute inset-0 bg-aura" />
-      <div className="relative mx-auto grid max-w-7xl gap-16 px-5 sm:px-8 lg:grid-cols-12 lg:items-center lg:gap-12">
+      <div className="relative mx-auto grid max-w-7xl gap-14 px-5 sm:px-8 lg:grid-cols-12 lg:items-center lg:gap-12">
         <div className="lg:col-span-7">
           <Reveal>
-            <p className="eyebrow flex flex-col gap-1.5 text-primary sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-3">
-              <span>{t.hero.eyebrow}</span>
-              <span aria-hidden className="hidden h-px w-6 bg-primary/40 sm:block" />
-              <span className="text-muted-foreground">{t.hero.eyebrowSecond}</span>
-            </p>
+            <p className="font-display text-2xl text-foreground sm:text-[1.7rem]">{h.name}</p>
+            <p className="eyebrow mt-3 leading-relaxed text-primary">{h.role}</p>
           </Reveal>
 
           <Reveal delay={80}>
-            <h1 className="font-display mt-8 text-[3.6rem] leading-[0.92] text-foreground sm:text-[5.5rem] lg:text-[6.75rem]">
-              {t.hero.name[0]}
-              <br />
-              <em className="font-normal text-primary italic">{t.hero.name[1]}</em>
+            <h1
+              id="hero-title"
+              className="font-display mt-8 text-[2.55rem] leading-[1.04] text-balance text-foreground sm:text-6xl lg:text-[4.35rem]"
+            >
+              {h.title[0]} <em className="font-normal text-primary italic">{h.title[1]}</em>
             </h1>
           </Reveal>
 
           <Reveal delay={160}>
-            <p className="font-display mt-8 text-2xl text-foreground/90 italic sm:text-3xl">{t.hero.tagline}</p>
+            <p className="mt-7 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">{h.intro}</p>
           </Reveal>
 
-          <Reveal delay={220}>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">{t.hero.intro}</p>
-          </Reveal>
-
-          <Reveal delay={300} className="mt-10 flex flex-wrap items-center gap-3">
+          <Reveal delay={220} className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
             <a
               href="#projekty"
-              className="group inline-flex items-center gap-2 rounded-full bg-violet-gradient px-6 py-3.5 text-sm font-medium text-primary-foreground shadow-soft transition-transform hover:-translate-y-0.5"
+              className="group inline-flex items-center justify-center gap-2 rounded-full bg-violet-gradient px-6 py-3.5 text-sm font-medium text-primary-foreground shadow-soft transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5 hover:shadow-lift"
             >
-              {t.hero.ctaProjects}
+              {h.ctaProjects}
               <ArrowDown className="size-4 transition-transform group-hover:translate-y-0.5" aria-hidden />
             </a>
             <a
-              href="#zkusenosti"
-              className="inline-flex items-center gap-2 rounded-full border border-foreground/15 bg-card/70 px-6 py-3.5 text-sm font-medium text-foreground transition-colors hover:border-primary/40 hover:text-primary"
+              href="#kontakt"
+              className="group inline-flex items-center justify-center gap-2 rounded-full border border-foreground/20 bg-card/70 px-6 py-3.5 text-sm font-medium text-foreground transition-colors duration-300 hover:border-primary hover:text-primary"
             >
-              {t.hero.ctaExperience}
-            </a>
-            <a
-              href={links.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 px-3 py-3.5 text-sm font-medium text-foreground underline-offset-4 hover:text-primary hover:underline"
-            >
-              <Linkedin className="size-4" aria-hidden />
-              {t.hero.ctaLinkedin}
-              <ArrowUpRight className="size-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
-              <span className="sr-only">{t.ui.newTab}</span>
+              {h.ctaContact}
+              <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
             </a>
           </Reveal>
 
-          <Reveal delay={380} className="mt-14 grid gap-4 border-t border-border pt-6 sm:grid-cols-[auto_1fr] sm:items-baseline sm:gap-8">
-            <p className="eyebrow text-muted-foreground">{t.hero.proofLabel}</p>
+          <Reveal delay={280} className="mt-9">
+            <ul aria-label={h.highlightsLabel} className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm font-medium text-foreground">
+              {h.highlights.map((item, i) => (
+                <li key={item} className="flex items-center gap-3">
+                  {i > 0 && <span aria-hidden className="size-1 rounded-full bg-primary/60" />}
+                  <span className="whitespace-nowrap">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+
+          <Reveal delay={340} className="mt-10 grid gap-3 border-t border-border pt-6 sm:grid-cols-[auto_1fr] sm:items-baseline sm:gap-8">
+            <p className="eyebrow text-muted-foreground">{h.proofLabel}</p>
             <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between">
-              <p className="font-display text-lg text-foreground">
+              <p className="font-display text-base text-foreground sm:text-lg">
                 {companies.map((c, i) => (
                   <Fragment key={c}>
                     {i > 0 && " · "}
@@ -120,12 +112,12 @@ export function Hero() {
                   </Fragment>
                 ))}
               </p>
-              <p className="text-sm text-primary">{t.hero.proofProjects}</p>
+              <p className="text-sm font-medium text-primary">{h.proofProjects}</p>
             </div>
           </Reveal>
         </div>
 
-        <Reveal delay={200} className="px-6 sm:px-10 lg:col-span-5 lg:px-0 lg:pl-8">
+        <Reveal delay={200} className="px-8 sm:px-10 lg:col-span-5 lg:px-0 lg:pl-10">
           <Portrait />
         </Reveal>
       </div>

@@ -27,7 +27,7 @@ function LangToggle({ className }: { className?: string }) {
           lang={o.value}
           onClick={() => setLang(o.value)}
           className={cn(
-            "rounded-full px-3 py-1.5 tracking-wider transition-colors",
+            "min-h-8 rounded-full px-3 py-1.5 tracking-wider transition-colors",
             lang === o.value ? "bg-foreground text-background" : "text-muted-foreground hover:text-foreground",
           )}
         >
@@ -93,7 +93,7 @@ export function Header() {
           <span className="font-display hidden text-lg sm:inline">Věra Paukrtová</span>
         </a>
 
-        <nav aria-label="Hlavní navigace" className="hidden lg:block">
+        <nav aria-label={t.ui.mainNav} className="hidden lg:block">
           <ul className="flex items-center gap-1">
             {t.nav.map((n) => (
               <li key={n.id}>
@@ -136,7 +136,7 @@ export function Header() {
       </div>
 
       <div id="mobile-menu" hidden={!open} className="border-t border-border/70 lg:hidden">
-        <nav aria-label="Mobilní navigace" className="mx-auto max-w-7xl px-5 py-6 sm:px-8">
+        <nav aria-label={t.ui.mobileNav} className="mx-auto max-w-7xl px-5 py-6 sm:px-8">
           <ul className="grid gap-1">
             {t.nav.map((n, i) => (
               <li key={n.id}>
@@ -145,7 +145,7 @@ export function Header() {
                   onClick={() => setOpen(false)}
                   className="font-display flex items-baseline gap-4 py-2.5 text-2xl"
                 >
-                  <span className="text-xs text-primary italic">0{i + 1}</span>
+                  <span aria-hidden className="text-xs text-primary italic">0{i + 1}</span>
                   {n.label}
                 </a>
               </li>

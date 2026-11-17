@@ -24,7 +24,8 @@ describe("site content", () => {
     const { cs, en } = content;
     expect(en.projects.items.map((p) => p.id)).toEqual(cs.projects.items.map((p) => p.id));
     expect(en.experience.items.map((e) => e.company)).toEqual(cs.experience.items.map((e) => e.company));
-    expect(en.skills.groups).toHaveLength(cs.skills.groups.length);
+    expect(en.approach.pillars.map((p) => p.index)).toEqual(cs.approach.pillars.map((p) => p.index));
+    expect(en.experience.items.map((e) => e.featured)).toEqual(cs.experience.items.map((e) => e.featured));
     expect(en.education.items).toHaveLength(cs.education.items.length);
     expect(en.nav.map((n) => n.id)).toEqual(cs.nav.map((n) => n.id));
   });
@@ -52,5 +53,44 @@ describe("work experience", () => {
 
   it("marks only Allegro Group as the current job", () => {
     expect(content.cs.experience.items.filter((e) => e.current).map((e) => e.company)).toEqual(["Allegro Group"]);
+  });
+});
+
+describe("portfolio positioning", () => {
+  it("uses the agreed professional title and headline", () => {
+    expect(content.cs.hero.role).toBe("AI-assisted Web Developer | QA & Customer Experience");
+    expect(content.cs.hero.title.join(" ")).toBe("Tvořím weby a AI-assisted aplikace, které dávají smysl lidem.");
+    expect(content.cs.hero.highlights).toEqual(["Web Development", "AI-assisted Applications", "QA Testing", "Customer Experience"]);
+  });
+
+  it("puts projects right after the intro, before the work history", () => {
+    const ids = content.cs.nav.map((n) => n.id);
+    expect(ids[0]).toBe("projekty");
+    expect(ids.indexOf("projekty")).toBeLessThan(ids.indexOf("zkusenosti"));
+  });
+
+  it("marks Kompleto as a concept without a live link", () => {
+    for (const lang of ["cs", "en"] as const) {
+      const kompleto = content[lang].projects.items.find((p) => p.id === "kompleto");
+      expect(kompleto?.status).toBe("concept");
+      expect(kompleto?.url).toBeNull();
+    }
+  });
+
+  it("gives the Allegro, T-Mobile, Megatech and Zentiva roles the larger layout", () => {
+    const featured = content.cs.experience.items.filter((e) => e.featured).map((e) => e.company);
+    expect(featured).toEqual(["Allegro Group", "Zentiva", "T-Mobile", "Megatech Industries"]);
+  });
+
+  it("uses the requested contact heading", () => {
+    expect(content.cs.contact.title.join(" ")).toBe("Máte nápad na web nebo digitální aplikaci?");
+  });
+
+  it("never presents Věra as a senior developer in her title or headline", () => {
+    for (const lang of ["cs", "en"] as const) {
+      const c = content[lang];
+      const headline = [c.meta.title, c.meta.description, c.hero.role, ...c.hero.title].join(" ").toLowerCase();
+      expect(headline).not.toContain("senior");
+    }
   });
 });

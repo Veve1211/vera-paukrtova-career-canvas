@@ -7,10 +7,12 @@ type RevealProps = {
   delay?: number;
   className?: string;
   children: ReactNode;
+  "aria-labelledby"?: string;
+  "aria-label"?: string;
 };
 
 /** Fades content in as it scrolls into view. Content stays visible without JavaScript. */
-export function Reveal({ as: Tag = "div", delay = 0, className, children }: RevealProps) {
+export function Reveal({ as: Tag = "div", delay = 0, className, children, ...aria }: RevealProps) {
   const ref = useRef<HTMLElement | null>(null);
   const [visible, setVisible] = useState(false);
 
@@ -37,6 +39,7 @@ export function Reveal({ as: Tag = "div", delay = 0, className, children }: Reve
   return (
     <Tag
       ref={ref}
+      {...aria}
       data-reveal=""
       className={cn(visible && "is-visible", className)}
       style={{ "--reveal-delay": `${delay}ms` } as CSSProperties}

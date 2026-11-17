@@ -1,19 +1,19 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { About } from "@/components/site/About";
+import { Approach } from "@/components/site/Approach";
 import { Contact } from "@/components/site/Contact";
 import { Education } from "@/components/site/Education";
 import { Experience } from "@/components/site/Experience";
-import { FocusBand } from "@/components/site/FocusBand";
 import { Footer } from "@/components/site/Footer";
 import { Header } from "@/components/site/Header";
 import { Hero } from "@/components/site/Hero";
 import { Projects } from "@/components/site/Projects";
-import { Skills } from "@/components/site/Skills";
-import { content, links } from "@/content/site";
+import { content, links, siteUrl } from "@/content/site";
 import { LanguageProvider, useI18n } from "@/lib/i18n";
 
 const meta = content.cs.meta;
+const pageUrl = `${siteUrl}/`;
+const ogImage = `${siteUrl}/og-image.jpg`;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -23,6 +23,11 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: meta.title },
       { property: "og:description", content: meta.description },
       { property: "og:type", content: "profile" },
+      { property: "og:url", content: pageUrl },
+      { property: "og:image", content: ogImage },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "Věra Paukrtová — AI-assisted Web Developer | QA & Customer Experience" },
       { property: "og:locale", content: "cs_CZ" },
       { property: "og:locale:alternate", content: "en_GB" },
       { property: "profile:first_name", content: "Věra" },
@@ -30,7 +35,9 @@ export const Route = createFileRoute("/")({
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: meta.title },
       { name: "twitter:description", content: meta.description },
+      { name: "twitter:image", content: ogImage },
     ],
+    links: [{ rel: "canonical", href: pageUrl }],
     scripts: [
       {
         type: "application/ld+json",
@@ -38,9 +45,11 @@ export const Route = createFileRoute("/")({
           "@context": "https://schema.org",
           "@type": "Person",
           name: "Věra Paukrtová",
-          jobTitle: "Customer Operations & QA Specialist",
+          url: pageUrl,
+          image: ogImage,
+          jobTitle: "AI-assisted Web Developer | QA & Customer Experience",
           sameAs: [links.linkedin],
-          knowsAbout: ["QA", "UAT testing", "AI-assisted web development", "Customer operations"],
+          knowsAbout: ["AI-assisted web development", "QA", "UAT testing", "Customer experience"],
         }),
       },
     ],
@@ -61,11 +70,9 @@ function Page() {
       <Header />
       <main id="obsah">
         <Hero />
-        <FocusBand />
-        <About />
         <Projects />
+        <Approach />
         <Experience />
-        <Skills />
         <Education />
         <Contact />
       </main>
