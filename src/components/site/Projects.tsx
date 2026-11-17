@@ -1,63 +1,21 @@
-import { ArrowUpRight, Github, ImageOff } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { ArrowUpRight, Github } from "lucide-react";
 
 import ceskyKralMobile from "@/assets/project-cesky-kral-mobile.webp";
 import ceskyKralShot from "@/assets/project-cesky-kral.webp";
 import cveckoMobile from "@/assets/project-cvecko-mobile.webp";
 import cveckoShot from "@/assets/project-cvecko.webp";
-import { links, projectScreenshots, type Project } from "@/content/site";
+import type { Project } from "@/content/site";
 import { useI18n } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 
-/** Bundled screenshots captured from the live apps — used when /public/projects/*.png is missing. */
-const bundled: Partial<Record<Project["id"], { desktop: string; mobile: string }>> = {
+/** Real screenshots of the live apps (captured from the running sites). */
+const screenshots: Partial<Record<Project["id"], { desktop: string; mobile: string }>> = {
   cvecko: { desktop: cveckoShot, mobile: cveckoMobile },
   "cesky-kral": { desktop: ceskyKralShot, mobile: ceskyKralMobile },
 };
-
-/**
- * Tries each source in order (e.g. /public/projects/<id>.png, then the bundled screenshot)
- * and shows a calm placeholder frame instead of a broken image when none of them loads.
- */
-function Screenshot({ sources, alt, missingLabel }: { sources: string[]; alt: string; missingLabel: string }) {
-  const [index, setIndex] = useState(0);
-  const ref = useRef<HTMLImageElement | null>(null);
-  const src = sources[index];
-
-  // An image that failed during server-side rendering fires `error` before React hydrates.
-  useEffect(() => {
-    const img = ref.current;
-    if (img && img.complete && img.naturalWidth === 0) setIndex((i) => i + 1);
-  }, [index]);
-
-  if (!src) {
-    return (
-      <div role="img" aria-label={alt} className="flex size-full flex-col items-center justify-center gap-3 bg-lilac/40 p-6 text-center">
-        <span className="grid size-12 place-items-center rounded-full border border-dashed border-primary/40 text-primary">
-          <ImageOff className="size-5" aria-hidden />
-        </span>
-        <p className="text-sm text-muted-foreground">{missingLabel}</p>
-      </div>
-    );
-  }
-  return (
-    <img
-      ref={ref}
-      key={src}
-      src={src}
-      alt={alt}
-      loading="lazy"
-      decoding="async"
-      width={1440}
-      height={900}
-      onError={() => setIndex((i) => i + 1)}
-      className="size-full object-cover object-top transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
-    />
-  );
-}
 
 function KompletoPreview({ label }: { label: string }) {
   // Abstract illustration of the concept — explicitly labelled, never presented as a screenshot.
@@ -93,9 +51,7 @@ function KompletoPreview({ label }: { label: string }) {
 
 function Preview({ project }: { project: Project }) {
   const { t } = useI18n();
-  const shot = bundled[project.id];
-  const publicShot = projectScreenshots[project.id];
-  const sources = [publicShot, shot?.desktop].filter((s): s is string => Boolean(s));
+  const shot = screenshots[project.id];
   return (
     <div className="relative pb-8 sm:pb-10">
       <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-soft transition-shadow duration-700 group-hover:shadow-lift">
@@ -108,11 +64,15 @@ function Preview({ project }: { project: Project }) {
           </span>
         </div>
         <div className="aspect-[16/10] overflow-hidden">
-          {project.status !== "concept" ? (
-            <Screenshot
-              sources={sources}
-              alt={`${t.ui.screenshotAlt} ${project.name} — ${t.ui.desktopView}`}
-              missingLabel={t.ui.screenshotMissing}
+          {shot ? (
+            <img
+              src={shot.desktop}
+              alt={`${project.name} — ${t.ui.desktopView}`}
+              loading="lazy"
+              decoding="async"
+              width={1440}
+              height={900}
+              className="size-full object-cover object-top transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
             />
           ) : (
             <KompletoPreview label={t.ui.conceptIllustration} />
@@ -123,7 +83,7 @@ function Preview({ project }: { project: Project }) {
         <div className="absolute right-3 bottom-0 w-[24%] min-w-[5.5rem] max-w-[9.5rem] overflow-hidden rounded-[1.1rem] border-[5px] border-night bg-night shadow-lift transition-transform duration-700 ease-out group-hover:-translate-y-1.5 sm:right-6 sm:rounded-[1.4rem]">
           <img
             src={shot.mobile}
-            alt={`${t.ui.screenshotAlt} ${project.name} — ${t.ui.mobileView}`}
+            alt={`${project.name} — ${t.ui.mobileView}`}
             loading="lazy"
             decoding="async"
             width={540}
@@ -180,20 +140,8 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           </div>
           <div>
             <dt className="eyebrow text-primary">{t.ui.problem}</dt>
-            <dd className="mt-2 text-base leading-relaxed text-foreground">{project.problem}</dd>
+            <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">{project.problem}</dd>
           </div>
-          {project.results && (
-            <div className="rounded-2xl bg-lilac/60 p-4">
-              <dt className="eyebrow text-primary">{t.ui.results}</dt>
-              <dd className="mt-2 text-sm font-medium leading-relaxed text-foreground">{project.results}</dd>
-            </div>
-          )}
-          {project.story && (
-            <div>
-              <dt className="eyebrow text-primary">{t.ui.story}</dt>
-              <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">{project.story}</dd>
-            </div>
-          )}
           <div>
             <dt className="eyebrow text-primary">{t.ui.role}</dt>
             <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">{project.role}</dd>
@@ -260,31 +208,10 @@ export function Projects() {
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading index={p.index} label={p.label} title={p.title} intro={p.intro} />
         <div className="mt-14 grid gap-8 sm:mt-16 sm:gap-10">
-          {/* Live apps first, projects in development at the end. */}
-          {[...(p.items as Project[])]
-            .sort((a, b) => Number(a.status === "concept") - Number(b.status === "concept"))
-            .map((project, i) => (
-              <ProjectCard key={project.id} project={project} index={i} />
-            ))}
+          {p.items.map((project, i) => (
+            <ProjectCard key={project.id} project={project} index={i} />
+          ))}
         </div>
-        {p.upcoming && (
-          <p className="mt-8 text-center text-sm text-muted-foreground">
-            <span className="font-medium text-foreground">{p.upcoming.label}</span> {p.upcoming.text}
-          </p>
-        )}
-        <Reveal className="mt-10 flex justify-center sm:mt-12">
-          <a
-            href={links.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group inline-flex items-center gap-2 rounded-full border border-foreground/20 bg-card/70 px-6 py-3.5 text-sm font-medium text-foreground transition-colors duration-300 hover:border-primary hover:text-primary"
-          >
-            <Github className="size-4" aria-hidden />
-            {p.githubMore}
-            <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
-            <span className="sr-only">{t.ui.newTab}</span>
-          </a>
-        </Reveal>
       </div>
     </section>
   );

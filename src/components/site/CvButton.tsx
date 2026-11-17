@@ -1,38 +1,13 @@
 import { Download } from "lucide-react";
-import { useEffect, useState } from "react";
 
 import { links } from "@/content/site";
 import { useI18n } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
-let cvCheck: Promise<boolean> | null = null;
-
-/** True only when links.cvPdf really exists and is a PDF (hosting may answer missing files with the HTML page). */
-function checkCv(url: string) {
-  cvCheck ??= fetch(url, { method: "HEAD" })
-    .then((res) => res.ok && (res.headers.get("content-type") ?? "").includes("pdf"))
-    .catch(() => false);
-  return cvCheck;
-}
-
-function useCvAvailable() {
-  const [available, setAvailable] = useState(false);
-  useEffect(() => {
-    if (!links.cvPdf) return;
-    let alive = true;
-    void checkCv(links.cvPdf).then((ok) => alive && setAvailable(ok));
-    return () => {
-      alive = false;
-    };
-  }, []);
-  return available;
-}
-
-/** "Download CV" — hidden until the PDF from links.cvPdf is confirmed to exist in /public. */
+/** "Download CV" — renders only once links.cvPdf is set in src/content/site.ts. */
 export function CvButton({ className }: { className?: string }) {
   const { t } = useI18n();
-  const available = useCvAvailable();
-  if (!links.cvPdf || !available) return null;
+  if (!links.cvPdf) return null;
   return (
     <a
       href={links.cvPdf}
