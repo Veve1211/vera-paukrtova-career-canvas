@@ -8,7 +8,6 @@ import { Footer } from "@/components/site/Footer";
 import { Header } from "@/components/site/Header";
 import { Hero } from "@/components/site/Hero";
 import { Projects } from "@/components/site/Projects";
-import { Services } from "@/components/site/Services";
 import { content, links, siteUrl } from "@/content/site";
 import { LanguageProvider, useI18n } from "@/lib/i18n";
 
@@ -28,7 +27,7 @@ export const Route = createFileRoute("/")({
       { property: "og:image", content: ogImage },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
-      { property: "og:image:alt", content: meta.title },
+      { property: "og:image:alt", content: "Věra Paukrtová — AI-assisted Web Developer | QA & Customer Experience" },
       { property: "og:locale", content: "cs_CZ" },
       { property: "og:locale:alternate", content: "en_GB" },
       { property: "profile:first_name", content: "Věra" },
@@ -49,7 +48,7 @@ export const Route = createFileRoute("/")({
           url: pageUrl,
           image: ogImage,
           jobTitle: "AI-assisted Web Developer | QA & Customer Experience",
-          sameAs: [links.linkedin, links.github],
+          sameAs: [links.linkedin],
           knowsAbout: ["AI-assisted web development", "QA", "UAT testing", "Customer experience"],
         }),
       },
@@ -72,7 +71,6 @@ function Page() {
       <main id="obsah">
         <Hero />
         <Projects />
-        <Services />
         <Approach />
         <Experience />
         <Education />

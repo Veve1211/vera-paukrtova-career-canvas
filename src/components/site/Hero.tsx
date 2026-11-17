@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 
 import { ArrowDown, ArrowRight } from "lucide-react";
 
@@ -9,19 +9,37 @@ import { Reveal } from "./Reveal";
 function Portrait() {
   const { t } = useI18n();
   const ring = `${t.hero.seal} · `;
+  const imgRef = useRef<HTMLImageElement>(null);
+  const [failed, setFailed] = useState(false);
+  // The image may fail before React hydrates (onError would be missed): check once on mount.
+  useEffect(() => {
+    const img = imgRef.current;
+    if (img && img.complete && img.naturalWidth === 0) setFailed(true);
+  }, []);
   return (
     <div className="relative mx-auto w-full max-w-[20rem] sm:max-w-sm lg:max-w-none">
       <div className="arch relative aspect-[4/5] overflow-hidden border border-primary/15 bg-veil shadow-lift">
-        <img
-          src="/portrait.jpg"
-          alt={t.ui.portraitAlt}
-          width={1024}
-          height={1280}
-          loading="eager"
-          fetchPriority="high"
-          decoding="async"
-          className="object-cover object-center w-full h-full"
-        />
+        {failed ? (
+          // Photo missing: a calm monogram instead of a broken image or stray alt text.
+          <div role="img" aria-label={t.ui.portraitAlt} className="grid size-full place-items-center">
+            <span aria-hidden className="font-display text-8xl text-primary/70 italic sm:text-9xl">
+              VP
+            </span>
+          </div>
+        ) : (
+          <img
+            ref={imgRef}
+            src="/portrait.jpg"
+            alt={t.ui.portraitAlt}
+            width={1024}
+            height={1280}
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+            onError={() => setFailed(true)}
+            className="object-cover object-center w-full h-full"
+          />
+        )}
       </div>
 
       {/* Tagline seal */}
@@ -47,7 +65,7 @@ function Portrait() {
 export function Hero() {
   const { t } = useI18n();
   const h = t.hero;
-  const companies = h.proofCompanies;
+  const companies = t.experience.items.map((e) => e.company);
 
   return (
     <section id="top" aria-labelledby="hero-title" className="relative overflow-hidden pt-28 pb-20 sm:pt-36 lg:pt-40 lg:pb-28">
@@ -102,14 +120,17 @@ export function Hero() {
 
           <Reveal delay={340} className="mt-10 grid gap-3 border-t border-border pt-6 sm:grid-cols-[auto_1fr] sm:items-baseline sm:gap-8">
             <p className="eyebrow text-muted-foreground">{h.proofLabel}</p>
-            <p className="font-display text-base text-foreground sm:text-lg">
-              {companies.map((c, i) => (
-                <Fragment key={c}>
-                  {i > 0 && " · "}
-                  <span className="whitespace-nowrap">{c}</span>
-                </Fragment>
-              ))}
-            </p>
+            <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between">
+              <p className="font-display text-base text-foreground sm:text-lg">
+                {companies.map((c, i) => (
+                  <Fragment key={c}>
+                    {i > 0 && " · "}
+                    <span className="whitespace-nowrap">{c}</span>
+                  </Fragment>
+                ))}
+              </p>
+              <p className="text-sm font-medium text-primary">{h.proofProjects}</p>
+            </div>
           </Reveal>
         </div>
 
