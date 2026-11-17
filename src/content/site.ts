@@ -32,7 +32,7 @@ export const projectScreenshots: Partial<Record<ProjectId, string>> = {
   "cesky-kral": "/projects/cesky-kral.png",
 };
 
-export type ProjectId = "cvecko" | "cesky-kral" | "kompleto";
+export type ProjectId = "cvecko" | "cesky-kral";
 
 export type Project = {
   id: ProjectId;
@@ -87,8 +87,9 @@ export type Education = {
 
 const projectMeta = {
   cvecko: { url: "https://cvecko.cz", github: null },
+  // Fill in once the repository is public (a private repo would show visitors a 404):
+  // "https://github.com/Veve1211/cesky-kral"
   "cesky-kral": { url: "https://cesky-kral.up.railway.app", github: null },
-  kompleto: { url: null, github: null },
 } satisfies Record<ProjectId, { url: string | null; github: string | null }>;
 
 const highlights = ["Web Development", "AI-assisted Applications", "QA Testing", "Customer Experience"];
@@ -137,7 +138,7 @@ const cs = {
   },
   hero: {
     name: "Věra Paukrtová",
-    role: "AI-assisted Web Developer | QA & Customer Experience",
+    role: "Vibecoder | AI aplikace s QA přesahem",
     title: ["Stavím weby a aplikace s AI –", "a pořádně je otestuju."],
     intro: "Praxe v UAT testování, QA a zákaznické péči mi pomáhá najít chyby dřív, než na ně narazí uživatel.",
     ctaProjects: "Moje projekty",
@@ -157,12 +158,12 @@ const cs = {
     items: [
       {
         id: "cvecko",
-        name: "CVéčko",
+        name: "Cvéčko",
         kind: "Webová aplikace na tvorbu životopisů",
         status: "live",
         statusLabel: "Živá aplikace",
         summary:
-          "Napíšete o sobě pár vět a AI z nich poskládá přehledný životopis — bez vyplňování formulářů. Vyberete si vzhled a výsledek dostanete jako PDF ve formátu A4.",
+          "Vložíš pár vět, odrážky, text z LinkedInu nebo PDF/DOCX a AI z toho sestaví životopis. Nic si nevymýšlí – co chybí, označí žlutě k ověření. 8 šablon, 7 barev, export do PDF A4, motivační dopis, přizpůsobení inzerátu a anglická verze. Text se neukládá na server.",
         problem: "Napsat životopis bez vyplňování formulářů – stačí o sobě napsat pár vět.",
         story:
           "Běžné nástroje na tvorbu CV mi v jedné konkrétní věci nefungovaly. Místo dalšího kompromisu jsem si postavila vlastní, který vypadá i funguje přesně podle mých představ.",
@@ -181,37 +182,20 @@ const cs = {
         status: "live",
         statusLabel: "Živá aplikace",
         summary:
-          "Hráč odpovídá na otázky o českých panovnících a sbírá je jako karty. Ve hře je denní výzva, rychlé kvízy, žebříček i vlastní erb.",
+          "Moje první aplikace – od nápadu po živou verzi za 4 dny. Hráč odpovídá na otázky o českých panovnících a sbírá je jako karty. Ve hře je denní výzva, rychlé kvízy, žebříček i vlastní erb.",
         problem: "Česká historie pro žáky a studenty – hrou, ne memorováním.",
         story:
           "Česká historie mě bavila a pořád baví. Chtěla jsem, aby si k ní žáci a studenti našli cestu přirozeně — hrou, ne memorováním.",
         results: "[DOPLNIT počet hráčů / odehraných kvízů]",
         role: "Moje úplně první aplikace: návrh herní logiky, prompty pro AI, testování v Playwrightu a nasazení na Railway.",
         state: "Hra je v provozu a zahrát si ji může kdokoli. Byla to moje první cesta od nápadu až k živé aplikaci.",
-        tech: ["Next.js", "Railway", "Playwright", "AI-assisted development"],
+        tech: ["Next.js", "Railway", "Playwright", "Automatické testy v Playwrightu", "AI-assisted development"],
         urlLabel: "Zahrát si Českého krále",
         ...projectMeta["cesky-kral"],
       },
-      {
-        id: "kompleto",
-        name: "Kompleto",
-        kind: "Koncept platformy",
-        status: "concept",
-        statusLabel: "Ve vývoji",
-        summary: "Připravovaný koncept platformy, která má sdružit pracovní nabídky z různých zdrojů na jednom místě.",
-        problem: "Nabídky práce rozházené po mnoha portálech – na jednom místě.",
-        story:
-          "Nabídky práce jsou rozházené po mnoha portálech a hledání znamená procházet pořád dokola stejné weby.",
-        results: null,
-        role: "Nápad a návrh konceptu — co má platforma umět a jak by ji lidé používali.",
-        state:
-          "Jde o koncept ve fázi návrhu, ne o hotovou aplikaci. Technologie upřesním, až se vývoj pohne dál.",
-        tech: [],
-        urlLabel: null,
-        ...projectMeta.kompleto,
-      },
     ] satisfies Project[],
     githubMore: "Další projekty na GitHubu",
+    upcoming: { label: "Co chystám:", text: "Kompleto – platforma sdružující pracovní nabídky z různých zdrojů." },
   },
   services: {
     index: "02",
@@ -289,29 +273,28 @@ const cs = {
         current: true,
         featured: true,
         summary:
-          "Pomáhám prodejcům na Mall.cz, Mall.sk a CZC — od reklamací až po logiku rušení objednávek. Pracuji v Daktele a Microsoft DAX. NPS 100 tři měsíce po sobě ([DOPLNIT] hodnocení).",
+          "Pomáhám prodejcům na Mall.cz, Mall.sk a CZC — od reklamací až po logiku rušení objednávek. Pracuji v Daktele a Microsoft DAX. 100% NPS tři měsíce po sobě v zákaznické podpoře Allegro.",
         transfer:
           "Každý den vidím, kde se lidé v procesu ztrácejí a proč. Učí mě to navrhovat postupy a rozhraní, které uživatelům nepřekážejí.",
-        tags: ["Mall.cz · Mall.sk · CZC", "Zákaznické procesy", "Reklamace", "Daktela", "Microsoft DAX", "NPS 100 tři měsíce po sobě ([DOPLNIT] hodnocení)"],
+        tags: ["Mall.cz · Mall.sk · CZC", "Zákaznické procesy", "Reklamace", "Daktela", "Microsoft DAX", "100% NPS tři měsíce po sobě v zákaznické podpoře Allegro"],
       },
       {
         company: "Ipsos",
         role: "Coordinator",
-        period: "3/2025 – 11/2025",
+        period: "2025",
         featured: false,
-        summary:
-          "Koordinovala jsem projekty sčítání dopravy a byla oporou pro stovky terénních pracovníků. Dohromady šlo o více než 7 000 segmentů.",
-        transfer: "Přehled ve velkém objemu dat a jasná komunikace s mnoha lidmi najednou.",
-        tags: ["Sčítání dopravy", "Stovky terénních pracovníků", "7 000+ segmentů"],
+        summary: "",
+        transfer: "",
+        tags: [],
       },
       {
         company: "Sigma AI",
         role: "Transcriptor",
-        period: "1/2024 – 12/2024",
+        period: "2024",
         featured: false,
-        summary: "Přepisovala jsem audio data a kontrolovala jejich kvalitu.",
-        transfer: "Pečlivost a kontrola kvality dat, kde rozhoduje každý detail.",
-        tags: ["Přepis audia", "Kontrola kvality", "Práce s daty"],
+        summary: "",
+        transfer: "",
+        tags: [],
       },
       {
         company: "Zentiva",
@@ -426,7 +409,7 @@ const en: SiteContent = {
   },
   hero: {
     name: "Věra Paukrtová",
-    role: "AI-assisted Web Developer | QA & Customer Experience",
+    role: "Vibecoder | AI apps with a QA edge",
     title: ["I build websites and apps with AI —", "and test them properly."],
     intro: "Hands-on experience in UAT testing, QA and customer care helps me catch bugs before your users ever run into them.",
     ctaProjects: "My projects",
@@ -446,12 +429,12 @@ const en: SiteContent = {
     items: [
       {
         id: "cvecko",
-        name: "CVéčko",
+        name: "Cvéčko",
         kind: "CV builder web app",
         status: "live",
         statusLabel: "Live app",
         summary:
-          "You write a few sentences about yourself and AI turns them into a clear CV — no forms to fill in. You pick a design and get the result as an A4 PDF.",
+          "Paste a few sentences, bullet points, your LinkedIn text or a PDF/DOCX and AI builds a CV from it. It doesn't make anything up — anything it can't confirm is highlighted in yellow for you to check. 8 templates, 7 colours, A4 PDF export, a cover letter, tailoring to a job ad and an English version. Your text isn't stored on the server.",
         problem: "Writing a CV without filling in forms — a few sentences about yourself are enough.",
         story:
           "The usual CV builders just didn't work for me on one specific thing. Instead of settling for another compromise, I built my own that looks and works exactly the way I want.",
@@ -470,35 +453,20 @@ const en: SiteContent = {
         status: "live",
         statusLabel: "Live app",
         summary:
-          "Players answer questions about Czech rulers and collect them as cards. The game has a daily challenge, quick quizzes, a leaderboard and a personal coat of arms.",
+          "My first app — from idea to a live version in 4 days. Players answer questions about Czech rulers and collect them as cards. The game has a daily challenge, quick quizzes, a leaderboard and a personal coat of arms.",
         problem: "Czech history for pupils and students — learned through play, not memorising.",
         story:
           "Czech history has always fascinated me, and it still does. I wanted pupils and students to find their way to it naturally — through play, not memorising.",
         results: "[DOPLNIT number of players / quizzes played]",
         role: "My very first app: game logic design, prompts for the AI, testing with Playwright and deployment on Railway.",
         state: "The game is live and anyone can play it. It was my first journey from an idea all the way to a live app.",
-        tech: ["Next.js", "Railway", "Playwright", "AI-assisted development"],
+        tech: ["Next.js", "Railway", "Playwright", "Automated tests in Playwright", "AI-assisted development"],
         urlLabel: "Play Český král",
         ...projectMeta["cesky-kral"],
       },
-      {
-        id: "kompleto",
-        name: "Kompleto",
-        kind: "Platform concept",
-        status: "concept",
-        statusLabel: "In development",
-        summary: "An upcoming platform concept that would bring job offers from different sources together in one place.",
-        problem: "Job offers scattered across many portals — brought together in one place.",
-        story: "Job offers are scattered across many portals, and searching means going through the same websites over and over.",
-        results: null,
-        role: "Idea and concept design — what the platform should do and how people would use it.",
-        state: "This is a concept in the design phase, not a finished app. I'll define the technology as development moves forward.",
-        tech: [],
-        urlLabel: null,
-        ...projectMeta.kompleto,
-      },
     ] satisfies Project[],
     githubMore: "More projects on GitHub",
+    upcoming: { label: "Coming up:", text: "Kompleto — a platform bringing together job offers from different sources." },
   },
   services: {
     index: "02",
@@ -576,29 +544,28 @@ const en: SiteContent = {
         current: true,
         featured: true,
         summary:
-          "I support sellers on Mall.cz, Mall.sk and CZC — from complaints to the logic behind order cancellations. I work in Daktela and Microsoft DAX. NPS 100 three months in a row ([DOPLNIT] ratings).",
+          "I support sellers on Mall.cz, Mall.sk and CZC — from complaints to the logic behind order cancellations. I work in Daktela and Microsoft DAX. 100% NPS three months in a row in Allegro customer support.",
         transfer:
           "Every day I see where people get lost in a process, and why. It teaches me to design flows and interfaces that stay out of users' way.",
-        tags: ["Mall.cz · Mall.sk · CZC", "Customer processes", "Complaints", "Daktela", "Microsoft DAX", "NPS 100 three months in a row ([DOPLNIT] ratings)"],
+        tags: ["Mall.cz · Mall.sk · CZC", "Customer processes", "Complaints", "Daktela", "Microsoft DAX", "100% NPS three months in a row in Allegro customer support"],
       },
       {
         company: "Ipsos",
         role: "Coordinator",
-        period: "3/2025 – 11/2025",
+        period: "2025",
         featured: false,
-        summary:
-          "I coordinated traffic-count projects and was the go-to support for hundreds of field workers — over 7,000 segments in total.",
-        transfer: "Keeping an overview of large amounts of data and communicating clearly with many people at once.",
-        tags: ["Traffic counts", "Hundreds of field workers", "7,000+ segments"],
+        summary: "",
+        transfer: "",
+        tags: [],
       },
       {
         company: "Sigma AI",
         role: "Transcriptor",
-        period: "1/2024 – 12/2024",
+        period: "2024",
         featured: false,
-        summary: "I transcribed audio data and checked its quality.",
-        transfer: "Care and quality control of data where every detail matters.",
-        tags: ["Audio transcription", "Quality control", "Data work"],
+        summary: "",
+        transfer: "",
+        tags: [],
       },
       {
         company: "Zentiva",

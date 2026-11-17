@@ -14,7 +14,7 @@ Jako hlavní vizuální inspiraci a barevnou identitu použij můj současný we
 Nový web má být výrazně propracovanější, elegantnější, ženský a prémiový, ale musí stále působit jako pokračování mé původní osobní značky.
 Zachovej vysoký kontrast, čistou typografii (nadpisy v elegantním serifu Playfair Display, texty Inter nebo DM Sans), moderní rozvržení, velkorysý whitespace a jemné animace. Ženskosti dosáhni především typografií, proporcemi a detaily, nikoliv přidáváním růžových barev.
 
-Kompletní strukturu obsahu, texty, projekty (Český král, CVéčko, Kompleto), zkušenosti (Allegro, T-Mobile, Zentiva, Ipsos, Megatech Industries) a dovednosti převezmi z přiloženého souboru zadání. Vytvoř čistý frontend bez zbytečného backendu nebo databáze pro minimální spotřebu kreditů.
+Kompletní strukturu obsahu, texty, projekty (Český král, Cvéčko, Kompleto), zkušenosti (Allegro, T-Mobile, Zentiva, Ipsos, Megatech Industries) a dovednosti převezmi z přiloženého souboru zadání. Vytvoř čistý frontend bez zbytečného backendu nebo databáze pro minimální spotřebu kreditů.
 
 This project was built with [Lovable](https://lovable.dev).
 
