@@ -2,6 +2,7 @@ import { Fragment } from "react";
 
 import { ArrowDown, ArrowUpRight, Linkedin } from "lucide-react";
 
+import portrait from "@/assets/portrait.jpg.asset.json";
 import { links } from "@/content/site";
 import { useI18n } from "@/lib/i18n";
 
@@ -12,16 +13,18 @@ function Portrait() {
   const ring = `${t.hero.tagline} · `;
   return (
     <div className="relative mx-auto w-full max-w-[22rem] sm:max-w-sm lg:max-w-none">
-      {/* Arched portrait frame — replace the monogram with <img> once the portrait is ready */}
+      {/* Arched portrait frame */}
       <div className="arch relative aspect-[4/5] overflow-hidden border border-primary/15 bg-veil shadow-lift">
-        <div aria-hidden className="absolute inset-0 hairline-grid opacity-40" />
-        <div aria-hidden className="absolute inset-x-8 top-8 bottom-24 arch border border-background/60" />
-        <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <span aria-hidden className="font-display text-[9rem] leading-none text-primary/80 italic sm:text-[11rem]">
-            V
-          </span>
-          <span className="eyebrow mt-2 text-primary/70">{t.ui.portraitNote}</span>
-        </div>
+        <img
+          src={portrait.url}
+          alt={t.ui.portraitAlt}
+          width={1024}
+          height={1280}
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+          className="object-cover object-center w-full h-full"
+        />
       </div>
 
       {/* Rotating tagline seal */}

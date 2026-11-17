@@ -84,7 +84,7 @@ const cs = {
     current: "Aktuálně",
     backToTop: "Zpět nahoru",
     newTab: "(otevře se v novém okně)",
-    portraitNote: "Místo pro portrét",
+    portraitAlt: "Portrét Věry Paukrtové",
   },
   hero: {
     eyebrow: "Customer Operations & QA Specialist",
@@ -332,7 +332,7 @@ const en: SiteContent = {
     current: "Current",
     backToTop: "Back to top",
     newTab: "(opens in a new tab)",
-    portraitNote: "Portrait coming soon",
+    portraitAlt: "Portrait of Věra Paukrtová",
   },
   hero: {
     eyebrow: "Customer Operations & QA Specialist",
