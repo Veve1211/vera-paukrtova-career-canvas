@@ -20,7 +20,7 @@ export const links = {
   cvPdf: null as string | null,
 };
 
-export type ProjectId = "cvecko" | "cesky-kral" | "kompleto";
+export type ProjectId = "cvecko" | "cesky-kral" | "kompleto" | "paukrt";
 
 export type Project = {
   id: ProjectId;
@@ -33,8 +33,8 @@ export type Project = {
   /** Which problem it solves. */
   /** Optional: left out when it would repeat the summary. */
   problem?: string;
-  /** Věra's role in the project. */
-  role: string;
+  /** Věra's role in the project. Optional: left out when not stated. */
+  role?: string;
   /** Current state of the project. */
   /** Optional: left out when the status label says it all. */
   state?: string;
@@ -69,6 +69,7 @@ const projectMeta = {
   cvecko: { url: "https://cvecko.cz", github: null },
   "cesky-kral": { url: "https://cesky-kral.up.railway.app", github: null },
   kompleto: { url: null, github: null },
+  paukrt: { url: "https://paukrt.lovable.app/", github: "https://github.com/Veve1211/transport-constellation-atlas" },
 } satisfies Record<ProjectId, { url: string | null; github: string | null }>;
 
 const highlights = ["Web Development", "AI-assisted Applications", "QA Testing", "Customer Experience"];
@@ -94,7 +95,7 @@ const cs = {
     menuClose: "Zavřít menu",
     langSwitch: "Jazyk / Language",
     downloadCv: "Stáhnout CV",
-    github: "GitHub",
+    github: "Kód na GitHubu",
     whatItDoes: "Co aplikace dělá",
     problem: "Jaký problém řeší",
     role: "Moje role",
@@ -174,6 +175,18 @@ const cs = {
         tech: [],
         urlLabel: null,
         ...projectMeta.kompleto,
+      },
+      {
+        id: "paukrt",
+        name: "Profesní web dopravního inženýra",
+        kind: "Osobní profesní web",
+        status: "live",
+        statusLabel: "Živý web",
+        summary:
+          "Osobní prezentace a CV inženýra pro návrh silnic a křižovatek. Dvojjazyčný web (EN/CZ) s modrým vizuálem inspirovaným dopravním modelem.",
+        tech: ["Lovable", "React", "GitHub"],
+        urlLabel: "Zobrazit web",
+        ...projectMeta.paukrt,
       },
     ] satisfies Project[],
   },
@@ -332,7 +345,7 @@ const en: SiteContent = {
     menuClose: "Close menu",
     langSwitch: "Language / Jazyk",
     downloadCv: "Download CV",
-    github: "GitHub",
+    github: "Code on GitHub",
     whatItDoes: "What the app does",
     problem: "The problem it solves",
     role: "My role",
@@ -412,6 +425,18 @@ const en: SiteContent = {
         tech: [],
         urlLabel: null,
         ...projectMeta.kompleto,
+      },
+      {
+        id: "paukrt",
+        name: "Transport engineer's professional website",
+        kind: "Personal professional website",
+        status: "live",
+        statusLabel: "Live website",
+        summary:
+          "A personal presentation and CV of an engineer who designs roads and junctions. A bilingual website (EN/CZ) with a blue look inspired by a transport model.",
+        tech: ["Lovable", "React", "GitHub"],
+        urlLabel: "View the website",
+        ...projectMeta.paukrt,
       },
     ] satisfies Project[],
   },

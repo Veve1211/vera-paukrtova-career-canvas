@@ -4,6 +4,8 @@ import ceskyKralMobile from "@/assets/project-cesky-kral-mobile.webp";
 import ceskyKralShot from "@/assets/project-cesky-kral.webp";
 import cveckoMobile from "@/assets/project-cvecko-mobile.webp";
 import cveckoShot from "@/assets/project-cvecko.webp";
+import paukrtMobile from "@/assets/project-paukrt-mobile.webp";
+import paukrtShot from "@/assets/project-paukrt.webp";
 import type { Project } from "@/content/site";
 import { useI18n } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
@@ -15,6 +17,7 @@ import { SectionHeading } from "./SectionHeading";
 const screenshots: Partial<Record<Project["id"], { desktop: string; mobile: string }>> = {
   cvecko: { desktop: cveckoShot, mobile: cveckoMobile },
   "cesky-kral": { desktop: ceskyKralShot, mobile: ceskyKralMobile },
+  paukrt: { desktop: paukrtShot, mobile: paukrtMobile },
 };
 
 function KompletoPreview({ label }: { label: string }) {
@@ -144,10 +147,12 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">{project.problem}</dd>
             </div>
           )}
-          <div>
-            <dt className="eyebrow text-primary">{t.ui.role}</dt>
-            <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">{project.role}</dd>
-          </div>
+          {project.role && (
+            <div>
+              <dt className="eyebrow text-primary">{t.ui.role}</dt>
+              <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">{project.role}</dd>
+            </div>
+          )}
           {project.state && (
             <div>
               <dt className="eyebrow text-primary">{t.ui.state}</dt>
