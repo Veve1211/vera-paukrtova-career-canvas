@@ -2,6 +2,10 @@ import { describe, expect, it } from "vitest";
 
 import { content, links } from "@/content/site";
 
+
+/** Czech texts use non-breaking spaces after one-letter words; compare them as plain spaces. */
+const plain = (text: string) => text.replace(/\u00a0/g, " ");
+
 describe("site content", () => {
   it("links to Věra's real LinkedIn profile", () => {
     expect(links.linkedin).toBe("https://www.linkedin.com/in/vera-paukrtova/");
@@ -34,14 +38,14 @@ describe("site content", () => {
 
 describe("work experience", () => {
   it("shows Věra's real roles and dates, newest first", () => {
-    const rows = content.cs.experience.items.map((e) => [e.company, e.role, e.period]);
+    const rows = content.cs.experience.items.map((e) => [e.company, plain(e.role), e.period]);
     expect(rows).toEqual([
-      ["Allegro Group", "Marketplace Support Specialist", "11/2025 – současnost"],
-      ["Ipsos", "Coordinator", "3/2025 – 11/2025"],
-      ["Sigma AI", "Transcriptor", "1/2024 – 12/2024"],
-      ["Zentiva", "Digital HR Support / Webmaster", "1/2022 – 12/2022"],
-      ["T-Mobile", "UAT Tester", "2/2021 – 12/2021"],
-      ["Megatech Industries", "QA Engineer", "1/2017 – 9/2020"],
+      ["Allegro Group", "Specialistka podpory marketplace", "11/2025 – současnost"],
+      ["Ipsos", "Koordinátorka", "3/2025 – 11/2025"],
+      ["Sigma AI", "Přepisovatelka", "1/2024 – 12/2024"],
+      ["Zentiva", "Digitální HR podpora a webmasterka", "1/2022 – 12/2022"],
+      ["T-Mobile", "UAT testerka", "2/2021 – 12/2021"],
+      ["Megatech Industries", "QA inženýrka", "1/2017 – 9/2020"],
     ]);
   });
 
@@ -59,9 +63,9 @@ describe("work experience", () => {
 
 describe("portfolio positioning", () => {
   it("uses the agreed professional title and headline", () => {
-    expect(content.cs.hero.role).toBe("AI-assisted Web Developer | QA & Customer Experience");
-    expect(content.cs.hero.title.join(" ")).toBe("Tvořím weby a AI-assisted aplikace, které dávají smysl lidem.");
-    expect(content.cs.hero.highlights).toEqual(["Web Development", "AI-assisted Applications", "QA Testing", "Customer Experience"]);
+    expect(plain(content.cs.hero.role)).toBe("Weby a aplikace s pomocí AI | QA a zákaznická zkušenost");
+    expect(plain(content.cs.hero.title.join(" "))).toBe("Tvořím weby a aplikace s pomocí AI, které dávají smysl lidem.");
+    expect(content.cs.hero.highlights.map(plain)).toEqual(["Tvorba webů", "Aplikace s pomocí AI", "Testování a QA", "Zákaznická zkušenost"]);
   });
 
   it("puts projects right after the intro, before the work history", () => {
