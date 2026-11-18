@@ -12,7 +12,8 @@ import { content, links, siteUrl } from "@/content/site";
 
 const meta = content.meta;
 const pageUrl = `${siteUrl}/`;
-const ogImage = `${siteUrl}/og-image.jpg`;
+// Bump the file name whenever the image changes: LinkedIn caches previews by image URL.
+const ogImage = `${siteUrl}/og-image-v2.jpg`;
 
 export const Route = createFileRoute("/")({
   head: () => ({
