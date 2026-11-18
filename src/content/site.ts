@@ -17,7 +17,7 @@ export const links = {
   linkedin: "https://www.linkedin.com/in/vera-paukrtova/",
   email: "paukrtovavera@seznam.cz" as string | null,
   github: "https://github.com/Veve1211",
-  cvPdf: null as string | null,
+  cvPdf: "/cv-vera-paukrtova.pdf" as string | null,
 };
 
 export type ProjectId = "cvecko" | "cesky-kral" | "kompleto" | "paukrt";
