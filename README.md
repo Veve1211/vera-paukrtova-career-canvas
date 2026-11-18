@@ -2,6 +2,8 @@
 
 Živý web: **https://verapaukrtova.cz**
 
+![Úvod osobního webu verapaukrtova.cz](docs/screenshots/hero.webp)
+
 ## Co to je a pro koho
 
 Osobní portfolio na jedné stránce: projekty, přístup k práci, zkušenosti, vzdělání a kontakt. Slouží lidem, kteří zvažují spolupráci na webu nebo aplikaci, a pro spolupráci ve Vibecoding Akademii. Každý projekt má odkaz na živou verzi, takže si ho lze rovnou vyzkoušet.
