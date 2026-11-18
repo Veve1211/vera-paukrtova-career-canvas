@@ -1,40 +1,61 @@
-# Vera Paukrtova Career Canvas
+# Věra Paukrtová – osobní web
 
-Vytvoř pro mě prémiový, moderní a plně responzivní osobní kariérní web a interaktivní CV podle přiloženého zadání v souboru Vytvoř pro mě prémiový, moderní a plně (pasted).md.
+Živý web: **https://verapaukrtova.cz**
 
-Jako hlavní vizuální inspiraci a barevnou identitu použij můj současný web (https://vera-paukrtova-portfolio.ovoiddream4.chatgpt.site/). Z jeho CSS byly úspěšně načteny tyto přesné barvy a hodnoty, které striktně zachovej:
-- Pozadí (--paper): #F8F6FC
-- Hlavní text a tmavé prvky (--ink): #211535
-- Ztlumený text (--muted): #574e65
-- Akcentní barva (--accent): #563588
-- Linky a oddělovače (--line): #E0D8ED
-- Karty a podbarvení: světlé #EEE5F8, tmavé kontrastní #272038
-- Fialové přechody a hover: #8257C2, jemné tóny #F6EDFF až #CDB4ED
+## Co to je a pro koho
 
-Nový web má být výrazně propracovanější, elegantnější, ženský a prémiový, ale musí stále působit jako pokračování mé původní osobní značky.
-Zachovej vysoký kontrast, čistou typografii (nadpisy v elegantním serifu Playfair Display, texty Inter nebo DM Sans), moderní rozvržení, velkorysý whitespace a jemné animace. Ženskosti dosáhni především typografií, proporcemi a detaily, nikoliv přidáváním růžových barev.
+Osobní portfolio na jedné stránce: projekty, přístup k práci, zkušenosti, vzdělání a kontakt. Slouží lidem, kteří zvažují spolupráci na webu nebo aplikaci, a pro spolupráci ve Vibecoding Akademii. Každý projekt má odkaz na živou verzi, takže si ho lze rovnou vyzkoušet.
 
-Kompletní strukturu obsahu, texty, projekty (Český král, Cvéčko, Kompleto), zkušenosti (Allegro, T-Mobile, Zentiva, Ipsos, Megatech Industries) a dovednosti převezmi z přiloženého souboru zadání. Vytvoř čistý frontend bez zbytečného backendu nebo databáze pro minimální spotřebu kreditů.
+## Výchozí stav
 
-This project was built with [Lovable](https://lovable.dev).
+- Web vznikl v nástroji Lovable a běžel jen na dočasné doméně Lovable.
+- V textech zůstávaly zástupné texty (placeholdery) a nevyplněná místa.
+- Kontakt řešil starý formulář.
+- Na vlastní doméně běžela jiná, starší verze než v editoru, takže existovaly dvě verze webu.
 
-**Live app**: https://verapaukrtova.cz
+## Co jsem udělala
 
-## Build with Lovable
+- **Vlastní doména:** verapaukrtova.cz běží na Vercelu a nasazuje se z větve `main` tohoto repozitáře. Existuje jen jedna verze webu.
+- **Čeština napevno:** přepínač CZ/EN je odstraněný, web je jen česky.
+- **Kontakt:** místo formuláře dvě tlačítka, „Napište mi e-mail“ a „LinkedIn“. Na mobilu jsou pod sebou a dost velká na prst.
+- **SEO a sdílení:** `canonical` a `og:url` vedou na https://verapaukrtova.cz/. Titulek, popis i náhledový obrázek (1200×627 px) jsou česky.
+- **Mobil a přístupnost:** tlačítka a odkazy jsou dost velké na prst, nic nepřetéká do strany. Odkazy mimo web se otevírají v novém okně a čtečky obrazovky to oznámí.
+- **Kontrola axe:** automatický test přístupnosti (WCAG 2 A/AA) bez nálezů na mobilu, tabletu i počítači.
+- **Bez zástupných textů:** obsah žije v jednom souboru a neznámé údaje se nedoplňují vymyšlenými hodnotami.
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/01bb0ace-cce0-45b1-8436-10d11531e513).
+## Jak pracuju
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+- **Pravidla v `CLAUDE.md`:** například žádné placeholdery v UI, web jen česky, náhledový obrázek 1200×627 px s textem v bezpečné zóně.
+- **Postup změn:** feature větev → pull request → náhled na Vercelu → kontrola → sloučení do `main` → nasazení na verapaukrtova.cz.
+- **Testování před sloučením:**
+  - web v prohlížeči na mobilu (375 px), tabletu (768 px) a počítači (1440 px);
+  - konzole bez chyb, žádné rozbité odkazy ani obrázky;
+  - kontrola přístupnosti axe;
+  - automatické testy obsahu (Vitest) a build.
 
-## Development
+## Bezpečnost
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+- Dvoufázové ověření (2FA) na GitHubu i na Vercelu.
+- V repozitáři nejsou žádné klíče ani hesla.
+- Pravidelný audit závislostí (`npm audit` / `bun audit`). Opravy jen v rámci povolených verzí, bez vynucených skoků na nové hlavní verze.
+- Kontakt na autorku: paukrtovavera@seznam.cz
+
+## Stack
+
+- [TanStack Start](https://tanstack.com/start) (React 19, TanStack Router), Vite 8, Nitro
+- TypeScript
+- Tailwind CSS 4, shadcn/ui (Radix UI), ikony lucide-react
+- Vitest a Testing Library, ESLint a Prettier
+- Správa balíčků přes bun (`bun.lock`)
+- Hosting Vercel, úpravy obsahu i v editoru Lovable
+
+## Spuštění u sebe
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
+bun install
+bun run dev      # vývojový server
+bun run test     # testy
+bun run build    # produkční build
 ```
+
+Texty, projekty, zkušenosti a odkazy jsou v `src/content/site.ts`. Komponenty v `src/components/site/` je jen vykreslují.

@@ -63,7 +63,7 @@ function Preview({ project }: { project: Project }) {
           <span aria-hidden className="size-2.5 rounded-full bg-lilac" />
           <span aria-hidden className="size-2.5 rounded-full bg-line" />
           <span className="ml-3 truncate text-xs text-muted-foreground">
-            {project.url ? project.url.replace(/^https?:\/\//, "") : project.statusLabel}
+            {project.url ? project.url.replace(/^https?:\/\//, "") : project.name}
           </span>
         </div>
         <div className="aspect-[16/10] overflow-hidden">
@@ -118,20 +118,18 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       </div>
 
       <div className={cn("lg:col-span-5", flip && "lg:order-1")}>
-        <div className="flex flex-wrap items-center gap-3">
-          <span className="font-display text-sm text-primary italic">{String(index + 1).padStart(2, "0")}</span>
-          <span
-            className={cn(
-              "inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium",
-              concept ? "border border-dashed border-primary/50 text-primary" : "bg-lilac text-primary",
-            )}
-          >
-            {!concept && <span className="size-1.5 rounded-full bg-violet" aria-hidden />}
-            {project.statusLabel}
-          </span>
-        </div>
+        {/* Upcoming projects sit under their own heading, so they get no number or status badge. */}
+        {!concept && (
+          <div className="flex flex-wrap items-center gap-3">
+            <span className="font-display text-sm text-primary italic">{String(index + 1).padStart(2, "0")}</span>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-lilac px-2.5 py-1 text-xs font-medium text-primary">
+              <span className="size-1.5 rounded-full bg-violet" aria-hidden />
+              {project.statusLabel}
+            </span>
+          </div>
+        )}
 
-        <h3 id={`project-${project.id}`} className="font-display mt-4 text-4xl text-foreground sm:text-5xl">
+        <h3 id={`project-${project.id}`} className={cn("font-display text-4xl text-foreground sm:text-5xl", !concept && "mt-4")}>
           {project.name}
         </h3>
         <p className="eyebrow mt-3 leading-relaxed text-muted-foreground">{project.kind}</p>
@@ -211,16 +209,30 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 export function Projects() {
   const { t } = useI18n();
   const p = t.projects;
+  const live = p.items.filter((project) => project.status !== "concept");
+  const upcoming = p.items.filter((project) => project.status === "concept");
   return (
     <section id="projekty" className="relative py-20 sm:py-28">
       <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-[40rem] bg-aura opacity-50" />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading index={p.index} label={p.label} title={p.title} intro={p.intro} />
         <div className="mt-14 grid gap-8 sm:mt-16 sm:gap-10">
-          {p.items.map((project, i) => (
+          {live.map((project, i) => (
             <ProjectCard key={project.id} project={project} index={i} />
           ))}
         </div>
+        {upcoming.length > 0 && (
+          <div className="mt-20 sm:mt-24">
+            <Reveal>
+              <h3 className="font-display text-3xl text-foreground sm:text-4xl">{p.upcomingTitle}</h3>
+            </Reveal>
+            <div className="mt-8 grid gap-8 sm:mt-10 sm:gap-10">
+              {upcoming.map((project, i) => (
+                <ProjectCard key={project.id} project={project} index={i} />
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
