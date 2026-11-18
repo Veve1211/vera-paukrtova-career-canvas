@@ -303,8 +303,10 @@ const cs = {
     label: "Vzdělání a\u00a0kurzy",
     title: ["Vzdělání", "a\u00a0kurzy."],
     items: [
+      { provider: "Vibecoding Akademie", title: "Vibecoding Akademie I", type: "Online kurz (Claude Code)", year: "2026" },
+      { provider: "Vibecoding Akademie", title: "Vibecoding Basecamp", type: "Online kurz (Lovable)", year: "2026" },
+      { provider: "University of Michigan", title: "Web Design for Everybody", type: "Specializace (certifikát)", year: "12/2025" },
       { provider: "University College Prague", title: "Destination Management", type: "Bakalářský titul", year: null },
-      { provider: "University of Michigan", title: "Web Design for Everybody", type: "Online kurz", year: null },
       { provider: "PrimaKurzy", title: "Vývoj webových aplikací", type: "Kurz", year: null },
       { provider: "Coursera", title: "Crash Course on Python", type: "Online kurz", year: null },
     ] satisfies Education[],
@@ -554,8 +556,10 @@ const en: SiteContent = {
     label: "Education & courses",
     title: ["Education", "and courses."],
     items: [
+      { provider: "Vibecoding Akademie", title: "Vibecoding Akademie I", type: "Online course (Claude Code)", year: "2026" },
+      { provider: "Vibecoding Akademie", title: "Vibecoding Basecamp", type: "Online course (Lovable)", year: "2026" },
+      { provider: "University of Michigan", title: "Web Design for Everybody", type: "Specialization (certificate)", year: "12/2025" },
       { provider: "University College Prague", title: "Destination Management", type: "Bachelor's degree", year: null },
-      { provider: "University of Michigan", title: "Web Design for Everybody", type: "Online course", year: null },
       { provider: "PrimaKurzy", title: "Web Application Development", type: "Course", year: null },
       { provider: "Coursera", title: "Crash Course on Python", type: "Online course", year: null },
     ] satisfies Education[],
