@@ -1,11 +1,12 @@
 import type { Experience as Job } from "@/content/site";
-import { useI18n } from "@/lib/i18n";
+
+import { content } from "@/content/site";
 
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 
 function Meta({ job }: { job: Job }) {
-  const { t } = useI18n();
+  const t = content;
   return (
     <div className="flex flex-wrap items-center gap-3">
       {job.current && (
@@ -20,7 +21,7 @@ function Meta({ job }: { job: Job }) {
 }
 
 function FeaturedJob({ job, delay }: { job: Job; delay: number }) {
-  const { t } = useI18n();
+  const t = content;
   return (
     <Reveal
       as="li"
@@ -69,7 +70,7 @@ function CompactJob({ job, delay }: { job: Job; delay: number }) {
 }
 
 export function Experience() {
-  const { t } = useI18n();
+  const t = content;
   const e = t.experience;
   const featured = e.items.filter((j) => j.featured);
   const other = e.items.filter((j) => !j.featured);

@@ -2,12 +2,12 @@ import { Fragment, useEffect, useRef, useState } from "react";
 
 import { ArrowDown, ArrowRight } from "lucide-react";
 
-import { useI18n } from "@/lib/i18n";
+import { content } from "@/content/site";
 
 import { Reveal } from "./Reveal";
 
 function Portrait() {
-  const { t } = useI18n();
+  const t = content;
   const ring = `${t.hero.seal} · `;
   const imgRef = useRef<HTMLImageElement>(null);
   const [failed, setFailed] = useState(false);
@@ -63,7 +63,7 @@ function Portrait() {
 }
 
 export function Hero() {
-  const { t } = useI18n();
+  const t = content;
   const h = t.hero;
   const companies = t.experience.items.map((e) => e.company);
 

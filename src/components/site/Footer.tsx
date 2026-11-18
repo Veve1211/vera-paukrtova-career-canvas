@@ -1,10 +1,9 @@
 import { ArrowUp, Linkedin } from "lucide-react";
 
-import { links } from "@/content/site";
-import { useI18n } from "@/lib/i18n";
+import { content, links } from "@/content/site";
 
 export function Footer() {
-  const { t } = useI18n();
+  const t = content;
   return (
     <footer className="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-10 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:px-8">
       <p>

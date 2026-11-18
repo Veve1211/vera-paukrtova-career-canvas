@@ -1,13 +1,12 @@
 import { ArrowUpRight, Linkedin, Mail } from "lucide-react";
 
-import { links } from "@/content/site";
-import { useI18n } from "@/lib/i18n";
+import { content, links } from "@/content/site";
 
 import { CvButton } from "./CvButton";
 import { Reveal } from "./Reveal";
 
 export function Contact() {
-  const { t } = useI18n();
+  const t = content;
   const c = t.contact;
   return (
     <section id="kontakt" aria-labelledby="contact-title" className="px-3 pb-3 sm:px-5 sm:pb-5">

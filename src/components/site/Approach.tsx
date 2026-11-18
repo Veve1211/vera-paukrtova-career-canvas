@@ -1,15 +1,14 @@
 import { ArrowRight } from "lucide-react";
 import { Fragment } from "react";
 
-import { useI18n } from "@/lib/i18n";
+import { content } from "@/content/site";
 
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 
 export function Approach() {
-  const { t, lang } = useI18n();
-  const a = t.approach;
-  const [qo, qc] = lang === "cs" ? ["„", "“"] : ["“", "”"];
+  const a = content.approach;
+  const [qo, qc] = ["„", "“"];
   return (
     <section id="pristup" className="relative overflow-hidden bg-night py-20 text-night-foreground sm:py-28">
       <div aria-hidden className="pointer-events-none absolute -top-40 right-0 size-[36rem] rounded-full bg-violet/25 blur-3xl" />
