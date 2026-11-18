@@ -31,7 +31,7 @@ use the editor.
 
 ## Project rules
 
-- All site texts, projects, experience, skills and links live in `src/content/site.ts` (cs + en side by side); components only render it, so content edits never touch layout code.
+- All site texts, projects, experience, skills and links live in `src/content/site.ts`, in Czech only; components import `content` from there and only render it, so content edits never touch layout code.
+- The site is Czech only: there is no English version and no language switching.
 - Fields not yet known (e-mail, CV PDF, GitHub, periods, years) stay `null` and the UI hides or softens them — never fill them with invented values.
-- Language switching is client-side (`src/lib/i18n.tsx`); Czech is the SSR default so crawlers index the Czech version.
 - The site is a frontend-only single scrolling page; no backend or database by owner's request.

@@ -1,12 +1,11 @@
 import { Download } from "lucide-react";
 
-import { links } from "@/content/site";
-import { useI18n } from "@/lib/i18n";
+import { content, links } from "@/content/site";
 import { cn } from "@/lib/utils";
 
 /** "Download CV" — renders only once links.cvPdf is set in src/content/site.ts. */
 export function CvButton({ className }: { className?: string }) {
-  const { t } = useI18n();
+  const t = content;
   if (!links.cvPdf) return null;
   return (
     <a

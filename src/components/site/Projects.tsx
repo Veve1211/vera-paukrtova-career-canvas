@@ -7,7 +7,7 @@ import cveckoShot from "@/assets/project-cvecko.webp";
 import paukrtMobile from "@/assets/project-paukrt-mobile.webp";
 import paukrtShot from "@/assets/project-paukrt.webp";
 import type { Project } from "@/content/site";
-import { useI18n } from "@/lib/i18n";
+import { content } from "@/content/site";
 import { cn } from "@/lib/utils";
 
 import { Reveal } from "./Reveal";
@@ -53,7 +53,7 @@ function KompletoPreview({ label }: { label: string }) {
 }
 
 function Preview({ project }: { project: Project }) {
-  const { t } = useI18n();
+  const t = content;
   const shot = screenshots[project.id];
   return (
     <div className="relative pb-8 sm:pb-10">
@@ -100,7 +100,7 @@ function Preview({ project }: { project: Project }) {
 }
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
-  const { t } = useI18n();
+  const t = content;
   const flip = index % 2 === 1;
   const concept = project.status === "concept";
 
@@ -207,7 +207,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 }
 
 export function Projects() {
-  const { t } = useI18n();
+  const t = content;
   const p = t.projects;
   const live = p.items.filter((project) => project.status !== "concept");
   const upcoming = p.items.filter((project) => project.status === "concept");

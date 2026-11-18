@@ -1,10 +1,10 @@
-import { useI18n } from "@/lib/i18n";
+import { content } from "@/content/site";
 
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 
 export function Education() {
-  const { t } = useI18n();
+  const t = content;
   const e = t.education;
   return (
     <section id="vzdelani" className="py-24 sm:py-32">

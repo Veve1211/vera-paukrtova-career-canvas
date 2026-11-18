@@ -1,6 +1,6 @@
 /**
  * All texts, projects, experience and links of the website live here.
- * Edit this file to update the content — both languages (cs / en) side by side.
+ * Edit this file to update the content. The site is Czech only.
  *
  * Fill-in-later fields (keep `null` until you have the real value — the site hides them):
  *  - links.cvPdf       → path to the CV PDF, e.g. "/cv-vera-paukrtova.pdf" (put the file into /public);
@@ -8,8 +8,6 @@
  *  - project.github    → GitHub repository URL (the link appears only once set)
  *  - education.year    → e.g. "2016"
  */
-
-export type Lang = "cs" | "en";
 
 export const siteUrl = "https://verapaukrtova.cz";
 
@@ -93,7 +91,6 @@ const cs = {
     mobileNav: "Mobilní navigace",
     menuOpen: "Otevřít menu",
     menuClose: "Zavřít menu",
-    langSwitch: "Jazyk",
     downloadCv: "Stáhnout CV",
     github: "Kód na GitHubu",
     whatItDoes: "Co aplikace dělá",
@@ -123,7 +120,7 @@ const cs = {
     highlights: ["Tvorba webů", "Aplikace s\u00a0pomocí AI", "Testování a\u00a0QA", "Zákaznická zkušenost"],
     seal: "Přemýšlím jako zákazník, hlídám kvalitu, tvořím s\u00a0AI.",
     proofLabel: "Praxe z",
-    proofProjects: "2 živé aplikace · 1 koncept",
+    proofProjects: "2 živé aplikace · 1 web · 1 připravuju",
   },
   projects: {
     index: "01",
@@ -327,255 +324,4 @@ const cs = {
 
 export type SiteContent = typeof cs;
 
-const en: SiteContent = {
-  meta: {
-    title: "Věra Paukrtová — AI-assisted Web Developer | QA & Customer Experience",
-    description:
-      "Věra Paukrtová builds websites and AI-assisted apps, backed by hands-on experience in QA, UAT testing and customer experience. Projects: CVéčko and Český král.",
-  },
-  skipLink: "Skip to content",
-  nav: [
-    { id: "projekty", label: "Projects" },
-    { id: "pristup", label: "What I bring" },
-    { id: "zkusenosti", label: "Experience" },
-    { id: "vzdelani", label: "Education" },
-    { id: "kontakt", label: "Contact" },
-  ],
-  ui: {
-    mainNav: "Main navigation",
-    mobileNav: "Mobile navigation",
-    menuOpen: "Open menu",
-    menuClose: "Close menu",
-    langSwitch: "Language / Jazyk",
-    downloadCv: "Download CV",
-    github: "Code on GitHub",
-    whatItDoes: "What the app does",
-    problem: "The problem it solves",
-    role: "My role",
-    state: "Current status",
-    tech: "Technology",
-    current: "Current",
-    transfer: "What I use from it in digital products",
-    moreExperience: "More experience",
-    backToTop: "Back to top",
-    newTab: "(opens in a new tab)",
-    portraitAlt: "Portrait of Věra Paukrtová",
-    desktopView: "desktop view",
-    mobileView: "mobile view",
-    conceptIllustration: "Concept illustration — not a screenshot of an app",
-  },
-  hero: {
-    name: "Věra Paukrtová",
-    role: "AI-assisted Web Developer | QA & Customer Experience",
-    title: ["I build websites and AI-assisted apps", "that make sense to people."],
-    intro:
-      "I combine building digital products with hands-on experience in customer support and QA. That's why I think not only about how to build an app, but above all about how it will work for real users.",
-    ctaProjects: "See my projects",
-    ctaContact: "Get in touch",
-    highlightsLabel: "Focus",
-    highlights,
-    seal: "I think like a customer, guard quality, build with AI.",
-    proofLabel: "Experience at",
-    proofProjects: "2 live apps · 1 concept",
-  },
-  projects: {
-    index: "01",
-    label: "Projects",
-    upcomingTitle: "In the works",
-    title: ["Apps you can", "try for yourself."],
-    intro:
-      "I write the prompts, design the logic, test with Playwright and deploy on Railway. What I love most is the very beginning, when an idea turns into something real — and then the gradual fine-tuning until it's exactly what I want.",
-    items: [
-      {
-        id: "cvecko",
-        name: "CVéčko",
-        kind: "CV builder web app",
-        status: "live",
-        statusLabel: "Live app",
-        summary:
-          "You write a few sentences about yourself and AI turns them into a clear CV — no forms to fill in, with the result as an A4 PDF. I built it because the usual CV builders didn't work for me, and I wanted my own that looks and works exactly the way I want.",
-        role: "Idea, feature and user-flow design, AI-assisted development through prompts, testing and deployment.",
-        state:
-          "The app is live. Next, I want to extend it to the whole job-search journey — with people living with multiple sclerosis in mind too.",
-        tech: ["Next.js", "Railway", "GitHub", "AI-assisted development"],
-        urlLabel: "Open cvecko.cz",
-        ...projectMeta.cvecko,
-      },
-      {
-        id: "cesky-kral",
-        name: "Český král",
-        kind: "Interactive educational web game",
-        status: "live",
-        statusLabel: "Live app",
-        summary:
-          "Players answer questions about Czech rulers and collect them as cards. The game has a daily challenge, quick quizzes, a leaderboard and a personal coat of arms.",
-        problem:
-          "Czech history has always fascinated me, and it still does. I wanted pupils and students to find their way to it naturally — through play, not memorising.",
-        role: "My very first app: game logic design, prompts for the AI, testing with Playwright and deployment on Railway.",
-        state: "The game is live and anyone can play it. It was my first journey from an idea all the way to a live app.",
-        tech: ["Next.js", "Railway", "Playwright", "AI-assisted development"],
-        urlLabel: "Play Český král",
-        ...projectMeta["cesky-kral"],
-      },
-      {
-        id: "kompleto",
-        name: "Kompleto",
-        kind: "Platform concept",
-        status: "concept",
-        statusLabel: "In development",
-        summary:
-          "An upcoming platform concept that would bring job offers from different sources together in one place. Today they are scattered across many portals, and searching means going through the same websites over and over.",
-        role: "Idea and concept design — what the platform should do and how people would use it.",
-        tech: [],
-        urlLabel: null,
-        ...projectMeta.kompleto,
-      },
-      {
-        id: "paukrt",
-        name: "Transport engineer's professional website",
-        kind: "Personal professional website",
-        status: "live",
-        statusLabel: "Live website",
-        summary:
-          "A personal presentation and CV of an engineer who designs roads and junctions. A bilingual website (EN/CZ) with a blue look inspired by a transport model.",
-        tech: ["Lovable", "React", "GitHub"],
-        urlLabel: "View the website",
-        ...projectMeta.paukrt,
-      },
-    ] satisfies Project[],
-  },
-  approach: {
-    index: "02",
-    label: "What I bring to projects",
-    title: ["One approach,", "three perspectives."],
-    intro:
-      "I can put myself in the customer's shoes instantly. I look at a website the way someone who's already annoyed would — and I catch UX and functional bugs before they reach real people. I'm not a senior developer and I don't pretend to be. I decide what an app should do and why, guide the AI through development, test and deploy.",
-    pillars: [
-      {
-        index: "01",
-        title: "Building digital products",
-        text: "From the idea through feature and logic design to deployment. I build web apps with AI tools and refine them in iterations until they work the way they should.",
-        items: ["Feature design", "Prompt writing", "AI-assisted development", "App logic", "Iteration", "Deployment on Railway"],
-      },
-      {
-        index: "02",
-        title: "Quality & testing",
-        text: "I did QA in automotive and UAT testing at T-Mobile. I write test scenarios, report bugs and look for their real root causes. I test my own apps with Playwright.",
-        items: ["QA", "UAT", "Functional testing", "Test scenarios", "Bug reporting", "Root cause analysis", "Playwright"],
-      },
-      {
-        index: "03",
-        title: "Understanding customers",
-        text: "At Allegro, T-Mobile and other companies I learned where people get stuck in a process and what really frustrates them. I can name the problem, improve the flow and talk it through with the customer.",
-        items: ["Customer experience", "User problems", "Process improvement", "Customer communication", "Complaints", "CRM"],
-      },
-    ],
-    flow: ["I design it", "I test it", "I check it through users' eyes"],
-    summary:
-      "Put together, it means I can take an idea to a working product, test it and check that it makes sense to the people who will use it.",
-    principlesTitle: "How I work",
-    principles: [
-      "What matters is the result, even an imperfect one — otherwise it's a never-ending process.",
-      "If I like it as a perfectionist, that's already at least one person who likes it.",
-    ],
-    principlesAuthor: "— Věra Paukrtová",
-    learningTitle: "Where I'm still learning",
-    learning: ["HTML", "CSS", "JavaScript", "Git", "GitHub", "Python basics"],
-  },
-  experience: {
-    index: "03",
-    label: "Experience",
-    title: ["Experience that taught me", "to think about users."],
-    intro:
-      "I didn't develop software in these roles. But they taught me to test, to look for the root cause of problems and to see a process through the customer's eyes — and I bring that to every project today.",
-    items: [
-      {
-        company: "Allegro Group",
-        role: "Marketplace Support Specialist",
-        period: "11/2025 – present",
-        current: true,
-        featured: true,
-        summary:
-          "I support sellers on Mall.cz, Mall.sk and CZC — from complaints to the logic behind order cancellations. I work in Daktela and Microsoft DAX.",
-        transfer:
-          "Every day I see where people get lost in a process, and why. It teaches me to design flows and interfaces that stay out of users' way.",
-        tags: ["Mall.cz · Mall.sk · CZC", "Customer processes", "Complaints", "Daktela", "Microsoft DAX"],
-      },
-      {
-        company: "Ipsos",
-        role: "Coordinator",
-        period: "3/2025 – 11/2025",
-        featured: false,
-        summary:
-          "I coordinated traffic-count projects and was the go-to support for hundreds of field workers — over 7,000 segments in total.",
-        transfer: "Keeping an overview of large amounts of data and communicating clearly with many people at once.",
-        tags: ["Traffic counts", "Hundreds of field workers", "7,000+ segments"],
-      },
-      {
-        company: "Sigma AI",
-        role: "Transcriptor",
-        period: "1/2024 – 12/2024",
-        featured: false,
-        summary: "I transcribed audio data and checked its quality.",
-        transfer: "Care and quality control of data where every detail matters.",
-        tags: ["Audio transcription", "Quality control", "Data work"],
-      },
-      {
-        company: "Zentiva",
-        role: "Digital HR Support / Webmaster",
-        period: "1/2022 – 12/2022",
-        featured: true,
-        summary: "I managed the intranet for five countries and supported international digital HR processes.",
-        transfer: "Managing web content and digital processes so that people from different countries can find their way around.",
-        tags: ["Intranet · 5 countries", "Digital processes", "International team"],
-      },
-      {
-        company: "T-Mobile",
-        role: "UAT Tester",
-        period: "2/2021 – 12/2021",
-        featured: true,
-        summary:
-          "I tested CRM and web applications, wrote test scenarios and reported bugs before a release reached customers.",
-        transfer: "Test scenarios, UAT and clear bug reports — the foundation I build on when testing my own apps.",
-        tags: ["UAT", "CRM", "Web applications", "Test scenarios", "Bug reporting"],
-      },
-      {
-        company: "Megatech Industries",
-        role: "QA Engineer",
-        period: "1/2017 – 9/2020",
-        featured: true,
-        summary:
-          "I managed quality for Škoda, VW and BMW, handled complaints and looked for the real root causes of problems — not just their symptoms.",
-        transfer: "Find the cause, don't just patch the symptom. I approach bugs in apps the same way.",
-        tags: ["Automotive", "Quality management", "Complaints", "Root cause analysis"],
-      },
-    ] satisfies Experience[],
-  },
-  education: {
-    index: "04",
-    label: "Education & courses",
-    title: ["Education", "and courses."],
-    items: [
-      { provider: "Vibecoding Akademie", title: "Vibecoding Akademie I", type: "Online course (Claude Code)", year: "2026" },
-      { provider: "Vibecoding Akademie", title: "Vibecoding Basecamp", type: "Online course (Lovable)", year: "2026" },
-      { provider: "University of Michigan", title: "Web Design for Everybody", type: "Specialization (certificate)", year: "12/2025" },
-      { provider: "University College Prague", title: "Destination Management", type: "Bachelor's degree", year: null },
-      { provider: "PrimaKurzy", title: "Web Application Development", type: "Course", year: null },
-      { provider: "Coursera", title: "Crash Course on Python", type: "Online course", year: null },
-    ] satisfies Education[],
-  },
-  contact: {
-    index: "05",
-    label: "Contact & collaboration",
-    title: ["Have an idea for a website", "or a digital app?"],
-    text: "I'd love to get involved in building websites, AI-assisted apps or projects where I can combine development, testing and customer experience. I'm open to project collaboration as well as opportunities in digital teams.",
-    areasTitle: "Where I'd love to help",
-    areas: ["AI-assisted apps", "Testing & QA", "Building websites", "Customer experience"],
-    emailCta: "Email me",
-  },
-  footer: {
-    note: "Designed and built with AI — just like my apps.",
-  },
-};
-
-export const content: Record<Lang, SiteContent> = { cs, en };
+export const content: SiteContent = cs;

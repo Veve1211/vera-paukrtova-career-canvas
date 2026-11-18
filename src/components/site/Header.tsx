@@ -1,13 +1,13 @@
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
-import { useI18n } from "@/lib/i18n";
+import { content } from "@/content/site";
 import { cn } from "@/lib/utils";
 
 import { CvButton } from "./CvButton";
 
 export function Header() {
-  const { t } = useI18n();
+  const t = content;
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState<string | null>(null);

@@ -9,9 +9,8 @@ import { Header } from "@/components/site/Header";
 import { Hero } from "@/components/site/Hero";
 import { Projects } from "@/components/site/Projects";
 import { content, links, siteUrl } from "@/content/site";
-import { LanguageProvider, useI18n } from "@/lib/i18n";
 
-const meta = content.cs.meta;
+const meta = content.meta;
 const pageUrl = `${siteUrl}/`;
 const ogImage = `${siteUrl}/og-image.jpg`;
 
@@ -46,7 +45,7 @@ export const Route = createFileRoute("/")({
           name: "Věra Paukrtová",
           url: pageUrl,
           image: ogImage,
-          jobTitle: content.cs.hero.role,
+          jobTitle: content.hero.role,
           sameAs: [links.linkedin],
           knowsAbout: ["Tvorba webů s pomocí AI", "QA", "UAT testování", "Zákaznická zkušenost"],
         }),
@@ -56,15 +55,14 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-function Page() {
-  const { t } = useI18n();
+function Index() {
   return (
     <>
       <a
         href="#obsah"
         className="sr-only z-[60] rounded-full bg-foreground px-4 py-2 text-sm text-background focus:not-sr-only focus:fixed focus:top-4 focus:left-4"
       >
-        {t.skipLink}
+        {content.skipLink}
       </a>
       <Header />
       <main id="obsah">
@@ -77,13 +75,5 @@ function Page() {
       </main>
       <Footer />
     </>
-  );
-}
-
-function Index() {
-  return (
-    <LanguageProvider>
-      <Page />
-    </LanguageProvider>
   );
 }
