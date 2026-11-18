@@ -180,7 +180,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group/link inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-3 text-sm font-medium text-background transition-colors duration-300 hover:bg-primary"
+                className="group/link inline-flex min-h-11 items-center gap-2 rounded-full bg-foreground px-5 py-3 text-sm font-medium text-background transition-colors duration-300 hover:bg-primary"
               >
                 {project.urlLabel}
                 <ArrowUpRight className="size-4 transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" aria-hidden />
@@ -192,7 +192,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-medium text-foreground hover:text-primary"
+                className="inline-flex min-h-11 min-w-11 items-center gap-2 text-sm font-medium text-foreground hover:text-primary"
               >
                 <Github className="size-4" aria-hidden />
                 {t.ui.github}
