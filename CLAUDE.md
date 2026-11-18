@@ -21,5 +21,6 @@
 - Zakázaný je jen odkaz „vera-paukrtova-career-canvas.lovable.app“; ostatní lovable.app projekty jsou povolené.
 - Web je jen česky (přepínač CZ/EN odstraněn 2026-11-17).
 - og:image 1200×627, text a fotka aspoň 180 px od stran (LinkedIn ořezává), česky.
+- Při každé změně og:image změň i název souboru (og-image-v3.jpg …), LinkedIn si obrázek pamatuje podle adresy.
 - Živnost je pozastavená – na webu žádné IČO, ceny ani objednávky.
 - Žádné klíče v kódu ani v repu.
