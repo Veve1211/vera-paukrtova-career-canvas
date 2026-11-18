@@ -11,12 +11,12 @@ export function Footer() {
         © {new Date().getFullYear()} <span className="font-display text-foreground">Věra Paukrtová</span> · {t.footer.note}
       </p>
       <div className="flex items-center gap-6">
-        <a href={links.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-primary">
+        <a href={links.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 hover:text-primary">
           <Linkedin className="size-4" aria-hidden />
           LinkedIn
           <span className="sr-only">{t.ui.newTab}</span>
         </a>
-        <a href="#top" className="inline-flex items-center gap-2 hover:text-primary">
+        <a href="#top" className="inline-flex min-h-11 items-center gap-2 hover:text-primary">
           {t.ui.backToTop}
           <ArrowUp className="size-4" aria-hidden />
         </a>

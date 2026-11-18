@@ -1,42 +1,10 @@
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
-import type { Lang } from "@/content/site";
 import { useI18n } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
 import { CvButton } from "./CvButton";
-
-function LangToggle({ className }: { className?: string }) {
-  const { lang, setLang, t } = useI18n();
-  const options: { value: Lang; label: string }[] = [
-    { value: "cs", label: "CZ" },
-    { value: "en", label: "EN" },
-  ];
-  return (
-    <div
-      role="group"
-      aria-label={t.ui.langSwitch}
-      className={cn("inline-flex rounded-full border border-border bg-card/60 p-0.5 text-xs font-medium", className)}
-    >
-      {options.map((o) => (
-        <button
-          key={o.value}
-          type="button"
-          aria-pressed={lang === o.value}
-          lang={o.value}
-          onClick={() => setLang(o.value)}
-          className={cn(
-            "min-h-8 rounded-full px-3 py-1.5 tracking-wider transition-colors",
-            lang === o.value ? "bg-foreground text-background" : "text-muted-foreground hover:text-foreground",
-          )}
-        >
-          {o.label}
-        </button>
-      ))}
-    </div>
-  );
-}
 
 export function Header() {
   const { t } = useI18n();
@@ -121,7 +89,6 @@ export function Header() {
 
         <div className="flex items-center gap-3">
           <CvButton className="hidden md:inline-flex" />
-          <LangToggle />
           <button
             type="button"
             className="grid size-10 place-items-center rounded-full border border-border lg:hidden"

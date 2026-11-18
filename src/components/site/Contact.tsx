@@ -1,4 +1,4 @@
-import { ArrowUpRight, Linkedin, Mail } from "lucide-react";
+import { ArrowUpRight, Github, Linkedin, Mail } from "lucide-react";
 
 import { links } from "@/content/site";
 import { useI18n } from "@/lib/i18n";
@@ -33,31 +33,35 @@ export function Contact() {
           <div className="mt-12 grid gap-12 lg:grid-cols-12">
             <Reveal delay={140} className="lg:col-span-6">
               <p className="text-lg leading-relaxed text-night-foreground/85 sm:text-xl">{c.text}</p>
-              <div className="mt-10 flex flex-wrap items-center gap-3">
+              {links.email && (
                 <a
-                  href={links.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2 rounded-full bg-night-foreground px-6 py-3.5 text-sm font-medium text-night transition-transform duration-300 hover:-translate-y-0.5"
+                  href={`mailto:${links.email}`}
+                  className="group mt-10 inline-flex items-center gap-3 rounded-full bg-night-foreground px-8 py-4 text-base font-medium text-night transition-transform duration-300 hover:-translate-y-0.5"
                 >
-                  <Linkedin className="size-4" aria-hidden />
-                  {c.linkedinCta}
+                  <Mail className="size-5" aria-hidden />
+                  {c.emailCta}
                   <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
-                  <span className="sr-only">{t.ui.newTab}</span>
                 </a>
-                {links.email && (
-                  <a
-                    href={`mailto:${links.email}`}
-                    className="inline-flex items-center gap-2 rounded-full border border-night-foreground/30 px-6 py-3.5 text-sm font-medium transition-colors hover:border-orchid hover:text-orchid"
-                  >
-                    <Mail className="size-4" aria-hidden />
-                    {links.email}
+              )}
+              <p className="mt-8 text-sm text-night-foreground/75">{c.linksLabel}</p>
+              <ul className="mt-3 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-medium">
+                <li>
+                  <a href={links.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 hover:text-orchid">
+                    <Linkedin className="size-4" aria-hidden />
+                    LinkedIn
+                    <span className="sr-only">{t.ui.newTab}</span>
                   </a>
-                )}
-                {/* Appears automatically once links.cvPdf is set */}
-                <CvButton className="border-night-foreground/30 px-6 py-3.5 text-night-foreground hover:bg-night-foreground hover:text-night" />
-              </div>
-              {!links.email && <p className="mt-5 text-sm text-night-foreground/75">{c.noEmail}</p>}
+                </li>
+                <li>
+                  <a href={links.github} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 hover:text-orchid">
+                    <Github className="size-4" aria-hidden />
+                    GitHub
+                    <span className="sr-only">{t.ui.newTab}</span>
+                  </a>
+                </li>
+              </ul>
+              {/* Appears automatically once links.cvPdf is set */}
+              <CvButton className="mt-6 border-night-foreground/30 px-6 py-3.5 text-night-foreground hover:bg-night-foreground hover:text-night" />
             </Reveal>
 
             <Reveal delay={200} className="lg:col-span-5 lg:col-start-8">

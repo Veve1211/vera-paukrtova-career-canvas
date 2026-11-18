@@ -9,12 +9,11 @@ type I18n = { lang: Lang; t: SiteContent; setLang: (lang: Lang) => void };
 const I18nContext = createContext<I18n | null>(null);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  // Czech is the default (and what search engines see); a saved choice is applied after hydration.
+  // The site is Czech only. A language saved by the old CZ/EN switch is dropped.
   const [lang, setLangState] = useState<Lang>("cs");
 
   useEffect(() => {
-    const saved = window.localStorage.getItem(STORAGE_KEY);
-    if (saved === "cs" || saved === "en") setLangState(saved);
+    window.localStorage.removeItem(STORAGE_KEY);
   }, []);
 
   useEffect(() => {
