@@ -76,9 +76,9 @@ const highlights = ["Web Development", "AI-assisted Applications", "QA Testing",
 
 const cs = {
   meta: {
-    title: "Věra Paukrtová — weby a AI aplikace | QA a zákaznická zkušenost",
+    title: "Věra Paukrtová – weby a aplikace s pomocí AI | QA a zákaznická zkušenost",
     description:
-      "Věra Paukrtová tvoří weby a AI-assisted aplikace a propojuje je s praxí z QA, UAT testování a zákaznické zkušenosti. Projekty CVéčko a Český král.",
+      "Věra Paukrtová tvoří weby a aplikace s pomocí AI a propojuje je s praxí z QA, UAT testování a zákaznické zkušenosti. Projekty CVéčko a Český král.",
   },
   skipLink: "Přeskočit na obsah",
   nav: [
@@ -128,6 +128,7 @@ const cs = {
   projects: {
     index: "01",
     label: "Projekty",
+    upcomingTitle: "Připravuju",
     title: ["Aplikace, které", "si můžete vyzkoušet."],
     intro:
       "Píšu prompty, navrhuji logiku, testuji v Playwrightu a nasazuji na Railway. Nejvíc mě baví začátek, kdy se z myšlenky stává něco skutečného — a pak postupné dolaďování, dokud to není přesně takové, jaké to chci mít.",
@@ -378,6 +379,7 @@ const en: SiteContent = {
   projects: {
     index: "01",
     label: "Projects",
+    upcomingTitle: "In the works",
     title: ["Apps you can", "try for yourself."],
     intro:
       "I write the prompts, design the logic, test with Playwright and deploy on Railway. What I love most is the very beginning, when an idea turns into something real — and then the gradual fine-tuning until it's exactly what I want.",
