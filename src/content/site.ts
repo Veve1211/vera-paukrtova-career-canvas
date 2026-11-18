@@ -64,8 +64,8 @@ export type Education = {
 };
 
 const projectMeta = {
-  cvecko: { url: "https://cvecko.cz", github: null },
-  "cesky-kral": { url: "https://cesky-kral.up.railway.app", github: null },
+  cvecko: { url: "https://cvecko.cz", github: "https://github.com/Veve1211/cv-studio" },
+  "cesky-kral": { url: "https://cesky-kral.up.railway.app", github: "https://github.com/Veve1211/cesky-kral" },
   kompleto: { url: null, github: null },
   paukrt: { url: "https://paukrt.lovable.app/", github: "https://github.com/Veve1211/transport-constellation-atlas" },
 } satisfies Record<ProjectId, { url: string | null; github: string | null }>;
