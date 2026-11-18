@@ -302,8 +302,7 @@ const cs = {
     text: "Ráda se zapojím do tvorby webových stránek, AI-assisted aplikací nebo projektů, kde mohu propojit vývoj, testování a zákaznickou zkušenost. Jsem otevřená projektové spolupráci i příležitostem v digitálních týmech.",
     areasTitle: "Kde se ráda zapojím",
     areas: ["AI-assisted aplikace", "Testování a QA", "Tvorba webových stránek", "Zákaznická zkušenost"],
-    emailCta: "Napište mi",
-    linksLabel: "Najdete mě také na",
+    emailCta: "Napište mi e-mail",
   },
   footer: {
     note: "Navrženo a postaveno s AI — stejně jako moje aplikace.",
@@ -541,8 +540,7 @@ const en: SiteContent = {
     text: "I'd love to get involved in building websites, AI-assisted apps or projects where I can combine development, testing and customer experience. I'm open to project collaboration as well as opportunities in digital teams.",
     areasTitle: "Where I'd love to help",
     areas: ["AI-assisted apps", "Testing & QA", "Building websites", "Customer experience"],
-    emailCta: "Write to me",
-    linksLabel: "You can also find me on",
+    emailCta: "Email me",
   },
   footer: {
     note: "Designed and built with AI — just like my apps.",

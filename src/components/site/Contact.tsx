@@ -1,4 +1,4 @@
-import { ArrowUpRight, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowUpRight, Linkedin, Mail } from "lucide-react";
 
 import { links } from "@/content/site";
 import { useI18n } from "@/lib/i18n";
@@ -33,33 +33,28 @@ export function Contact() {
           <div className="mt-12 grid gap-12 lg:grid-cols-12">
             <Reveal delay={140} className="lg:col-span-6">
               <p className="text-lg leading-relaxed text-night-foreground/85 sm:text-xl">{c.text}</p>
-              {links.email && (
+              <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                {links.email && (
+                  <a
+                    href={`mailto:${links.email}`}
+                    className="group inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-night-foreground px-8 py-4 text-base font-medium text-night transition-transform duration-300 hover:-translate-y-0.5"
+                  >
+                    <Mail className="size-5" aria-hidden />
+                    {c.emailCta}
+                  </a>
+                )}
                 <a
-                  href={`mailto:${links.email}`}
-                  className="group mt-10 inline-flex items-center gap-3 rounded-full bg-night-foreground px-8 py-4 text-base font-medium text-night transition-transform duration-300 hover:-translate-y-0.5"
+                  href={links.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex min-h-14 items-center justify-center gap-3 rounded-full border border-night-foreground/40 px-8 py-4 text-base font-medium text-night-foreground transition-colors duration-300 hover:bg-night-foreground hover:text-night"
                 >
-                  <Mail className="size-5" aria-hidden />
-                  {c.emailCta}
+                  <Linkedin className="size-5" aria-hidden />
+                  LinkedIn
                   <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
+                  <span className="sr-only">{t.ui.newTab}</span>
                 </a>
-              )}
-              <p className="mt-8 text-sm text-night-foreground/75">{c.linksLabel}</p>
-              <ul className="mt-3 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-medium">
-                <li>
-                  <a href={links.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 hover:text-orchid">
-                    <Linkedin className="size-4" aria-hidden />
-                    LinkedIn
-                    <span className="sr-only">{t.ui.newTab}</span>
-                  </a>
-                </li>
-                <li>
-                  <a href={links.github} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 hover:text-orchid">
-                    <Github className="size-4" aria-hidden />
-                    GitHub
-                    <span className="sr-only">{t.ui.newTab}</span>
-                  </a>
-                </li>
-              </ul>
+              </div>
               {/* Appears automatically once links.cvPdf is set */}
               <CvButton className="mt-6 border-night-foreground/30 px-6 py-3.5 text-night-foreground hover:bg-night-foreground hover:text-night" />
             </Reveal>
