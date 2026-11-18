@@ -13,6 +13,7 @@ describe("site content", () => {
       cvecko: "https://cvecko.cz",
       "cesky-kral": "https://cesky-kral.up.railway.app",
       kompleto: null,
+      paukrt: "https://paukrt.lovable.app/",
     });
   });
 
