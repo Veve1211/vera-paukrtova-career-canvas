@@ -43,15 +43,26 @@ describe("work experience", () => {
   });
 
   it("marks only Allegro Group as the current job", () => {
-    expect(content.experience.items.filter((e) => e.current).map((e) => e.company)).toEqual(["Allegro Group"]);
+    expect(content.experience.items.filter((e) => e.current).map((e) => e.company)).toEqual([
+      "Allegro Group",
+    ]);
   });
 });
 
 describe("portfolio positioning", () => {
   it("uses the agreed professional title and headline", () => {
-    expect(plain(content.hero.role)).toBe("Weby a aplikace s pomocí AI | QA a zákaznická zkušenost");
-    expect(plain(content.hero.title.join(" "))).toBe("Tvořím weby a aplikace s pomocí AI, které dávají smysl lidem.");
-    expect(content.hero.highlights.map(plain)).toEqual(["Tvorba webů", "Aplikace s pomocí AI", "Testování a QA", "Zákaznická zkušenost"]);
+    expect(plain(content.hero.role)).toBe(
+      "Weby a aplikace s pomocí AI | QA a zákaznická zkušenost",
+    );
+    expect(plain(content.hero.title.join(" "))).toBe(
+      "Tvořím weby a aplikace s pomocí AI, které dávají smysl lidem.",
+    );
+    expect(content.hero.highlights.map(plain)).toEqual([
+      "Tvorba webů",
+      "Aplikace s pomocí AI",
+      "Testování a QA",
+      "Zákaznická zkušenost",
+    ]);
   });
 
   it("puts projects right after the intro, before the work history", () => {
@@ -77,7 +88,9 @@ describe("portfolio positioning", () => {
 
   it("never presents Věra as a senior developer in her title or headline", () => {
     const c = content;
-    const headline = [c.meta.title, c.meta.description, c.hero.role, ...c.hero.title].join(" ").toLowerCase();
+    const headline = [c.meta.title, c.meta.description, c.hero.role, ...c.hero.title]
+      .join(" ")
+      .toLowerCase();
     expect(headline).not.toContain("senior");
   });
 });

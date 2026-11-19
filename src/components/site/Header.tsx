@@ -70,7 +70,9 @@ export function Header() {
                   aria-current={active === n.id ? "true" : undefined}
                   className={cn(
                     "relative rounded-full px-3.5 py-2 text-sm transition-colors",
-                    active === n.id ? "text-foreground" : "text-muted-foreground hover:text-foreground",
+                    active === n.id
+                      ? "text-foreground"
+                      : "text-muted-foreground hover:text-foreground",
                   )}
                 >
                   {n.label}
@@ -112,7 +114,9 @@ export function Header() {
                   onClick={() => setOpen(false)}
                   className="font-display flex items-baseline gap-4 py-2.5 text-2xl"
                 >
-                  <span aria-hidden className="text-xs text-primary italic">0{i + 1}</span>
+                  <span aria-hidden className="text-xs text-primary italic">
+                    0{i + 1}
+                  </span>
                   {n.label}
                 </a>
               </li>

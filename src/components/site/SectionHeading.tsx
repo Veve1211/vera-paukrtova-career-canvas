@@ -29,14 +29,18 @@ export function SectionHeading({
           {title[1] && (
             <>
               <br />
-              <em className={`font-normal italic ${dark ? "text-orchid" : "text-primary"}`}>{title[1]}</em>
+              <em className={`font-normal italic ${dark ? "text-orchid" : "text-primary"}`}>
+                {title[1]}
+              </em>
             </>
           )}
         </h2>
       </Reveal>
       {intro && (
         <Reveal delay={120} className="md:col-span-4">
-          <p className={`text-base leading-relaxed ${dark ? "text-night-foreground/70" : "text-muted-foreground"}`}>
+          <p
+            className={`text-base leading-relaxed ${dark ? "text-night-foreground/70" : "text-muted-foreground"}`}
+          >
             {intro}
           </p>
         </Reveal>

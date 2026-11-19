@@ -15,7 +15,9 @@ function Meta({ job }: { job: Job }) {
           {t.ui.current}
         </span>
       )}
-      {job.period && <span className="text-sm text-muted-foreground tabular-nums">{job.period}</span>}
+      {job.period && (
+        <span className="text-sm text-muted-foreground tabular-nums">{job.period}</span>
+      )}
     </div>
   );
 }
@@ -43,7 +45,10 @@ function FeaturedJob({ job, delay }: { job: Job; delay: number }) {
         </div>
         <ul className="mt-5 flex flex-wrap gap-2">
           {job.tags.map((tag) => (
-            <li key={tag} className="rounded-full border border-border bg-background px-3 py-1 text-xs text-foreground">
+            <li
+              key={tag}
+              className="rounded-full border border-border bg-background px-3 py-1 text-xs text-foreground"
+            >
               {tag}
             </li>
           ))}
@@ -55,7 +60,11 @@ function FeaturedJob({ job, delay }: { job: Job; delay: number }) {
 
 function CompactJob({ job, delay }: { job: Job; delay: number }) {
   return (
-    <Reveal as="li" delay={delay} className="grid gap-3 border-t border-border py-6 md:grid-cols-12 md:gap-8">
+    <Reveal
+      as="li"
+      delay={delay}
+      className="grid gap-3 border-t border-border py-6 md:grid-cols-12 md:gap-8"
+    >
       <div className="md:col-span-4">
         <Meta job={job} />
         <h4 className="font-display mt-2 text-2xl text-foreground">{job.company}</h4>
@@ -63,7 +72,9 @@ function CompactJob({ job, delay }: { job: Job; delay: number }) {
       </div>
       <div className="md:col-span-8">
         <p className="text-base leading-relaxed text-muted-foreground">{job.summary}</p>
-        <p className="mt-2 border-l-2 border-primary/40 pl-3 text-sm leading-relaxed text-foreground">{job.transfer}</p>
+        <p className="mt-2 border-l-2 border-primary/40 pl-3 text-sm leading-relaxed text-foreground">
+          {job.transfer}
+        </p>
       </div>
     </Reveal>
   );

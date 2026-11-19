@@ -25,7 +25,10 @@ function KompletoPreview({ label }: { label: string }) {
   return (
     <div className="relative flex size-full items-center justify-center overflow-hidden bg-night p-6 sm:p-10">
       <div aria-hidden className="absolute inset-0 hairline-grid opacity-[0.07]" />
-      <div aria-hidden className="absolute -top-20 -right-20 size-72 rounded-full bg-violet/40 blur-3xl" />
+      <div
+        aria-hidden
+        className="absolute -top-20 -right-20 size-72 rounded-full bg-violet/40 blur-3xl"
+      />
       <div aria-hidden className="relative grid w-full max-w-md gap-2 sm:gap-3">
         {[0, 1, 2, 3].map((i) => (
           <div
@@ -110,7 +113,9 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       aria-labelledby={`project-${project.id}`}
       className={cn(
         "group grid gap-10 rounded-[1.75rem] border p-5 transition-colors duration-500 sm:p-8 lg:grid-cols-12 lg:items-start lg:gap-12 lg:p-10",
-        concept ? "border-dashed border-primary/30 bg-background" : "border-border bg-card/70 hover:border-primary/25",
+        concept
+          ? "border-dashed border-primary/30 bg-background"
+          : "border-border bg-card/70 hover:border-primary/25",
       )}
     >
       <div className={cn("lg:col-span-7", flip && "lg:order-2")}>
@@ -121,7 +126,9 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         {/* Upcoming projects sit under their own heading, so they get no number or status badge. */}
         {!concept && (
           <div className="flex flex-wrap items-center gap-3">
-            <span className="font-display text-sm text-primary italic">{String(index + 1).padStart(2, "0")}</span>
+            <span className="font-display text-sm text-primary italic">
+              {String(index + 1).padStart(2, "0")}
+            </span>
             <span className="inline-flex items-center gap-1.5 rounded-full bg-lilac px-2.5 py-1 text-xs font-medium text-primary">
               <span className="size-1.5 rounded-full bg-violet" aria-hidden />
               {project.statusLabel}
@@ -129,7 +136,10 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           </div>
         )}
 
-        <h3 id={`project-${project.id}`} className={cn("font-display text-4xl text-foreground sm:text-5xl", !concept && "mt-4")}>
+        <h3
+          id={`project-${project.id}`}
+          className={cn("font-display text-4xl text-foreground sm:text-5xl", !concept && "mt-4")}
+        >
           {project.name}
         </h3>
         <p className="eyebrow mt-3 leading-relaxed text-muted-foreground">{project.kind}</p>
@@ -142,7 +152,9 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           {project.problem && (
             <div>
               <dt className="eyebrow text-primary">{t.ui.problem}</dt>
-              <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">{project.problem}</dd>
+              <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                {project.problem}
+              </dd>
             </div>
           )}
           {project.role && (
@@ -154,7 +166,9 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           {project.state && (
             <div>
               <dt className="eyebrow text-primary">{t.ui.state}</dt>
-              <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">{project.state}</dd>
+              <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                {project.state}
+              </dd>
             </div>
           )}
           {project.tech.length > 0 && (
@@ -163,7 +177,10 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               <dd className="mt-3">
                 <ul className="flex flex-wrap gap-2">
                   {project.tech.map((tech) => (
-                    <li key={tech} className="rounded-full border border-border bg-background px-3 py-1 text-xs text-foreground">
+                    <li
+                      key={tech}
+                      className="rounded-full border border-border bg-background px-3 py-1 text-xs text-foreground"
+                    >
                       {tech}
                     </li>
                   ))}
@@ -183,7 +200,10 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                 className="group/link inline-flex min-h-11 items-center gap-2 rounded-full bg-foreground px-5 py-3 text-sm font-medium text-background transition-colors duration-300 hover:bg-primary"
               >
                 {project.urlLabel}
-                <ArrowUpRight className="size-4 transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" aria-hidden />
+                <ArrowUpRight
+                  className="size-4 transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5"
+                  aria-hidden
+                />
                 <span className="sr-only">{t.ui.newTab}</span>
               </a>
             )}
@@ -213,7 +233,10 @@ export function Projects() {
   const upcoming = p.items.filter((project) => project.status === "concept");
   return (
     <section id="projekty" className="relative py-20 sm:py-28">
-      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-[40rem] bg-aura opacity-50" />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-[40rem] bg-aura opacity-50"
+      />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading index={p.index} label={p.label} title={p.title} intro={p.intro} />
         <div className="mt-14 grid gap-8 sm:mt-16 sm:gap-10">
@@ -224,7 +247,9 @@ export function Projects() {
         {upcoming.length > 0 && (
           <div className="mt-20 sm:mt-24">
             <Reveal>
-              <h3 className="font-display text-3xl text-foreground sm:text-4xl">{p.upcomingTitle}</h3>
+              <h3 className="font-display text-3xl text-foreground sm:text-4xl">
+                {p.upcomingTitle}
+              </h3>
             </Reveal>
             <div className="mt-8 grid gap-8 sm:mt-10 sm:gap-10">
               {upcoming.map((project, i) => (

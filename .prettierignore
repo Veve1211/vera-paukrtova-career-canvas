@@ -6,3 +6,5 @@ pnpm-lock.yaml
 package-lock.json
 bun.lock
 routeTree.gen.ts
+# Docs are written by hand (AGENTS.md has a block managed by Lovable)
+*.md

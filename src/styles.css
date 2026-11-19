@@ -102,13 +102,24 @@
   --input: var(--line);
   --ring: var(--violet);
 
-  --gradient-aura: radial-gradient(60% 60% at 70% 30%, color-mix(in oklab, var(--orchid) 55%, transparent) 0%, transparent 70%),
-    radial-gradient(50% 50% at 15% 80%, color-mix(in oklab, var(--mist) 90%, transparent) 0%, transparent 70%);
+  --gradient-aura:
+    radial-gradient(
+      60% 60% at 70% 30%,
+      color-mix(in oklab, var(--orchid) 55%, transparent) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      50% 50% at 15% 80%,
+      color-mix(in oklab, var(--mist) 90%, transparent) 0%,
+      transparent 70%
+    );
   --gradient-violet: linear-gradient(135deg, var(--plum) 0%, var(--violet) 100%);
   --gradient-veil: linear-gradient(180deg, var(--mist) 0%, var(--orchid) 100%);
-  --shadow-soft: 0 1px 2px color-mix(in oklab, var(--ink) 6%, transparent),
+  --shadow-soft:
+    0 1px 2px color-mix(in oklab, var(--ink) 6%, transparent),
     0 24px 48px -24px color-mix(in oklab, var(--plum) 28%, transparent);
-  --shadow-lift: 0 2px 4px color-mix(in oklab, var(--ink) 6%, transparent),
+  --shadow-lift:
+    0 2px 4px color-mix(in oklab, var(--ink) 6%, transparent),
     0 40px 80px -32px color-mix(in oklab, var(--plum) 40%, transparent);
 
   --chart-1: var(--plum);
@@ -227,8 +238,16 @@
 
 @utility hairline-grid {
   background-image:
-    linear-gradient(to right, color-mix(in oklab, var(--line) 70%, transparent) 1px, transparent 1px),
-    linear-gradient(to bottom, color-mix(in oklab, var(--line) 70%, transparent) 1px, transparent 1px);
+    linear-gradient(
+      to right,
+      color-mix(in oklab, var(--line) 70%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--line) 70%, transparent) 1px,
+      transparent 1px
+    );
   background-size: 56px 56px;
 }
 

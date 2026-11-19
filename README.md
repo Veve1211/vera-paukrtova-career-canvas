@@ -34,11 +34,13 @@ Osobní portfolio na jedné stránce: projekty, přístup k práci, zkušenosti,
   - konzole bez chyb, žádné rozbité odkazy ani obrázky;
   - kontrola přístupnosti axe;
   - automatické testy obsahu (Vitest) a build.
+- **Automatická kontrola (GitHub Actions):** u každého PR proběhne lint, kontrola typů, testy a build.
 
 ## Bezpečnost
 
 - Dvoufázové ověření (2FA) na GitHubu i na Vercelu.
 - V repozitáři nejsou žádné klíče ani hesla.
+- Bezpečnostní hlavičky na každé stránce (nosniff, Referrer-Policy, Permissions-Policy; na vlastní doméně i zákaz vkládání do rámců).
 - Pravidelný audit závislostí (`npm audit` / `bun audit`). Opravy jen v rámci povolených verzí, bez vynucených skoků na nové hlavní verze.
 - Kontakt na autorku: paukrtovavera@seznam.cz
 
@@ -46,7 +48,7 @@ Osobní portfolio na jedné stránce: projekty, přístup k práci, zkušenosti,
 
 - [TanStack Start](https://tanstack.com/start) (React 19, TanStack Router), Vite 8, Nitro
 - TypeScript
-- Tailwind CSS 4, shadcn/ui (Radix UI), ikony lucide-react
+- Tailwind CSS 4, ikony lucide-react
 - Vitest a Testing Library, ESLint a Prettier
 - Správa balíčků přes bun (`bun.lock`)
 - Hosting Vercel, úpravy obsahu i v editoru Lovable
