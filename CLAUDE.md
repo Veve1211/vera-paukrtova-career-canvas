@@ -7,13 +7,13 @@
 - Jedna stránka: projekty, přístup, zkušenosti, vzdělání, kontakt. Web je jen česky.
 
 ## Stack a prostředí
-- TanStack Start (React 19, TanStack Router), Vite 8, TypeScript 5, Tailwind CSS 4, shadcn/ui; testy Vitest
+- TanStack Start (React 19, TanStack Router), Vite 8, TypeScript 5, Tailwind CSS 4; testy Vitest
 - Balíčky přes bun (`bun.lock`); příkazy `bun run dev`, `bun run test`, `bun run build`
 - Hosting Vercel, doména https://verapaukrtova.cz (nasazuje se z `main`)
 - Repo je propojené s Lovable (viz AGENTS.md); obsah webu je v `src/content/site.ts`
 
 ## Pracovní postup
-- Feature větev z `main` → PR → náhled na Vercelu → kontrola → merge do `main`
+- Feature větev z `main` → PR → CI (lint, typy, testy, build) a náhled na Vercelu → kontrola → merge do `main`
 
 ## Pravidla
 - Nikdy nenechávej v UI placeholder.
