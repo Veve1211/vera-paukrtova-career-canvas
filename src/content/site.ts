@@ -220,6 +220,7 @@ const cs = {
     principlesTitle: "Jak pracuji",
     principles: [
       "Důležitý je výsledek, i\u00a0když je nedokonalý – jinak je to nekončící proces.",
+      "Nestačí, aby to fungovalo. Musí to dávat smysl lidem.",
     ],
     principlesAuthor: "— Věra Paukrtová",
     learningTitle: "Kde se stále učím",
