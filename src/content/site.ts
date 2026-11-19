@@ -369,14 +369,19 @@ const cs = {
         type: "Specializace (certifikát)",
         year: "12/2025",
       },
+      { provider: "PrimaKurzy", title: "Vývoj webových aplikací", type: "Kurz", year: "6/2025" },
+      {
+        provider: "Coursera",
+        title: "Crash Course on Python",
+        type: "Online kurz",
+        year: "6/2023",
+      },
       {
         provider: "University College Prague",
         title: "Destination Management",
         type: "Bakalářský titul",
         year: null,
       },
-      { provider: "PrimaKurzy", title: "Vývoj webových aplikací", type: "Kurz", year: null },
-      { provider: "Coursera", title: "Crash Course on Python", type: "Online kurz", year: null },
     ] satisfies Education[],
   },
   contact: {
