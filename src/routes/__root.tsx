@@ -85,7 +85,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "description", content: "Osobní kariérní web a interaktivní CV Věry Paukrtové." },
       { name: "author", content: "Věra Paukrtová" },
       { property: "og:title", content: "Věra Paukrtová — osobní web a CV" },
-      { property: "og:description", content: "Osobní kariérní web a interaktivní CV Věry Paukrtové." },
+      {
+        property: "og:description",
+        content: "Osobní kariérní web a interaktivní CV Věry Paukrtové.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

@@ -65,16 +65,28 @@ export type Education = {
 
 const projectMeta = {
   cvecko: { url: "https://cvecko.cz", github: "https://github.com/Veve1211/cv-studio" },
-  "cesky-kral": { url: "https://cesky-kral.up.railway.app", github: "https://github.com/Veve1211/cesky-kral" },
+  "cesky-kral": {
+    url: "https://cesky-kral.up.railway.app",
+    github: "https://github.com/Veve1211/cesky-kral",
+  },
   kompleto: { url: null, github: null },
-  paukrt: { url: "https://paukrt.lovable.app/", github: "https://github.com/Veve1211/transport-constellation-atlas" },
+  paukrt: {
+    url: "https://paukrt.lovable.app/",
+    github: "https://github.com/Veve1211/transport-constellation-atlas",
+  },
 } satisfies Record<ProjectId, { url: string | null; github: string | null }>;
 
-const highlights = ["Web Development", "AI-assisted Applications", "QA Testing", "Customer Experience"];
+const highlights = [
+  "Web Development",
+  "AI-assisted Applications",
+  "QA Testing",
+  "Customer Experience",
+];
 
 const cs = {
   meta: {
-    title: "Věra Paukrtová – weby a\u00a0aplikace s\u00a0pomocí AI | QA a\u00a0zákaznická zkušenost",
+    title:
+      "Věra Paukrtová – weby a\u00a0aplikace s\u00a0pomocí AI | QA a\u00a0zákaznická zkušenost",
     description:
       "Věra Paukrtová tvoří weby a\u00a0aplikace s\u00a0pomocí AI a\u00a0propojuje je s\u00a0praxí z\u00a0QA, UAT testování a\u00a0zákaznické zkušenosti. Projekty CVéčko a\u00a0Český král.",
   },
@@ -117,7 +129,12 @@ const cs = {
     ctaProjects: "Prohlédnout moje projekty",
     ctaContact: "Kontaktovat mě",
     highlightsLabel: "Zaměření",
-    highlights: ["Tvorba webů", "Aplikace s\u00a0pomocí AI", "Testování a\u00a0QA", "Zákaznická zkušenost"],
+    highlights: [
+      "Tvorba webů",
+      "Aplikace s\u00a0pomocí AI",
+      "Testování a\u00a0QA",
+      "Zákaznická zkušenost",
+    ],
     seal: "Přemýšlím jako zákazník, hlídám kvalitu, tvořím s\u00a0AI.",
     proofLabel: "Praxe z",
     proofProjects: "2 živé aplikace · 1 web · 1 připravuju",
@@ -156,7 +173,8 @@ const cs = {
         problem:
           "Česká historie mě bavila a\u00a0pořád baví. Chtěla jsem, aby si k\u00a0ní žáci a\u00a0studenti našli cestu přirozeně — hrou, ne memorováním.",
         role: "Moje úplně první aplikace: návrh herní logiky, prompty pro AI, testování v\u00a0Playwrightu a\u00a0nasazení na Railway.",
-        state: "Hra je v\u00a0provozu a\u00a0zahrát si ji může kdokoli. Byla to moje první cesta od nápadu až k\u00a0živé aplikaci.",
+        state:
+          "Hra je v\u00a0provozu a\u00a0zahrát si ji může kdokoli. Byla to moje první cesta od nápadu až k\u00a0živé aplikaci.",
         tech: ["Next.js", "Railway", "Playwright", "vývoj s\u00a0pomocí AI"],
         urlLabel: "Zahrát si Českého krále",
         ...projectMeta["cesky-kral"],
@@ -199,19 +217,41 @@ const cs = {
         index: "01",
         title: "Tvorba digitálních produktů",
         text: "Od nápadu přes návrh funkcí a\u00a0logiky až po nasazení. Webové aplikace tvořím s\u00a0AI nástroji a\u00a0dolaďuji je v\u00a0iteracích, dokud nefungují tak, jak mají.",
-        items: ["Návrh funkcionalit", "Psaní promptů", "vývoj s\u00a0pomocí AI", "Logika aplikací", "Iterace", "Nasazení na Railway"],
+        items: [
+          "Návrh funkcionalit",
+          "Psaní promptů",
+          "vývoj s\u00a0pomocí AI",
+          "Logika aplikací",
+          "Iterace",
+          "Nasazení na Railway",
+        ],
       },
       {
         index: "02",
         title: "Kvalita a\u00a0testování",
         text: "QA jsem dělala v\u00a0automobilovém průmyslu, UAT testování v\u00a0T-Mobile. Píšu testovací scénáře, hlásím chyby a\u00a0hledám jejich skutečné příčiny. Vlastní aplikace testuji v\u00a0Playwrightu.",
-        items: ["QA", "UAT", "Funkční testování", "Testovací scénáře", "hlášení chyb", "analýza příčin", "Playwright"],
+        items: [
+          "QA",
+          "UAT",
+          "Funkční testování",
+          "Testovací scénáře",
+          "hlášení chyb",
+          "analýza příčin",
+          "Playwright",
+        ],
       },
       {
         index: "03",
         title: "Porozumění zákazníkům",
         text: "Z\u00a0Allegro, T-Mobile a\u00a0dalších firem vím, kde se lidé v\u00a0procesu zaseknou a\u00a0co je opravdu štve. Umím problém pojmenovat, zlepšit postup a\u00a0domluvit se se zákazníkem.",
-        items: ["zákaznická zkušenost", "Uživatelské problémy", "Zlepšování procesů", "Komunikace se zákazníky", "Reklamace", "CRM"],
+        items: [
+          "zákaznická zkušenost",
+          "Uživatelské problémy",
+          "Zlepšování procesů",
+          "Komunikace se zákazníky",
+          "Reklamace",
+          "CRM",
+        ],
       },
     ],
     flow: ["Navrhnu", "Otestuji", "Ověřím očima uživatele"],
@@ -243,7 +283,13 @@ const cs = {
           "Pomáhám prodejcům na Mall.cz, Mall.sk a\u00a0CZC — od reklamací až po logiku rušení objednávek. Pracuji v\u00a0Daktele a\u00a0Microsoft DAX.",
         transfer:
           "Každý den vidím, kde se lidé v\u00a0procesu ztrácejí a\u00a0proč. Učí mě to navrhovat postupy a\u00a0rozhraní, které uživatelům nepřekážejí.",
-        tags: ["Mall.cz · Mall.sk · CZC", "Zákaznické procesy", "Reklamace", "Daktela", "Microsoft DAX"],
+        tags: [
+          "Mall.cz · Mall.sk · CZC",
+          "Zákaznické procesy",
+          "Reklamace",
+          "Daktela",
+          "Microsoft DAX",
+        ],
       },
       {
         company: "Ipsos",
@@ -252,7 +298,8 @@ const cs = {
         featured: false,
         summary:
           "Koordinovala jsem projekty sčítání dopravy a\u00a0byla oporou pro stovky terénních pracovníků. Dohromady šlo o\u00a0více než 7 000 segmentů.",
-        transfer: "Přehled ve velkém objemu dat a\u00a0jasná komunikace s\u00a0mnoha lidmi najednou.",
+        transfer:
+          "Přehled ve velkém objemu dat a\u00a0jasná komunikace s\u00a0mnoha lidmi najednou.",
         tags: ["Sčítání dopravy", "Stovky terénních pracovníků", "7 000+ segmentů"],
       },
       {
@@ -269,8 +316,10 @@ const cs = {
         role: "Digitální HR podpora a\u00a0webmasterka",
         period: "1/2022 – 12/2022",
         featured: true,
-        summary: "Spravovala jsem intranet pro pět zemí a\u00a0podporovala mezinárodní digitální procesy v\u00a0HR.",
-        transfer: "Správa webového obsahu a\u00a0digitálních procesů tak, aby se v\u00a0nich vyznali lidé z\u00a0různých zemí.",
+        summary:
+          "Spravovala jsem intranet pro pět zemí a\u00a0podporovala mezinárodní digitální procesy v\u00a0HR.",
+        transfer:
+          "Správa webového obsahu a\u00a0digitálních procesů tak, aby se v\u00a0nich vyznali lidé z\u00a0různých zemí.",
         tags: ["Intranet · 5 zemí", "Digitální procesy", "Mezinárodní tým"],
       },
       {
@@ -280,7 +329,8 @@ const cs = {
         featured: true,
         summary:
           "Testovala jsem CRM a\u00a0webové aplikace, psala testovací scénáře a\u00a0hlásila chyby dřív, než se nová verze dostala k\u00a0zákazníkům.",
-        transfer: "Testovací scénáře, UAT a\u00a0srozumitelné hlášení chyb — základ, na kterém stavím testování vlastních aplikací.",
+        transfer:
+          "Testovací scénáře, UAT a\u00a0srozumitelné hlášení chyb — základ, na kterém stavím testování vlastních aplikací.",
         tags: ["UAT", "CRM", "Webové aplikace", "Testovací scénáře", "hlášení chyb"],
       },
       {
@@ -290,7 +340,8 @@ const cs = {
         featured: true,
         summary:
           "Řídila jsem kvalitu pro Škodu, VW a\u00a0BMW, řešila reklamace a\u00a0hledala skutečné příčiny problémů — ne jen jejich projevy.",
-        transfer: "Hledat příčinu, ne jen zalepit projev. Stejně přistupuji k\u00a0chybám v\u00a0aplikacích.",
+        transfer:
+          "Hledat příčinu, ne jen zalepit projev. Stejně přistupuji k\u00a0chybám v\u00a0aplikacích.",
         tags: ["Automobilový průmysl", "Řízení kvality", "Reklamace", "analýza příčin"],
       },
     ] satisfies Experience[],
@@ -300,10 +351,30 @@ const cs = {
     label: "Vzdělání a\u00a0kurzy",
     title: ["Vzdělání", "a\u00a0kurzy."],
     items: [
-      { provider: "Vibecoding Akademie", title: "Vibecoding Akademie I", type: "Online kurz (Claude Code)", year: "2026" },
-      { provider: "Vibecoding Akademie", title: "Vibecoding Basecamp", type: "Online kurz (Lovable)", year: "2026" },
-      { provider: "University of Michigan", title: "Web Design for Everybody", type: "Specializace (certifikát)", year: "12/2025" },
-      { provider: "University College Prague", title: "Destination Management", type: "Bakalářský titul", year: null },
+      {
+        provider: "Vibecoding Akademie",
+        title: "Vibecoding Akademie I",
+        type: "Online kurz (Claude Code)",
+        year: "2026",
+      },
+      {
+        provider: "Vibecoding Akademie",
+        title: "Vibecoding Basecamp",
+        type: "Online kurz (Lovable)",
+        year: "2026",
+      },
+      {
+        provider: "University of Michigan",
+        title: "Web Design for Everybody",
+        type: "Specializace (certifikát)",
+        year: "12/2025",
+      },
+      {
+        provider: "University College Prague",
+        title: "Destination Management",
+        type: "Bakalářský titul",
+        year: null,
+      },
       { provider: "PrimaKurzy", title: "Vývoj webových aplikací", type: "Kurz", year: null },
       { provider: "Coursera", title: "Crash Course on Python", type: "Online kurz", year: null },
     ] satisfies Education[],
@@ -314,7 +385,12 @@ const cs = {
     title: ["Máte nápad na web", "nebo digitální aplikaci?"],
     text: "Ráda se zapojím do tvorby webových stránek, aplikací s\u00a0pomocí AI nebo projektů, kde mohu propojit vývoj, testování a\u00a0zákaznickou zkušenost. Jsem otevřená projektové spolupráci i\u00a0příležitostem v\u00a0digitálních týmech.",
     areasTitle: "Kde se ráda zapojím",
-    areas: ["Aplikace s\u00a0pomocí AI", "Testování a\u00a0QA", "Tvorba webových stránek", "Zákaznická zkušenost"],
+    areas: [
+      "Aplikace s\u00a0pomocí AI",
+      "Testování a\u00a0QA",
+      "Tvorba webových stránek",
+      "Zákaznická zkušenost",
+    ],
     emailCta: "Napište mi e-mail",
   },
   footer: {

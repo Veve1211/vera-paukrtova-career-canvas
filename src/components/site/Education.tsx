@@ -18,13 +18,20 @@ export function Education() {
               delay={i * 70}
               className="group relative overflow-hidden rounded-2xl border border-border bg-card p-7 shadow-soft transition-all duration-500 hover:-translate-y-1 hover:border-primary/30 sm:p-9"
             >
-              <div aria-hidden className="absolute -top-16 -right-16 size-40 rounded-full bg-lilac opacity-0 blur-2xl transition-opacity duration-700 group-hover:opacity-100" />
+              <div
+                aria-hidden
+                className="absolute -top-16 -right-16 size-40 rounded-full bg-lilac opacity-0 blur-2xl transition-opacity duration-700 group-hover:opacity-100"
+              />
               <div className="relative">
                 <div className="flex items-center justify-between gap-4">
                   <p className="eyebrow text-primary">{item.type}</p>
-                  {item.year && <p className="font-display text-sm text-muted-foreground italic">{item.year}</p>}
+                  {item.year && (
+                    <p className="font-display text-sm text-muted-foreground italic">{item.year}</p>
+                  )}
                 </div>
-                <h3 className="font-display mt-5 text-2xl text-foreground sm:text-[1.7rem]">{item.title}</h3>
+                <h3 className="font-display mt-5 text-2xl text-foreground sm:text-[1.7rem]">
+                  {item.title}
+                </h3>
                 <p className="mt-2 text-sm text-muted-foreground">{item.provider}</p>
               </div>
             </Reveal>

@@ -27,7 +27,10 @@ export const Route = createFileRoute("/")({
       { property: "og:image", content: ogImage },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "627" },
-      { property: "og:image:alt", content: "Věra Paukrtová – weby a aplikace s pomocí AI, QA a zákaznická zkušenost" },
+      {
+        property: "og:image:alt",
+        content: "Věra Paukrtová – weby a aplikace s pomocí AI, QA a zákaznická zkušenost",
+      },
       { property: "og:locale", content: "cs_CZ" },
       { property: "profile:first_name", content: "Věra" },
       { property: "profile:last_name", content: "Paukrtová" },

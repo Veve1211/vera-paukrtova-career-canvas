@@ -21,7 +21,11 @@ function Portrait() {
       <div className="arch relative aspect-[4/5] overflow-hidden border border-primary/15 bg-veil shadow-lift">
         {failed ? (
           // Photo missing: a calm monogram instead of a broken image or stray alt text.
-          <div role="img" aria-label={t.ui.portraitAlt} className="grid size-full place-items-center">
+          <div
+            role="img"
+            aria-label={t.ui.portraitAlt}
+            className="grid size-full place-items-center"
+          >
             <span aria-hidden className="font-display text-8xl text-primary/70 italic sm:text-9xl">
               VP
             </span>
@@ -68,7 +72,11 @@ export function Hero() {
   const companies = t.experience.items.map((e) => e.company);
 
   return (
-    <section id="top" aria-labelledby="hero-title" className="relative overflow-hidden pt-28 pb-20 sm:pt-36 lg:pt-40 lg:pb-28">
+    <section
+      id="top"
+      aria-labelledby="hero-title"
+      className="relative overflow-hidden pt-28 pb-20 sm:pt-36 lg:pt-40 lg:pb-28"
+    >
       <div aria-hidden className="pointer-events-none absolute inset-0 bg-aura" />
       <div className="relative mx-auto grid max-w-7xl gap-14 px-5 sm:px-8 lg:grid-cols-12 lg:items-center lg:gap-12">
         <div className="lg:col-span-7">
@@ -87,28 +95,42 @@ export function Hero() {
           </Reveal>
 
           <Reveal delay={160}>
-            <p className="mt-7 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">{h.intro}</p>
+            <p className="mt-7 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+              {h.intro}
+            </p>
           </Reveal>
 
-          <Reveal delay={220} className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+          <Reveal
+            delay={220}
+            className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
+          >
             <a
               href="#projekty"
               className="group inline-flex items-center justify-center gap-2 rounded-full bg-violet-gradient px-6 py-3.5 text-sm font-medium text-primary-foreground shadow-soft transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5 hover:shadow-lift"
             >
               {h.ctaProjects}
-              <ArrowDown className="size-4 transition-transform group-hover:translate-y-0.5" aria-hidden />
+              <ArrowDown
+                className="size-4 transition-transform group-hover:translate-y-0.5"
+                aria-hidden
+              />
             </a>
             <a
               href="#kontakt"
               className="group inline-flex items-center justify-center gap-2 rounded-full border border-foreground/20 bg-card/70 px-6 py-3.5 text-sm font-medium text-foreground transition-colors duration-300 hover:border-primary hover:text-primary"
             >
               {h.ctaContact}
-              <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
+              <ArrowRight
+                className="size-4 transition-transform group-hover:translate-x-0.5"
+                aria-hidden
+              />
             </a>
           </Reveal>
 
           <Reveal delay={280} className="mt-9">
-            <ul aria-label={h.highlightsLabel} className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm font-medium text-foreground">
+            <ul
+              aria-label={h.highlightsLabel}
+              className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm font-medium text-foreground"
+            >
               {h.highlights.map((item, i) => (
                 <li key={item} className="flex items-center gap-3">
                   {i > 0 && <span aria-hidden className="size-1 rounded-full bg-primary/60" />}
@@ -118,7 +140,10 @@ export function Hero() {
             </ul>
           </Reveal>
 
-          <Reveal delay={340} className="mt-10 grid gap-3 border-t border-border pt-6 sm:grid-cols-[auto_1fr] sm:items-baseline sm:gap-8">
+          <Reveal
+            delay={340}
+            className="mt-10 grid gap-3 border-t border-border pt-6 sm:grid-cols-[auto_1fr] sm:items-baseline sm:gap-8"
+          >
             <p className="eyebrow text-muted-foreground">{h.proofLabel}</p>
             <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between">
               <p className="font-display text-base text-foreground sm:text-lg">
