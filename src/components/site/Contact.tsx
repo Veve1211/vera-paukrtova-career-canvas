@@ -6,8 +6,7 @@ import { CvButton } from "./CvButton";
 import { Reveal } from "./Reveal";
 
 export function Contact() {
-  const t = content;
-  const c = t.contact;
+  const c = content.contact;
   return (
     <section id="kontakt" aria-labelledby="contact-title" className="px-3 pb-3 sm:px-5 sm:pb-5">
       <div className="relative overflow-hidden rounded-[2rem] bg-night px-5 py-20 text-night-foreground sm:rounded-[2.5rem] sm:px-8 sm:py-28">
@@ -67,7 +66,7 @@ export function Contact() {
                     className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
                     aria-hidden
                   />
-                  <span className="sr-only">{t.ui.newTab}</span>
+                  <span className="sr-only">{content.ui.newTab}</span>
                 </a>
               </div>
               {/* Appears automatically once links.cvPdf is set */}

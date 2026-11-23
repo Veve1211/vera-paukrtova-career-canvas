@@ -6,8 +6,7 @@ import cveckoMobile from "@/assets/project-cvecko-mobile.webp";
 import cveckoShot from "@/assets/project-cvecko.webp";
 import paukrtMobile from "@/assets/project-paukrt-mobile.webp";
 import paukrtShot from "@/assets/project-paukrt.webp";
-import type { Project } from "@/content/site";
-import { content } from "@/content/site";
+import { content, type Project } from "@/content/site";
 import { cn } from "@/lib/utils";
 
 import { Reveal } from "./Reveal";
@@ -56,7 +55,6 @@ function KompletoPreview({ label }: { label: string }) {
 }
 
 function Preview({ project }: { project: Project }) {
-  const t = content;
   const shot = screenshots[project.id];
   return (
     <div className="relative pb-8 sm:pb-10">
@@ -73,7 +71,7 @@ function Preview({ project }: { project: Project }) {
           {shot ? (
             <img
               src={shot.desktop}
-              alt={`${project.name} — ${t.ui.desktopView}`}
+              alt={`${project.name} — ${content.ui.desktopView}`}
               loading="lazy"
               decoding="async"
               width={1440}
@@ -81,7 +79,7 @@ function Preview({ project }: { project: Project }) {
               className="size-full object-cover object-top transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
             />
           ) : (
-            <KompletoPreview label={t.ui.conceptIllustration} />
+            <KompletoPreview label={content.ui.conceptIllustration} />
           )}
         </div>
       </div>
@@ -89,7 +87,7 @@ function Preview({ project }: { project: Project }) {
         <div className="absolute right-3 bottom-0 w-[24%] min-w-[5.5rem] max-w-[9.5rem] overflow-hidden rounded-[1.1rem] border-[5px] border-night bg-night shadow-lift transition-transform duration-700 ease-out group-hover:-translate-y-1.5 sm:right-6 sm:rounded-[1.4rem]">
           <img
             src={shot.mobile}
-            alt={`${project.name} — ${t.ui.mobileView}`}
+            alt={`${project.name} — ${content.ui.mobileView}`}
             loading="lazy"
             decoding="async"
             width={540}
@@ -102,8 +100,17 @@ function Preview({ project }: { project: Project }) {
   );
 }
 
-function ProjectCard({ project, index }: { project: Project; index: number }) {
-  const t = content;
+function ProjectCard({
+  project,
+  index,
+  headingLevel = "h3",
+}: {
+  project: Project;
+  index: number;
+  /** Upcoming projects sit under their own h3, so their cards use h4. */
+  headingLevel?: "h3" | "h4";
+}) {
+  const Heading = headingLevel;
   const flip = index % 2 === 1;
   const concept = project.status === "concept";
 
@@ -136,22 +143,22 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           </div>
         )}
 
-        <h3
+        <Heading
           id={`project-${project.id}`}
           className={cn("font-display text-4xl text-foreground sm:text-5xl", !concept && "mt-4")}
         >
           {project.name}
-        </h3>
+        </Heading>
         <p className="eyebrow mt-3 leading-relaxed text-muted-foreground">{project.kind}</p>
 
         <dl className="mt-7 grid gap-5 border-t border-border pt-6">
           <div>
-            <dt className="eyebrow text-primary">{t.ui.whatItDoes}</dt>
+            <dt className="eyebrow text-primary">{content.ui.whatItDoes}</dt>
             <dd className="mt-2 text-base leading-relaxed text-foreground">{project.summary}</dd>
           </div>
           {project.problem && (
             <div>
-              <dt className="eyebrow text-primary">{t.ui.problem}</dt>
+              <dt className="eyebrow text-primary">{content.ui.problem}</dt>
               <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">
                 {project.problem}
               </dd>
@@ -159,13 +166,13 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           )}
           {project.role && (
             <div>
-              <dt className="eyebrow text-primary">{t.ui.role}</dt>
+              <dt className="eyebrow text-primary">{content.ui.role}</dt>
               <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">{project.role}</dd>
             </div>
           )}
           {project.state && (
             <div>
-              <dt className="eyebrow text-primary">{t.ui.state}</dt>
+              <dt className="eyebrow text-primary">{content.ui.state}</dt>
               <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">
                 {project.state}
               </dd>
@@ -173,7 +180,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           )}
           {project.tech.length > 0 && (
             <div>
-              <dt className="eyebrow text-primary">{t.ui.tech}</dt>
+              <dt className="eyebrow text-primary">{content.ui.tech}</dt>
               <dd className="mt-3">
                 <ul className="flex flex-wrap gap-2">
                   {project.tech.map((tech) => (
@@ -204,7 +211,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                   className="size-4 transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5"
                   aria-hidden
                 />
-                <span className="sr-only">{t.ui.newTab}</span>
+                <span className="sr-only">{content.ui.newTab}</span>
               </a>
             )}
             {project.github && (
@@ -215,8 +222,8 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                 className="inline-flex min-h-11 min-w-11 items-center gap-2 text-sm font-medium text-foreground hover:text-primary"
               >
                 <Github className="size-4" aria-hidden />
-                {t.ui.github}
-                <span className="sr-only">{t.ui.newTab}</span>
+                {content.ui.github}
+                <span className="sr-only">{content.ui.newTab}</span>
               </a>
             )}
           </div>
@@ -227,8 +234,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 }
 
 export function Projects() {
-  const t = content;
-  const p = t.projects;
+  const p = content.projects;
   const live = p.items.filter((project) => project.status !== "concept");
   const upcoming = p.items.filter((project) => project.status === "concept");
   return (
@@ -253,7 +259,7 @@ export function Projects() {
             </Reveal>
             <div className="mt-8 grid gap-8 sm:mt-10 sm:gap-10">
               {upcoming.map((project, i) => (
-                <ProjectCard key={project.id} project={project} index={i} />
+                <ProjectCard key={project.id} project={project} index={i} headingLevel="h4" />
               ))}
             </div>
           </div>

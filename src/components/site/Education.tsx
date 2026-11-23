@@ -4,8 +4,7 @@ import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 
 export function Education() {
-  const t = content;
-  const e = t.education;
+  const e = content.education;
   return (
     <section id="vzdelani" className="py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">

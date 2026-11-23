@@ -2,11 +2,8 @@
  * All texts, projects, experience and links of the website live here.
  * Edit this file to update the content. The site is Czech only.
  *
- * Fill-in-later fields (keep `null` until you have the real value — the site hides them):
- *  - links.cvPdf       → path to the CV PDF, e.g. "/cv-vera-paukrtova.pdf" (put the file into /public);
- *                        the "Download CV" button appears only once this is set
- *  - project.github    → GitHub repository URL (the link appears only once set)
- *  - education.year    → e.g. "2016"
+ * Optional fields stay `null` (or are left out) until the real value is known; the site
+ * then hides them: links.email, links.cvPdf, project.url / github, education.year.
  */
 
 export const siteUrl = "https://verapaukrtova.cz";
@@ -14,7 +11,6 @@ export const siteUrl = "https://verapaukrtova.cz";
 export const links = {
   linkedin: "https://www.linkedin.com/in/vera-paukrtova/",
   email: "paukrtovavera@seznam.cz" as string | null,
-  github: "https://github.com/Veve1211",
   cvPdf: "/cv-vera-paukrtova.pdf" as string | null,
 };
 
@@ -28,13 +24,11 @@ export type Project = {
   statusLabel: string;
   /** What the app does. */
   summary: string;
-  /** Which problem it solves. */
-  /** Optional: left out when it would repeat the summary. */
+  /** Which problem it solves. Optional: left out when it would repeat the summary. */
   problem?: string;
   /** Věra's role in the project. Optional: left out when not stated. */
   role?: string;
-  /** Current state of the project. */
-  /** Optional: left out when the status label says it all. */
+  /** Current state of the project. Optional: left out when the status label says it all. */
   state?: string;
   /** Only technologies that are documented (brief, Věra's own words, or what the live app reports). */
   tech: string[];
@@ -89,6 +83,8 @@ const cs = {
       "Věra Paukrtová – weby a\u00a0aplikace s\u00a0pomocí AI | QA a\u00a0zákaznická zkušenost",
     description:
       "Věra Paukrtová tvoří weby a\u00a0aplikace s\u00a0pomocí AI a\u00a0propojuje je s\u00a0praxí z\u00a0QA, UAT testování a\u00a0zákaznické zkušenosti. Projekty CVéčko a\u00a0Český král.",
+    /** Topics for the search-engine profile (JSON-LD). */
+    knowsAbout: ["Tvorba webů s\u00a0pomocí AI", "QA", "UAT testování", "Zákaznická zkušenost"],
   },
   skipLink: "Přeskočit na obsah",
   nav: [

@@ -7,8 +7,7 @@ import { content } from "@/content/site";
 import { Reveal } from "./Reveal";
 
 function Portrait() {
-  const t = content;
-  const ring = `${t.hero.seal} · `;
+  const ring = `${content.hero.seal} · `;
   const imgRef = useRef<HTMLImageElement>(null);
   const [failed, setFailed] = useState(false);
   // The image may fail before React hydrates (onError would be missed): check once on mount.
@@ -23,7 +22,7 @@ function Portrait() {
           // Photo missing: a calm monogram instead of a broken image or stray alt text.
           <div
             role="img"
-            aria-label={t.ui.portraitAlt}
+            aria-label={content.ui.portraitAlt}
             className="grid size-full place-items-center"
           >
             <span aria-hidden className="font-display text-8xl text-primary/70 italic sm:text-9xl">
@@ -34,7 +33,7 @@ function Portrait() {
           <img
             ref={imgRef}
             src="/portrait.jpg"
-            alt={t.ui.portraitAlt}
+            alt={content.ui.portraitAlt}
             width={1024}
             height={1280}
             loading="eager"
@@ -67,9 +66,8 @@ function Portrait() {
 }
 
 export function Hero() {
-  const t = content;
-  const h = t.hero;
-  const companies = t.experience.items.map((e) => e.company);
+  const h = content.hero;
+  const companies = content.experience.items.map((e) => e.company);
 
   return (
     <section

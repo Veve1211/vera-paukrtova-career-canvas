@@ -5,7 +5,6 @@ import { cn } from "@/lib/utils";
 
 /** "Download CV" — renders only once links.cvPdf is set in src/content/site.ts. */
 export function CvButton({ className }: { className?: string }) {
-  const t = content;
   if (!links.cvPdf) return null;
   return (
     <a
@@ -19,8 +18,8 @@ export function CvButton({ className }: { className?: string }) {
       )}
     >
       <Download className="size-4" aria-hidden />
-      {t.ui.downloadCv}
-      <span className="sr-only">{t.ui.newTab}</span>
+      {content.ui.downloadCv}
+      <span className="sr-only">{content.ui.newTab}</span>
     </a>
   );
 }
