@@ -1,18 +1,15 @@
-import type { Experience as Job } from "@/content/site";
-
-import { content } from "@/content/site";
+import { content, type Experience as Job } from "@/content/site";
 
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 
 function Meta({ job }: { job: Job }) {
-  const t = content;
   return (
     <div className="flex flex-wrap items-center gap-3">
       {job.current && (
         <span className="inline-flex items-center gap-1.5 rounded-full bg-lilac px-2.5 py-0.5 text-xs font-medium text-primary">
           <span className="size-1.5 rounded-full bg-violet" aria-hidden />
-          {t.ui.current}
+          {content.ui.current}
         </span>
       )}
       {job.period && (
@@ -23,7 +20,6 @@ function Meta({ job }: { job: Job }) {
 }
 
 function FeaturedJob({ job, delay }: { job: Job; delay: number }) {
-  const t = content;
   return (
     <Reveal
       as="li"
@@ -40,7 +36,7 @@ function FeaturedJob({ job, delay }: { job: Job; delay: number }) {
       <div className="md:col-span-8">
         <p className="max-w-2xl text-base leading-relaxed text-muted-foreground">{job.summary}</p>
         <div className="mt-5 rounded-2xl bg-lilac/60 p-4 sm:p-5">
-          <p className="eyebrow text-primary">{t.ui.transfer}</p>
+          <p className="eyebrow text-primary">{content.ui.transfer}</p>
           <p className="mt-2 text-sm leading-relaxed text-foreground">{job.transfer}</p>
         </div>
         <ul className="mt-5 flex flex-wrap gap-2">
@@ -81,8 +77,7 @@ function CompactJob({ job, delay }: { job: Job; delay: number }) {
 }
 
 export function Experience() {
-  const t = content;
-  const e = t.experience;
+  const e = content.experience;
   const featured = e.items.filter((j) => j.featured);
   const other = e.items.filter((j) => !j.featured);
   return (
@@ -98,7 +93,7 @@ export function Experience() {
 
         {other.length > 0 && (
           <div className="mt-16">
-            <h3 className="eyebrow text-primary">{t.ui.moreExperience}</h3>
+            <h3 className="eyebrow text-primary">{content.ui.moreExperience}</h3>
             <ul className="mt-4 border-b border-border">
               {other.map((job, i) => (
                 <CompactJob key={job.company} job={job} delay={i * 60} />

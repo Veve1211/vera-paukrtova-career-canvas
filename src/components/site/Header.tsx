@@ -7,7 +7,6 @@ import { cn } from "@/lib/utils";
 import { CvButton } from "./CvButton";
 
 export function Header() {
-  const t = content;
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState<string | null>(null);
@@ -20,7 +19,7 @@ export function Header() {
   }, []);
 
   useEffect(() => {
-    const sections = t.nav
+    const sections = content.nav
       .map((n) => document.getElementById(n.id))
       .filter((el): el is HTMLElement => Boolean(el));
     const io = new IntersectionObserver(
@@ -33,7 +32,7 @@ export function Header() {
     );
     sections.forEach((s) => io.observe(s));
     return () => io.disconnect();
-  }, [t.nav]);
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -61,9 +60,9 @@ export function Header() {
           <span className="font-display hidden text-lg sm:inline">Věra Paukrtová</span>
         </a>
 
-        <nav aria-label={t.ui.mainNav} className="hidden lg:block">
+        <nav aria-label={content.ui.mainNav} className="hidden lg:block">
           <ul className="flex items-center gap-1">
-            {t.nav.map((n) => (
+            {content.nav.map((n) => (
               <li key={n.id}>
                 <a
                   href={`#${n.id}`}
@@ -96,7 +95,7 @@ export function Header() {
             className="grid size-10 place-items-center rounded-full border border-border lg:hidden"
             aria-expanded={open}
             aria-controls="mobile-menu"
-            aria-label={open ? t.ui.menuClose : t.ui.menuOpen}
+            aria-label={open ? content.ui.menuClose : content.ui.menuOpen}
             onClick={() => setOpen((v) => !v)}
           >
             {open ? <X className="size-4" /> : <Menu className="size-4" />}
@@ -105,9 +104,9 @@ export function Header() {
       </div>
 
       <div id="mobile-menu" hidden={!open} className="border-t border-border/70 lg:hidden">
-        <nav aria-label={t.ui.mobileNav} className="mx-auto max-w-7xl px-5 py-6 sm:px-8">
+        <nav aria-label={content.ui.mobileNav} className="mx-auto max-w-7xl px-5 py-6 sm:px-8">
           <ul className="grid gap-1">
-            {t.nav.map((n, i) => (
+            {content.nav.map((n, i) => (
               <li key={n.id}>
                 <a
                   href={`#${n.id}`}

@@ -6,9 +6,11 @@ import { content } from "@/content/site";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 
+const QUOTE_OPEN = "„";
+const QUOTE_CLOSE = "“";
+
 export function Approach() {
   const a = content.approach;
-  const [qo, qc] = ["„", "“"];
   return (
     <section
       id="pristup"
@@ -97,9 +99,9 @@ export function Approach() {
                   className="border-l border-orchid/50 pl-5"
                 >
                   <blockquote className="font-display text-xl leading-snug sm:text-2xl">
-                    {qo}
+                    {QUOTE_OPEN}
                     {quote}
-                    {qc}
+                    {QUOTE_CLOSE}
                   </blockquote>
                 </Reveal>
               ))}
