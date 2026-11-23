@@ -53,11 +53,15 @@ export function Header() {
       )}
     >
       <div className="mx-auto flex h-18 max-w-7xl items-center justify-between gap-6 px-5 sm:px-8">
-        <a href="#top" className="group flex items-center gap-3" aria-label="Věra Paukrtová">
-          <span className="font-display grid size-10 place-items-center rounded-full border border-primary/30 text-lg text-primary italic transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+        {/* The name is the link text (screen-reader only on phones), so the visible text matches the accessible name. */}
+        <a href="#top" className="group flex items-center gap-3">
+          <span
+            aria-hidden
+            className="font-display grid size-10 place-items-center rounded-full border border-primary/30 text-lg text-primary italic transition-colors group-hover:bg-primary group-hover:text-primary-foreground"
+          >
             VP
           </span>
-          <span className="font-display hidden text-lg sm:inline">Věra Paukrtová</span>
+          <span className="font-display sr-only text-lg sm:not-sr-only">Věra Paukrtová</span>
         </a>
 
         <nav aria-label={content.ui.mainNav} className="hidden lg:block">

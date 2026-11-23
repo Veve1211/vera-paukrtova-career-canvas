@@ -24,6 +24,12 @@ describe("site content", () => {
     expect(links.email === null || /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(links.email)).toBe(true);
   });
 
+  it("gives every live project one checkable result", () => {
+    for (const p of content.projects.items.filter((p) => p.status === "live")) {
+      expect(p.result, p.id).toMatch(/\d/);
+    }
+  });
+
   it("sums up the projects in the hero", () => {
     expect(plain(content.hero.proofProjects)).toBe("2 živé aplikace · 1 web · 1 připravuju");
   });
