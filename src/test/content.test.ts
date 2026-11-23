@@ -31,7 +31,7 @@ describe("site content", () => {
   });
 
   it("sums up the projects in the hero", () => {
-    expect(plain(content.hero.proofProjects)).toBe("2 živé aplikace · 1 web · 1 připravuju");
+    expect(plain(content.hero.proofProjects)).toBe("2 živé aplikace · 1 web · 1 připravuji");
   });
 });
 
