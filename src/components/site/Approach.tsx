@@ -109,12 +109,13 @@ export function Approach() {
             </Reveal>
           </div>
           <Reveal delay={120} className="lg:col-span-4">
-            <h3 className="eyebrow text-orchid">{a.learningTitle}</h3>
-            <ul className="mt-6 flex flex-wrap gap-2">
-              {a.learning.map((item) => (
+            <h3 className="eyebrow text-orchid">{a.toolsTitle}</h3>
+            <p className="mt-4 text-sm leading-relaxed text-night-foreground/85">{a.toolsNote}</p>
+            <ul className="mt-5 flex flex-wrap gap-2">
+              {a.tools.map((item) => (
                 <li
                   key={item}
-                  className="rounded-full border border-dashed border-night-foreground/30 px-3 py-1 text-sm text-night-foreground/90"
+                  className="rounded-full border border-night-foreground/30 px-3 py-1 text-sm text-night-foreground/90"
                 >
                   {item}
                 </li>
