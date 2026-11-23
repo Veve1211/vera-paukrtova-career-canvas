@@ -30,6 +30,8 @@ export type Project = {
   role?: string;
   /** Current state of the project. Optional: left out when the status label says it all. */
   state?: string;
+  /** One verifiable result: a number or a finding someone can check. Optional. */
+  result?: string;
   /** Only technologies that are documented (brief, Věra's own words, or what the live app reports). */
   tech: string[];
   url: string | null;
@@ -105,6 +107,7 @@ const cs = {
     problem: "Jaký problém řeší",
     role: "Moje role",
     state: "Aktuální stav",
+    result: "Výsledek",
     tech: "Technologie",
     current: "Aktuálně",
     transfer: "Co z\u00a0toho využívám v\u00a0digitálních produktech",
@@ -154,6 +157,8 @@ const cs = {
         role: "Nápad, návrh funkcí a\u00a0uživatelského postupu, vývoj s\u00a0pomocí AI přes prompty, testování a\u00a0nasazení.",
         state:
           "Aplikace je v\u00a0provozu. Do budoucna ji chci rozšířit na celou cestu hledáním práce — s\u00a0myšlenkou i\u00a0na lidi s\u00a0roztroušenou sklerózou.",
+        result:
+          "Pojistka v\u00a0kódu porovná firmy, roky, čísla i\u00a0dovednosti v\u00a0životopisu s\u00a0původním textem a\u00a0co v\u00a0něm nebylo, žlutě podtrhne. Každou změnu hlídá 158 jednotkových testů a\u00a0226 testů v\u00a0prohlížeči, bezpečnost prošla auditem ve dvou kolech.",
         tech: ["Next.js", "Railway", "GitHub", "vývoj s\u00a0pomocí AI"],
         urlLabel: "Otevřít cvecko.cz",
         ...projectMeta.cvecko,
@@ -171,6 +176,8 @@ const cs = {
         role: "Moje úplně první aplikace: návrh herní logiky, prompty pro AI, testování v\u00a0Playwrightu a\u00a0nasazení na Railway.",
         state:
           "Hra je v\u00a0provozu a\u00a0zahrát si ji může kdokoli. Byla to moje první cesta od nápadu až k\u00a0živé aplikaci.",
+        result:
+          "162 otázek, u\u00a0každé ověřený zdroj. Správnou odpověď i\u00a0skóre zná jen server, takže je hráč nemůže podvrhnout.",
         tech: ["Next.js", "Railway", "Playwright", "vývoj s\u00a0pomocí AI"],
         urlLabel: "Zahrát si Českého krále",
         ...projectMeta["cesky-kral"],
@@ -196,6 +203,8 @@ const cs = {
         statusLabel: "Živý web",
         summary:
           "Osobní prezentace a\u00a0CV inženýra pro návrh silnic a\u00a0křižovatek. Dvojjazyčný web (EN/CZ) s\u00a0modrým vizuálem inspirovaným dopravním modelem.",
+        result:
+          "Každá stránka v\u00a0angličtině i\u00a0češtině prochází automatickou kontrolou přístupnosti (WCAG 2.1 AA) na počítači, tabletu i\u00a0mobilu.",
         tech: ["Lovable", "React", "GitHub"],
         urlLabel: "Zobrazit web",
         ...projectMeta.paukrt,

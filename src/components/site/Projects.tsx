@@ -178,6 +178,12 @@ function ProjectCard({
               </dd>
             </div>
           )}
+          {project.result && (
+            <div>
+              <dt className="eyebrow text-primary">{content.ui.result}</dt>
+              <dd className="mt-2 text-sm leading-relaxed text-foreground">{project.result}</dd>
+            </div>
+          )}
           {project.tech.length > 0 && (
             <div>
               <dt className="eyebrow text-primary">{content.ui.tech}</dt>
