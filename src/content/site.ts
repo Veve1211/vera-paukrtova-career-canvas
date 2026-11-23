@@ -136,12 +136,12 @@ const cs = {
     ],
     seal: "Přemýšlím jako zákazník, hlídám kvalitu, tvořím s\u00a0AI.",
     proofLabel: "Praxe z",
-    proofProjects: "2 živé aplikace · 1 web · 1 připravuju",
+    proofProjects: "2 živé aplikace · 1 web · 1 připravuji",
   },
   projects: {
     index: "01",
     label: "Projekty",
-    upcomingTitle: "Připravuju",
+    upcomingTitle: "Připravuji",
     title: ["Aplikace, které", "si můžete vyzkoušet."],
     intro:
       "Píšu prompty, navrhuji logiku, testuji v\u00a0Playwrightu a\u00a0nasazuji na Railway. Nejvíc mě baví začátek, kdy se z\u00a0myšlenky stává něco skutečného — a\u00a0pak postupné dolaďování, dokud to není přesně takové, jaké to chci mít.",
@@ -177,7 +177,7 @@ const cs = {
         state:
           "Hra je v\u00a0provozu a\u00a0zahrát si ji může kdokoli. Byla to moje první cesta od nápadu až k\u00a0živé aplikaci.",
         result:
-          "162 otázek, u\u00a0každé ověřený zdroj. Správnou odpověď i\u00a0skóre zná jen server, takže je hráč nemůže podvrhnout.",
+          "18 panovníků a\u00a0162 otázek, u\u00a0každé odkaz na zdroj. Správnou odpověď zná jen server a\u00a0skóre do žebříčků počítá jen on, takže ho hráč nemůže podvrhnout.",
         tech: ["Next.js", "Railway", "Playwright", "vývoj s\u00a0pomocí AI"],
         urlLabel: "Zahrát si Českého krále",
         ...projectMeta["cesky-kral"],
@@ -187,7 +187,7 @@ const cs = {
         name: "Kompleto",
         kind: "Koncept platformy",
         status: "concept",
-        statusLabel: "Ve vývoji",
+        statusLabel: "Připravuji",
         summary:
           "Připravovaný koncept platformy, která má sdružit pracovní nabídky z\u00a0různých zdrojů na jednom místě. Dnes jsou rozházené po mnoha portálech a\u00a0hledání znamená procházet pořád dokola stejné weby.",
         role: "Nápad a\u00a0návrh konceptu — co má platforma umět a\u00a0jak by ji lidé používali.",
