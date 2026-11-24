@@ -73,8 +73,14 @@ const projectMeta = {
     url: "https://cesky-kral.up.railway.app",
     github: "https://github.com/Veve1211/cesky-kral",
   },
-  kompleto: { url: "https://kompleto-pr-ce.vercel.app/", github: null },
-  "ciste-recenze": { url: "https://verim-recenze-v-klidu.vercel.app/", github: null },
+  kompleto: {
+    url: "https://kompleto-pr-ce.vercel.app/",
+    github: "https://github.com/Veve1211/kompleto",
+  },
+  "ciste-recenze": {
+    url: "https://verim-recenze-v-klidu.vercel.app/",
+    github: "https://github.com/Veve1211/cista-recenze",
+  },
   paukrt: {
     url: "https://paukrt.lovable.app/",
     github: "https://github.com/Veve1211/transport-constellation-atlas",
