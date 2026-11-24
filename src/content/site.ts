@@ -185,7 +185,7 @@ const cs = {
         state:
           "Aplikace je v\u00a0provozu. Spolu s\u00a0Kompletem tvoří jeden projekt: celou cestu hledáním práce na jednom místě, zaměřenou i\u00a0na lidi s\u00a0roztroušenou sklerózou.",
         result:
-          "Pojistka v\u00a0kódu porovná firmy, roky, čísla i\u00a0dovednosti v\u00a0životopisu s\u00a0původním textem a\u00a0co v\u00a0něm nebylo, žlutě podtrhne. Každou změnu hlídá 158 jednotkových testů a\u00a0226 testů v\u00a0prohlížeči, bezpečnost prošla auditem ve dvou kolech.",
+          "Kód porovná firmy, roky, čísla i\u00a0dovednosti v\u00a0životopisu s\u00a0původním textem a\u00a0co v\u00a0něm nebylo, žlutě podtrhne. Každou změnu hlídá 158 jednotkových testů a\u00a0226 testů v\u00a0prohlížeči, bezpečnost prošla auditem ve dvou kolech.",
         tech: ["Next.js", "Claude Code", "Railway", "GitHub"],
         urlLabel: "Otevřít cvecko.cz",
         ...projectMeta.cvecko,
@@ -219,7 +219,7 @@ const cs = {
         summary: "Portfolio pro mého bratra, inženýra pro návrh silnic a\u00a0křižovatek.",
         about:
           "Osobní prezentace a\u00a0CV mého bratra, inženýra pro návrh silnic a\u00a0křižovatek. Dvojjazyčný web (EN/CZ) s\u00a0modrým vizuálem inspirovaným dopravním modelem.",
-        role: "Návrh, řízení projektu a\u00a0celkový dojem. Úprava textů, řízení animací a\u00a0testování.",
+        role: "Návrh a\u00a0řízení projektu, úprava textů, řízení animací a\u00a0testování.",
         state: "Web je v\u00a0provozu. Na tvorbu webových portfolií se chci dál zaměřit.",
         result:
           "Každá stránka v\u00a0angličtině i\u00a0češtině prochází automatickou kontrolou přístupnosti (WCAG 2.1 AA) na počítači, tabletu i\u00a0mobilu.",
@@ -235,12 +235,12 @@ const cs = {
         statusLabel: "Prototyp",
         mission: "jobs",
         summary:
-          "Vyhledávač práce, který má sdružit nabídky z\u00a0celého českého trhu a\u00a0nechat lidi přesně filtrovat. Zatím běží na ukázkových datech.",
+          "Vyhledávač práce, který má sdružit nabídky z\u00a0celého českého trhu a\u00a0nechat lidi filtrovat podle vlastních podmínek. Zatím běží na ukázkových datech.",
         about:
-          "Vyhledávač práce, který má jednou sdružit nabídky z\u00a0celého českého trhu na jednom místě a\u00a0nechat lidi přesně filtrovat: slova, která v\u00a0nabídce nechcete, minimální mzda, typ úvazku, práce z\u00a0domova nebo vhodnost pro OZP. Stejnou nabídku z\u00a0více portálů ukáže jen jednou.",
+          "Vyhledávač práce, který má jednou sdružit nabídky z\u00a0celého českého trhu na jednom místě a\u00a0nechat lidi filtrovat podle vlastních podmínek: slova, která v\u00a0nabídce nechcete, minimální mzda, typ úvazku, práce z\u00a0domova nebo vhodnost pro OZP. Stejnou nabídku z\u00a0více portálů ukáže jen jednou.",
         problem:
           "Vždycky mi enormně vadilo, jak jsou nabídky práce roztříštěné. Chci jedno místo, kam stačí se podívat — s\u00a0dokonalou filtrací.",
-        role: "Návrh, řízení projektu a\u00a0celkový dojem. Úprava textů, řízení animací a\u00a0testování.",
+        role: "Nápad vzešel z\u00a0mé vlastní nechuti k\u00a0roztříštěným nabídkám práce. Navrhla jsem filtry a\u00a0postup uživatele, vývoj v\u00a0Lovable jsem řídila prompty a\u00a0výsledek testovala.",
         state:
           "Prototyp běží na ukázkových datech. Spolu s\u00a0Cvéčkem tvoří jeden projekt o\u00a0hledání práce, zaměřený i\u00a0na lidi s\u00a0roztroušenou sklerózou. S\u00a0dalším vývojem určitě počítám.",
         tech: ["Lovable", "React", "TanStack Start"],
@@ -259,9 +259,9 @@ const cs = {
           "Aplikace odpovídá na jednu otázku: dá se věřit recenzím podniku? Ukáže skóre důvěryhodnosti 0–100, porovná hodnocení českých a\u00a0zahraničních recenzentů a\u00a0upozorní na podezřelé vzorce. Výsledek je odhad, ne důkaz.",
         problem:
           "Recenze na Googlu se dají zfalšovat. V\u00a0zahraničí už podobná kontrola funguje.",
-        role: "Návrh, řízení projektu a\u00a0celkový dojem. Úprava textů, řízení animací a\u00a0testování.",
+        role: "Nápad a\u00a0návrh toho, co aplikace hlídá a\u00a0jak výsledek ukáže (skóre 0–100 a\u00a0podezřelé vzorce). Vývoj v\u00a0Lovable jsem řídila prompty, texty upravovala a\u00a0aplikaci testovala.",
         state:
-          "Prototyp běží na ukázkových datech a\u00a0podnicích v\u00a0Praze. S\u00a0dalším vývojem určitě počítám.",
+          "Prototyp běží na ukázkových datech a\u00a0podnicích v\u00a0Praze.",
         tech: ["Lovable", "React", "TanStack Start"],
         urlLabel: "Vyzkoušet prototyp",
         ...projectMeta["ciste-recenze"],
