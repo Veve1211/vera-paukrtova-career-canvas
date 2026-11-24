@@ -83,3 +83,24 @@ test("no errors in the console", async ({ page }) => {
   await page.waitForLoadState("networkidle");
   expect(errors).toEqual([]);
 });
+
+test("a project card opens its detail with the link, Escape closes it", async ({ page }) => {
+  const project = content.projects.items.find((p) => p.id === "cesky-kral")!;
+  const card = page.getByRole("article", { name: project.name });
+  // The list shows only the summary; the link to the app lives in the detail.
+  await expect(card.getByRole("link", { name: new RegExp(project.urlLabel!) })).toBeHidden();
+  await card.getByRole("button", { name: /Více o\s+projektu/ }).click();
+  const dialog = page.getByRole("dialog", { name: project.name });
+  await expect(dialog).toBeVisible();
+  await expect(dialog.getByRole("link", { name: new RegExp(project.urlLabel!) })).toHaveAttribute(
+    "href",
+    project.url!,
+  );
+  const results = await new AxeBuilder({ page })
+    .include("dialog[open]")
+    .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
+    .analyze();
+  expect(results.violations).toEqual([]);
+  await page.keyboard.press("Escape");
+  await expect(dialog).toBeHidden();
+});

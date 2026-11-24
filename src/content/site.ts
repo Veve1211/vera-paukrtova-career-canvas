@@ -23,8 +23,10 @@ export type Project = {
   /** live = in use, prototype = clickable demo on sample data, concept = idea without a link. */
   status: "live" | "prototype" | "concept";
   statusLabel: string;
-  /** What the app does. */
+  /** What the app does – short, shown on the project list. */
   summary: string;
+  /** Longer description for the project detail. Optional: the detail falls back to `summary`. */
+  about?: string;
   /** Which problem it solves. Optional: left out when it would repeat the summary. */
   problem?: string;
   /** Věra's role in the project. Optional: left out when not stated. */
@@ -106,6 +108,8 @@ const cs = {
     downloadCv: "Stáhnout CV",
     github: "Kód na GitHubu",
     whatItDoes: "Co aplikace dělá",
+    moreAbout: "Více o\u00a0projektu",
+    closeDetail: "Zavřít detail projektu",
     problem: "Jaký problém řeší",
     role: "Moje role",
     state: "Aktuální stav",
@@ -138,7 +142,7 @@ const cs = {
     ],
     seal: "Přemýšlím jako zákazník, hlídám kvalitu, tvořím s\u00a0AI.",
     proofLabel: "Praxe z",
-    proofProjects: "2 živé aplikace · 2 prototypy · 1 web",
+    proofProjects: "2 živé aplikace · 1 web · 2 prototypy",
   },
   projects: {
     index: "01",
@@ -185,31 +189,6 @@ const cs = {
         ...projectMeta["cesky-kral"],
       },
       {
-        id: "kompleto",
-        name: "Kompleto",
-        kind: "Prototyp vyhledávače práce",
-        status: "prototype",
-        statusLabel: "Prototyp",
-        summary:
-          "Vyhledávač práce, který má jednou sdružit nabídky z\u00a0celého českého trhu na jednom místě a\u00a0nechat lidi přesně filtrovat: slova, která v\u00a0nabídce nechcete, minimální mzda, typ úvazku, práce z\u00a0domova nebo vhodnost pro OZP. Prototyp zatím běží na ukázkových datech.",
-        role: "Nápad a\u00a0návrh konceptu — co má platforma umět a\u00a0jak by ji lidé používali.",
-        tech: ["Lovable", "React", "TanStack Start", "vývoj s\u00a0pomocí AI"],
-        urlLabel: "Vyzkoušet prototyp",
-        ...projectMeta.kompleto,
-      },
-      {
-        id: "ciste-recenze",
-        name: "Čisté recenze",
-        kind: "Prototyp kontroly recenzí",
-        status: "prototype",
-        statusLabel: "Prototyp",
-        summary:
-          "Aplikace odpovídá na jednu otázku: dá se věřit recenzím podniku (zatím v\u00a0Praze)? Ukáže skóre důvěryhodnosti 0–100, porovná hodnocení českých a\u00a0zahraničních recenzentů a\u00a0upozorní na podezřelé vzorce. Výsledek je odhad, ne důkaz. Prototyp zatím běží na ukázkových datech.",
-        tech: ["Lovable", "React", "TanStack Start", "vývoj s\u00a0pomocí AI"],
-        urlLabel: "Vyzkoušet prototyp",
-        ...projectMeta["ciste-recenze"],
-      },
-      {
         id: "paukrt",
         name: "Profesní web dopravního inženýra",
         kind: "Osobní profesní web",
@@ -222,6 +201,34 @@ const cs = {
         tech: ["Lovable", "React", "GitHub"],
         urlLabel: "Zobrazit web",
         ...projectMeta.paukrt,
+      },
+      {
+        id: "kompleto",
+        name: "Kompleto",
+        kind: "Prototyp vyhledávače práce",
+        status: "prototype",
+        statusLabel: "Prototyp",
+        summary:
+          "Vyhledávač práce, který má sdružit nabídky z\u00a0celého českého trhu a\u00a0nechat lidi přesně filtrovat. Zatím běží na ukázkových datech.",
+        about:
+          "Vyhledávač práce, který má jednou sdružit nabídky z\u00a0celého českého trhu na jednom místě a\u00a0nechat lidi přesně filtrovat: slova, která v\u00a0nabídce nechcete, minimální mzda, typ úvazku, práce z\u00a0domova nebo vhodnost pro OZP. Stejnou nabídku z\u00a0více portálů ukáže jen jednou. Prototyp zatím běží na ukázkových datech.",
+        tech: ["Lovable", "React", "TanStack Start", "vývoj s\u00a0pomocí AI"],
+        urlLabel: "Vyzkoušet prototyp",
+        ...projectMeta.kompleto,
+      },
+      {
+        id: "ciste-recenze",
+        name: "Čisté recenze",
+        kind: "Prototyp kontroly recenzí",
+        status: "prototype",
+        statusLabel: "Prototyp",
+        summary:
+          "Ukáže, jestli se dá věřit recenzím podniku: skóre důvěryhodnosti a\u00a0podezřelé vzorce v\u00a0hodnoceních. Zatím běží na ukázkových datech.",
+        about:
+          "Aplikace odpovídá na jednu otázku: dá se věřit recenzím podniku? Ukáže skóre důvěryhodnosti 0–100, porovná hodnocení českých a\u00a0zahraničních recenzentů a\u00a0upozorní na podezřelé vzorce. Výsledek je odhad, ne důkaz. Prototyp zatím běží na ukázkových datech a\u00a0podnicích v\u00a0Praze.",
+        tech: ["Lovable", "React", "TanStack Start", "vývoj s\u00a0pomocí AI"],
+        urlLabel: "Vyzkoušet prototyp",
+        ...projectMeta["ciste-recenze"],
       },
     ] satisfies Project[],
   },

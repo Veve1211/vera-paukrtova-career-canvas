@@ -1,4 +1,5 @@
-import { ArrowUpRight, Github } from "lucide-react";
+import { useRef } from "react";
+import { ArrowRight, ArrowUpRight, Github, X } from "lucide-react";
 
 import ceskyKralMobile from "@/assets/project-cesky-kral-mobile.webp";
 import ceskyKralShot from "@/assets/project-cesky-kral.webp";
@@ -106,6 +107,150 @@ function Preview({ project }: { project: Project }) {
   );
 }
 
+/** Everything about one project: shown in the detail dialog, never on the list. */
+function ProjectDetails({ project }: { project: Project }) {
+  return (
+    <>
+      <dl className="grid gap-5 border-t border-border pt-6">
+        <div>
+          <dt className="eyebrow text-primary">{content.ui.whatItDoes}</dt>
+          <dd className="mt-2 text-base leading-relaxed text-foreground">
+            {project.about ?? project.summary}
+          </dd>
+        </div>
+        {project.problem && (
+          <div>
+            <dt className="eyebrow text-primary">{content.ui.problem}</dt>
+            <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              {project.problem}
+            </dd>
+          </div>
+        )}
+        {project.role && (
+          <div>
+            <dt className="eyebrow text-primary">{content.ui.role}</dt>
+            <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">{project.role}</dd>
+          </div>
+        )}
+        {project.state && (
+          <div>
+            <dt className="eyebrow text-primary">{content.ui.state}</dt>
+            <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">{project.state}</dd>
+          </div>
+        )}
+        {project.result && (
+          <div>
+            <dt className="eyebrow text-primary">{content.ui.result}</dt>
+            <dd className="mt-2 text-sm leading-relaxed text-foreground">{project.result}</dd>
+          </div>
+        )}
+        {project.tech.length > 0 && (
+          <div>
+            <dt className="eyebrow text-primary">{content.ui.tech}</dt>
+            <dd className="mt-3">
+              <ul className="flex flex-wrap gap-2">
+                {project.tech.map((tech) => (
+                  <li
+                    key={tech}
+                    className="rounded-full border border-border bg-background px-3 py-1 text-xs text-foreground"
+                  >
+                    {tech}
+                  </li>
+                ))}
+              </ul>
+            </dd>
+          </div>
+        )}
+      </dl>
+
+      {(project.url || project.github) && (
+        <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+          {project.url && project.urlLabel && (
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group/link inline-flex min-h-11 items-center gap-2 rounded-full bg-foreground px-5 py-3 text-sm font-medium text-background transition-colors duration-300 hover:bg-primary"
+            >
+              {project.urlLabel}
+              <ArrowUpRight
+                className="size-4 transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5"
+                aria-hidden
+              />
+              <span className="sr-only">{content.ui.newTab}</span>
+            </a>
+          )}
+          {project.github && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-11 min-w-11 items-center gap-2 text-sm font-medium text-foreground hover:text-primary"
+            >
+              <Github className="size-4" aria-hidden />
+              {content.ui.github}
+              <span className="sr-only">{content.ui.newTab}</span>
+            </a>
+          )}
+        </div>
+      )}
+    </>
+  );
+}
+
+/** Native <dialog>: Esc closes it, focus stays inside, the page behind is inert. */
+function ProjectDialog({
+  project,
+  dialogRef,
+}: {
+  project: Project;
+  dialogRef: React.RefObject<HTMLDialogElement | null>;
+}) {
+  return (
+    <dialog
+      ref={dialogRef}
+      aria-labelledby={`project-detail-${project.id}`}
+      onClick={(event) => {
+        // A click on the dimmed backdrop (the dialog element itself) closes it.
+        if (event.target === event.currentTarget) event.currentTarget.close();
+      }}
+      className="m-auto max-h-[100dvh] w-full max-w-none overflow-y-auto bg-background p-0 text-foreground backdrop:bg-night/70 sm:max-h-[90dvh] sm:max-w-3xl sm:rounded-[1.75rem] sm:border sm:border-border"
+    >
+      <div className="p-5 sm:p-8">
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-lilac px-2.5 py-1 text-xs font-medium text-primary">
+              <span className="size-1.5 rounded-full bg-violet" aria-hidden />
+              {project.statusLabel}
+            </span>
+            <h4
+              id={`project-detail-${project.id}`}
+              className="mt-4 font-display text-4xl text-foreground sm:text-5xl"
+            >
+              {project.name}
+            </h4>
+            <p className="eyebrow mt-3 leading-relaxed text-muted-foreground">{project.kind}</p>
+          </div>
+          <button
+            type="button"
+            onClick={() => dialogRef.current?.close()}
+            className="inline-flex size-11 shrink-0 items-center justify-center rounded-full border border-border text-foreground hover:border-primary hover:text-primary"
+          >
+            <X className="size-5" aria-hidden />
+            <span className="sr-only">{content.ui.closeDetail}</span>
+          </button>
+        </div>
+        <div className="mt-6">
+          <Preview project={project} />
+        </div>
+        <div className="mt-6">
+          <ProjectDetails project={project} />
+        </div>
+      </div>
+    </dialog>
+  );
+}
+
 function ProjectCard({
   project,
   index,
@@ -119,13 +264,14 @@ function ProjectCard({
   const Heading = headingLevel;
   const flip = index % 2 === 1;
   const concept = project.status === "concept";
+  const dialogRef = useRef<HTMLDialogElement>(null);
 
   return (
     <Reveal
       as="article"
       aria-labelledby={`project-${project.id}`}
       className={cn(
-        "group grid gap-10 rounded-[1.75rem] border p-5 transition-colors duration-500 sm:p-8 lg:grid-cols-12 lg:items-start lg:gap-12 lg:p-10",
+        "group relative grid gap-10 rounded-[1.75rem] border p-5 transition-colors duration-500 sm:p-8 lg:grid-cols-12 lg:items-center lg:gap-12 lg:p-10",
         concept
           ? "border-dashed border-primary/30 bg-background"
           : "border-border bg-card/70 hover:border-primary/25",
@@ -156,91 +302,21 @@ function ProjectCard({
           {project.name}
         </Heading>
         <p className="eyebrow mt-3 leading-relaxed text-muted-foreground">{project.kind}</p>
+        <p className="mt-6 text-base leading-relaxed text-foreground">{project.summary}</p>
 
-        <dl className="mt-7 grid gap-5 border-t border-border pt-6">
-          <div>
-            <dt className="eyebrow text-primary">{content.ui.whatItDoes}</dt>
-            <dd className="mt-2 text-base leading-relaxed text-foreground">{project.summary}</dd>
-          </div>
-          {project.problem && (
-            <div>
-              <dt className="eyebrow text-primary">{content.ui.problem}</dt>
-              <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                {project.problem}
-              </dd>
-            </div>
-          )}
-          {project.role && (
-            <div>
-              <dt className="eyebrow text-primary">{content.ui.role}</dt>
-              <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">{project.role}</dd>
-            </div>
-          )}
-          {project.state && (
-            <div>
-              <dt className="eyebrow text-primary">{content.ui.state}</dt>
-              <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                {project.state}
-              </dd>
-            </div>
-          )}
-          {project.result && (
-            <div>
-              <dt className="eyebrow text-primary">{content.ui.result}</dt>
-              <dd className="mt-2 text-sm leading-relaxed text-foreground">{project.result}</dd>
-            </div>
-          )}
-          {project.tech.length > 0 && (
-            <div>
-              <dt className="eyebrow text-primary">{content.ui.tech}</dt>
-              <dd className="mt-3">
-                <ul className="flex flex-wrap gap-2">
-                  {project.tech.map((tech) => (
-                    <li
-                      key={tech}
-                      className="rounded-full border border-border bg-background px-3 py-1 text-xs text-foreground"
-                    >
-                      {tech}
-                    </li>
-                  ))}
-                </ul>
-              </dd>
-            </div>
-          )}
-        </dl>
-
-        {(project.url || project.github) && (
-          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-            {project.url && project.urlLabel && (
-              <a
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group/link inline-flex min-h-11 items-center gap-2 rounded-full bg-foreground px-5 py-3 text-sm font-medium text-background transition-colors duration-300 hover:bg-primary"
-              >
-                {project.urlLabel}
-                <ArrowUpRight
-                  className="size-4 transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5"
-                  aria-hidden
-                />
-                <span className="sr-only">{content.ui.newTab}</span>
-              </a>
-            )}
-            {project.github && (
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex min-h-11 min-w-11 items-center gap-2 text-sm font-medium text-foreground hover:text-primary"
-              >
-                <Github className="size-4" aria-hidden />
-                {content.ui.github}
-                <span className="sr-only">{content.ui.newTab}</span>
-              </a>
-            )}
-          </div>
-        )}
+        {/* The whole card opens the detail (stretched button), the links live in the detail. */}
+        <button
+          type="button"
+          onClick={() => dialogRef.current?.showModal()}
+          className="mt-8 inline-flex min-h-11 items-center gap-2 rounded-full border border-foreground px-5 py-3 text-sm font-medium text-foreground transition-colors duration-300 after:absolute after:inset-0 after:rounded-[1.75rem] after:content-[''] group-hover:bg-foreground group-hover:text-background focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+        >
+          {content.ui.moreAbout}
+          <span className="sr-only">{project.name}</span>
+          <ArrowRight className="size-4" aria-hidden />
+        </button>
       </div>
+
+      <ProjectDialog project={project} dialogRef={dialogRef} />
     </Reveal>
   );
 }
