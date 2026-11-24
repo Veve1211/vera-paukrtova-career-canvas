@@ -14,6 +14,9 @@ export const links = {
   cvPdf: "/cv-vera-paukrtova.pdf" as string | null,
 };
 
+/** The bigger goal a project belongs to; shown as a tag on the card and in the detail. */
+export type MissionId = "jobs" | "education";
+
 export type ProjectId = "cvecko" | "cesky-kral" | "kompleto" | "ciste-recenze" | "paukrt";
 
 export type Project = {
@@ -23,6 +26,8 @@ export type Project = {
   /** live = in use, prototype = clickable demo on sample data, concept = idea without a link. */
   status: "live" | "prototype" | "concept";
   statusLabel: string;
+  /** Optional: the bigger project (mission) this one is part of, in Věra's own words. */
+  mission?: MissionId;
   /** What the app does – short, shown on the project list. */
   summary: string;
   /** Longer description for the project detail. Optional: the detail falls back to `summary`. */
@@ -148,9 +153,14 @@ const cs = {
     index: "01",
     label: "Projekty",
     upcomingTitle: "Připravuji",
+    missions: {
+      jobs: "Hledání práce",
+      education: "Vzdělávání",
+    } satisfies Record<MissionId, string>,
+    missionLabel: "Součást projektu",
     title: ["Aplikace, které", "si můžete vyzkoušet."],
     intro:
-      "Navrhuji, řídím vývoj s\u00a0AI, testuji v\u00a0Playwrightu a\u00a0nasazuji na Railway, Vercel nebo Lovable. Nejvíc mě baví začátek, kdy se z\u00a0myšlenky stává něco skutečného — a\u00a0pak postupné dolaďování, dokud to není přesně takové, jaké to chci mít.",
+      "Navrhuji, řídím vývoj s\u00a0AI, testuji v\u00a0Playwrightu a\u00a0nasazuji na Railway, Vercel nebo Lovable. Nejvíc mě baví začátek, kdy se z\u00a0myšlenky stává něco skutečného — a\u00a0pak postupné dolaďování, dokud to není přesně takové, jaké to chci mít. Většina projektů patří ke dvěma větším cílům: hledání práce a\u00a0vzdělávání.",
     items: [
       {
         id: "cvecko",
@@ -158,6 +168,7 @@ const cs = {
         kind: "Webová aplikace na tvorbu životopisů",
         status: "live",
         statusLabel: "Živá aplikace",
+        mission: "jobs",
         summary:
           "Napíšete o\u00a0sobě pár vět a\u00a0AI z\u00a0nich poskládá přehledný životopis — bez formulářů, rovnou jako PDF.",
         about:
@@ -169,7 +180,7 @@ const cs = {
           "Aplikace je v\u00a0provozu. Spolu s\u00a0Kompletem tvoří jeden projekt: celou cestu hledáním práce na jednom místě, zaměřenou i\u00a0na lidi s\u00a0roztroušenou sklerózou.",
         result:
           "Pojistka v\u00a0kódu porovná firmy, roky, čísla i\u00a0dovednosti v\u00a0životopisu s\u00a0původním textem a\u00a0co v\u00a0něm nebylo, žlutě podtrhne. Každou změnu hlídá 158 jednotkových testů a\u00a0226 testů v\u00a0prohlížeči, bezpečnost prošla auditem ve dvou kolech.",
-        tech: ["Next.js", "Railway", "GitHub", "vývoj s\u00a0pomocí AI"],
+        tech: ["Next.js", "Claude Code", "Railway", "GitHub"],
         urlLabel: "Otevřít cvecko.cz",
         ...projectMeta.cvecko,
       },
@@ -179,6 +190,7 @@ const cs = {
         kind: "Interaktivní vzdělávací webová hra",
         status: "live",
         statusLabel: "Živá aplikace",
+        mission: "education",
         summary:
           "Hráč odpovídá na otázky o\u00a0českých panovnících a\u00a0sbírá je jako karty. Ve hře je denní výzva, rychlé kvízy, žebříček i\u00a0vlastní erb.",
         problem:
@@ -188,7 +200,7 @@ const cs = {
           "Hra je v\u00a0provozu a\u00a0zahrát si ji může kdokoli. Je součástí většího projektu o\u00a0vzdělávání: chci studentům a\u00a0žákům přiblížit učení v\u00a0podobě, která je pro ně přijatelná.",
         result:
           "18 panovníků a\u00a0162 otázek, u\u00a0každé odkaz na zdroj. Správnou odpověď zná jen server a\u00a0skóre do žebříčků počítá jen on, takže ho hráč nemůže podvrhnout.",
-        tech: ["Next.js", "Railway", "Playwright", "vývoj s\u00a0pomocí AI"],
+        tech: ["Next.js", "Claude Code", "Playwright", "Railway"],
         urlLabel: "Zahrát si Českého krále",
         ...projectMeta["cesky-kral"],
       },
@@ -215,6 +227,7 @@ const cs = {
         kind: "Prototyp vyhledávače práce",
         status: "prototype",
         statusLabel: "Prototyp",
+        mission: "jobs",
         summary:
           "Vyhledávač práce, který má sdružit nabídky z\u00a0celého českého trhu a\u00a0nechat lidi přesně filtrovat. Zatím běží na ukázkových datech.",
         about:
@@ -224,7 +237,7 @@ const cs = {
         role: "Návrh, řízení projektu a\u00a0celkový dojem. Úprava textů, řízení animací a\u00a0testování.",
         state:
           "Prototyp běží na ukázkových datech. Spolu s\u00a0Cvéčkem tvoří jeden projekt o\u00a0hledání práce, zaměřený i\u00a0na lidi s\u00a0roztroušenou sklerózou. S\u00a0dalším vývojem určitě počítám.",
-        tech: ["Lovable", "React", "TanStack Start", "vývoj s\u00a0pomocí AI"],
+        tech: ["Lovable", "React", "TanStack Start"],
         urlLabel: "Vyzkoušet prototyp",
         ...projectMeta.kompleto,
       },
@@ -243,7 +256,7 @@ const cs = {
         role: "Návrh, řízení projektu a\u00a0celkový dojem. Úprava textů, řízení animací a\u00a0testování.",
         state:
           "Prototyp běží na ukázkových datech a\u00a0podnicích v\u00a0Praze. S\u00a0dalším vývojem určitě počítám.",
-        tech: ["Lovable", "React", "TanStack Start", "vývoj s\u00a0pomocí AI"],
+        tech: ["Lovable", "React", "TanStack Start"],
         urlLabel: "Vyzkoušet prototyp",
         ...projectMeta["ciste-recenze"],
       },

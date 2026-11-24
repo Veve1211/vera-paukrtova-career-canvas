@@ -1,5 +1,12 @@
 import { useRef } from "react";
-import { ArrowRight, ArrowUpRight, Github, X } from "lucide-react";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  BriefcaseBusiness,
+  Github,
+  GraduationCap,
+  X,
+} from "lucide-react";
 
 import ceskyKralMobile from "@/assets/project-cesky-kral-mobile.webp";
 import ceskyKralShot from "@/assets/project-cesky-kral.webp";
@@ -11,11 +18,28 @@ import kompletoMobile from "@/assets/project-kompleto-mobile.webp";
 import kompletoShot from "@/assets/project-kompleto.webp";
 import paukrtMobile from "@/assets/project-paukrt-mobile.webp";
 import paukrtShot from "@/assets/project-paukrt.webp";
-import { content, type Project } from "@/content/site";
+import { content, type MissionId, type Project } from "@/content/site";
 import { cn } from "@/lib/utils";
 
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
+
+const missionIcons = { jobs: BriefcaseBusiness, education: GraduationCap } satisfies Record<
+  MissionId,
+  typeof BriefcaseBusiness
+>;
+
+/** Outlined tag naming the bigger project (mission); deliberately quieter than the filled status badge. */
+function MissionTag({ mission }: { mission: MissionId }) {
+  const Icon = missionIcons[mission];
+  return (
+    <span className="inline-flex items-center gap-1.5 rounded-full border border-primary/30 px-2.5 py-1 text-xs font-medium text-primary">
+      <Icon className="size-3.5" aria-hidden />
+      <span className="sr-only">{content.projects.missionLabel}: </span>
+      {content.projects.missions[mission]}
+    </span>
+  );
+}
 
 /** Real screenshots of the apps (live sites; prototypes captured from their own code, sample data). */
 const screenshots: Partial<Record<Project["id"], { desktop: string; mobile: string }>> = {
@@ -111,17 +135,17 @@ function Preview({ project }: { project: Project }) {
 function ProjectDetails({ project }: { project: Project }) {
   return (
     <>
-      <dl className="grid gap-5 border-t border-border pt-6">
+      <dl className="grid gap-6 border-t border-border pt-6">
         <div>
           <dt className="eyebrow text-primary">{content.ui.whatItDoes}</dt>
-          <dd className="mt-2 text-base leading-relaxed text-foreground">
+          <dd className="mt-2 text-base leading-relaxed text-foreground sm:text-lg">
             {project.about ?? project.summary}
           </dd>
         </div>
         {project.problem && (
           <div>
             <dt className="eyebrow text-primary">{content.ui.problem}</dt>
-            <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            <dd className="mt-2 text-base leading-relaxed text-foreground sm:text-lg">
               {project.problem}
             </dd>
           </div>
@@ -129,19 +153,25 @@ function ProjectDetails({ project }: { project: Project }) {
         {project.role && (
           <div>
             <dt className="eyebrow text-primary">{content.ui.role}</dt>
-            <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">{project.role}</dd>
+            <dd className="mt-2 text-base leading-relaxed text-foreground sm:text-lg">
+              {project.role}
+            </dd>
           </div>
         )}
         {project.state && (
           <div>
             <dt className="eyebrow text-primary">{content.ui.state}</dt>
-            <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">{project.state}</dd>
+            <dd className="mt-2 text-base leading-relaxed text-foreground sm:text-lg">
+              {project.state}
+            </dd>
           </div>
         )}
         {project.result && (
           <div>
             <dt className="eyebrow text-primary">{content.ui.result}</dt>
-            <dd className="mt-2 text-sm leading-relaxed text-foreground">{project.result}</dd>
+            <dd className="mt-2 text-base leading-relaxed text-foreground sm:text-lg">
+              {project.result}
+            </dd>
           </div>
         )}
         {project.tech.length > 0 && (
@@ -152,7 +182,7 @@ function ProjectDetails({ project }: { project: Project }) {
                 {project.tech.map((tech) => (
                   <li
                     key={tech}
-                    className="rounded-full border border-border bg-background px-3 py-1 text-xs text-foreground"
+                    className="rounded-full border border-border bg-background px-3 py-1.5 text-sm text-foreground"
                   >
                     {tech}
                   </li>
@@ -216,13 +246,16 @@ function ProjectDialog({
       }}
       className="m-auto max-h-[100dvh] w-full max-w-none overflow-y-auto bg-background p-0 text-foreground backdrop:bg-night/70 sm:max-h-[90dvh] sm:max-w-3xl sm:rounded-[1.75rem] sm:border sm:border-border"
     >
-      <div className="p-5 sm:p-8">
+      <div className="min-h-full bg-aura p-5 sm:p-8">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-lilac px-2.5 py-1 text-xs font-medium text-primary">
-              <span className="size-1.5 rounded-full bg-violet" aria-hidden />
-              {project.statusLabel}
-            </span>
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-lilac px-2.5 py-1 text-xs font-medium text-primary">
+                <span className="size-1.5 rounded-full bg-violet" aria-hidden />
+                {project.statusLabel}
+              </span>
+              {project.mission && <MissionTag mission={project.mission} />}
+            </div>
             <h4
               id={`project-detail-${project.id}`}
               className="mt-4 font-display text-4xl text-foreground sm:text-5xl"
@@ -274,7 +307,7 @@ function ProjectCard({
         "group relative grid gap-10 rounded-[1.75rem] border p-5 transition-colors duration-500 sm:p-8 lg:grid-cols-12 lg:items-center lg:gap-12 lg:p-10",
         concept
           ? "border-dashed border-primary/30 bg-background"
-          : "border-border bg-card/70 hover:border-primary/25",
+          : "border-border bg-card/70 bg-aura hover:border-primary/25",
       )}
     >
       <div className={cn("lg:col-span-7", flip && "lg:order-2")}>
@@ -292,6 +325,7 @@ function ProjectCard({
               <span className="size-1.5 rounded-full bg-violet" aria-hidden />
               {project.statusLabel}
             </span>
+            {project.mission && <MissionTag mission={project.mission} />}
           </div>
         )}
 
