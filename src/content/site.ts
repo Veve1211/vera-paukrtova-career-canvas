@@ -282,7 +282,7 @@ const cs = {
         items: [
           "Návrh funkcionalit",
           "Psaní promptů",
-          "vývoj s\u00a0pomocí AI",
+          "Vývoj s\u00a0pomocí AI",
           "Logika aplikací",
           "Iterace",
           "Nasazení na Railway",
@@ -297,8 +297,8 @@ const cs = {
           "UAT",
           "Funkční testování",
           "Testovací scénáře",
-          "hlášení chyb",
-          "analýza příčin",
+          "Hlášení chyb",
+          "Analýza příčin",
           "Playwright",
         ],
       },
@@ -307,7 +307,7 @@ const cs = {
         title: "Porozumění zákazníkům",
         text: "Z\u00a0Allegro, T-Mobile a\u00a0dalších firem vím, kde se lidé v\u00a0procesu zaseknou a\u00a0co je opravdu štve. Umím problém pojmenovat, zlepšit postup a\u00a0domluvit se se zákazníkem.",
         items: [
-          "zákaznická zkušenost",
+          "Zákaznická zkušenost",
           "Uživatelské problémy",
           "Zlepšování procesů",
           "Komunikace se zákazníky",
@@ -402,7 +402,7 @@ const cs = {
           "Testovala jsem CRM a\u00a0webové aplikace, psala testovací scénáře a\u00a0hlásila chyby dřív, než se nová verze dostala k\u00a0zákazníkům.",
         transfer:
           "Testovací scénáře, UAT a\u00a0srozumitelné hlášení chyb — základ, na kterém stavím testování vlastních aplikací.",
-        tags: ["UAT", "CRM", "Webové aplikace", "Testovací scénáře", "hlášení chyb"],
+        tags: ["UAT", "CRM", "Webové aplikace", "Testovací scénáře", "Hlášení chyb"],
       },
       {
         company: "Megatech Industries",
@@ -413,7 +413,7 @@ const cs = {
           "Řídila jsem kvalitu pro Škodu, VW a\u00a0BMW, řešila reklamace a\u00a0hledala skutečné příčiny problémů — ne jen jejich projevy.",
         transfer:
           "Hledat příčinu, ne jen zalepit projev. Stejně přistupuji k\u00a0chybám v\u00a0aplikacích.",
-        tags: ["Automobilový průmysl", "Řízení kvality", "Reklamace", "analýza příčin"],
+        tags: ["Automobilový průmysl", "Řízení kvality", "Reklamace", "Analýza příčin"],
       },
     ] satisfies Experience[],
   },
