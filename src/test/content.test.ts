@@ -10,12 +10,13 @@ describe("site content", () => {
     expect(links.linkedin).toBe("https://www.linkedin.com/in/vera-paukrtova/");
   });
 
-  it("links the live projects to their real addresses", () => {
+  it("links the projects to their real addresses", () => {
     const urls = Object.fromEntries(content.projects.items.map((p) => [p.id, p.url]));
     expect(urls).toEqual({
       cvecko: "https://cvecko.cz",
       "cesky-kral": "https://cesky-kral.up.railway.app",
-      kompleto: null,
+      kompleto: "https://kompleto-pr-ce.vercel.app/",
+      "ciste-recenze": "https://verim-recenze-v-klidu.vercel.app/",
       paukrt: "https://paukrt.lovable.app/",
     });
   });
@@ -31,7 +32,7 @@ describe("site content", () => {
   });
 
   it("sums up the projects in the hero", () => {
-    expect(plain(content.hero.proofProjects)).toBe("2 živé aplikace · 1 web · 1 připravuji");
+    expect(plain(content.hero.proofProjects)).toBe("2 živé aplikace · 2 prototypy · 1 web");
   });
 });
 
@@ -77,10 +78,13 @@ describe("portfolio positioning", () => {
     expect(ids.indexOf("projekty")).toBeLessThan(ids.indexOf("zkusenosti"));
   });
 
-  it("marks Kompleto as a concept without a live link", () => {
-    const kompleto = content.projects.items.find((p) => p.id === "kompleto");
-    expect(kompleto?.status).toBe("concept");
-    expect(kompleto?.url).toBeNull();
+  it("marks Kompleto and Čisté recenze as prototypes on sample data, with a link", () => {
+    for (const id of ["kompleto", "ciste-recenze"]) {
+      const project = content.projects.items.find((p) => p.id === id);
+      expect(project?.status, id).toBe("prototype");
+      expect(project?.url, id).toMatch(/^https:\/\/.+\.vercel\.app\/$/);
+      expect(project?.summary, id).toContain("ukázkových datech");
+    }
   });
 
   it("gives the Allegro, T-Mobile, Megatech and Zentiva roles the larger layout", () => {

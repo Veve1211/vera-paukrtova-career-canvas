@@ -2,8 +2,12 @@ import { ArrowUpRight, Github } from "lucide-react";
 
 import ceskyKralMobile from "@/assets/project-cesky-kral-mobile.webp";
 import ceskyKralShot from "@/assets/project-cesky-kral.webp";
+import cisteRecenzeMobile from "@/assets/project-ciste-recenze-mobile.webp";
+import cisteRecenzeShot from "@/assets/project-ciste-recenze.webp";
 import cveckoMobile from "@/assets/project-cvecko-mobile.webp";
 import cveckoShot from "@/assets/project-cvecko.webp";
+import kompletoMobile from "@/assets/project-kompleto-mobile.webp";
+import kompletoShot from "@/assets/project-kompleto.webp";
 import paukrtMobile from "@/assets/project-paukrt-mobile.webp";
 import paukrtShot from "@/assets/project-paukrt.webp";
 import { content, type Project } from "@/content/site";
@@ -12,10 +16,12 @@ import { cn } from "@/lib/utils";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 
-/** Real screenshots of the live apps (captured from the running sites). */
+/** Real screenshots of the apps (live sites; prototypes captured from their own code, sample data). */
 const screenshots: Partial<Record<Project["id"], { desktop: string; mobile: string }>> = {
   cvecko: { desktop: cveckoShot, mobile: cveckoMobile },
   "cesky-kral": { desktop: ceskyKralShot, mobile: ceskyKralMobile },
+  kompleto: { desktop: kompletoShot, mobile: kompletoMobile },
+  "ciste-recenze": { desktop: cisteRecenzeShot, mobile: cisteRecenzeMobile },
   paukrt: { desktop: paukrtShot, mobile: paukrtMobile },
 };
 
@@ -241,8 +247,10 @@ function ProjectCard({
 
 export function Projects() {
   const p = content.projects;
-  const live = p.items.filter((project) => project.status !== "concept");
-  const upcoming = p.items.filter((project) => project.status === "concept");
+  // Typed as Project[]: no concept is listed right now, but the "Připravuji" block stays ready for one.
+  const items: Project[] = p.items;
+  const live = items.filter((project) => project.status !== "concept");
+  const upcoming = items.filter((project) => project.status === "concept");
   return (
     <section id="projekty" className="relative py-20 sm:py-28">
       <div

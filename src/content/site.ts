@@ -14,13 +14,14 @@ export const links = {
   cvPdf: "/cv-vera-paukrtova.pdf" as string | null,
 };
 
-export type ProjectId = "cvecko" | "cesky-kral" | "kompleto" | "paukrt";
+export type ProjectId = "cvecko" | "cesky-kral" | "kompleto" | "ciste-recenze" | "paukrt";
 
 export type Project = {
   id: ProjectId;
   name: string;
   kind: string;
-  status: "live" | "concept";
+  /** live = in use, prototype = clickable demo on sample data, concept = idea without a link. */
+  status: "live" | "prototype" | "concept";
   statusLabel: string;
   /** What the app does. */
   summary: string;
@@ -65,7 +66,8 @@ const projectMeta = {
     url: "https://cesky-kral.up.railway.app",
     github: "https://github.com/Veve1211/cesky-kral",
   },
-  kompleto: { url: null, github: null },
+  kompleto: { url: "https://kompleto-pr-ce.vercel.app/", github: null },
+  "ciste-recenze": { url: "https://verim-recenze-v-klidu.vercel.app/", github: null },
   paukrt: {
     url: "https://paukrt.lovable.app/",
     github: "https://github.com/Veve1211/transport-constellation-atlas",
@@ -136,7 +138,7 @@ const cs = {
     ],
     seal: "Přemýšlím jako zákazník, hlídám kvalitu, tvořím s\u00a0AI.",
     proofLabel: "Praxe z",
-    proofProjects: "2 živé aplikace · 1 web · 1 připravuji",
+    proofProjects: "2 živé aplikace · 2 prototypy · 1 web",
   },
   projects: {
     index: "01",
@@ -185,15 +187,27 @@ const cs = {
       {
         id: "kompleto",
         name: "Kompleto",
-        kind: "Koncept platformy",
-        status: "concept",
-        statusLabel: "Připravuji",
+        kind: "Prototyp vyhledávače práce",
+        status: "prototype",
+        statusLabel: "Prototyp",
         summary:
-          "Připravovaný koncept platformy, která má sdružit pracovní nabídky z\u00a0různých zdrojů na jednom místě. Dnes jsou rozházené po mnoha portálech a\u00a0hledání znamená procházet pořád dokola stejné weby.",
+          "Vyhledávač práce, který má jednou sdružit nabídky z\u00a0celého českého trhu na jednom místě a\u00a0nechat lidi přesně filtrovat: slova, která v\u00a0nabídce nechcete, minimální mzda, typ úvazku, práce z\u00a0domova nebo vhodnost pro OZP. Prototyp zatím běží na ukázkových datech.",
         role: "Nápad a\u00a0návrh konceptu — co má platforma umět a\u00a0jak by ji lidé používali.",
-        tech: [],
-        urlLabel: null,
+        tech: ["Lovable", "React", "TanStack Start", "vývoj s\u00a0pomocí AI"],
+        urlLabel: "Vyzkoušet prototyp",
         ...projectMeta.kompleto,
+      },
+      {
+        id: "ciste-recenze",
+        name: "Čisté recenze",
+        kind: "Prototyp kontroly recenzí",
+        status: "prototype",
+        statusLabel: "Prototyp",
+        summary:
+          "Aplikace odpovídá na jednu otázku: dá se věřit recenzím podniku (zatím v\u00a0Praze)? Ukáže skóre důvěryhodnosti 0–100, porovná hodnocení českých a\u00a0zahraničních recenzentů a\u00a0upozorní na podezřelé vzorce. Výsledek je odhad, ne důkaz. Prototyp zatím běží na ukázkových datech.",
+        tech: ["Lovable", "React", "TanStack Start", "vývoj s\u00a0pomocí AI"],
+        urlLabel: "Vyzkoušet prototyp",
+        ...projectMeta["ciste-recenze"],
       },
       {
         id: "paukrt",
