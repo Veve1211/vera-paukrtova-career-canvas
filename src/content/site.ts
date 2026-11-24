@@ -74,7 +74,7 @@ const projectMeta = {
     github: "https://github.com/Veve1211/cesky-kral",
   },
   kompleto: {
-    url: "https://kompleto-pr-ce.vercel.app/",
+    url: "https://kompleto.vercel.app/",
     github: "https://github.com/Veve1211/kompleto",
   },
   "ciste-recenze": {
