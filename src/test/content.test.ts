@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { content, links } from "@/content/site";
+import { content, links, type Project } from "@/content/site";
 
 /** Czech texts use non-breaking spaces after one-letter words; compare them as plain spaces. */
 const plain = (text: string) => text.replace(/\u00a0/g, " ");
@@ -28,6 +28,21 @@ describe("site content", () => {
   it("gives every live project one checkable result", () => {
     for (const p of content.projects.items.filter((p) => p.status === "live")) {
       expect(p.result, p.id).toMatch(/\d/);
+    }
+  });
+
+  it("groups projects under Věra's two missions", () => {
+    const missions = Object.fromEntries(
+      (content.projects.items as readonly Project[])
+        .filter((p) => p.mission)
+        .map((p) => [p.id, p.mission]),
+    );
+    expect(missions).toEqual({ cvecko: "jobs", kompleto: "jobs", "cesky-kral": "education" });
+  });
+
+  it("names real tools instead of a generic AI tag", () => {
+    for (const p of content.projects.items) {
+      expect(p.tech.map(plain), p.id).not.toContain("vývoj s pomocí AI");
     }
   });
 
