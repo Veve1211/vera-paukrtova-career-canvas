@@ -15,7 +15,7 @@ describe("site content", () => {
     expect(urls).toEqual({
       cvecko: "https://cvecko.cz",
       "cesky-kral": "https://cesky-kral.up.railway.app",
-      kompleto: "https://kompleto-pr-ce.vercel.app/",
+      kompleto: "https://kompleto.vercel.app/",
       "ciste-recenze": "https://verim-recenze-v-klidu.vercel.app/",
       paukrt: "https://paukrt.lovable.app/",
     });
