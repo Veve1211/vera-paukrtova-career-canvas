@@ -88,7 +88,7 @@ const cs = {
     title:
       "Věra Paukrtová – weby a\u00a0aplikace s\u00a0pomocí AI | QA a\u00a0zákaznická zkušenost",
     description:
-      "Věra Paukrtová tvoří weby a\u00a0aplikace s\u00a0pomocí AI a\u00a0propojuje je s\u00a0praxí z\u00a0QA, UAT testování a\u00a0zákaznické zkušenosti. Projekty CVéčko a\u00a0Český král.",
+      "Věra Paukrtová tvoří weby a\u00a0aplikace s\u00a0pomocí AI a\u00a0propojuje je s\u00a0praxí z\u00a0QA, UAT testování a\u00a0zákaznické zkušenosti. Projekty Cvéčko a\u00a0Český král.",
     /** Topics for the search-engine profile (JSON-LD). */
     knowsAbout: ["Tvorba webů s\u00a0pomocí AI", "QA", "UAT testování", "Zákaznická zkušenost"],
   },
@@ -150,19 +150,23 @@ const cs = {
     upcomingTitle: "Připravuji",
     title: ["Aplikace, které", "si můžete vyzkoušet."],
     intro:
-      "Píšu prompty, navrhuji logiku, testuji v\u00a0Playwrightu a\u00a0nasazuji na Railway. Nejvíc mě baví začátek, kdy se z\u00a0myšlenky stává něco skutečného — a\u00a0pak postupné dolaďování, dokud to není přesně takové, jaké to chci mít.",
+      "Navrhuji, řídím vývoj s\u00a0AI, testuji v\u00a0Playwrightu a\u00a0nasazuji na Railway, Vercel nebo Lovable. Nejvíc mě baví začátek, kdy se z\u00a0myšlenky stává něco skutečného — a\u00a0pak postupné dolaďování, dokud to není přesně takové, jaké to chci mít.",
     items: [
       {
         id: "cvecko",
-        name: "CVéčko",
+        name: "Cvéčko",
         kind: "Webová aplikace na tvorbu životopisů",
         status: "live",
         statusLabel: "Živá aplikace",
         summary:
-          "Napíšete o\u00a0sobě pár vět a\u00a0AI z\u00a0nich poskládá přehledný životopis — bez vyplňování formulářů, s\u00a0výsledkem jako PDF ve formátu A4. Postavila jsem ho, protože mi běžné nástroje na tvorbu CV nefungovaly a\u00a0chtěla jsem vlastní, který vypadá i\u00a0funguje přesně podle mých představ.",
+          "Napíšete o\u00a0sobě pár vět a\u00a0AI z\u00a0nich poskládá přehledný životopis — bez formulářů, rovnou jako PDF.",
+        about:
+          "Napíšete o\u00a0sobě pár vět a\u00a0AI z\u00a0nich poskládá přehledný životopis — bez vyplňování formulářů, s\u00a0výsledkem jako PDF ve formátu A4.",
+        problem:
+          "Běžné nástroje na tvorbu CV mi nefungovaly. Chtěla jsem vlastní, který vypadá i\u00a0funguje přesně podle mých představ.",
         role: "Nápad, návrh funkcí a\u00a0uživatelského postupu, vývoj s\u00a0pomocí AI přes prompty, testování a\u00a0nasazení.",
         state:
-          "Aplikace je v\u00a0provozu. Do budoucna ji chci rozšířit na celou cestu hledáním práce — s\u00a0myšlenkou i\u00a0na lidi s\u00a0roztroušenou sklerózou.",
+          "Aplikace je v\u00a0provozu. Spolu s\u00a0Kompletem tvoří jeden projekt: celou cestu hledáním práce na jednom místě, zaměřenou i\u00a0na lidi s\u00a0roztroušenou sklerózou.",
         result:
           "Pojistka v\u00a0kódu porovná firmy, roky, čísla i\u00a0dovednosti v\u00a0životopisu s\u00a0původním textem a\u00a0co v\u00a0něm nebylo, žlutě podtrhne. Každou změnu hlídá 158 jednotkových testů a\u00a0226 testů v\u00a0prohlížeči, bezpečnost prošla auditem ve dvou kolech.",
         tech: ["Next.js", "Railway", "GitHub", "vývoj s\u00a0pomocí AI"],
@@ -181,7 +185,7 @@ const cs = {
           "Česká historie mě bavila a\u00a0pořád baví. Chtěla jsem, aby si k\u00a0ní žáci a\u00a0studenti našli cestu přirozeně — hrou, ne memorováním.",
         role: "Moje úplně první aplikace: návrh herní logiky, prompty pro AI, testování v\u00a0Playwrightu a\u00a0nasazení na Railway.",
         state:
-          "Hra je v\u00a0provozu a\u00a0zahrát si ji může kdokoli. Byla to moje první cesta od nápadu až k\u00a0živé aplikaci.",
+          "Hra je v\u00a0provozu a\u00a0zahrát si ji může kdokoli. Je součástí většího projektu o\u00a0vzdělávání: chci studentům a\u00a0žákům přiblížit učení v\u00a0podobě, která je pro ně přijatelná.",
         result:
           "18 panovníků a\u00a0162 otázek, u\u00a0každé odkaz na zdroj. Správnou odpověď zná jen server a\u00a0skóre do žebříčků počítá jen on, takže ho hráč nemůže podvrhnout.",
         tech: ["Next.js", "Railway", "Playwright", "vývoj s\u00a0pomocí AI"],
@@ -191,11 +195,14 @@ const cs = {
       {
         id: "paukrt",
         name: "Profesní web dopravního inženýra",
-        kind: "Osobní profesní web",
+        kind: "Portfolio pro bratra",
         status: "live",
         statusLabel: "Živý web",
-        summary:
-          "Osobní prezentace a\u00a0CV inženýra pro návrh silnic a\u00a0křižovatek. Dvojjazyčný web (EN/CZ) s\u00a0modrým vizuálem inspirovaným dopravním modelem.",
+        summary: "Portfolio pro mého bratra, inženýra pro návrh silnic a\u00a0křižovatek.",
+        about:
+          "Osobní prezentace a\u00a0CV mého bratra, inženýra pro návrh silnic a\u00a0křižovatek. Dvojjazyčný web (EN/CZ) s\u00a0modrým vizuálem inspirovaným dopravním modelem.",
+        role: "Návrh, řízení projektu a\u00a0celkový dojem. Úprava textů, řízení animací a\u00a0testování.",
+        state: "Web je v\u00a0provozu. Na tvorbu webových portfolií se chci dál zaměřit.",
         result:
           "Každá stránka v\u00a0angličtině i\u00a0češtině prochází automatickou kontrolou přístupnosti (WCAG 2.1 AA) na počítači, tabletu i\u00a0mobilu.",
         tech: ["Lovable", "React", "GitHub"],
@@ -211,7 +218,12 @@ const cs = {
         summary:
           "Vyhledávač práce, který má sdružit nabídky z\u00a0celého českého trhu a\u00a0nechat lidi přesně filtrovat. Zatím běží na ukázkových datech.",
         about:
-          "Vyhledávač práce, který má jednou sdružit nabídky z\u00a0celého českého trhu na jednom místě a\u00a0nechat lidi přesně filtrovat: slova, která v\u00a0nabídce nechcete, minimální mzda, typ úvazku, práce z\u00a0domova nebo vhodnost pro OZP. Stejnou nabídku z\u00a0více portálů ukáže jen jednou. Prototyp zatím běží na ukázkových datech.",
+          "Vyhledávač práce, který má jednou sdružit nabídky z\u00a0celého českého trhu na jednom místě a\u00a0nechat lidi přesně filtrovat: slova, která v\u00a0nabídce nechcete, minimální mzda, typ úvazku, práce z\u00a0domova nebo vhodnost pro OZP. Stejnou nabídku z\u00a0více portálů ukáže jen jednou.",
+        problem:
+          "Vždycky mi enormně vadilo, jak jsou nabídky práce roztříštěné. Chci jedno místo, kam stačí se podívat — s\u00a0dokonalou filtrací.",
+        role: "Návrh, řízení projektu a\u00a0celkový dojem. Úprava textů, řízení animací a\u00a0testování.",
+        state:
+          "Prototyp běží na ukázkových datech. Spolu s\u00a0Cvéčkem tvoří jeden projekt o\u00a0hledání práce, zaměřený i\u00a0na lidi s\u00a0roztroušenou sklerózou. S\u00a0dalším vývojem určitě počítám.",
         tech: ["Lovable", "React", "TanStack Start", "vývoj s\u00a0pomocí AI"],
         urlLabel: "Vyzkoušet prototyp",
         ...projectMeta.kompleto,
@@ -225,7 +237,12 @@ const cs = {
         summary:
           "Ukáže, jestli se dá věřit recenzím podniku: skóre důvěryhodnosti a\u00a0podezřelé vzorce v\u00a0hodnoceních. Zatím běží na ukázkových datech.",
         about:
-          "Aplikace odpovídá na jednu otázku: dá se věřit recenzím podniku? Ukáže skóre důvěryhodnosti 0–100, porovná hodnocení českých a\u00a0zahraničních recenzentů a\u00a0upozorní na podezřelé vzorce. Výsledek je odhad, ne důkaz. Prototyp zatím běží na ukázkových datech a\u00a0podnicích v\u00a0Praze.",
+          "Aplikace odpovídá na jednu otázku: dá se věřit recenzím podniku? Ukáže skóre důvěryhodnosti 0–100, porovná hodnocení českých a\u00a0zahraničních recenzentů a\u00a0upozorní na podezřelé vzorce. Výsledek je odhad, ne důkaz.",
+        problem:
+          "Recenze na Googlu se dají zfalšovat. V\u00a0zahraničí už podobná kontrola funguje.",
+        role: "Návrh, řízení projektu a\u00a0celkový dojem. Úprava textů, řízení animací a\u00a0testování.",
+        state:
+          "Prototyp běží na ukázkových datech a\u00a0podnicích v\u00a0Praze. S\u00a0dalším vývojem určitě počítám.",
         tech: ["Lovable", "React", "TanStack Start", "vývoj s\u00a0pomocí AI"],
         urlLabel: "Vyzkoušet prototyp",
         ...projectMeta["ciste-recenze"],
