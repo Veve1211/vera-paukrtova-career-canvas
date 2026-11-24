@@ -8,6 +8,7 @@ import {
   Scripts,
   type ErrorComponentProps,
 } from "@tanstack/react-router";
+import { Analytics } from "@vercel/analytics/react";
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
@@ -125,6 +126,9 @@ function RootShell({ children }: { children: ReactNode }) {
       </head>
       <body>
         {children}
+        {/* Cookieless visit counting (Vercel Web Analytics). Production builds only: the dev
+            server would load Vercel's debug script from an outside host. */}
+        {import.meta.env.PROD && <Analytics />}
         <Scripts />
       </body>
     </html>
