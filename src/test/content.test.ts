@@ -21,6 +21,12 @@ describe("site content", () => {
     });
   });
 
+  it("links every project to its public code on GitHub", () => {
+    for (const p of content.projects.items) {
+      expect(p.github, p.id).toMatch(/^https:\/\/github\.com\/Veve1211\//);
+    }
+  });
+
   it("does not show a made-up e-mail before the real one is added", () => {
     expect(links.email === null || /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(links.email)).toBe(true);
   });
