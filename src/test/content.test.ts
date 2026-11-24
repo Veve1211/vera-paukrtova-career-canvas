@@ -32,7 +32,7 @@ describe("site content", () => {
   });
 
   it("sums up the projects in the hero", () => {
-    expect(plain(content.hero.proofProjects)).toBe("2 živé aplikace · 2 prototypy · 1 web");
+    expect(plain(content.hero.proofProjects)).toBe("2 živé aplikace · 1 web · 2 prototypy");
   });
 });
 
@@ -102,5 +102,21 @@ describe("portfolio positioning", () => {
       .join(" ")
       .toLowerCase();
     expect(headline).not.toContain("senior");
+  });
+});
+
+describe("project order", () => {
+  it("lists finished projects first, prototypes after them", () => {
+    const statuses = content.projects.items.map((p) => p.status);
+    expect(statuses).toEqual(
+      [...statuses].sort((a, b) => Number(a !== "live") - Number(b !== "live")),
+    );
+    expect(content.projects.items.map((p) => p.id)).toEqual([
+      "cvecko",
+      "cesky-kral",
+      "paukrt",
+      "kompleto",
+      "ciste-recenze",
+    ]);
   });
 });
