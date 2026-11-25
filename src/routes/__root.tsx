@@ -85,11 +85,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Věra Paukrtová — osobní web a CV" },
       { name: "description", content: "Osobní kariérní web a interaktivní CV Věry Paukrtové." },
       { name: "author", content: "Věra Paukrtová" },
-      // Google Search Console ownership verification. Keep permanently.
-      {
-        name: "google-site-verification",
-        content: "Ctgx3MlIJJWdodU5RKD0QqkVdI_yZhYH0Ax9UxsskUY",
-      },
       { property: "og:title", content: "Věra Paukrtová — osobní web a CV" },
       {
         property: "og:description",
@@ -97,11 +92,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      // Google Search Console ownership check. Keep permanently: removing it unverifies the site.
-      {
-        name: "google-site-verification",
-        content: "pG8AJgeqJ4lg7fjad5r0OpUpLkGvCx7khLQAfTJm6tA",
-      },
     ],
     scripts: [
       // Enables scroll-reveal styles only when JavaScript runs (content stays visible otherwise).
@@ -122,11 +112,22 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   errorComponent: ErrorComponent,
 });
 
+// Google Search Console ownership tokens. Keep all of them permanently: removing one
+// unverifies the site for that Search Console owner. They are rendered directly in <head>
+// because the router's head() keeps only one meta tag per name.
+const GOOGLE_SITE_VERIFICATION_TOKENS = [
+  "Ctgx3MlIJJWdodU5RKD0QqkVdI_yZhYH0Ax9UxsskUY",
+  "pG8AJgeqJ4lg7fjad5r0OpUpLkGvCx7khLQAfTJm6tA",
+];
+
 function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="cs" suppressHydrationWarning>
       <head>
         <HeadContent />
+        {GOOGLE_SITE_VERIFICATION_TOKENS.map((token) => (
+          <meta key={token} name="google-site-verification" content={token} />
+        ))}
       </head>
       <body>
         {children}

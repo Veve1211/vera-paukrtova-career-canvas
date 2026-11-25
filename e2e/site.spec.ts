@@ -202,12 +202,15 @@ test.describe("with reduced motion", () => {
   });
 });
 
-test("the Google Search Console verification tag is in the server-rendered HTML", async ({
+test("the Google Search Console verification tags are in the server-rendered HTML", async ({
   request,
 }) => {
   // Google reads the raw HTML without running JavaScript, so check the source, not the DOM.
   const html = await (await request.get("/")).text();
-  expect(html).toContain(
-    '<meta name="google-site-verification" content="pG8AJgeqJ4lg7fjad5r0OpUpLkGvCx7khLQAfTJm6tA"',
-  );
+  for (const token of [
+    "Ctgx3MlIJJWdodU5RKD0QqkVdI_yZhYH0Ax9UxsskUY",
+    "pG8AJgeqJ4lg7fjad5r0OpUpLkGvCx7khLQAfTJm6tA",
+  ]) {
+    expect(html).toContain(`<meta name="google-site-verification" content="${token}"`);
+  }
 });
