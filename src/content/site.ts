@@ -376,7 +376,7 @@ const cs = {
       },
       {
         company: "Sigma AI",
-        role: "Přepisovatelka",
+        role: "Transkriptorka",
         period: "1/2024 – 12/2024",
         featured: false,
         summary: "Přepisovala jsem audio data a\u00a0kontrolovala jejich kvalitu.",
