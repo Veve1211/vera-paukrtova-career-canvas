@@ -200,6 +200,10 @@ const cs = {
           "Aplikace je v\u00a0provozu a\u00a0životopis s\u00a0PDF je zdarma. Platby jsou připravené, ale vypnuté. Spolu s\u00a0prototypem Kompleto tvoří jeden projekt: celou cestu hledáním práce na jednom místě.",
         result:
           "Pojistka v\u00a0kódu porovná firmy, roky, čísla i\u00a0dovednosti v\u00a0životopisu s\u00a0původním textem a\u00a0co v\u00a0něm nebylo, žlutě podtrhne. Každou změnu před nasazením hlídají automatické testy na počítači i\u00a0mobilu (běží v\u00a0CI na GitHubu), bezpečnost prošla auditem ve 2\u00a0kolech.",
+        video: {
+          src: "/cvecko-ukazka.mp4",
+          alt: "ukázka aplikace: z\u00a0neučesaného textu vznikne životopis, údaje, které v\u00a0textu nebyly, jsou podtržené žlutě; pak vložení inzerátu a\u00a0motivační dopis",
+        },
         tech: ["Next.js", "Claude Code", "Railway", "GitHub"],
         urlLabel: "Otevřít cvecko.cz",
         ...projectMeta.cvecko,
