@@ -68,7 +68,7 @@ export type Education = {
 };
 
 const projectMeta = {
-  cvecko: { url: "https://cvecko.cz", github: "https://github.com/Veve1211/cv-studio" },
+  cvecko: { url: "https://cvecko.cz", github: "https://github.com/Veve1211/cvecko" },
   "cesky-kral": {
     url: "https://cesky-kral.up.railway.app",
     github: "https://github.com/Veve1211/cesky-kral",
@@ -83,7 +83,7 @@ const projectMeta = {
   },
   paukrt: {
     url: "https://paukrt.lovable.app/",
-    github: "https://github.com/Veve1211/transport-constellation-atlas",
+    github: "https://github.com/Veve1211/jiri-paukrt-web",
   },
 } satisfies Record<ProjectId, { url: string | null; github: string | null }>;
 
@@ -139,7 +139,7 @@ const cs = {
   hero: {
     name: "Věra Paukrtová",
     role: "Weby a\u00a0aplikace s\u00a0pomocí AI | QA a\u00a0zákaznická zkušenost",
-    title: ["Tvořím weby a\u00a0aplikace s\u00a0pomocí AI,", "které dávají smysl lidem."],
+    title: ["Tvořím weby a\u00a0aplikace s\u00a0pomocí AI", "a\u00a0sama je testuji."],
     intro:
       "Propojuji tvorbu digitálních produktů s\u00a0praktickými zkušenostmi ze zákaznické podpory a\u00a0QA. Díky tomu přemýšlím nejen nad tím, jak aplikaci vytvořit, ale především jak bude fungovat pro skutečné uživatele.",
     ctaProjects: "Prohlédnout moje projekty",
@@ -181,11 +181,11 @@ const cs = {
           "Napíšete o\u00a0sobě pár vět a\u00a0AI z\u00a0nich poskládá přehledný životopis — bez vyplňování formulářů, s\u00a0výsledkem jako PDF ve formátu A4.",
         problem:
           "Běžné nástroje na tvorbu CV mi nefungovaly. Chtěla jsem vlastní, který vypadá i\u00a0funguje přesně podle mých představ.",
-        role: "Nápad, návrh funkcí a\u00a0uživatelského postupu, vývoj s\u00a0pomocí AI přes prompty, testování a\u00a0nasazení.",
+        role: "Nápad, návrh funkcí a\u00a0uživatelského postupu, vývoj s\u00a0pomocí AI, testování a\u00a0nasazení. Rozhodla jsem, že kontrolu, jestli AI nic nepřidala, nebude dělat AI, ale kód — a\u00a0že po spuštění už nepřidávám funkce, dokud aplikaci nevyzkouší první skuteční uživatelé.",
         state:
-          "Aplikace je v\u00a0provozu. Spolu s\u00a0Kompletem tvoří jeden projekt: celou cestu hledáním práce na jednom místě, zaměřenou i\u00a0na lidi s\u00a0roztroušenou sklerózou.",
+          "Aplikace je v\u00a0provozu a\u00a0životopis s\u00a0PDF je zdarma. Platby jsou připravené, ale vypnuté. Spolu s\u00a0prototypem Kompleto tvoří jeden projekt: celou cestu hledáním práce na jednom místě, zaměřenou i\u00a0na lidi s\u00a0roztroušenou sklerózou.",
         result:
-          "Pojistka v\u00a0kódu porovná firmy, roky, čísla i\u00a0dovednosti v\u00a0životopisu s\u00a0původním textem a\u00a0co v\u00a0něm nebylo, žlutě podtrhne. Každou změnu hlídá 158 jednotkových testů a\u00a0226 testů v\u00a0prohlížeči, bezpečnost prošla auditem ve dvou kolech.",
+          "Pojistka v\u00a0kódu porovná firmy, roky, čísla i\u00a0dovednosti v\u00a0životopisu s\u00a0původním textem a\u00a0co v\u00a0něm nebylo, žlutě podtrhne. Každou změnu před nasazením hlídá 162 jednotkových testů a\u00a0228 testů v\u00a0prohlížeči na počítači i\u00a0mobilu (stav 25.\u00a011.\u00a02026, běží v\u00a0CI na GitHubu), bezpečnost prošla auditem ve dvou kolech.",
         tech: ["Next.js", "Claude Code", "Railway", "GitHub"],
         urlLabel: "Otevřít cvecko.cz",
         ...projectMeta.cvecko,
@@ -201,11 +201,11 @@ const cs = {
           "Hráč odpovídá na otázky o\u00a0českých panovnících a\u00a0sbírá je jako karty. Ve hře je denní výzva, rychlé kvízy, žebříček i\u00a0vlastní erb.",
         problem:
           "Česká historie mě bavila a\u00a0pořád baví. Chtěla jsem, aby si k\u00a0ní žáci a\u00a0studenti našli cestu přirozeně — hrou, ne memorováním.",
-        role: "Moje úplně první aplikace: návrh herní logiky, prompty pro AI, testování v\u00a0Playwrightu a\u00a0nasazení na Railway.",
+        role: "Moje úplně první aplikace: návrh herní logiky, prompty pro AI, testování v\u00a0Playwrightu a\u00a0nasazení na Railway. Při testování na mobilu jsem zjistila, že se otázky z\u00a0prohraného kola opakují v\u00a0mistrovském kole a\u00a0že fakt po odpovědi nejde dočíst. Rozdělila jsem proto otázky do tří uzavřených okruhů a\u00a0zrušila automatický přechod na další otázku.",
         state:
           "Hra je v\u00a0provozu a\u00a0zahrát si ji může kdokoli. Je součástí většího projektu o\u00a0vzdělávání: chci studentům a\u00a0žákům přiblížit učení v\u00a0podobě, která je pro ně přijatelná.",
         result:
-          "18 panovníků a\u00a0162 otázek, u\u00a0každé odkaz na zdroj. Správnou odpověď zná jen server a\u00a0skóre do žebříčků počítá jen on, takže ho hráč nemůže podvrhnout.",
+          "18 panovníků a\u00a0216 otázek, u\u00a0každé odkaz na zdroj. Správnou odpověď zná jen server a\u00a0skóre do žebříčků počítá jen on, takže ho hráč nemůže podvrhnout.",
         tech: ["Next.js", "Claude Code", "Playwright", "Railway"],
         urlLabel: "Zahrát si Českého krále",
         ...projectMeta["cesky-kral"],
@@ -219,8 +219,9 @@ const cs = {
         summary: "Portfolio pro mého bratra, inženýra pro návrh silnic a\u00a0křižovatek.",
         about:
           "Osobní prezentace a\u00a0CV mého bratra, inženýra pro návrh silnic a\u00a0křižovatek. Dvojjazyčný web (EN/CZ) s\u00a0modrým vizuálem inspirovaným dopravním modelem.",
-        role: "Návrh, řízení projektu a\u00a0celkový dojem. Úprava textů, řízení animací a\u00a0testování.",
-        state: "Web je v\u00a0provozu. Na tvorbu webových portfolií se chci dál zaměřit.",
+        role: "Návrh a\u00a0řízení projektu, texty, animace a\u00a0testování přístupnosti.",
+        state:
+          "Web je v\u00a0provozu, hotový byl za 8\u00a0dní. Na tvorbu webových portfolií se chci dál zaměřit.",
         result:
           "Každá stránka v\u00a0angličtině i\u00a0češtině prochází automatickou kontrolou přístupnosti (WCAG 2.1 AA) na počítači, tabletu i\u00a0mobilu.",
         tech: ["Lovable", "React", "GitHub"],
@@ -240,9 +241,9 @@ const cs = {
           "Vyhledávač práce, který má jednou sdružit nabídky z\u00a0celého českého trhu na jednom místě a\u00a0nechat lidi přesně filtrovat: slova, která v\u00a0nabídce nechcete, minimální mzda, typ úvazku, práce z\u00a0domova nebo vhodnost pro OZP. Stejnou nabídku z\u00a0více portálů ukáže jen jednou.",
         problem:
           "Vždycky mi enormně vadilo, jak jsou nabídky práce roztříštěné. Chci jedno místo, kam stačí se podívat — s\u00a0dokonalou filtrací.",
-        role: "Návrh, řízení projektu a\u00a0celkový dojem. Úprava textů, řízení animací a\u00a0testování.",
+        role: "Návrh a\u00a0řízení prototypu v\u00a0Lovable, texty a\u00a0testování vyhledávání.",
         state:
-          "Prototyp běží na ukázkových datech. Spolu s\u00a0Cvéčkem tvoří jeden projekt o\u00a0hledání práce, zaměřený i\u00a0na lidi s\u00a0roztroušenou sklerózou. S\u00a0dalším vývojem určitě počítám.",
+          "Prototyp jsem postavila za jeden den čisté práce (rozložený do 3\u00a0dnů) a\u00a0běží na ukázkových datech. Spolu s\u00a0Cvéčkem tvoří jeden projekt o\u00a0hledání práce, zaměřený i\u00a0na lidi s\u00a0roztroušenou sklerózou. S\u00a0dalším vývojem určitě počítám.",
         tech: ["Lovable", "React", "TanStack Start"],
         urlLabel: "Vyzkoušet prototyp",
         ...projectMeta.kompleto,
@@ -259,9 +260,9 @@ const cs = {
           "Aplikace odpovídá na jednu otázku: dá se věřit recenzím podniku? Ukáže skóre důvěryhodnosti 0–100, porovná hodnocení českých a\u00a0zahraničních recenzentů a\u00a0upozorní na podezřelé vzorce. Výsledek je odhad, ne důkaz.",
         problem:
           "Recenze na Googlu se dají zfalšovat. V\u00a0zahraničí už podobná kontrola funguje.",
-        role: "Návrh, řízení projektu a\u00a0celkový dojem. Úprava textů, řízení animací a\u00a0testování.",
+        role: "Návrh a\u00a0řízení prototypu v\u00a0Lovable, texty a\u00a0testování výsledků.",
         state:
-          "Prototyp běží na ukázkových datech a\u00a0podnicích v\u00a0Praze. S\u00a0dalším vývojem určitě počítám.",
+          "Prototyp jsem postavila za jeden den čisté práce (rozložený do 3\u00a0dnů) a\u00a0běží na ukázkových datech a\u00a0podnicích v\u00a0Praze. S\u00a0dalším vývojem určitě počítám.",
         tech: ["Lovable", "React", "TanStack Start"],
         urlLabel: "Vyzkoušet prototyp",
         ...projectMeta["ciste-recenze"],
@@ -440,7 +441,12 @@ const cs = {
         type: "Specializace (certifikát)",
         year: "12/2025",
       },
-      { provider: "PrimaKurzy", title: "Vývoj webových aplikací", type: "Kurz", year: "6/2025" },
+      {
+        provider: "PrimaKurzy",
+        title: "Vývoj webových aplikací",
+        type: "Kurz (certifikát)",
+        year: "6/2025",
+      },
       {
         provider: "Coursera",
         title: "Crash Course on Python",
@@ -451,7 +457,7 @@ const cs = {
         provider: "University College Prague",
         title: "Destination Management",
         type: "Bakalářský titul",
-        year: null,
+        year: "2013",
       },
     ] satisfies Education[],
   },
