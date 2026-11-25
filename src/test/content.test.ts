@@ -84,6 +84,15 @@ describe("site content", () => {
   });
 
   it("sums up the projects in the hero", () => {
+    // Counted from the project list, so the sentence cannot drift from the real statuses.
+    const count = (label: string) =>
+      content.projects.items.filter((p) => p.statusLabel === label).length;
+    expect(count("Živá aplikace")).toBe(2);
+    expect(count("Živý web")).toBe(1);
+    expect(count("Prototyp")).toBe(2);
+    expect(count("Živá aplikace") + count("Živý web") + count("Prototyp")).toBe(
+      content.projects.items.length,
+    );
     expect(plain(content.hero.proofProjects)).toBe("2 živé aplikace · 1 web · 2 prototypy");
   });
 });
