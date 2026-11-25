@@ -85,6 +85,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Věra Paukrtová — osobní web a CV" },
       { name: "description", content: "Osobní kariérní web a interaktivní CV Věry Paukrtové." },
       { name: "author", content: "Věra Paukrtová" },
+      // Google Search Console ownership verification. Keep permanently.
+      {
+        name: "google-site-verification",
+        content: "Ctgx3MlIJJWdodU5RKD0QqkVdI_yZhYH0Ax9UxsskUY",
+      },
       { property: "og:title", content: "Věra Paukrtová — osobní web a CV" },
       {
         property: "og:description",
