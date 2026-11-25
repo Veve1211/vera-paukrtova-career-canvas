@@ -43,6 +43,11 @@ export type Project = {
   state?: string;
   /** One verifiable result: a number or a finding someone can check. Optional. */
   result?: string;
+  /**
+   * Optional short silent video of the live app (file in public/), played only after the
+   * visitor presses play. `alt` says what it shows, for screen readers.
+   */
+  video?: { src: string; alt: string };
   /** Only technologies that are documented (brief, Věra's own words, or what the live app reports). */
   tech: string[];
   url: string | null;
@@ -141,8 +146,6 @@ const cs = {
     conceptIllustration: "Ilustrace konceptu — nejde o\u00a0snímek aplikace",
     playVideo: "Přehrát ukázku webu",
     pauseVideo: "Pozastavit ukázku webu",
-    siteVideo:
-      "ukázka webu: mapa sítě se zatížením (V/C), mapa toků u\u00a0projektu a\u00a0simulátor dopravního koridoru",
   },
   hero: {
     name: "Věra Paukrtová",
@@ -217,6 +220,10 @@ const cs = {
           "Hra je v\u00a0provozu a\u00a0zahrát si ji může kdokoli. Je součástí většího projektu o\u00a0vzdělávání: chci studentům a\u00a0žákům přiblížit učení v\u00a0podobě, která je pro ně přijatelná.",
         result:
           "18 panovníků a\u00a0241 otázek, u\u00a0každé odkaz na zdroj. Správnou odpověď zná jen server a\u00a0skóre do žebříčků počítá jen on, takže ho hráč nemůže podvrhnout.",
+        video: {
+          src: "/cesky-kral-ukazka.mp4",
+          alt: "ukázka hry: kolo o\u00a0kartu Libuše, pět otázek a\u00a0odhalení nové karty ve sbírce",
+        },
         tech: ["Next.js", "Claude Code", "Playwright", "Railway"],
         urlLabel: "Zahrát si Českého krále",
         ...projectMeta["cesky-kral"],
@@ -235,6 +242,10 @@ const cs = {
           "Web je v\u00a0provozu, hotový byl za 8\u00a0dní. Na tvorbu webových portfolií se chci dál zaměřit.",
         result:
           "Každá stránka v\u00a0angličtině i\u00a0češtině prochází automatickou kontrolou přístupnosti (WCAG 2.1 AA) na počítači, tabletu i\u00a0mobilu.",
+        video: {
+          src: "/paukrt-ukazka-webu.mp4",
+          alt: "ukázka webu: mapa sítě se zatížením (V/C), mapa toků u\u00a0projektu a\u00a0simulátor dopravního koridoru",
+        },
         tech: ["Lovable", "React", "GitHub"],
         urlLabel: "Zobrazit web",
         ...projectMeta.paukrt,
@@ -255,6 +266,10 @@ const cs = {
         role: "Návrh a\u00a0řízení prototypu v\u00a0Lovable, texty a\u00a0testování vyhledávání.",
         state:
           "Prototyp jsem postavila za jeden den čisté práce (rozložený do 3\u00a0dnů) a\u00a0běží na ukázkových datech. Spolu s\u00a0Cvéčkem tvoří jeden projekt o\u00a0hledání práce. S\u00a0dalším vývojem určitě počítám, největší výzvou bude napojení na další portály.",
+        video: {
+          src: "/kompleto-ukazka.mp4",
+          alt: "ukázka prototypu: filtry Nechci „call centrum“, jen z\u00a0domova a\u00a0mzda od 45\u00a0000\u00a0Kč, pak uložení nabídky",
+        },
         tech: ["Lovable", "React", "TanStack Start"],
         urlLabel: "Vyzkoušet prototyp",
         ...projectMeta.kompleto,

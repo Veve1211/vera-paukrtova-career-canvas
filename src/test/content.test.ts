@@ -72,6 +72,15 @@ describe("site content", () => {
     }
   });
 
+  it("gives every project video a file in public/ and a description", () => {
+    for (const p of content.projects.items as readonly Project[]) {
+      if (!p.video) continue;
+      expect(p.video.src, p.id).toMatch(/^\/[\w-]+\.mp4$/);
+      expect(existsSync(join(process.cwd(), "public", p.video.src)), p.id).toBe(true);
+      expect(p.video.alt.length, p.id).toBeGreaterThan(20);
+    }
+  });
+
   it("starts every list item with a capital letter", () => {
     const lists = [
       ...content.approach.pillars.map((p) => p.items),
