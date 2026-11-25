@@ -1,15 +1,18 @@
 import { Download } from "lucide-react";
 
-import { content, links } from "@/content/site";
+import { content, cvPagePath, links } from "@/content/site";
 import { cn } from "@/lib/utils";
 
-/** "Download CV" — renders only once links.cvPdf is set in src/content/site.ts. */
+/**
+ * "Download CV" — renders only once links.cvPdf is set in src/content/site.ts.
+ * Links to the /cv page, which starts the download: Vercel Analytics counts each visit of /cv,
+ * so page views of /cv = CV downloads (custom events need a paid plan; this needs no cookies).
+ */
 export function CvButton({ className }: { className?: string }) {
   if (!links.cvPdf) return null;
   return (
     <a
-      href={links.cvPdf}
-      download
+      href={cvPagePath}
       target="_blank"
       rel="noopener noreferrer"
       className={cn(

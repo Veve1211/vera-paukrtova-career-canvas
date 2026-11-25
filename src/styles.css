@@ -1,4 +1,9 @@
 @import "tailwindcss" source(none);
+/* Self-hosted fonts (no request to Google): only the latin + latin-ext files a page uses are fetched. */
+@import "@fontsource-variable/dm-sans/opsz.css";
+@import "@fontsource-variable/dm-sans/opsz-italic.css";
+@import "@fontsource-variable/playfair-display/wght.css";
+@import "@fontsource-variable/playfair-display/wght-italic.css";
 @source "../src";
 
 /*
@@ -8,8 +13,8 @@
  */
 
 @theme inline {
-  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
-  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display Variable", ui-serif, Georgia, serif;
+  --font-sans: "DM Sans Variable", ui-sans-serif, system-ui, sans-serif;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);

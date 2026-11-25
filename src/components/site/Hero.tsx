@@ -92,8 +92,14 @@ export function Hero() {
             </h1>
           </Reveal>
 
+          <Reveal delay={120}>
+            <p className="mt-6 max-w-xl text-lg leading-snug font-medium text-foreground sm:text-xl">
+              {h.lookingFor}
+            </p>
+          </Reveal>
+
           <Reveal delay={160}>
-            <p className="mt-7 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
               {h.intro}
             </p>
           </Reveal>
