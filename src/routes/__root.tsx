@@ -92,6 +92,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      // Google Search Console ownership check. Keep permanently: removing it unverifies the site.
+      {
+        name: "google-site-verification",
+        content: "pG8AJgeqJ4lg7fjad5r0OpUpLkGvCx7khLQAfTJm6tA",
+      },
     ],
     scripts: [
       // Enables scroll-reveal styles only when JavaScript runs (content stays visible otherwise).

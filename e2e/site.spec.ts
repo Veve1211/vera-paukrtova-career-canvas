@@ -201,3 +201,13 @@ test.describe("with reduced motion", () => {
     await expect(page.getByRole("dialog")).toBeHidden();
   });
 });
+
+test("the Google Search Console verification tag is in the server-rendered HTML", async ({
+  request,
+}) => {
+  // Google reads the raw HTML without running JavaScript, so check the source, not the DOM.
+  const html = await (await request.get("/")).text();
+  expect(html).toContain(
+    '<meta name="google-site-verification" content="pG8AJgeqJ4lg7fjad5r0OpUpLkGvCx7khLQAfTJm6tA"',
+  );
+});
