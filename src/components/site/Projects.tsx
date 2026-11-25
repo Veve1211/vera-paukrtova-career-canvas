@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -50,6 +50,54 @@ const screenshots: Partial<Record<Project["id"], { desktop: string; mobile: stri
   paukrt: { desktop: paukrtShot, mobile: paukrtMobile },
 };
 
+/** Short silent loops shown instead of the desktop screenshot (the screenshot is their poster). */
+const videos: Partial<Record<Project["id"], string>> = {
+  paukrt: "/paukrt-mapa-zatizeni.mp4",
+};
+
+/**
+ * Plays only while on screen and never with reduced motion; until then (or without JS)
+ * the screenshot poster stays. preload="none" keeps the page light on mobile data.
+ */
+function LoopVideo({ src, poster, label }: { src: string; poster: string; label: string }) {
+  const ref = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = ref.current;
+    if (!video || !("IntersectionObserver" in window)) return;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting && !reduced.matches) {
+          // Autoplay can be refused (e.g. power saving); the poster stays then.
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.25 },
+    );
+    io.observe(video);
+    return () => io.disconnect();
+  }, []);
+
+  return (
+    <video
+      ref={ref}
+      src={src}
+      poster={poster}
+      muted
+      loop
+      playsInline
+      preload="none"
+      aria-label={label}
+      width={1440}
+      height={900}
+      className="size-full object-cover object-top"
+    />
+  );
+}
+
 function KompletoPreview({ label }: { label: string }) {
   // Abstract illustration of the concept — explicitly labelled, never presented as a screenshot.
   return (
@@ -99,7 +147,13 @@ function Preview({ project }: { project: Project }) {
           </span>
         </div>
         <div className="aspect-[16/10] overflow-hidden">
-          {shot ? (
+          {shot && videos[project.id] ? (
+            <LoopVideo
+              src={videos[project.id]!}
+              poster={shot.desktop}
+              label={`${project.name} — ${content.ui.mapVideo}`}
+            />
+          ) : shot ? (
             <img
               src={shot.desktop}
               alt={`${project.name} — ${content.ui.desktopView}`}
@@ -114,7 +168,8 @@ function Preview({ project }: { project: Project }) {
           )}
         </div>
       </div>
-      {shot && (
+      {/* The video's map sits where the phone would cover it, so a video card shows no phone. */}
+      {shot && !videos[project.id] && (
         <div className="absolute right-3 bottom-0 w-[24%] min-w-[5.5rem] max-w-[9.5rem] overflow-hidden rounded-[1.1rem] border-[5px] border-night bg-night shadow-lift transition-transform duration-700 ease-out group-hover:-translate-y-1.5 sm:right-6 sm:rounded-[1.4rem]">
           <img
             src={shot.mobile}
