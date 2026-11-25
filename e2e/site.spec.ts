@@ -14,8 +14,8 @@ test("the page loads with the name and every section", async ({ page }) => {
   for (const { id } of content.nav) await expect(page.locator(`#${id}`)).toBeAttached();
 });
 
-test("the hero says which role Věra is looking for, right under the headline", async ({ page }) => {
-  const sentence = page.getByText(content.hero.lookingFor);
+test("the hero says what Věra does, right under the headline", async ({ page }) => {
+  const sentence = page.getByText(content.hero.offer);
   await expect(sentence).toBeVisible();
   const h1 = await page.getByRole("heading", { level: 1 }).boundingBox();
   const box = await sentence.boundingBox();
