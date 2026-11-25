@@ -181,7 +181,7 @@ const cs = {
           "Napíšete o\u00a0sobě pár vět a\u00a0AI z\u00a0nich poskládá přehledný životopis — bez vyplňování formulářů, s\u00a0výsledkem jako PDF ve formátu A4.",
         problem:
           "Běžné nástroje na tvorbu CV mi nefungovaly. Chtěla jsem vlastní, který vypadá i\u00a0funguje přesně podle mých představ.",
-        role: "Nápad, návrh funkcí a\u00a0uživatelského postupu, vývoj s\u00a0pomocí AI, testování a\u00a0nasazení. Rozhodla jsem, že kontrolu, jestli AI nic nepřidala, nebude dělat AI, ale kód — a\u00a0že po spuštění už nepřidávám funkce, dokud aplikaci nevyzkouší první skuteční uživatelé.",
+        role: "Nápad, návrh funkcí a\u00a0uživatelského postupu, vývoj s\u00a0pomocí AI, testování a\u00a0nasazení. Zvolila jsem vkládání textu místo formuláře, protože je pro zákazníka přívětivější, a\u00a0výstup jen na jednu stranu A4, protože tolik má životopis mít. Rozhodla jsem také, že kontrolu, jestli AI nic nepřidala, nebude dělat AI, ale kód — a\u00a0že po spuštění už nepřidávám funkce, dokud aplikaci nevyzkouší první skuteční uživatelé.",
         state:
           "Aplikace je v\u00a0provozu a\u00a0životopis s\u00a0PDF je zdarma. Platby jsou připravené, ale vypnuté. Spolu s\u00a0prototypem Kompleto tvoří jeden projekt: celou cestu hledáním práce na jednom místě, zaměřenou i\u00a0na lidi s\u00a0roztroušenou sklerózou.",
         result:
@@ -201,7 +201,7 @@ const cs = {
           "Hráč odpovídá na otázky o\u00a0českých panovnících a\u00a0sbírá je jako karty. Ve hře je denní výzva, rychlé kvízy, žebříček i\u00a0vlastní erb.",
         problem:
           "Česká historie mě bavila a\u00a0pořád baví. Chtěla jsem, aby si k\u00a0ní žáci a\u00a0studenti našli cestu přirozeně — hrou, ne memorováním.",
-        role: "Moje úplně první aplikace: návrh herní logiky, prompty pro AI, testování v\u00a0Playwrightu a\u00a0nasazení na Railway. Při testování na mobilu jsem zjistila, že se otázky z\u00a0prohraného kola opakují v\u00a0mistrovském kole a\u00a0že fakt po odpovědi nejde dočíst. Rozdělila jsem proto otázky do tří uzavřených okruhů a\u00a0zrušila automatický přechod na další otázku.",
+        role: "Moje úplně první aplikace: návrh herní logiky, prompty pro AI, testování v\u00a0Playwrightu a\u00a0nasazení na Railway. Při testování na mobilu jsem zjistila, že se otázky z\u00a0prohraného kola opakují v\u00a0mistrovském kole a\u00a0že fakt po odpovědi nejde dočíst. Rozdělila jsem proto otázky do tří uzavřených okruhů a\u00a0zrušila automatický přechod na další otázku. Zdroj u každé otázky je moje rozhodnutí kvůli důvěryhodnosti: hra míří i\u00a0do škol.",
         state:
           "Hra je v\u00a0provozu a\u00a0zahrát si ji může kdokoli. Je součástí většího projektu o\u00a0vzdělávání: chci studentům a\u00a0žákům přiblížit učení v\u00a0podobě, která je pro ně přijatelná.",
         result:
