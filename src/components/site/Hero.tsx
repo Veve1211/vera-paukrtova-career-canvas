@@ -88,6 +88,7 @@ export function Hero() {
               id="hero-title"
               className="font-display mt-8 text-[2.55rem] leading-[1.04] text-balance text-foreground sm:text-6xl lg:text-[4.35rem]"
             >
+              <span className="sr-only">{h.name}: </span>
               {h.title[0]} <em className="font-normal text-primary italic">{h.title[1]}</em>
             </h1>
           </Reveal>
