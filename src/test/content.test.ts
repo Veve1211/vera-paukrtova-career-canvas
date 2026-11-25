@@ -61,12 +61,12 @@ describe("work experience", () => {
   it("shows Věra's real roles and dates, newest first", () => {
     const rows = content.experience.items.map((e) => [e.company, plain(e.role), e.period]);
     expect(rows).toEqual([
-      ["Allegro Group", "Specialistka podpory marketplace", "11/2025 – současnost"],
-      ["Ipsos", "Koordinátorka", "3/2025 – 11/2025"],
-      ["Sigma AI", "Transkriptorka", "1/2024 – 12/2024"],
-      ["Zentiva", "Digitální HR podpora a webmasterka", "1/2022 – 12/2022"],
-      ["T-Mobile", "UAT testerka", "2/2021 – 12/2021"],
-      ["Megatech Industries", "QA inženýrka", "1/2017 – 9/2020"],
+      ["Allegro Group", "Specialista podpory marketplace", "11/2025 – současnost"],
+      ["Ipsos", "Koordinátor", "3/2025 – 11/2025"],
+      ["Sigma AI", "Transkriptor", "1/2024 – 12/2024"],
+      ["Zentiva", "Digitální HR podpora a webmaster", "1/2022 – 12/2022"],
+      ["T-Mobile", "UAT tester", "2/2021 – 12/2021"],
+      ["Megatech Industries", "QA inženýr", "1/2017 – 9/2020"],
     ]);
   });
 
