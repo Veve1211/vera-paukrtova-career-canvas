@@ -57,6 +57,11 @@ const screenshots: Partial<Record<Project["id"], { desktop: string; mobile: stri
  * WCAG 2.2.2); until then (or without JS) the screenshot poster stays. Once playing, it pauses
  * while scrolled out of view and resumes on return. preload="none" keeps the page light.
  */
+const videoControl =
+  "absolute bottom-3 left-3 z-10 inline-flex min-h-11 items-center gap-2 rounded-full border border-border bg-background/85 text-sm font-medium whitespace-nowrap text-foreground shadow-soft backdrop-blur-sm transition-colors hover:bg-background focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:bottom-4 sm:left-4";
+const videoControlDot =
+  "inline-flex size-8 items-center justify-center rounded-full bg-primary text-primary-foreground";
+
 function LoopVideo({ src, poster, label }: { src: string; poster: string; label: string }) {
   const ref = useRef<HTMLVideoElement>(null);
   /** The visitor's choice: play button pressed (true) or not yet / paused again (false). */
@@ -118,27 +123,33 @@ function LoopVideo({ src, poster, label }: { src: string; poster: string; label:
         onPause={() => setPlaying(false)}
         className="size-full object-cover object-top"
       />
-      {/* Solid plum with a white ring: stands out on light (Cvéčko, Kompleto) and dark videos. */}
+      {/* Quiet frosted pill in the bottom-left corner, same spot for play and pause: the
+          screenshot stays readable; the small plum dot keeps the brand accent. */}
       {ready &&
         (playing ? (
           <button
             type="button"
             onClick={toggle}
             aria-label={content.ui.pauseVideo}
-            className="absolute right-3 bottom-3 z-10 inline-flex size-12 items-center justify-center rounded-full border-2 border-background bg-primary text-primary-foreground shadow-lift transition-colors hover:bg-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+            className={cn(videoControl, "size-11 justify-center")}
           >
-            <Pause className="size-5 fill-current" aria-hidden />
+            <span className={videoControlDot}>
+              <Pause className="size-3.5 fill-current" aria-hidden />
+            </span>
           </button>
         ) : (
           <button
             type="button"
             onClick={toggle}
-            className="absolute top-1/2 left-1/2 z-10 inline-flex min-h-12 -translate-x-1/2 -translate-y-1/2 items-center gap-2.5 rounded-full border-[3px] border-background bg-primary py-2.5 pr-5 pl-3 text-sm sm:min-h-14 sm:gap-3 sm:py-3 sm:pr-6 sm:pl-3.5 sm:text-base font-semibold whitespace-nowrap text-primary-foreground shadow-lift ring-8 ring-primary/20 transition-colors hover:bg-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-foreground"
+            className={cn(
+              videoControl,
+              "size-11 justify-center sm:size-auto sm:py-1.5 sm:pr-4 sm:pl-1.5",
+            )}
           >
-            <span className="inline-flex size-8 items-center justify-center rounded-full bg-background text-primary">
-              <Play className="size-4 translate-x-px fill-current" aria-hidden />
+            <span className={videoControlDot}>
+              <Play className="size-3.5 translate-x-px fill-current" aria-hidden />
             </span>
-            {content.ui.playVideo}
+            <span className="sr-only sm:not-sr-only">{content.ui.playVideo}</span>
           </button>
         ))}
     </div>
