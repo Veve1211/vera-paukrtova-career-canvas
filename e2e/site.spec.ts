@@ -140,7 +140,7 @@ test("no errors in the console", async ({ page }) => {
 
 test("a project card opens its detail with the link, Escape closes it", async ({ page }) => {
   const project = content.projects.items.find((p) => p.id === "cesky-kral")!;
-  const card = page.getByRole("article", { name: project.name });
+  const card = page.locator("#projekty").getByRole("article", { name: project.name });
   // The list shows only the summary; the link to the app lives in the detail.
   await expect(card.getByRole("link", { name: new RegExp(project.urlLabel!) })).toBeHidden();
   await card.getByRole("button", { name: /Více o\s+projektu/ }).click();
@@ -162,7 +162,7 @@ test("a project card opens its detail with the link, Escape closes it", async ({
 for (const project of content.projects.items.filter((p) => "video" in p)) {
   test(`${project.name}: the video plays only after pressing play`, async ({ page }) => {
     const { src } = (project as { video: { src: string } }).video;
-    const card = page.getByRole("article", { name: project.name });
+    const card = page.locator("#projekty").getByRole("article", { name: project.name });
     const video = card.locator("video:not(dialog video)");
     await expect(video).toHaveAttribute("src", src);
     await expect(video).toHaveAttribute("poster", /.+/);
