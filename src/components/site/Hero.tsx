@@ -94,7 +94,7 @@ export function Hero() {
 
           <Reveal delay={120}>
             <p className="mt-6 max-w-xl text-lg leading-snug font-medium text-foreground sm:text-xl">
-              {h.lookingFor}
+              {h.offer}
             </p>
           </Reveal>
 

@@ -145,9 +145,9 @@ const cs = {
     name: "Věra Paukrtová",
     role: "Weby a\u00a0aplikace s\u00a0pomocí AI | QA a\u00a0zákaznická zkušenost",
     title: ["Tvořím weby a\u00a0aplikace s\u00a0pomocí AI", "a\u00a0sama je testuji."],
-    /** One sentence under the headline: the role Věra is looking for (her own choice, 2026-11-25). */
-    lookingFor:
-      "Hledám juniorní roli v\u00a0týmu, který tvoří aplikace s\u00a0AI – navrhnu, otestuji a\u00a0dotáhnu je do provozu.",
+    /** One sentence under the headline: what Věra does now (wording agreed 2026-11-25). */
+    offer:
+      "Aplikace dotáhnu od nápadu až do provozu: navrhnu, co mají dělat, vedu AI při vývoji, otestuji je a\u00a0nasadím.",
     intro:
       "Propojuji tvorbu digitálních produktů s\u00a0praktickými zkušenostmi ze zákaznické podpory a\u00a0QA. Díky tomu přemýšlím nejen nad tím, jak aplikaci vytvořit, ale především jak bude fungovat pro skutečné uživatele.",
     ctaProjects: "Prohlédnout moje projekty",

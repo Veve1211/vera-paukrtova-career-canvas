@@ -116,8 +116,8 @@ describe("portfolio positioning", () => {
     expect(plain(content.hero.title.join(" "))).toBe(
       "Tvořím weby a aplikace s pomocí AI a sama je testuji.",
     );
-    expect(plain(content.hero.lookingFor)).toBe(
-      "Hledám juniorní roli v týmu, který tvoří aplikace s AI – navrhnu, otestuji a dotáhnu je do provozu.",
+    expect(plain(content.hero.offer)).toBe(
+      "Aplikace dotáhnu od nápadu až do provozu: navrhnu, co mají dělat, vedu AI při vývoji, otestuji je a nasadím.",
     );
     expect(content.hero.highlights.map(plain)).toEqual([
       "Tvorba webů",
@@ -153,13 +153,7 @@ describe("portfolio positioning", () => {
 
   it("never presents Věra as a senior developer in her title or headline", () => {
     const c = content;
-    const headline = [
-      c.meta.title,
-      c.meta.description,
-      c.hero.role,
-      ...c.hero.title,
-      c.hero.lookingFor,
-    ]
+    const headline = [c.meta.title, c.meta.description, c.hero.role, ...c.hero.title, c.hero.offer]
       .join(" ")
       .toLowerCase();
     expect(headline).not.toContain("senior");
