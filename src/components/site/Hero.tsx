@@ -73,10 +73,10 @@ export function Hero() {
     <section
       id="top"
       aria-labelledby="hero-title"
-      className="relative overflow-hidden pt-28 pb-20 sm:pt-36 lg:pt-40 lg:pb-28"
+      className="relative overflow-hidden pt-24 pb-20 sm:pt-36 lg:pt-40 lg:pb-28"
     >
       <div aria-hidden className="pointer-events-none absolute inset-0 bg-aura" />
-      <div className="relative mx-auto grid max-w-7xl gap-14 px-5 sm:px-8 lg:grid-cols-12 lg:items-center lg:gap-12">
+      <div className="relative mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-12 lg:items-center lg:gap-12">
         <div className="lg:col-span-7">
           <Reveal>
             <p className="font-display text-2xl text-foreground sm:text-[1.7rem]">{h.name}</p>
@@ -86,7 +86,7 @@ export function Hero() {
           <Reveal delay={80}>
             <h1
               id="hero-title"
-              className="font-display mt-8 text-[2.55rem] leading-[1.04] text-balance text-foreground sm:text-6xl lg:text-[4.35rem]"
+              className="font-display mt-6 text-[2.3rem] sm:mt-8 leading-[1.04] text-balance text-foreground sm:text-6xl lg:text-[4.35rem]"
             >
               <span className="sr-only">{h.name}: </span>
               {h.title[0]} <em className="font-normal text-primary italic">{h.title[1]}</em>
@@ -94,20 +94,15 @@ export function Hero() {
           </Reveal>
 
           <Reveal delay={120}>
-            <p className="mt-6 max-w-xl text-lg leading-snug font-medium text-foreground sm:text-xl">
+            <p className="mt-5 max-w-xl text-lg leading-snug font-medium text-foreground sm:mt-6 sm:text-xl">
               {h.offer}
             </p>
           </Reveal>
 
-          <Reveal delay={160}>
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-              {h.intro}
-            </p>
-          </Reveal>
-
+          {/* On phones the buttons must fit the first screen, so nothing long sits above them. */}
           <Reveal
-            delay={220}
-            className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
+            delay={160}
+            className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
           >
             <a
               href="#projekty"
@@ -131,22 +126,8 @@ export function Hero() {
             </a>
           </Reveal>
 
-          <Reveal delay={280} className="mt-9">
-            <ul
-              aria-label={h.highlightsLabel}
-              className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm font-medium text-foreground"
-            >
-              {h.highlights.map((item, i) => (
-                <li key={item} className="flex items-center gap-3">
-                  {i > 0 && <span aria-hidden className="size-1 rounded-full bg-primary/60" />}
-                  <span className="whitespace-nowrap">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </Reveal>
-
           <Reveal
-            delay={340}
+            delay={220}
             className="mt-10 grid gap-3 border-t border-border pt-6 sm:grid-cols-[auto_1fr] sm:items-baseline sm:gap-8"
           >
             <p className="eyebrow text-muted-foreground">{h.proofLabel}</p>
