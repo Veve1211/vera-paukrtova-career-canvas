@@ -1,10 +1,12 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
   ArrowUpRight,
   BriefcaseBusiness,
   Github,
   GraduationCap,
+  Pause,
+  Play,
   X,
 } from "lucide-react";
 
@@ -56,24 +58,41 @@ const videos: Partial<Record<Project["id"], string>> = {
 };
 
 /**
- * Plays only while on screen and never with reduced motion; until then (or without JS)
- * the screenshot poster stays. preload="none" keeps the page light on mobile data.
+ * Plays only while on screen, and with reduced motion only after the visitor presses play;
+ * until then (or without JS) the screenshot poster stays. A play/pause button is always there
+ * (WCAG 2.2.2: moving content longer than 5 s must be stoppable); once pressed, scrolling no
+ * longer overrides the visitor's choice. preload="none" keeps the page light on mobile data.
  */
 function LoopVideo({ src, poster, label }: { src: string; poster: string; label: string }) {
   const ref = useRef<HTMLVideoElement>(null);
+  /** "auto" = follow scrolling and the motion setting; "on"/"off" = the visitor decided. */
+  const mode = useRef<"auto" | "on" | "off">("auto");
+  const inView = useRef(false);
+  const [ready, setReady] = useState(false);
+  const [playing, setPlaying] = useState(false);
+
+  const sync = () => {
+    const video = ref.current;
+    if (!video) return;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const wanted = mode.current === "on" || (mode.current === "auto" && !reduced);
+    if (inView.current && wanted) {
+      // Autoplay can be refused (e.g. power saving); the poster and the play button stay then.
+      video.play().catch(() => {});
+    } else {
+      video.pause();
+    }
+  };
 
   useEffect(() => {
     const video = ref.current;
-    if (!video || !("IntersectionObserver" in window)) return;
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (!video) return;
+    setReady(true);
+    if (!("IntersectionObserver" in window)) return;
     const io = new IntersectionObserver(
       ([entry]) => {
-        if (entry?.isIntersecting && !reduced.matches) {
-          // Autoplay can be refused (e.g. power saving); the poster stays then.
-          video.play().catch(() => {});
-        } else {
-          video.pause();
-        }
+        inView.current = !!entry?.isIntersecting;
+        sync();
       },
       { threshold: 0.25 },
     );
@@ -81,20 +100,47 @@ function LoopVideo({ src, poster, label }: { src: string; poster: string; label:
     return () => io.disconnect();
   }, []);
 
+  const toggle = () => {
+    const video = ref.current;
+    if (!video) return;
+    mode.current = video.paused ? "on" : "off";
+    // The button is on screen, so the video is too (also without IntersectionObserver).
+    inView.current = true;
+    sync();
+  };
+
   return (
-    <video
-      ref={ref}
-      src={src}
-      poster={poster}
-      muted
-      loop
-      playsInline
-      preload="none"
-      aria-label={label}
-      width={1440}
-      height={900}
-      className="size-full object-cover object-top"
-    />
+    <div className="relative size-full">
+      <video
+        ref={ref}
+        src={src}
+        poster={poster}
+        muted
+        loop
+        playsInline
+        preload="none"
+        aria-label={label}
+        width={1440}
+        height={900}
+        onPlay={() => setPlaying(true)}
+        onPause={() => setPlaying(false)}
+        className="size-full object-cover object-top"
+      />
+      {ready && (
+        <button
+          type="button"
+          onClick={toggle}
+          aria-label={playing ? content.ui.pauseVideo : content.ui.playVideo}
+          className="absolute right-3 bottom-3 z-10 inline-flex size-11 items-center justify-center rounded-full bg-night/80 text-night-foreground shadow-soft backdrop-blur-sm transition-colors hover:bg-night focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+        >
+          {playing ? (
+            <Pause className="size-5" aria-hidden />
+          ) : (
+            <Play className="size-5 translate-x-px" aria-hidden />
+          )}
+        </button>
+      )}
+    </div>
   );
 }
 
