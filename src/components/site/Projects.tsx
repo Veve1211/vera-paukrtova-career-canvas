@@ -52,7 +52,7 @@ const screenshots: Partial<Record<Project["id"], { desktop: string; mobile: stri
 
 /** Short silent loops shown instead of the desktop screenshot (the screenshot is their poster). */
 const videos: Partial<Record<Project["id"], string>> = {
-  paukrt: "/paukrt-mapa-zatizeni.mp4",
+  paukrt: "/paukrt-ukazka-webu.mp4",
 };
 
 /**
@@ -151,7 +151,7 @@ function Preview({ project }: { project: Project }) {
             <LoopVideo
               src={videos[project.id]!}
               poster={shot.desktop}
-              label={`${project.name} — ${content.ui.mapVideo}`}
+              label={`${project.name} — ${content.ui.siteVideo}`}
             />
           ) : shot ? (
             <img

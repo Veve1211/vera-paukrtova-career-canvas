@@ -105,12 +105,12 @@ test("a project card opens its detail with the link, Escape closes it", async ({
   await expect(dialog).toBeHidden();
 });
 
-test("the traffic engineer's card plays the map video once in view", async ({ page }) => {
+test("the traffic engineer's card plays the site video once in view", async ({ page }) => {
   const project = content.projects.items.find((p) => p.id === "paukrt")!;
   const video = page
     .getByRole("article", { name: project.name })
     .locator("video:not(dialog video)");
-  await expect(video).toHaveAttribute("src", "/paukrt-mapa-zatizeni.mp4");
+  await expect(video).toHaveAttribute("src", "/paukrt-ukazka-webu.mp4");
   await expect(video).toHaveAttribute("poster", /.+/);
   await video.scrollIntoViewIfNeeded();
   await expect.poll(() => video.evaluate((v: HTMLVideoElement) => !v.paused)).toBe(true);
@@ -118,7 +118,7 @@ test("the traffic engineer's card plays the map video once in view", async ({ pa
 
 test.describe("with reduced motion", () => {
   test.use({ reducedMotion: "reduce" });
-  test("the map video stays still on its poster", async ({ page }) => {
+  test("the site video stays still on its poster", async ({ page }) => {
     const project = content.projects.items.find((p) => p.id === "paukrt")!;
     const video = page
       .getByRole("article", { name: project.name })

@@ -135,7 +135,8 @@ const cs = {
     desktopView: "počítačová verze",
     mobileView: "mobilní verze",
     conceptIllustration: "Ilustrace konceptu — nejde o\u00a0snímek aplikace",
-    mapVideo: "ukázka interaktivní mapy sítě, přepnutí na zatížení (V/C) a\u00a0detail křižovatky",
+    siteVideo:
+      "ukázka webu: mapa sítě se zatížením (V/C), mapa toků u\u00a0projektu a\u00a0simulátor dopravního koridoru",
   },
   hero: {
     name: "Věra Paukrtová",
