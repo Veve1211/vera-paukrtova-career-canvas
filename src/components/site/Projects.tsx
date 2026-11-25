@@ -118,25 +118,25 @@ function LoopVideo({ src, poster, label }: { src: string; poster: string; label:
         onPause={() => setPlaying(false)}
         className="size-full object-cover object-top"
       />
-      {/* Light buttons: the site in the video is dark, a dark button would blend in. */}
+      {/* Solid plum with a white ring: stands out on light (Cvéčko, Kompleto) and dark videos. */}
       {ready &&
         (playing ? (
           <button
             type="button"
             onClick={toggle}
             aria-label={content.ui.pauseVideo}
-            className="absolute right-3 bottom-3 z-10 inline-flex size-11 items-center justify-center rounded-full border border-primary/20 bg-background text-primary shadow-lift transition-colors hover:bg-primary hover:text-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-background"
+            className="absolute right-3 bottom-3 z-10 inline-flex size-12 items-center justify-center rounded-full border-2 border-background bg-primary text-primary-foreground shadow-lift transition-colors hover:bg-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
           >
-            <Pause className="size-5" aria-hidden />
+            <Pause className="size-5 fill-current" aria-hidden />
           </button>
         ) : (
           <button
             type="button"
             onClick={toggle}
-            className="absolute top-1/2 left-1/2 z-10 inline-flex min-h-12 -translate-x-1/2 -translate-y-1/2 items-center gap-2.5 rounded-full border border-primary/20 bg-background py-3 pr-5 pl-4 text-sm font-medium whitespace-nowrap text-primary shadow-lift transition-colors hover:bg-primary hover:text-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-background"
+            className="absolute top-1/2 left-1/2 z-10 inline-flex min-h-12 -translate-x-1/2 -translate-y-1/2 items-center gap-2.5 rounded-full border-[3px] border-background bg-primary py-2.5 pr-5 pl-3 text-sm sm:min-h-14 sm:gap-3 sm:py-3 sm:pr-6 sm:pl-3.5 sm:text-base font-semibold whitespace-nowrap text-primary-foreground shadow-lift ring-8 ring-primary/20 transition-colors hover:bg-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-foreground"
           >
-            <span className="inline-flex size-7 items-center justify-center rounded-full bg-primary text-primary-foreground">
-              <Play className="size-3.5 translate-x-px fill-current" aria-hidden />
+            <span className="inline-flex size-8 items-center justify-center rounded-full bg-background text-primary">
+              <Play className="size-4 translate-x-px fill-current" aria-hidden />
             </span>
             {content.ui.playVideo}
           </button>
