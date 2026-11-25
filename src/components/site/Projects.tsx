@@ -62,9 +62,31 @@ const screenshots: Partial<Record<Project["id"], { desktop: string; mobile: stri
  * fills plum on hover/focus. The full label stays as aria-label and tooltip.
  */
 const videoControl =
-  "absolute bottom-3 left-3 z-10 inline-flex size-12 items-center justify-center rounded-full border border-border bg-background/90 text-primary shadow-soft backdrop-blur-sm transition-colors duration-300 hover:border-primary hover:bg-primary hover:text-primary-foreground focus-visible:bg-primary focus-visible:text-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:bottom-4 sm:left-4 sm:size-14";
+  "absolute z-10 inline-flex size-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-background/90 text-primary shadow-soft backdrop-blur-sm transition-colors duration-300 hover:border-primary hover:bg-primary hover:text-primary-foreground focus-visible:bg-primary focus-visible:text-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:size-14";
 
-function LoopVideo({ src, poster, label }: { src: string; poster: string; label: string }) {
+/**
+ * Where the play button sits on each poster, as the centre in % of the preview: an empty spot
+ * of that screenshot, so the button never covers its content. Fallback: bottom-left corner.
+ */
+const playSpots: Partial<Record<Project["id"], { x: number; y: number }>> = {
+  cvecko: { x: 90, y: 77 },
+  "cesky-kral": { x: 86, y: 45 },
+  paukrt: { x: 80, y: 87 },
+  kompleto: { x: 42, y: 38 },
+};
+const defaultPlaySpot = { x: 10, y: 85 };
+
+function LoopVideo({
+  src,
+  poster,
+  label,
+  spot = defaultPlaySpot,
+}: {
+  src: string;
+  poster: string;
+  label: string;
+  spot?: { x: number; y: number } | undefined;
+}) {
   const ref = useRef<HTMLVideoElement>(null);
   /** The visitor's choice: play button pressed (true) or not yet / paused again (false). */
   const wanted = useRef(false);
@@ -132,6 +154,7 @@ function LoopVideo({ src, poster, label }: { src: string; poster: string; label:
           aria-label={playing ? content.ui.pauseVideo : content.ui.playVideo}
           title={playing ? content.ui.pauseVideo : content.ui.playVideo}
           className={videoControl}
+          style={{ left: `${spot.x}%`, top: `${spot.y}%` }}
         >
           {playing ? (
             <Pause className="size-5 fill-current sm:size-6" aria-hidden />
@@ -198,6 +221,7 @@ function Preview({ project }: { project: Project }) {
               src={project.video.src}
               poster={shot.desktop}
               label={`${project.name} — ${project.video.alt}`}
+              spot={playSpots[project.id]}
             />
           ) : shot ? (
             <img
