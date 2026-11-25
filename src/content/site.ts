@@ -220,7 +220,8 @@ const cs = {
         about:
           "Osobní prezentace a\u00a0CV mého bratra, inženýra pro návrh silnic a\u00a0křižovatek. Dvojjazyčný web (EN/CZ) s\u00a0modrým vizuálem inspirovaným dopravním modelem.",
         role: "Návrh a\u00a0řízení projektu, texty, animace a\u00a0testování přístupnosti.",
-        state: "Web je v\u00a0provozu. Na tvorbu webových portfolií se chci dál zaměřit.",
+        state:
+          "Web je v\u00a0provozu, hotový byl za 8\u00a0dní. Na tvorbu webových portfolií se chci dál zaměřit.",
         result:
           "Každá stránka v\u00a0angličtině i\u00a0češtině prochází automatickou kontrolou přístupnosti (WCAG 2.1 AA) na počítači, tabletu i\u00a0mobilu.",
         tech: ["Lovable", "React", "GitHub"],
@@ -242,7 +243,7 @@ const cs = {
           "Vždycky mi enormně vadilo, jak jsou nabídky práce roztříštěné. Chci jedno místo, kam stačí se podívat — s\u00a0dokonalou filtrací.",
         role: "Návrh a\u00a0řízení prototypu v\u00a0Lovable, texty a\u00a0testování vyhledávání.",
         state:
-          "Prototyp běží na ukázkových datech. Spolu s\u00a0Cvéčkem tvoří jeden projekt o\u00a0hledání práce, zaměřený i\u00a0na lidi s\u00a0roztroušenou sklerózou. S\u00a0dalším vývojem určitě počítám.",
+          "Prototyp jsem postavila za jeden den čisté práce (rozložený do 3\u00a0dnů) a\u00a0běží na ukázkových datech. Spolu s\u00a0Cvéčkem tvoří jeden projekt o\u00a0hledání práce, zaměřený i\u00a0na lidi s\u00a0roztroušenou sklerózou. S\u00a0dalším vývojem určitě počítám.",
         tech: ["Lovable", "React", "TanStack Start"],
         urlLabel: "Vyzkoušet prototyp",
         ...projectMeta.kompleto,
@@ -261,7 +262,7 @@ const cs = {
           "Recenze na Googlu se dají zfalšovat. V\u00a0zahraničí už podobná kontrola funguje.",
         role: "Návrh a\u00a0řízení prototypu v\u00a0Lovable, texty a\u00a0testování výsledků.",
         state:
-          "Prototyp běží na ukázkových datech a\u00a0podnicích v\u00a0Praze. S\u00a0dalším vývojem určitě počítám.",
+          "Prototyp jsem postavila za jeden den čisté práce (rozložený do 3\u00a0dnů) a\u00a0běží na ukázkových datech a\u00a0podnicích v\u00a0Praze. S\u00a0dalším vývojem určitě počítám.",
         tech: ["Lovable", "React", "TanStack Start"],
         urlLabel: "Vyzkoušet prototyp",
         ...projectMeta["ciste-recenze"],
@@ -440,7 +441,12 @@ const cs = {
         type: "Specializace (certifikát)",
         year: "12/2025",
       },
-      { provider: "PrimaKurzy", title: "Vývoj webových aplikací", type: "Kurz", year: "6/2025" },
+      {
+        provider: "PrimaKurzy",
+        title: "Vývoj webových aplikací",
+        type: "Kurz (certifikát)",
+        year: "6/2025",
+      },
       {
         provider: "Coursera",
         title: "Crash Course on Python",
@@ -451,7 +457,7 @@ const cs = {
         provider: "University College Prague",
         title: "Destination Management",
         type: "Bakalářský titul",
-        year: null,
+        year: "2013",
       },
     ] satisfies Education[],
   },
