@@ -126,20 +126,29 @@ function LoopVideo({ src, poster, label }: { src: string; poster: string; label:
         onPause={() => setPlaying(false)}
         className="size-full object-cover object-top"
       />
-      {ready && (
-        <button
-          type="button"
-          onClick={toggle}
-          aria-label={playing ? content.ui.pauseVideo : content.ui.playVideo}
-          className="absolute right-3 bottom-3 z-10 inline-flex size-11 items-center justify-center rounded-full bg-night/80 text-night-foreground shadow-soft backdrop-blur-sm transition-colors hover:bg-night focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-        >
-          {playing ? (
+      {/* Light buttons: the site in the video is dark, a dark button would blend in. */}
+      {ready &&
+        (playing ? (
+          <button
+            type="button"
+            onClick={toggle}
+            aria-label={content.ui.pauseVideo}
+            className="absolute right-3 bottom-3 z-10 inline-flex size-11 items-center justify-center rounded-full border border-primary/20 bg-background text-primary shadow-lift transition-colors hover:bg-primary hover:text-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-background"
+          >
             <Pause className="size-5" aria-hidden />
-          ) : (
-            <Play className="size-5 translate-x-px" aria-hidden />
-          )}
-        </button>
-      )}
+          </button>
+        ) : (
+          <button
+            type="button"
+            onClick={toggle}
+            className="absolute top-1/2 left-1/2 z-10 inline-flex min-h-12 -translate-x-1/2 -translate-y-1/2 items-center gap-2.5 rounded-full border border-primary/20 bg-background py-3 pr-5 pl-4 text-sm font-medium whitespace-nowrap text-primary shadow-lift transition-colors hover:bg-primary hover:text-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-background"
+          >
+            <span className="inline-flex size-7 items-center justify-center rounded-full bg-primary text-primary-foreground">
+              <Play className="size-3.5 translate-x-px fill-current" aria-hidden />
+            </span>
+            {content.ui.playVideo}
+          </button>
+        ))}
     </div>
   );
 }
