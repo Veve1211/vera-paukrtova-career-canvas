@@ -138,6 +138,8 @@ const cs = {
     desktopView: "počítačová verze",
     mobileView: "mobilní verze",
     conceptIllustration: "Ilustrace konceptu — nejde o\u00a0snímek aplikace",
+    playVideo: "Přehrát ukázku webu",
+    pauseVideo: "Pozastavit ukázku webu",
     siteVideo:
       "ukázka webu: mapa sítě se zatížením (V/C), mapa toků u\u00a0projektu a\u00a0simulátor dopravního koridoru",
   },

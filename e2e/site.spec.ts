@@ -161,13 +161,21 @@ test("a project card opens its detail with the link, Escape closes it", async ({
 
 test("the traffic engineer's card plays the site video once in view", async ({ page }) => {
   const project = content.projects.items.find((p) => p.id === "paukrt")!;
-  const video = page
-    .getByRole("article", { name: project.name })
-    .locator("video:not(dialog video)");
+  const card = page.getByRole("article", { name: project.name });
+  const video = card.locator("video:not(dialog video)");
   await expect(video).toHaveAttribute("src", "/paukrt-ukazka-webu.mp4");
   await expect(video).toHaveAttribute("poster", /.+/);
   await video.scrollIntoViewIfNeeded();
   await expect.poll(() => video.evaluate((v: HTMLVideoElement) => !v.paused)).toBe(true);
+
+  // The visitor can stop it, and scrolling away and back doesn't restart it.
+  await card.getByRole("button", { name: content.ui.pauseVideo }).click();
+  await expect.poll(() => video.evaluate((v: HTMLVideoElement) => v.paused)).toBe(true);
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await video.scrollIntoViewIfNeeded();
+  await page.waitForTimeout(500);
+  expect(await video.evaluate((v: HTMLVideoElement) => v.paused)).toBe(true);
+  await expect(card.getByRole("button", { name: content.ui.playVideo })).toBeVisible();
 });
 
 test.describe("with reduced motion", () => {
@@ -180,5 +188,16 @@ test.describe("with reduced motion", () => {
     await video.scrollIntoViewIfNeeded();
     await page.waitForTimeout(500);
     expect(await video.evaluate((v: HTMLVideoElement) => v.paused)).toBe(true);
+  });
+
+  test("the play button still starts the site video", async ({ page }) => {
+    const project = content.projects.items.find((p) => p.id === "paukrt")!;
+    const card = page.getByRole("article", { name: project.name });
+    const video = card.locator("video:not(dialog video)");
+    await video.scrollIntoViewIfNeeded();
+    await card.getByRole("button", { name: content.ui.playVideo }).click();
+    await expect.poll(() => video.evaluate((v: HTMLVideoElement) => !v.paused)).toBe(true);
+    // The play button must not open the project detail behind it.
+    await expect(page.getByRole("dialog")).toBeHidden();
   });
 });
