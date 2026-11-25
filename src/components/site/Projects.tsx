@@ -52,32 +52,24 @@ const screenshots: Partial<Record<Project["id"], { desktop: string; mobile: stri
   paukrt: { desktop: paukrtShot, mobile: paukrtMobile },
 };
 
-/** Short silent loops shown instead of the desktop screenshot (the screenshot is their poster). */
-const videos: Partial<Record<Project["id"], string>> = {
-  paukrt: "/paukrt-ukazka-webu.mp4",
-};
-
 /**
- * Plays only while on screen, and with reduced motion only after the visitor presses play;
- * until then (or without JS) the screenshot poster stays. A play/pause button is always there
- * (WCAG 2.2.2: moving content longer than 5 s must be stoppable); once pressed, scrolling no
- * longer overrides the visitor's choice. preload="none" keeps the page light on mobile data.
+ * Starts only when the visitor presses play (never by itself, so nothing moves uninvited —
+ * WCAG 2.2.2); until then (or without JS) the screenshot poster stays. Once playing, it pauses
+ * while scrolled out of view and resumes on return. preload="none" keeps the page light.
  */
 function LoopVideo({ src, poster, label }: { src: string; poster: string; label: string }) {
   const ref = useRef<HTMLVideoElement>(null);
-  /** "auto" = follow scrolling and the motion setting; "on"/"off" = the visitor decided. */
-  const mode = useRef<"auto" | "on" | "off">("auto");
-  const inView = useRef(false);
+  /** The visitor's choice: play button pressed (true) or not yet / paused again (false). */
+  const wanted = useRef(false);
+  const inView = useRef(true);
   const [ready, setReady] = useState(false);
   const [playing, setPlaying] = useState(false);
 
   const sync = () => {
     const video = ref.current;
     if (!video) return;
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const wanted = mode.current === "on" || (mode.current === "auto" && !reduced);
-    if (inView.current && wanted) {
-      // Autoplay can be refused (e.g. power saving); the poster and the play button stay then.
+    if (wanted.current && inView.current) {
+      // Playback can be refused (e.g. power saving); the poster and the play button stay then.
       video.play().catch(() => {});
     } else {
       video.pause();
@@ -103,8 +95,8 @@ function LoopVideo({ src, poster, label }: { src: string; poster: string; label:
   const toggle = () => {
     const video = ref.current;
     if (!video) return;
-    mode.current = video.paused ? "on" : "off";
-    // The button is on screen, so the video is too (also without IntersectionObserver).
+    wanted.current = video.paused;
+    // The button is on screen, so the video is too.
     inView.current = true;
     sync();
   };
@@ -202,11 +194,11 @@ function Preview({ project }: { project: Project }) {
           </span>
         </div>
         <div className="aspect-[16/10] overflow-hidden">
-          {shot && videos[project.id] ? (
+          {shot && project.video ? (
             <LoopVideo
-              src={videos[project.id]!}
+              src={project.video.src}
               poster={shot.desktop}
-              label={`${project.name} — ${content.ui.siteVideo}`}
+              label={`${project.name} — ${project.video.alt}`}
             />
           ) : shot ? (
             <img
@@ -223,8 +215,8 @@ function Preview({ project }: { project: Project }) {
           )}
         </div>
       </div>
-      {/* The video's map sits where the phone would cover it, so a video card shows no phone. */}
-      {shot && !videos[project.id] && (
+      {/* The phone would cover part of the video (and its play button), so video cards show none. */}
+      {shot && !project.video && (
         <div className="absolute right-3 bottom-0 w-[24%] min-w-[5.5rem] max-w-[9.5rem] overflow-hidden rounded-[1.1rem] border-[5px] border-night bg-night shadow-lift transition-transform duration-700 ease-out group-hover:-translate-y-1.5 sm:right-6 sm:rounded-[1.4rem]">
           <img
             src={shot.mobile}
