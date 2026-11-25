@@ -57,10 +57,12 @@ const screenshots: Partial<Record<Project["id"], { desktop: string; mobile: stri
  * WCAG 2.2.2); until then (or without JS) the screenshot poster stays. Once playing, it pauses
  * while scrolled out of view and resumes on return. preload="none" keeps the page light.
  */
+/**
+ * One round icon button, same corner for play and pause: quiet white over the screenshot,
+ * fills plum on hover/focus. The full label stays as aria-label and tooltip.
+ */
 const videoControl =
-  "absolute bottom-3 left-3 z-10 inline-flex min-h-11 items-center gap-2 rounded-full border border-border bg-background/85 text-sm font-medium whitespace-nowrap text-foreground shadow-soft backdrop-blur-sm transition-colors hover:bg-background focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:bottom-4 sm:left-4";
-const videoControlDot =
-  "inline-flex size-8 items-center justify-center rounded-full bg-primary text-primary-foreground";
+  "absolute bottom-3 left-3 z-10 inline-flex size-12 items-center justify-center rounded-full border border-border bg-background/90 text-primary shadow-soft backdrop-blur-sm transition-colors duration-300 hover:border-primary hover:bg-primary hover:text-primary-foreground focus-visible:bg-primary focus-visible:text-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:bottom-4 sm:left-4 sm:size-14";
 
 function LoopVideo({ src, poster, label }: { src: string; poster: string; label: string }) {
   const ref = useRef<HTMLVideoElement>(null);
@@ -123,35 +125,21 @@ function LoopVideo({ src, poster, label }: { src: string; poster: string; label:
         onPause={() => setPlaying(false)}
         className="size-full object-cover object-top"
       />
-      {/* Quiet frosted pill in the bottom-left corner, same spot for play and pause: the
-          screenshot stays readable; the small plum dot keeps the brand accent. */}
-      {ready &&
-        (playing ? (
-          <button
-            type="button"
-            onClick={toggle}
-            aria-label={content.ui.pauseVideo}
-            className={cn(videoControl, "size-11 justify-center")}
-          >
-            <span className={videoControlDot}>
-              <Pause className="size-3.5 fill-current" aria-hidden />
-            </span>
-          </button>
-        ) : (
-          <button
-            type="button"
-            onClick={toggle}
-            className={cn(
-              videoControl,
-              "size-11 justify-center sm:size-auto sm:py-1.5 sm:pr-4 sm:pl-1.5",
-            )}
-          >
-            <span className={videoControlDot}>
-              <Play className="size-3.5 translate-x-px fill-current" aria-hidden />
-            </span>
-            <span className="sr-only sm:not-sr-only">{content.ui.playVideo}</span>
-          </button>
-        ))}
+      {ready && (
+        <button
+          type="button"
+          onClick={toggle}
+          aria-label={playing ? content.ui.pauseVideo : content.ui.playVideo}
+          title={playing ? content.ui.pauseVideo : content.ui.playVideo}
+          className={videoControl}
+        >
+          {playing ? (
+            <Pause className="size-5 fill-current sm:size-6" aria-hidden />
+          ) : (
+            <Play className="size-5 translate-x-0.5 fill-current sm:size-6" aria-hidden />
+          )}
+        </button>
+      )}
     </div>
   );
 }
