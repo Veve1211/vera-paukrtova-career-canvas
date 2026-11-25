@@ -109,8 +109,8 @@ const cs = {
     { id: "projekty", label: "Projekty" },
     { id: "pristup", label: "Co přináším" },
     { id: "zkusenosti", label: "Zkušenosti" },
-    { id: "kvalita", label: "Kvalita" },
     { id: "vzdelani", label: "Vzdělání" },
+    { id: "kvalita", label: "Kvalita" },
     { id: "kontakt", label: "Kontakt" },
   ],
   ui: {
@@ -285,7 +285,7 @@ const cs = {
   },
   /** Section texts only; the measured numbers live in `src/content/quality.ts`. */
   quality: {
-    index: "04",
+    index: "05",
     label: "Technická kvalita a\u00a0ověřené výsledky",
     title: ["Od nápadu", "k\u00a0produkčnímu nasazení."],
     intro:
@@ -514,7 +514,7 @@ const cs = {
     ] satisfies Experience[],
   },
   education: {
-    index: "05",
+    index: "04",
     label: "Vzdělání a\u00a0kurzy",
     title: ["Vzdělání", "a\u00a0kurzy."],
     items: [
