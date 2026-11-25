@@ -85,7 +85,6 @@ describe("site content", () => {
     const lists = [
       ...content.approach.pillars.map((p) => p.items),
       ...content.experience.items.map((e) => e.tags),
-      content.hero.highlights,
       content.contact.areas,
       content.approach.tools,
     ];
@@ -112,7 +111,6 @@ describe("work experience", () => {
     expect(rows).toEqual([
       ["Allegro Group", "Specialista podpory marketplace", "11/2025 – současnost"],
       ["Ipsos", "Koordinátor", "3/2025 – 11/2025"],
-      ["Sigma AI", "Transkriptor", "1/2024 – 12/2024"],
       ["Zentiva", "Digitální HR podpora a webmaster", "1/2022 – 12/2022"],
       ["T-Mobile", "UAT tester", "2/2021 – 12/2021"],
       ["Megatech Industries", "QA inženýr", "1/2017 – 9/2020"],
@@ -137,12 +135,23 @@ describe("portfolio positioning", () => {
     expect(plain(content.hero.offer)).toBe(
       "Aplikace dotáhnu od nápadu až do provozu: navrhnu, co mají dělat, vedu AI při vývoji, otestuji je a nasadím.",
     );
-    expect(content.hero.highlights.map(plain)).toEqual([
-      "Tvorba webů",
-      "Aplikace s pomocí AI",
-      "Testování a QA",
-      "Zákaznická zkušenost",
-    ]);
+  });
+
+  it("mentions customer experience at most once in the contact section", () => {
+    const contact = plain([content.contact.text, ...content.contact.areas].join(" ")).toLowerCase();
+    expect(contact).not.toContain("zákaznick");
+  });
+
+  it("explains the steps of working together, without prices", () => {
+    expect(content.contact.steps.length).toBeGreaterThanOrEqual(3);
+    const text = plain(JSON.stringify(content.contact.steps)).toLowerCase();
+    expect(text).not.toMatch(/kč|cena|ceny|\bičo\b/);
+  });
+
+  it("puts the quality section after the work history", () => {
+    const ids = content.nav.map((n) => n.id);
+    expect(ids.indexOf("kvalita")).toBeGreaterThan(ids.indexOf("zkusenosti"));
+    expect(ids.indexOf("kvalita")).toBeGreaterThan(ids.indexOf("pristup"));
   });
 
   it("puts projects right after the intro, before the work history", () => {

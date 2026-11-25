@@ -95,13 +95,6 @@ const projectMeta = {
   },
 } satisfies Record<ProjectId, { url: string | null; github: string | null }>;
 
-const highlights = [
-  "Web Development",
-  "AI-assisted Applications",
-  "QA Testing",
-  "Customer Experience",
-];
-
 const cs = {
   meta: {
     title:
@@ -114,9 +107,9 @@ const cs = {
   skipLink: "Přeskočit na obsah",
   nav: [
     { id: "projekty", label: "Projekty" },
-    { id: "kvalita", label: "Kvalita" },
     { id: "pristup", label: "Co přináším" },
     { id: "zkusenosti", label: "Zkušenosti" },
+    { id: "kvalita", label: "Kvalita" },
     { id: "vzdelani", label: "Vzdělání" },
     { id: "kontakt", label: "Kontakt" },
   ],
@@ -154,17 +147,8 @@ const cs = {
     /** One sentence under the headline: what Věra does now (wording agreed 2026-11-25). */
     offer:
       "Aplikace dotáhnu od nápadu až do provozu: navrhnu, co mají dělat, vedu AI při vývoji, otestuji je a\u00a0nasadím.",
-    intro:
-      "Propojuji tvorbu digitálních produktů s\u00a0praktickými zkušenostmi ze zákaznické podpory a\u00a0QA. Díky tomu přemýšlím nejen nad tím, jak aplikaci vytvořit, ale především jak bude fungovat pro skutečné uživatele.",
-    ctaProjects: "Prohlédnout moje projekty",
+    ctaProjects: "Prohlédnout projekty",
     ctaContact: "Kontaktovat mě",
-    highlightsLabel: "Zaměření",
-    highlights: [
-      "Tvorba webů",
-      "Aplikace s\u00a0pomocí AI",
-      "Testování a\u00a0QA",
-      "Zákaznická zkušenost",
-    ],
     seal: "Přemýšlím jako zákazník, hlídám kvalitu, tvořím s\u00a0AI.",
     proofLabel: "Praxe z",
     proofProjects: "2 živé aplikace · 1 web · 2 prototypy",
@@ -301,17 +285,18 @@ const cs = {
   },
   /** Section texts only; the measured numbers live in `src/content/quality.ts`. */
   quality: {
-    index: "02",
+    index: "04",
     label: "Technická kvalita a\u00a0ověřené výsledky",
     title: ["Od nápadu", "k\u00a0produkčnímu nasazení."],
     intro:
       "Každý projekt prochází technickými kontrolami zaměřenými na výkon, přístupnost, bezpečnost a\u00a0SEO.",
+    detailsToggle: "Zobrazit podrobné výsledky a\u00a0postupy",
     statsLabel: "Souhrn měření",
     stats: {
       projects: "Nasazené projekty",
       projectsNote: "s\u00a0živým webem a\u00a0veřejným kódem",
       average: "Průměrné skóre PageSpeed",
-      averageNote: "průměr všech {count} skóre: 4\u00a0kategorie, mobil i\u00a0počítač",
+      averageNote: "ze 100, průměr {count} měření: 4\u00a0kategorie, mobil i\u00a0počítač",
       seo: "PageSpeed SEO",
       seoNote: "technická kontrola, ne pozice ve vyhledávání",
       headers: "Security Headers",
@@ -390,7 +375,7 @@ const cs = {
     footnote: "Výsledky laboratorních měření z\u00a0{date}. Hodnoty se mohou v\u00a0čase měnit.",
   },
   approach: {
-    index: "03",
+    index: "02",
     label: "Co přináším do projektů",
     title: ["Jeden přístup,", "tři úhly pohledu."],
     intro:
@@ -428,7 +413,6 @@ const cs = {
         title: "Porozumění zákazníkům",
         text: "Z\u00a0Allegro, T-Mobile a\u00a0dalších firem vím, kde se lidé v\u00a0procesu zaseknou a\u00a0co je opravdu štve. Umím problém pojmenovat, zlepšit postup a\u00a0domluvit se se zákazníkem.",
         items: [
-          "Zákaznická zkušenost",
           "Uživatelské problémy",
           "Zlepšování procesů",
           "Komunikace se zákazníky",
@@ -459,7 +443,7 @@ const cs = {
     ],
   },
   experience: {
-    index: "04",
+    index: "03",
     label: "Pracovní zkušenosti",
     title: ["Praxe, která mě naučila", "myslet na uživatele."],
     intro:
@@ -493,15 +477,6 @@ const cs = {
         transfer:
           "Přehled ve velkém objemu dat a\u00a0jasná komunikace s\u00a0mnoha lidmi najednou.",
         tags: ["Sčítání dopravy", "Stovky terénních pracovníků", "7 000+ segmentů"],
-      },
-      {
-        company: "Sigma AI",
-        role: "Transkriptor",
-        period: "1/2024 – 12/2024",
-        featured: false,
-        summary: "Přepisovala jsem audio data a\u00a0kontrolovala jejich kvalitu.",
-        transfer: "Pečlivost a\u00a0kontrola kvality dat, kde rozhoduje každý detail.",
-        tags: ["Přepis audia", "Kontrola kvality", "Práce s\u00a0daty"],
       },
       {
         company: "Zentiva",
@@ -585,13 +560,32 @@ const cs = {
     index: "06",
     label: "Kontakt a\u00a0spolupráce",
     title: ["Máte nápad na web", "nebo digitální aplikaci?"],
-    text: "Ráda se zapojím do tvorby webových stránek, aplikací s\u00a0pomocí AI nebo projektů, kde mohu propojit vývoj, testování a\u00a0zákaznickou zkušenost. Jsem otevřená projektové spolupráci i\u00a0příležitostem v\u00a0digitálních týmech.",
+    text: "Ráda pomůžu s\u00a0webem nebo aplikací od prvního nápadu až po spuštění. Jsem otevřená projektové spolupráci i\u00a0příležitostem v\u00a0digitálních týmech.",
+    stepsTitle: "Jak spolupráce probíhá",
+    steps: [
+      {
+        title: "Zavoláme si",
+        text: "Řeknete mi, co potřebujete a\u00a0pro koho web nebo aplikace je.",
+      },
+      {
+        title: "Navrhnu rozsah",
+        text: "Sepíšu, co bude hotové v\u00a0první verzi a\u00a0co může počkat.",
+      },
+      {
+        title: "Průběžné náhledy",
+        text: "Každou změnu vidíte na vlastní testovací adrese dřív, než jde ven.",
+      },
+      {
+        title: "Předání",
+        text: "Web nebo aplikaci spustím a\u00a0předám vám přístupy i\u00a0kód.",
+      },
+    ],
     areasTitle: "Kde se ráda zapojím",
     areas: [
       "Aplikace s\u00a0pomocí AI",
       "Testování a\u00a0QA",
       "Tvorba webových stránek",
-      "Zákaznická zkušenost",
+      "Osobní weby a\u00a0portfolia",
     ],
     emailCta: "Napište mi e-mail",
   },

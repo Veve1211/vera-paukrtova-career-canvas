@@ -74,7 +74,27 @@ export function Contact() {
             </Reveal>
 
             <Reveal delay={200} className="lg:col-span-5 lg:col-start-8">
-              <h3 className="eyebrow text-orchid">{c.areasTitle}</h3>
+              <h3 className="eyebrow text-orchid">{c.stepsTitle}</h3>
+              <ol className="mt-5 grid gap-5">
+                {c.steps.map((step, i) => (
+                  <li key={step.title} className="flex gap-4">
+                    <span
+                      aria-hidden
+                      className="grid size-9 shrink-0 place-items-center rounded-full border border-orchid/50 font-display text-sm text-orchid italic"
+                    >
+                      {i + 1}
+                    </span>
+                    <div>
+                      <p className="font-display text-xl">{step.title}</p>
+                      <p className="mt-1 text-sm leading-relaxed text-night-foreground/75">
+                        {step.text}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+
+              <h3 className="eyebrow mt-12 text-orchid">{c.areasTitle}</h3>
               <ul className="mt-5 divide-y divide-night-foreground/10 border-y border-night-foreground/10">
                 {c.areas.map((area, i) => (
                   <li key={area} className="flex items-baseline gap-4 py-4">

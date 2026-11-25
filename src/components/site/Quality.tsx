@@ -1,4 +1,4 @@
-import { ArrowUpRight, Github } from "lucide-react";
+import { ArrowUpRight, ChevronDown, Github } from "lucide-react";
 
 import {
   allPageSpeedScores,
@@ -41,7 +41,8 @@ function Stats() {
   const stats = [
     { value: String(projectsQuality.length), label: q.stats.projects, note: q.stats.projectsNote },
     {
-      value: formatCs(pageSpeedAverage(), 2),
+      // Whole points: the lab score varies by a few points between runs anyway.
+      value: formatCs(pageSpeedAverage(), 0),
       label: q.stats.average,
       note: q.stats.averageNote.replace("{count}", String(scores.length)),
     },
@@ -225,21 +226,31 @@ export function Quality() {
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading index={q.index} label={q.label} title={q.title} intro={q.intro} />
         <Stats />
-        <Practices />
-        <div className="mt-16 sm:mt-20">
-          <h3 className="font-display text-3xl text-foreground sm:text-4xl">{q.resultsTitle}</h3>
-          <ul className="mt-8 grid gap-6 lg:grid-cols-2">
-            {projectsQuality.map((p) => (
-              <ProjectResult key={p.id} project={p} />
-            ))}
-          </ul>
-        </div>
-        <Notes />
-        <p className="mt-8 text-sm text-muted-foreground">
+        <p className="mt-6 text-sm text-muted-foreground">
           {before}
           <time dateTime={measuredAt}>{measuredLabel}</time>
           {after}
         </p>
+        {/* Details are for developers; clients get the summary above without the long tables. */}
+        <details className="group mt-10">
+          <summary className="inline-flex min-h-11 cursor-pointer list-none items-center gap-2 rounded-full border border-foreground/20 bg-card px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-primary hover:text-primary [&::-webkit-details-marker]:hidden">
+            {q.detailsToggle}
+            <ChevronDown
+              className="size-4 transition-transform group-open:rotate-180"
+              aria-hidden
+            />
+          </summary>
+          <Practices />
+          <div className="mt-16 sm:mt-20">
+            <h3 className="font-display text-3xl text-foreground sm:text-4xl">{q.resultsTitle}</h3>
+            <ul className="mt-8 grid gap-6 lg:grid-cols-2">
+              {projectsQuality.map((p) => (
+                <ProjectResult key={p.id} project={p} />
+              ))}
+            </ul>
+          </div>
+          <Notes />
+        </details>
       </div>
     </section>
   );

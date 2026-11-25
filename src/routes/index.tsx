@@ -100,9 +100,9 @@ function Index() {
       <main id="obsah">
         <Hero />
         <Projects />
-        <Quality />
         <Approach />
         <Experience />
+        <Quality />
         <Education />
         <Contact />
       </main>

@@ -22,6 +22,12 @@ test("the hero says what Věra does, right under the headline", async ({ page })
   expect(box!.y).toBeGreaterThan(h1!.y + h1!.height - 1);
 });
 
+test("the projects button fits the first screen on every device", async ({ page }) => {
+  const button = page.locator("#top").getByRole("link", { name: content.hero.ctaProjects });
+  const box = (await button.boundingBox())!;
+  expect(box.y + box.height).toBeLessThanOrEqual(page.viewportSize()!.height);
+});
+
 test("the CV button leads to /cv, which downloads the real PDF", async ({ page, context }) => {
   test.skip(!links.cvPdf, "no CV yet");
   // Every CV button (header, mobile menu, contact) goes through /cv so each download is counted.
@@ -202,8 +208,11 @@ test("the quality section shows the lab results with their date", async ({ page 
   const section = page.locator("#kvalita");
   await section.scrollIntoViewIfNeeded();
   await expect(section.getByRole("heading", { level: 2 })).toBeVisible();
-  await expect(section.getByText("99,19", { exact: true })).toBeVisible();
+  await expect(section.getByText("99", { exact: true })).toBeVisible();
   await expect(section.locator('time[datetime="2026-11"]')).toBeVisible();
+  // Per-project details stay folded until the visitor asks for them.
+  await expect(section.getByRole("article").first()).toBeHidden();
+  await section.getByText(content.quality.detailsToggle).click();
   for (const name of ["Toto portfolio", "Web inženýra", "Cvéčko", "Český král"]) {
     const card = section.getByRole("article", { name });
     await expect(card).toBeVisible();
