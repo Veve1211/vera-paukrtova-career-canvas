@@ -148,8 +148,10 @@ describe("portfolio positioning", () => {
     expect(text).not.toMatch(/kč|cena|ceny|\bičo\b/);
   });
 
-  it("puts the quality section after the work history", () => {
+  it("puts the quality section after the whole career story (work history and education)", () => {
     const ids = content.nav.map((n) => n.id);
+    expect(ids.indexOf("kvalita")).toBeGreaterThan(ids.indexOf("vzdelani"));
+    expect(content.education.index < content.quality.index).toBe(true);
     expect(ids.indexOf("kvalita")).toBeGreaterThan(ids.indexOf("zkusenosti"));
     expect(ids.indexOf("kvalita")).toBeGreaterThan(ids.indexOf("pristup"));
   });

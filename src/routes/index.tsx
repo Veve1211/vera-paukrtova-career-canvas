@@ -102,8 +102,8 @@ function Index() {
         <Projects />
         <Approach />
         <Experience />
-        <Quality />
         <Education />
+        <Quality />
         <Contact />
       </main>
       <Footer />
