@@ -243,7 +243,7 @@ const cs = {
           "Vždycky mi enormně vadilo, jak jsou nabídky práce roztříštěné. Chci jedno místo, kam stačí se podívat — s\u00a0dokonalou filtrací.",
         role: "Návrh a\u00a0řízení prototypu v\u00a0Lovable, texty a\u00a0testování vyhledávání.",
         state:
-          "Prototyp jsem postavila za jeden den čisté práce (rozložený do 3\u00a0dnů) a\u00a0běží na ukázkových datech. Spolu s\u00a0Cvéčkem tvoří jeden projekt o\u00a0hledání práce. S\u00a0dalším vývojem určitě počítám.",
+          "Prototyp jsem postavila za jeden den čisté práce (rozložený do 3\u00a0dnů) a\u00a0běží na ukázkových datech. Spolu s\u00a0Cvéčkem tvoří jeden projekt o\u00a0hledání práce. S\u00a0dalším vývojem určitě počítám, největší výzvou bude napojení na další portály.",
         tech: ["Lovable", "React", "TanStack Start"],
         urlLabel: "Vyzkoušet prototyp",
         ...projectMeta.kompleto,
@@ -262,7 +262,7 @@ const cs = {
           "Recenze na Googlu se dají zfalšovat. V\u00a0zahraničí už podobná kontrola funguje.",
         role: "Návrh a\u00a0řízení prototypu v\u00a0Lovable, texty a\u00a0testování výsledků.",
         state:
-          "Prototyp jsem postavila za jeden den čisté práce (rozložený do 3\u00a0dnů) a\u00a0běží na ukázkových datech a\u00a0podnicích v\u00a0Praze. S\u00a0dalším vývojem určitě počítám.",
+          "Prototyp jsem postavila za jeden den čisté práce (rozložený do 3\u00a0dnů) a\u00a0běží na ukázkových datech a\u00a0podnicích v\u00a0Praze. S\u00a0dalším vývojem určitě počítám, chci ho dotáhnout tak, aby byl opravdu užitečný.",
         tech: ["Lovable", "React", "TanStack Start"],
         urlLabel: "Vyzkoušet prototyp",
         ...projectMeta["ciste-recenze"],
