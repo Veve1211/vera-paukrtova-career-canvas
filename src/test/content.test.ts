@@ -83,7 +83,7 @@ describe("portfolio positioning", () => {
       "Weby a aplikace s pomocí AI | QA a zákaznická zkušenost",
     );
     expect(plain(content.hero.title.join(" "))).toBe(
-      "Tvořím weby a aplikace s pomocí AI, které dávají smysl lidem.",
+      "Tvořím weby a aplikace s pomocí AI a sama je testuji.",
     );
     expect(content.hero.highlights.map(plain)).toEqual([
       "Tvorba webů",
