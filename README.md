@@ -42,9 +42,10 @@ Osobní portfolio na jedné stránce: projekty, přístup k práci, zkušenosti,
 
 - Dvoufázové ověření (2FA) na GitHubu i na Vercelu.
 - V repozitáři nejsou žádné klíče ani hesla.
-- Bezpečnostní hlavičky na každé stránce (nosniff, Referrer-Policy, Permissions-Policy; na vlastní doméně i zákaz vkládání do rámců).
+- Základní bezpečnostní hlavičky na každé stránce (nosniff, Referrer-Policy, Permissions-Policy; na vlastní doméně i zákaz vkládání do rámců přes `frame-ancestors`). Plnou Content-Security-Policy pro skripty web zatím nemá; je to statické portfolio bez formulářů a přihlášení.
 - Audit závislostí (`bun audit`) běží v CI u každého PR: zranitelnost v závislostech, které jdou na web, zastaví build; u vývojových nástrojů se jen vypíše. Opravy jen v rámci povolených verzí, bez vynucených skoků na nové hlavní verze.
 - Kontakt na autorku: paukrtovavera@seznam.cz
+- Podrobný audit aplikace Cvéčko (dvě kola, čísla před a po): [docs/audit.md](https://github.com/Veve1211/cvecko/blob/main/docs/audit.md)
 
 ## Stack
 

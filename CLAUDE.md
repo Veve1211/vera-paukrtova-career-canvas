@@ -7,7 +7,7 @@
 - Jedna stránka: projekty, přístup, zkušenosti, vzdělání, kontakt. Web je jen česky.
 
 ## Uživatel
-- Veve (Věra Paukrtová), skill level: začátečník. AI rozhoduje technickou syntaxi a architekturu sama, Veve vysvětluje funkčně a jednoduše česky.
+- Veve (Věra Paukrtová) zadává funkčně a jednoduše česky. AI rozhoduje technickou syntaxi a architekturu a stručně vysvětluje, proč.
 - Cílová skupina webu: klienti a spolupracovníci (Vibecoding Akademie), personalisté.
 
 ## Design
@@ -32,6 +32,6 @@
 - Web je jen česky (přepínač CZ/EN odstraněn 2026-11-17).
 - og:image 1200×627, text a fotka aspoň 180 px od stran (LinkedIn ořezává), česky.
 - Při každé změně og:image změň i název souboru (og-image-v3.jpg …), LinkedIn si obrázek pamatuje podle adresy.
-- Živnost je pozastavená – na webu žádné IČO, ceny ani objednávky.
+- Na webu žádné IČO, ceny ani objednávky (zatím se nic neprodává).
 - Žádné klíče v kódu ani v repu; `.env` nikdy necommitovat (je v `.gitignore`).
 - Kód, komentáře a commity anglicky, texty webu česky.
