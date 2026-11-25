@@ -274,7 +274,7 @@ const cs = {
     label: "Co přináším do projektů",
     title: ["Jeden přístup,", "tři úhly pohledu."],
     intro:
-      "Dokážu se okamžitě vžít do zákazníka. Podívám se na web očima člověka, kterého už něco naštvalo — a\u00a0UX i\u00a0funkční chyby najdu dřív, než se dostanou ke skutečným lidem. Nejsem seniorní programátorka a\u00a0nepředstírám to. Navrhuji, co a\u00a0proč má aplikace dělat, vedu při vývoji AI, testuji a\u00a0nasazuji.",
+      "Dokážu se okamžitě vžít do zákazníka. Podívám se na web očima člověka, kterého už něco naštvalo — a\u00a0UX i\u00a0funkční chyby najdu dřív, než se dostanou ke skutečným lidem. Nejsem seniorní programátor a\u00a0nepředstírám to. Navrhuji, co a\u00a0proč má aplikace dělat, vedu při vývoji AI, testuji a\u00a0nasazuji.",
     pillars: [
       {
         index: "01",
@@ -347,7 +347,7 @@ const cs = {
     items: [
       {
         company: "Allegro Group",
-        role: "Specialistka podpory marketplace",
+        role: "Specialista podpory marketplace",
         period: "11/2025 – současnost",
         current: true,
         featured: true,
@@ -365,7 +365,7 @@ const cs = {
       },
       {
         company: "Ipsos",
-        role: "Koordinátorka",
+        role: "Koordinátor",
         period: "3/2025 – 11/2025",
         featured: false,
         summary:
@@ -376,7 +376,7 @@ const cs = {
       },
       {
         company: "Sigma AI",
-        role: "Přepisovatelka",
+        role: "Transkriptor",
         period: "1/2024 – 12/2024",
         featured: false,
         summary: "Přepisovala jsem audio data a\u00a0kontrolovala jejich kvalitu.",
@@ -385,7 +385,7 @@ const cs = {
       },
       {
         company: "Zentiva",
-        role: "Digitální HR podpora a\u00a0webmasterka",
+        role: "Digitální HR podpora a\u00a0webmaster",
         period: "1/2022 – 12/2022",
         featured: true,
         summary:
@@ -396,7 +396,7 @@ const cs = {
       },
       {
         company: "T-Mobile",
-        role: "UAT testerka",
+        role: "UAT tester",
         period: "2/2021 – 12/2021",
         featured: true,
         summary:
@@ -407,7 +407,7 @@ const cs = {
       },
       {
         company: "Megatech Industries",
-        role: "QA inženýrka",
+        role: "QA inženýr",
         period: "1/2017 – 9/2020",
         featured: true,
         summary:
