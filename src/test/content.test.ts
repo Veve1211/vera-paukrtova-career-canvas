@@ -153,13 +153,7 @@ describe("portfolio positioning", () => {
 
   it("never presents Věra as a senior developer in her title or headline", () => {
     const c = content;
-    const headline = [
-      c.meta.title,
-      c.meta.description,
-      c.hero.role,
-      ...c.hero.title,
-      c.hero.offer,
-    ]
+    const headline = [c.meta.title, c.meta.description, c.hero.role, ...c.hero.title, c.hero.offer]
       .join(" ")
       .toLowerCase();
     expect(headline).not.toContain("senior");
