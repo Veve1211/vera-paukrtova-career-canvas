@@ -25,6 +25,7 @@ Osobní portfolio na jedné stránce: projekty, přístup k práci, zkušenosti,
 - **Kontrola axe:** automatický test přístupnosti (WCAG 2 A/AA) bez nálezů na mobilu, tabletu i počítači.
 - **Bez zástupných textů:** obsah žije v jednom souboru a neznámé údaje se nedoplňují vymyšlenými hodnotami.
 - **Měření stažení CV bez cookies:** tlačítko „Stáhnout CV“ otevře stránku `/cv`, která PDF stáhne. Vercel Web Analytics ji počítá jako návštěvu, takže počet stažení je v přehledu Vercelu (Analytics → Pages) u řádku `/cv`.
+- **Technická kvalita a ověřené výsledky:** sekce s laboratorními měřeními (PageSpeed, GTmetrix, Security Headers, SSL Labs, WAVE) čtyř nasazených projektů z listopadu 2026. Čísla jsou v `src/content/quality.ts`, souhrn (průměr 32 skóre PageSpeed) se počítá z nich.
 - **Fonty z vlastního webu:** DM Sans a Playfair Display jsou v repu (balíčky @fontsource), web se při načítání neptá Googlu.
 
 ## Jak pracuju

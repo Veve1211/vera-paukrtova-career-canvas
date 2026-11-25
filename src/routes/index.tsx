@@ -8,6 +8,7 @@ import { Footer } from "@/components/site/Footer";
 import { Header } from "@/components/site/Header";
 import { Hero } from "@/components/site/Hero";
 import { Projects } from "@/components/site/Projects";
+import { Quality } from "@/components/site/Quality";
 import { content, links, siteUrl } from "@/content/site";
 
 const meta = content.meta;
@@ -99,6 +100,7 @@ function Index() {
       <main id="obsah">
         <Hero />
         <Projects />
+        <Quality />
         <Approach />
         <Experience />
         <Education />
