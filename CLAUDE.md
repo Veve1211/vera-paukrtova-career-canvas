@@ -20,6 +20,7 @@
 - V cloud sandboxu: `PW_CHROMIUM_PATH=/opt/pw-browsers/chromium-1243/chrome-linux64/chrome bun run test:e2e`
 - Hosting Vercel, doména https://verapaukrtova.cz (nasazuje se z `main`)
 - Repo je propojené s Lovable (viz AGENTS.md); obsah webu je v `src/content/site.ts`
+- Naměřené výsledky projektů (PageSpeed, GTmetrix, Security Headers, SSL Labs, WAVE) jsou v `src/content/quality.ts` i s datem měření; při novém měření měň jen tento soubor. Laboratorní skóre nikdy neprezentuj jako data uživatelů, pozici ve vyhledávání ani bezpečnostní audit.
 
 ## Pracovní postup
 - Feature větev z `main` → PR → CI (lint, typy, Vitest, build, Playwright) a náhled na Vercelu → kontrola → merge do `main`

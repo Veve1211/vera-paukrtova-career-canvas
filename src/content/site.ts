@@ -109,6 +109,7 @@ const cs = {
   skipLink: "Přeskočit na obsah",
   nav: [
     { id: "projekty", label: "Projekty" },
+    { id: "kvalita", label: "Kvalita" },
     { id: "pristup", label: "Co přináším" },
     { id: "zkusenosti", label: "Zkušenosti" },
     { id: "vzdelani", label: "Vzdělání" },
@@ -279,8 +280,98 @@ const cs = {
       },
     ] satisfies Project[],
   },
-  approach: {
+  /** Section texts only; the measured numbers live in `src/content/quality.ts`. */
+  quality: {
     index: "02",
+    label: "Technická kvalita a\u00a0ověřené výsledky",
+    title: ["Od nápadu", "k\u00a0produkčnímu nasazení."],
+    intro:
+      "Každý projekt prochází technickými kontrolami zaměřenými na výkon, přístupnost, bezpečnost a\u00a0SEO.",
+    statsLabel: "Souhrn měření",
+    stats: {
+      projects: "Nasazené projekty",
+      projectsNote: "s\u00a0živým webem a\u00a0veřejným kódem",
+      average: "Průměrné skóre PageSpeed",
+      averageNote: "průměr všech {count} skóre: 4\u00a0kategorie, mobil i\u00a0počítač",
+      seo: "PageSpeed SEO",
+      seoNote: "technická kontrola, ne pozice ve vyhledávání",
+      headers: "Security Headers",
+      headersNote: "hodnocení HTTP hlaviček, ne bezpečnostní audit",
+    },
+    practicesTitle: "Technologie a\u00a0vývojové postupy",
+    practices: [
+      {
+        title: "GitHub a\u00a0verzování",
+        text: "Každá změna vzniká ve vlastní větvi a\u00a0do hlavní větve jde jen přes pull request.",
+      },
+      {
+        title: "CI/CD",
+        text: "GitHub Actions u\u00a0každého pull requestu spustí lint, kontrolu typů, testy a\u00a0build. Nasazení na Vercel nebo Railway proběhne až po sloučení.",
+      },
+      {
+        title: "Automatizované testy",
+        text: "Jednotkové testy ve Vitestu a\u00a0testy v\u00a0prohlížeči v\u00a0Playwrightu na mobilu i\u00a0počítači.",
+      },
+      {
+        title: "Produkční nasazení",
+        text: "Testovací prostředí nebo náhled každé změny, teprve potom ostrý web na vlastní adrese s\u00a0HTTPS.",
+      },
+      {
+        title: "SEO a\u00a0strukturovaná data",
+        text: "Metadata, sitemap a\u00a0robots.txt všude, strukturovaná data (JSON-LD) u\u00a0portfolia a\u00a0Cvéčka.",
+      },
+      {
+        title: "Analytika bez cookies",
+        text: "Umami u\u00a0Cvéčka, Vercel Web Analytics u\u00a0portfolia. Bez cookies a\u00a0bez sledování napříč weby.",
+      },
+      {
+        title: "Bezpečnost a\u00a0přístupnost",
+        text: "Bezpečnostní hlavičky, audit závislostí a\u00a0automatická kontrola přístupnosti axe v\u00a0testech.",
+      },
+    ],
+    resultsTitle: "Výsledky jednotlivých projektů",
+    labels: {
+      pageSpeed: "PageSpeed výkon",
+      mobile: "Mobil",
+      desktop: "Počítač",
+      otherCategories: "Přístupnost, osvědčené postupy a\u00a0SEO",
+      otherCategoriesValue: "100 na mobilu i\u00a0počítači",
+      gtmetrix: "GTmetrix",
+      gtmetrixPerformance: "výkon",
+      gtmetrixStructure: "struktura",
+      securityHeaders: "Security Headers",
+      sslLabs: "SSL Labs",
+      waveAim: "WAVE AIM",
+      notMeasured: "neměřeno",
+      outOf100: "ze 100",
+      outOf10: "z\u00a010",
+      practices: "Ověřené postupy",
+      live: "Živý web",
+      github: "Kód na GitHubu",
+    },
+    notesTitle: "Jak výsledky číst",
+    notes: [
+      {
+        title: "Laboratorní měření, ne data návštěvníků",
+        text: "PageSpeed Insights (Lighthouse) i\u00a0GTmetrix načtou stránku jednou na simulovaném zařízení a\u00a0připojení. Nejde o\u00a0data skutečných uživatelů (Core Web Vitals z\u00a0Chrome UX Report), ta tu neuvádím. Výsledek se mezi měřeními může o\u00a0pár bodů lišit.",
+      },
+      {
+        title: "SEO skóre není pozice ve vyhledávání",
+        text: "PageSpeed SEO kontroluje technické základy: titulek, popis, indexovatelnost a\u00a0odkazy. Jak vysoko se web ve vyhledávání zobrazí, z\u00a0něj vyčíst nelze.",
+      },
+      {
+        title: "Bezpečnostní známka není audit",
+        text: "Security Headers hodnotí bezpečnostní HTTP hlavičky, SSL Labs nastavení HTTPS. Nejde o\u00a0kompletní bezpečnostní audit ani penetrační test.",
+      },
+      {
+        title: "WAVE AIM je automatický odhad",
+        text: "Skóre 0–10 odhaduje přístupnost z\u00a0kódu stránky. Ruční kontrolu klávesnicí a\u00a0čtečkou obrazovky nenahrazuje.",
+      },
+    ],
+    footnote: "Výsledky laboratorních měření z\u00a0{date}. Hodnoty se mohou v\u00a0čase měnit.",
+  },
+  approach: {
+    index: "03",
     label: "Co přináším do projektů",
     title: ["Jeden přístup,", "tři úhly pohledu."],
     intro:
@@ -349,7 +440,7 @@ const cs = {
     ],
   },
   experience: {
-    index: "03",
+    index: "04",
     label: "Pracovní zkušenosti",
     title: ["Praxe, která mě naučila", "myslet na uživatele."],
     intro:
@@ -429,7 +520,7 @@ const cs = {
     ] satisfies Experience[],
   },
   education: {
-    index: "04",
+    index: "05",
     label: "Vzdělání a\u00a0kurzy",
     title: ["Vzdělání", "a\u00a0kurzy."],
     items: [
@@ -472,7 +563,7 @@ const cs = {
     ] satisfies Education[],
   },
   contact: {
-    index: "05",
+    index: "06",
     label: "Kontakt a\u00a0spolupráce",
     title: ["Máte nápad na web", "nebo digitální aplikaci?"],
     text: "Ráda se zapojím do tvorby webových stránek, aplikací s\u00a0pomocí AI nebo projektů, kde mohu propojit vývoj, testování a\u00a0zákaznickou zkušenost. Jsem otevřená projektové spolupráci i\u00a0příležitostem v\u00a0digitálních týmech.",

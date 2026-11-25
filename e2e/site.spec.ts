@@ -214,3 +214,20 @@ test("the Google Search Console verification tags are in the server-rendered HTM
     expect(html).toContain(`<meta name="google-site-verification" content="${token}"`);
   }
 });
+
+test("the quality section shows the lab results with their date", async ({ page }) => {
+  const section = page.locator("#kvalita");
+  await section.scrollIntoViewIfNeeded();
+  await expect(section.getByRole("heading", { level: 2 })).toBeVisible();
+  await expect(section.getByText("99,19", { exact: true })).toBeVisible();
+  await expect(section.locator('time[datetime="2026-11"]')).toBeVisible();
+  for (const name of ["Toto portfolio", "Jirkův web", "Cvéčko", "Český král"]) {
+    const card = section.getByRole("article", { name });
+    await expect(card).toBeVisible();
+    await expect(card.getByRole("link", { name: /Živý web/ })).toHaveAttribute("target", "_blank");
+    await expect(card.getByRole("link", { name: /Kód na GitHubu/ })).toHaveAttribute(
+      "href",
+      /^https:\/\/github\.com\/Veve1211\//,
+    );
+  }
+});

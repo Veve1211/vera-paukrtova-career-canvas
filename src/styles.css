@@ -159,6 +159,12 @@
   opacity: 1;
   transform: none;
 }
+/* A project detail opened mid-fade would inherit the card's opacity (low contrast). */
+.js [data-reveal]:has(dialog[open]) {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
 
 @utility font-display {
   font-family: var(--font-serif);
