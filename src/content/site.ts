@@ -166,7 +166,7 @@ const cs = {
     missionLabel: "Součást projektu",
     title: ["Aplikace, které", "si můžete vyzkoušet."],
     intro:
-      "Navrhuji, řídím vývoj s\u00a0AI, testuji v\u00a0Playwrightu a\u00a0nasazuji na Railway, Vercel nebo Lovable. Nejvíc mě baví začátek, kdy se z\u00a0myšlenky stává něco skutečného — a\u00a0pak postupné dolaďování, dokud to není přesně takové, jaké to chci mít. Většina projektů patří ke dvěma větším cílům: hledání práce a\u00a0vzdělávání.",
+      "Navrhuji, řídím vývoj s\u00a0AI, testuji v\u00a0Playwrightu a\u00a0nasazuji na Railway, Vercel nebo Lovable. Většina projektů patří ke dvěma větším cílům: hledání práce a\u00a0vzdělávání.",
     items: [
       {
         id: "cvecko",
@@ -181,9 +181,9 @@ const cs = {
           "Napíšete o\u00a0sobě pár vět a\u00a0AI z\u00a0nich poskládá přehledný životopis — bez vyplňování formulářů, s\u00a0výsledkem jako PDF ve formátu A4.",
         problem:
           "Běžné nástroje na tvorbu CV mi nefungovaly. Chtěla jsem vlastní, který vypadá i\u00a0funguje přesně podle mých představ.",
-        role: "Nápad, návrh funkcí a\u00a0uživatelského postupu, vývoj s\u00a0pomocí AI, testování a\u00a0nasazení. Rozhodla jsem, že kontrolu, jestli AI nic nepřidala, nebude dělat AI, ale kód — a\u00a0že po spuštění už nepřidávám funkce, dokud aplikaci nevyzkouší první skuteční uživatelé.",
+        role: "Nápad, návrh funkcí a\u00a0uživatelského postupu, vývoj s\u00a0pomocí AI, testování a\u00a0nasazení. Zvolila jsem vkládání textu místo formuláře, protože je pro zákazníka přívětivější, a\u00a0výstup jen na jednu stranu A4, protože tolik má životopis mít. Rozhodla jsem také, že kontrolu, jestli AI nic nepřidala, nebude dělat AI, ale kód — a\u00a0že po spuštění už nepřidávám funkce, dokud aplikaci nevyzkouší první skuteční uživatelé.",
         state:
-          "Aplikace je v\u00a0provozu a\u00a0životopis s\u00a0PDF je zdarma. Platby jsou připravené, ale vypnuté. Spolu s\u00a0prototypem Kompleto tvoří jeden projekt: celou cestu hledáním práce na jednom místě, zaměřenou i\u00a0na lidi s\u00a0roztroušenou sklerózou.",
+          "Aplikace je v\u00a0provozu a\u00a0životopis s\u00a0PDF je zdarma. Platby jsou připravené, ale vypnuté. Spolu s\u00a0prototypem Kompleto tvoří jeden projekt: celou cestu hledáním práce na jednom místě.",
         result:
           "Pojistka v\u00a0kódu porovná firmy, roky, čísla i\u00a0dovednosti v\u00a0životopisu s\u00a0původním textem a\u00a0co v\u00a0něm nebylo, žlutě podtrhne. Každou změnu před nasazením hlídá 162 jednotkových testů a\u00a0228 testů v\u00a0prohlížeči na počítači i\u00a0mobilu (stav 25.\u00a011.\u00a02026, běží v\u00a0CI na GitHubu), bezpečnost prošla auditem ve dvou kolech.",
         tech: ["Next.js", "Claude Code", "Railway", "GitHub"],
@@ -201,7 +201,7 @@ const cs = {
           "Hráč odpovídá na otázky o\u00a0českých panovnících a\u00a0sbírá je jako karty. Ve hře je denní výzva, rychlé kvízy, žebříček i\u00a0vlastní erb.",
         problem:
           "Česká historie mě bavila a\u00a0pořád baví. Chtěla jsem, aby si k\u00a0ní žáci a\u00a0studenti našli cestu přirozeně — hrou, ne memorováním.",
-        role: "Moje úplně první aplikace: návrh herní logiky, prompty pro AI, testování v\u00a0Playwrightu a\u00a0nasazení na Railway. Při testování na mobilu jsem zjistila, že se otázky z\u00a0prohraného kola opakují v\u00a0mistrovském kole a\u00a0že fakt po odpovědi nejde dočíst. Rozdělila jsem proto otázky do tří uzavřených okruhů a\u00a0zrušila automatický přechod na další otázku.",
+        role: "Moje úplně první aplikace: návrh herní logiky, prompty pro AI, testování v\u00a0Playwrightu a\u00a0nasazení na Railway. Při testování na mobilu jsem zjistila, že se otázky z\u00a0prohraného kola opakují v\u00a0mistrovském kole a\u00a0že fakt po odpovědi nejde dočíst. Rozdělila jsem proto otázky do tří uzavřených okruhů a\u00a0zrušila automatický přechod na další otázku. Zdroj u každé otázky je moje rozhodnutí kvůli důvěryhodnosti: hra míří i\u00a0do škol.",
         state:
           "Hra je v\u00a0provozu a\u00a0zahrát si ji může kdokoli. Je součástí většího projektu o\u00a0vzdělávání: chci studentům a\u00a0žákům přiblížit učení v\u00a0podobě, která je pro ně přijatelná.",
         result:
@@ -218,7 +218,7 @@ const cs = {
         statusLabel: "Živý web",
         summary: "Portfolio pro mého bratra, inženýra pro návrh silnic a\u00a0křižovatek.",
         about:
-          "Osobní prezentace a\u00a0CV mého bratra, inženýra pro návrh silnic a\u00a0křižovatek. Dvojjazyčný web (EN/CZ) s\u00a0modrým vizuálem inspirovaným dopravním modelem.",
+          "Osobní prezentace a\u00a0CV mého bratra, inženýra pro návrh silnic a\u00a0křižovatek. Dvojjazyčný web (EN/CZ) s\u00a0modrým vizuálem inspirovaným dopravním modelem. Součástí je interaktivní mapa sítě: dá se přepínat mezi zobrazením sítě a\u00a0zatížení (V/C) a\u00a0klikat na jednotlivé křižovatky. Je označená jako ilustrativní, nejde o\u00a0data z\u00a0projektů.",
         role: "Návrh a\u00a0řízení projektu, texty, animace a\u00a0testování přístupnosti.",
         state:
           "Web je v\u00a0provozu, hotový byl za 8\u00a0dní. Na tvorbu webových portfolií se chci dál zaměřit.",
@@ -243,7 +243,7 @@ const cs = {
           "Vždycky mi enormně vadilo, jak jsou nabídky práce roztříštěné. Chci jedno místo, kam stačí se podívat — s\u00a0dokonalou filtrací.",
         role: "Návrh a\u00a0řízení prototypu v\u00a0Lovable, texty a\u00a0testování vyhledávání.",
         state:
-          "Prototyp jsem postavila za jeden den čisté práce (rozložený do 3\u00a0dnů) a\u00a0běží na ukázkových datech. Spolu s\u00a0Cvéčkem tvoří jeden projekt o\u00a0hledání práce, zaměřený i\u00a0na lidi s\u00a0roztroušenou sklerózou. S\u00a0dalším vývojem určitě počítám.",
+          "Prototyp jsem postavila za jeden den čisté práce (rozložený do 3\u00a0dnů) a\u00a0běží na ukázkových datech. Spolu s\u00a0Cvéčkem tvoří jeden projekt o\u00a0hledání práce. S\u00a0dalším vývojem určitě počítám, největší výzvou bude napojení na další portály.",
         tech: ["Lovable", "React", "TanStack Start"],
         urlLabel: "Vyzkoušet prototyp",
         ...projectMeta.kompleto,
@@ -262,7 +262,7 @@ const cs = {
           "Recenze na Googlu se dají zfalšovat. V\u00a0zahraničí už podobná kontrola funguje.",
         role: "Návrh a\u00a0řízení prototypu v\u00a0Lovable, texty a\u00a0testování výsledků.",
         state:
-          "Prototyp jsem postavila za jeden den čisté práce (rozložený do 3\u00a0dnů) a\u00a0běží na ukázkových datech a\u00a0podnicích v\u00a0Praze. S\u00a0dalším vývojem určitě počítám.",
+          "Prototyp jsem postavila za jeden den čisté práce (rozložený do 3\u00a0dnů) a\u00a0běží na ukázkových datech a\u00a0podnicích v\u00a0Praze. S\u00a0dalším vývojem určitě počítám, chci ho dotáhnout tak, aby byl opravdu užitečný.",
         tech: ["Lovable", "React", "TanStack Start"],
         urlLabel: "Vyzkoušet prototyp",
         ...projectMeta["ciste-recenze"],
