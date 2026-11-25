@@ -205,7 +205,7 @@ const cs = {
         state:
           "Hra je v\u00a0provozu a\u00a0zahrát si ji může kdokoli. Je součástí většího projektu o\u00a0vzdělávání: chci studentům a\u00a0žákům přiblížit učení v\u00a0podobě, která je pro ně přijatelná.",
         result:
-          "18 panovníků a\u00a0216 otázek, u\u00a0každé odkaz na zdroj. Správnou odpověď zná jen server a\u00a0skóre do žebříčků počítá jen on, takže ho hráč nemůže podvrhnout.",
+          "18 panovníků a\u00a0241 otázek, u\u00a0každé odkaz na zdroj. Správnou odpověď zná jen server a\u00a0skóre do žebříčků počítá jen on, takže ho hráč nemůže podvrhnout.",
         tech: ["Next.js", "Claude Code", "Playwright", "Railway"],
         urlLabel: "Zahrát si Českého krále",
         ...projectMeta["cesky-kral"],
