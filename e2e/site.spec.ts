@@ -1,7 +1,7 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
-import { content, links } from "../src/content/site";
+import { content, cvPagePath, links } from "../src/content/site";
 
 test.beforeEach(async ({ page }) => {
   // Wait for hydration: the menu button only works once React has taken over the page.
@@ -12,6 +12,60 @@ test("the page loads with the name and every section", async ({ page }) => {
   await expect(page).toHaveTitle(content.meta.title);
   await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
   for (const { id } of content.nav) await expect(page.locator(`#${id}`)).toBeAttached();
+});
+
+test("the hero says which role Věra is looking for, right under the headline", async ({ page }) => {
+  const sentence = page.getByText(content.hero.lookingFor);
+  await expect(sentence).toBeVisible();
+  const h1 = await page.getByRole("heading", { level: 1 }).boundingBox();
+  const box = await sentence.boundingBox();
+  expect(box!.y).toBeGreaterThan(h1!.y + h1!.height - 1);
+});
+
+test("the CV button leads to /cv, which downloads the real PDF", async ({ page, context }) => {
+  test.skip(!links.cvPdf, "no CV yet");
+  // Every CV button (header, mobile menu, contact) goes through /cv so each download is counted.
+  const buttons = page.locator(`a[href="${cvPagePath}"]`);
+  expect(await buttons.count()).toBeGreaterThan(0);
+  await expect(page.locator(`a[href="${links.cvPdf}"]`)).toHaveCount(0);
+  const contactButton = page.locator("#kontakt").getByRole("link", { name: content.ui.downloadCv });
+  await expect(contactButton).toHaveAttribute("href", cvPagePath);
+  await expect(contactButton).toHaveAttribute("target", "_blank");
+
+  // The PDF itself is served.
+  const pdf = await page.request.get(links.cvPdf!);
+  expect(pdf.status()).toBe(200);
+  expect(pdf.headers()["content-type"]).toContain("application/pdf");
+  expect((await pdf.body()).subarray(0, 4).toString()).toBe("%PDF");
+
+  // Clicking opens /cv in a new tab, which starts the download on its own.
+  const [cvTab] = await Promise.all([context.waitForEvent("page"), contactButton.click()]);
+  const download = await cvTab.waitForEvent("download");
+  expect(download.suggestedFilename()).toBe(links.cvPdf!.split("/").pop());
+  await expect(cvTab).toHaveURL(new RegExp(`${cvPagePath}$`));
+  await expect(cvTab.getByRole("heading", { level: 1 })).toHaveText(content.cvPage.heading);
+  await expect(cvTab.getByRole("link", { name: content.cvPage.manualLink })).toHaveAttribute(
+    "href",
+    links.cvPdf!,
+  );
+  const results = await new AxeBuilder({ page: cvTab })
+    .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
+    .analyze();
+  expect(results.violations.map((v) => `${v.id}: ${v.nodes.length}`)).toEqual([]);
+});
+
+test("fonts come from this site, not from Google", async ({ page }) => {
+  const hosts = new Set<string>();
+  page.on("request", (r) => hosts.add(new URL(r.url()).host));
+  await page.reload({ waitUntil: "networkidle" });
+  expect([...hosts].filter((h) => /fonts\.(googleapis|gstatic)\.com/.test(h))).toEqual([]);
+  const families = await page.evaluate(async () => {
+    await document.fonts.ready;
+    return [...document.fonts].filter((f) => f.status === "loaded").map((f) => f.family);
+  });
+  expect(families).toEqual(
+    expect.arrayContaining(["DM Sans Variable", "Playfair Display Variable"]),
+  );
 });
 
 test("no horizontal scrolling", async ({ page }) => {

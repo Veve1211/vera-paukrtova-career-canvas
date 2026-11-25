@@ -1,3 +1,6 @@
+import { existsSync } from "node:fs";
+import { join } from "node:path";
+
 import { describe, expect, it } from "vitest";
 
 import { content, links, type Project } from "@/content/site";
@@ -48,8 +51,36 @@ describe("site content", () => {
 
   it("names real tools instead of a generic AI tag", () => {
     for (const p of content.projects.items) {
-      expect(p.tech.map(plain), p.id).not.toContain("vývoj s pomocí AI");
+      expect(
+        p.tech.map((t) => plain(t).toLowerCase()),
+        p.id,
+      ).not.toContain("vývoj s pomocí ai");
     }
+  });
+
+  it("links the CV to a PDF that exists in public/", () => {
+    if (!links.cvPdf) return;
+    expect(links.cvPdf).toMatch(/^\/[\w.-]+\.pdf$/);
+    expect(existsSync(join(process.cwd(), "public", links.cvPdf))).toBe(true);
+  });
+
+  it("keeps result texts free of test counts and dates that go stale", () => {
+    for (const p of content.projects.items as readonly Project[]) {
+      const text = plain(p.result ?? "");
+      expect(text, p.id).not.toMatch(/\bstav \d/);
+      expect(text, p.id).not.toMatch(/\d+ (jednotkových )?testů/);
+    }
+  });
+
+  it("starts every list item with a capital letter", () => {
+    const lists = [
+      ...content.approach.pillars.map((p) => p.items),
+      ...content.experience.items.map((e) => e.tags),
+      content.hero.highlights,
+      content.contact.areas,
+      content.approach.tools,
+    ];
+    for (const item of lists.flat()) expect(item, item).toMatch(/^[\p{Lu}\d]/u);
   });
 
   it("sums up the projects in the hero", () => {
@@ -85,6 +116,9 @@ describe("portfolio positioning", () => {
     expect(plain(content.hero.title.join(" "))).toBe(
       "Tvořím weby a aplikace s pomocí AI a sama je testuji.",
     );
+    expect(plain(content.hero.lookingFor)).toBe(
+      "Hledám juniorní roli v týmu, který tvoří aplikace s AI – navrhnu, otestuji a dotáhnu je do provozu.",
+    );
     expect(content.hero.highlights.map(plain)).toEqual([
       "Tvorba webů",
       "Aplikace s pomocí AI",
@@ -119,7 +153,13 @@ describe("portfolio positioning", () => {
 
   it("never presents Věra as a senior developer in her title or headline", () => {
     const c = content;
-    const headline = [c.meta.title, c.meta.description, c.hero.role, ...c.hero.title]
+    const headline = [
+      c.meta.title,
+      c.meta.description,
+      c.hero.role,
+      ...c.hero.title,
+      c.hero.lookingFor,
+    ]
       .join(" ")
       .toLowerCase();
     expect(headline).not.toContain("senior");

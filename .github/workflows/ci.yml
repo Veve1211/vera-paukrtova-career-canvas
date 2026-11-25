@@ -18,6 +18,12 @@ jobs:
         with:
           bun-version: 1.4.4
       - run: bun install --frozen-lockfile
+      # Runtime dependencies must be clean; dev-only findings are reported but never fail the build.
+      - name: Audit dependencies (runtime)
+        run: bun audit --prod
+      - name: Audit dependencies (dev tools, report only)
+        run: bun audit
+        continue-on-error: true
       - name: Lint
         run: bun run lint
       - name: Typecheck

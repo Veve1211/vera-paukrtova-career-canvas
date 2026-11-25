@@ -24,6 +24,8 @@ Osobní portfolio na jedné stránce: projekty, přístup k práci, zkušenosti,
 - **Mobil a přístupnost:** tlačítka a odkazy jsou dost velké na prst, nic nepřetéká do strany. Odkazy mimo web se otevírají v novém okně a čtečky obrazovky to oznámí.
 - **Kontrola axe:** automatický test přístupnosti (WCAG 2 A/AA) bez nálezů na mobilu, tabletu i počítači.
 - **Bez zástupných textů:** obsah žije v jednom souboru a neznámé údaje se nedoplňují vymyšlenými hodnotami.
+- **Měření stažení CV bez cookies:** tlačítko „Stáhnout CV“ otevře stránku `/cv`, která PDF stáhne. Vercel Web Analytics ji počítá jako návštěvu, takže počet stažení je v přehledu Vercelu (Analytics → Pages) u řádku `/cv`.
+- **Fonty z vlastního webu:** DM Sans a Playfair Display jsou v repu (balíčky @fontsource), web se při načítání neptá Googlu.
 
 ## Jak pracuju
 
@@ -34,14 +36,14 @@ Osobní portfolio na jedné stránce: projekty, přístup k práci, zkušenosti,
   - konzole bez chyb, žádné rozbité odkazy ani obrázky;
   - kontrola přístupnosti axe;
   - automatické testy obsahu (Vitest) a build.
-- **Automatická kontrola (GitHub Actions):** u každého PR proběhne lint, kontrola typů, testy a build.
+- **Automatická kontrola (GitHub Actions):** u každého PR proběhne audit závislostí, lint, kontrola typů, testy, build a testy v prohlížeči.
 
 ## Bezpečnost
 
 - Dvoufázové ověření (2FA) na GitHubu i na Vercelu.
 - V repozitáři nejsou žádné klíče ani hesla.
 - Bezpečnostní hlavičky na každé stránce (nosniff, Referrer-Policy, Permissions-Policy; na vlastní doméně i zákaz vkládání do rámců).
-- Pravidelný audit závislostí (`npm audit` / `bun audit`). Opravy jen v rámci povolených verzí, bez vynucených skoků na nové hlavní verze.
+- Audit závislostí (`bun audit`) běží v CI u každého PR: zranitelnost v závislostech, které jdou na web, zastaví build; u vývojových nástrojů se jen vypíše. Opravy jen v rámci povolených verzí, bez vynucených skoků na nové hlavní verze.
 - Kontakt na autorku: paukrtovavera@seznam.cz
 
 ## Stack

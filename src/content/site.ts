@@ -14,6 +14,9 @@ export const links = {
   cvPdf: "/cv-vera-paukrtova.pdf" as string | null,
 };
 
+/** Page that starts the CV download; its page views in Vercel Analytics count the downloads. */
+export const cvPagePath = "/cv";
+
 /** The bigger goal a project belongs to; shown as a tag on the card and in the detail. */
 export type MissionId = "jobs" | "education";
 
@@ -140,6 +143,9 @@ const cs = {
     name: "Věra Paukrtová",
     role: "Weby a\u00a0aplikace s\u00a0pomocí AI | QA a\u00a0zákaznická zkušenost",
     title: ["Tvořím weby a\u00a0aplikace s\u00a0pomocí AI", "a\u00a0sama je testuji."],
+    /** One sentence under the headline: the role Věra is looking for (her own choice, 2026-11-25). */
+    lookingFor:
+      "Hledám juniorní roli v\u00a0týmu, který tvoří aplikace s\u00a0AI – navrhnu, otestuji a\u00a0dotáhnu je do provozu.",
     intro:
       "Propojuji tvorbu digitálních produktů s\u00a0praktickými zkušenostmi ze zákaznické podpory a\u00a0QA. Díky tomu přemýšlím nejen nad tím, jak aplikaci vytvořit, ale především jak bude fungovat pro skutečné uživatele.",
     ctaProjects: "Prohlédnout moje projekty",
@@ -185,7 +191,7 @@ const cs = {
         state:
           "Aplikace je v\u00a0provozu a\u00a0životopis s\u00a0PDF je zdarma. Platby jsou připravené, ale vypnuté. Spolu s\u00a0prototypem Kompleto tvoří jeden projekt: celou cestu hledáním práce na jednom místě.",
         result:
-          "Pojistka v\u00a0kódu porovná firmy, roky, čísla i\u00a0dovednosti v\u00a0životopisu s\u00a0původním textem a\u00a0co v\u00a0něm nebylo, žlutě podtrhne. Každou změnu před nasazením hlídá 162 jednotkových testů a\u00a0228 testů v\u00a0prohlížeči na počítači i\u00a0mobilu (stav 25.\u00a011.\u00a02026, běží v\u00a0CI na GitHubu), bezpečnost prošla auditem ve dvou kolech.",
+          "Pojistka v\u00a0kódu porovná firmy, roky, čísla i\u00a0dovednosti v\u00a0životopisu s\u00a0původním textem a\u00a0co v\u00a0něm nebylo, žlutě podtrhne. Každou změnu před nasazením hlídají automatické testy na počítači i\u00a0mobilu (běží v\u00a0CI na GitHubu), bezpečnost prošla auditem ve 2\u00a0kolech.",
         tech: ["Next.js", "Claude Code", "Railway", "GitHub"],
         urlLabel: "Otevřít cvecko.cz",
         ...projectMeta.cvecko,
@@ -283,7 +289,7 @@ const cs = {
         items: [
           "Návrh funkcionalit",
           "Psaní promptů",
-          "vývoj s\u00a0pomocí AI",
+          "Vývoj s\u00a0pomocí AI",
           "Logika aplikací",
           "Iterace",
           "Nasazení na Railway",
@@ -298,8 +304,8 @@ const cs = {
           "UAT",
           "Funkční testování",
           "Testovací scénáře",
-          "hlášení chyb",
-          "analýza příčin",
+          "Hlášení chyb",
+          "Analýza příčin",
           "Playwright",
         ],
       },
@@ -308,7 +314,7 @@ const cs = {
         title: "Porozumění zákazníkům",
         text: "Z\u00a0Allegro, T-Mobile a\u00a0dalších firem vím, kde se lidé v\u00a0procesu zaseknou a\u00a0co je opravdu štve. Umím problém pojmenovat, zlepšit postup a\u00a0domluvit se se zákazníkem.",
         items: [
-          "zákaznická zkušenost",
+          "Zákaznická zkušenost",
           "Uživatelské problémy",
           "Zlepšování procesů",
           "Komunikace se zákazníky",
@@ -403,7 +409,7 @@ const cs = {
           "Testovala jsem CRM a\u00a0webové aplikace, psala testovací scénáře a\u00a0hlásila chyby dřív, než se nová verze dostala k\u00a0zákazníkům.",
         transfer:
           "Testovací scénáře, UAT a\u00a0srozumitelné hlášení chyb — základ, na kterém stavím testování vlastních aplikací.",
-        tags: ["UAT", "CRM", "Webové aplikace", "Testovací scénáře", "hlášení chyb"],
+        tags: ["UAT", "CRM", "Webové aplikace", "Testovací scénáře", "Hlášení chyb"],
       },
       {
         company: "Megatech Industries",
@@ -414,7 +420,7 @@ const cs = {
           "Řídila jsem kvalitu pro Škodu, VW a\u00a0BMW, řešila reklamace a\u00a0hledala skutečné příčiny problémů — ne jen jejich projevy.",
         transfer:
           "Hledat příčinu, ne jen zalepit projev. Stejně přistupuji k\u00a0chybám v\u00a0aplikacích.",
-        tags: ["Automobilový průmysl", "Řízení kvality", "Reklamace", "analýza příčin"],
+        tags: ["Automobilový průmysl", "Řízení kvality", "Reklamace", "Analýza příčin"],
       },
     ] satisfies Experience[],
   },
@@ -474,6 +480,16 @@ const cs = {
       "Zákaznická zkušenost",
     ],
     emailCta: "Napište mi e-mail",
+  },
+  /** The /cv page: starts the CV download (each visit = one download in Vercel Analytics). */
+  cvPage: {
+    title: "Životopis — Věra Paukrtová",
+    heading: "Stahuji životopis",
+    text: "Stahování by se mělo spustit samo. Pokud se nespustilo, použijte odkaz níže.",
+    manualLink: "Stáhnout CV (PDF)",
+    unavailableHeading: "Životopis teď není k\u00a0dispozici",
+    unavailableText: "Napište mi prosím přes LinkedIn.",
+    back: "Zpět na web",
   },
   footer: {
     note: "Navrženo a\u00a0postaveno s\u00a0AI — stejně jako moje aplikace.",

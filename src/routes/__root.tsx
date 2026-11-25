@@ -98,12 +98,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { children: "document.documentElement.classList.add('js')" },
     ],
     links: [
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,400&family=Playfair+Display:ital,wght@0,400..700;1,400..600&display=swap",
-      },
       {
         rel: "stylesheet",
         href: appCss,
