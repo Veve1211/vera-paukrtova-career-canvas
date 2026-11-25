@@ -67,7 +67,7 @@ export const projectsQuality: ProjectQuality[] = [
   },
   {
     id: "paukrt",
-    name: "Jirkův web",
+    name: "Web inženýra",
     kind: "Profesní web dopravního inženýra",
     url: "https://paukrt.lovable.app/",
     github: "https://github.com/Veve1211/jiri-paukrt-web",
