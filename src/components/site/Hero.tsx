@@ -33,7 +33,7 @@ function Portrait() {
           <picture>
             <source
               type="image/webp"
-              srcSet="/portrait-640.webp 640w, /portrait-1024.webp 1024w"
+              srcSet="/portrait-512.webp 512w, /portrait-640.webp 640w, /portrait-864.webp 864w, /portrait-1024.webp 1024w"
               sizes="(min-width: 1280px) 425px, (min-width: 1024px) 35vw, (min-width: 640px) 384px, (min-width: 424px) 320px, calc(100vw - 104px)"
             />
             <img

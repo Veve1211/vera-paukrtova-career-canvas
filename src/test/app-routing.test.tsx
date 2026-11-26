@@ -22,3 +22,19 @@ describe("App routing", () => {
     expect(router.matchRoutes(cvPagePath).at(-1)?.routeId).toBe("/cv");
   });
 });
+
+describe("canonical host", () => {
+  it.each(["/", "/?utm_source=share", "/cv?from=portfolio"])(
+    "permanently redirects www%s to the canonical host",
+    async (path) => {
+      const { default: server } = await import("@/server");
+      const response = await server.fetch(
+        new Request(`https://www.verapaukrtova.cz${path}`),
+        undefined,
+        undefined,
+      );
+      expect(response.status).toBe(308);
+      expect(response.headers.get("location")).toBe(`https://verapaukrtova.cz${path}`);
+    },
+  );
+});

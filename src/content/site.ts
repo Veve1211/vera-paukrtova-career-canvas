@@ -97,10 +97,9 @@ const projectMeta = {
 
 const cs = {
   meta: {
-    title:
-      "Věra Paukrtová – weby a\u00a0aplikace s\u00a0pomocí AI | QA a\u00a0zákaznická zkušenost",
+    title: "Věra Paukrtová – tvorba webů a\u00a0aplikací s\u00a0AI",
     description:
-      "Věra Paukrtová tvoří weby a\u00a0aplikace s\u00a0pomocí AI a\u00a0propojuje je s\u00a0praxí z\u00a0QA, UAT testování a\u00a0zákaznické zkušenosti. Projekty Cvéčko a\u00a0Český král.",
+      "Věra Paukrtová navrhuje, tvoří a\u00a0testuje weby a\u00a0aplikace s\u00a0AI. V\u00a0portfoliu najdete Cvéčko, které pomocí AI automatizuje tvorbu životopisu, a\u00a0hru Český král.",
     /** Topics for the search-engine profile (JSON-LD). */
     knowsAbout: ["Tvorba webů s\u00a0pomocí AI", "QA", "UAT testování", "Zákaznická zkušenost"],
   },
@@ -174,7 +173,7 @@ const cs = {
         statusLabel: "Živá aplikace",
         mission: "jobs",
         summary:
-          "Napíšete o\u00a0sobě pár vět a\u00a0AI z\u00a0nich poskládá přehledný životopis — bez formulářů, rovnou jako PDF.",
+          "AI aplikace, která automatizuje tvorbu životopisu. Napíšete o\u00a0sobě pár vět a\u00a0Cvéčko z\u00a0nich připraví přehledné PDF.",
         about:
           "Napíšete o\u00a0sobě pár vět a\u00a0AI z\u00a0nich poskládá přehledný životopis — bez vyplňování formulářů, s\u00a0výsledkem jako PDF ve formátu A4.",
         problem:

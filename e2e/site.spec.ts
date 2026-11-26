@@ -1,7 +1,7 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
-import { content, cvPagePath, links } from "../src/content/site";
+import { content, cvPagePath, links, siteUrl } from "../src/content/site";
 
 test.beforeEach(async ({ page }) => {
   // Wait for hydration: the menu button only works once React has taken over the page.
@@ -208,6 +208,34 @@ test("search engine verification tags are in the server-rendered head", async ({
     "pG8AJgeqJ4lg7fjad5r0OpUpLkGvCx7khLQAfTJm6tA",
   ]) {
     expect(head).toContain(`<meta name="google-site-verification" content="${token}"`);
+  }
+});
+
+test("the server advertises a crawlable favicon and social preview", async ({ request }) => {
+  const html = await (await request.get("/")).text();
+  const head = html.split("</head>")[0];
+  expect(head).toContain(`rel="canonical" href="${siteUrl}/"`);
+  expect(head).toContain('property="og:image:width" content="1200"');
+  expect(head).toContain('property="og:image:height" content="627"');
+  const imageUrl = head.match(/property="og:image" content="([^"]+)"/)?.[1];
+  expect(imageUrl).toBe(`${siteUrl}/og-image-v4.jpg`);
+  expect(head).toContain(`name="twitter:image" content="${imageUrl}"`);
+  const preview = await request.get(new URL(imageUrl!).pathname, {
+    headers: { "user-agent": "facebookexternalhit/1.1" },
+  });
+  expect(preview.ok()).toBe(true);
+  expect(preview.headers()["content-type"]).toContain("image/jpeg");
+
+  for (const size of [48, 96]) {
+    const path = `/favicon-${size}.png`;
+    expect(head).toContain(`href="${path}"`);
+    for (const bot of ["Googlebot-Image/1.0", "SeznamBot/4.0"]) {
+      const icon = await request.get(path, { headers: { "user-agent": bot } });
+      expect(icon.ok()).toBe(true);
+      expect(icon.headers()["content-type"]).toContain("image/png");
+      const png = await icon.body();
+      expect([png.readUInt32BE(16), png.readUInt32BE(20)]).toEqual([size, size]);
+    }
   }
 });
 
