@@ -83,11 +83,11 @@ const projectMeta = {
   },
   kompleto: {
     url: "https://kompleto.vercel.app/",
-    github: "https://github.com/Veve1211/kompleto",
+    github: null,
   },
   "ciste-recenze": {
     url: "https://verim-recenze-v-klidu.vercel.app/",
-    github: "https://github.com/Veve1211/cista-recenze",
+    github: null,
   },
   paukrt: {
     url: "https://paukrt.lovable.app/",
