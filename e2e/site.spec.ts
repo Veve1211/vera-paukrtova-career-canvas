@@ -191,16 +191,16 @@ for (const project of content.projects.items.filter((p) => "video" in p)) {
   });
 }
 
-test("the Google Search Console verification tags are in the server-rendered HTML", async ({
-  request,
-}) => {
+test("search engine verification tags are in the server-rendered head", async ({ request }) => {
   // Google reads the raw HTML without running JavaScript, so check the source, not the DOM.
   const html = await (await request.get("/")).text();
+  const head = html.split("</head>")[0];
+  expect(head).toContain('<meta name="seznam-wmt" content="xnQEye5IrXvqlbcfH7ZkiZAagmcaBgAd"');
   for (const token of [
     "Ctgx3MlIJJWdodU5RKD0QqkVdI_yZhYH0Ax9UxsskUY",
     "pG8AJgeqJ4lg7fjad5r0OpUpLkGvCx7khLQAfTJm6tA",
   ]) {
-    expect(html).toContain(`<meta name="google-site-verification" content="${token}"`);
+    expect(head).toContain(`<meta name="google-site-verification" content="${token}"`);
   }
 });
 
