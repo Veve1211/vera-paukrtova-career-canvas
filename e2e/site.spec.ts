@@ -79,6 +79,12 @@ test("no horizontal scrolling", async ({ page }) => {
     () => document.documentElement.scrollWidth - window.innerWidth,
   );
   expect(overflow).toBeLessThanOrEqual(0);
+  if (page.viewportSize()!.width < 600) {
+    await page.setViewportSize({ width: 320, height: 900 });
+    await expect
+      .poll(() => page.evaluate(() => document.documentElement.scrollWidth - innerWidth))
+      .toBe(0);
+  }
 });
 
 test("navigation reaches every section", async ({ page }) => {
@@ -171,13 +177,14 @@ for (const project of content.projects.items.filter((p) => "video" in p)) {
     const card = page.locator("#projekty").getByRole("article", { name: project.name });
     const video = card.locator("video:not(dialog video)");
     await expect(video).toHaveAttribute("src", src);
-    await expect(video).toHaveAttribute("poster", /.+/);
+    await expect(video.locator("+ img")).toHaveAttribute("loading", "lazy");
     await video.scrollIntoViewIfNeeded();
     await page.waitForTimeout(500);
     expect(await video.evaluate((v: HTMLVideoElement) => v.paused)).toBe(true);
 
     await card.getByRole("button", { name: content.ui.playVideo }).click();
     await expect.poll(() => video.evaluate((v: HTMLVideoElement) => !v.paused)).toBe(true);
+    await expect(video.locator("+ img")).toHaveCount(0);
     // The play button must not open the project detail behind it.
     await expect(page.getByRole("dialog")).toBeHidden();
 
@@ -191,16 +198,16 @@ for (const project of content.projects.items.filter((p) => "video" in p)) {
   });
 }
 
-test("the Google Search Console verification tags are in the server-rendered HTML", async ({
-  request,
-}) => {
+test("search engine verification tags are in the server-rendered head", async ({ request }) => {
   // Google reads the raw HTML without running JavaScript, so check the source, not the DOM.
   const html = await (await request.get("/")).text();
+  const head = html.split("</head>")[0];
+  expect(head).toContain('<meta name="seznam-wmt" content="xnQEye5IrXvqlbcfH7ZkiZAagmcaBgAd"');
   for (const token of [
     "Ctgx3MlIJJWdodU5RKD0QqkVdI_yZhYH0Ax9UxsskUY",
     "pG8AJgeqJ4lg7fjad5r0OpUpLkGvCx7khLQAfTJm6tA",
   ]) {
-    expect(html).toContain(`<meta name="google-site-verification" content="${token}"`);
+    expect(head).toContain(`<meta name="google-site-verification" content="${token}"`);
   }
 });
 

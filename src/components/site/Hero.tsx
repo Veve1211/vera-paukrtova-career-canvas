@@ -30,18 +30,25 @@ function Portrait() {
             </span>
           </div>
         ) : (
-          <img
-            ref={imgRef}
-            src="/portrait.jpg"
-            alt={content.ui.portraitAlt}
-            width={1024}
-            height={1280}
-            loading="eager"
-            fetchPriority="high"
-            decoding="async"
-            onError={() => setFailed(true)}
-            className="object-cover object-center w-full h-full"
-          />
+          <picture>
+            <source
+              type="image/webp"
+              srcSet="/portrait-640.webp 640w, /portrait-1024.webp 1024w"
+              sizes="(min-width: 1280px) 425px, (min-width: 1024px) 35vw, (min-width: 640px) 384px, (min-width: 424px) 320px, calc(100vw - 104px)"
+            />
+            <img
+              ref={imgRef}
+              src="/portrait.jpg"
+              alt={content.ui.portraitAlt}
+              width={1024}
+              height={1280}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+              onError={() => setFailed(true)}
+              className="object-cover object-center w-full h-full"
+            />
+          </picture>
         )}
       </div>
 
@@ -78,12 +85,12 @@ export function Hero() {
       <div aria-hidden className="pointer-events-none absolute inset-0 bg-aura" />
       <div className="relative mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-12 lg:items-center lg:gap-12">
         <div className="lg:col-span-7">
-          <Reveal>
+          <div>
             <p className="font-display text-2xl text-foreground sm:text-[1.7rem]">{h.name}</p>
             <p className="eyebrow mt-3 leading-relaxed text-primary">{h.role}</p>
-          </Reveal>
+          </div>
 
-          <Reveal delay={80}>
+          <div>
             <h1
               id="hero-title"
               className="font-display mt-6 text-[2.3rem] sm:mt-8 leading-[1.04] text-balance text-foreground sm:text-6xl lg:text-[4.35rem]"
@@ -91,19 +98,16 @@ export function Hero() {
               <span className="sr-only">{h.name}: </span>
               {h.title[0]} <em className="font-normal text-primary italic">{h.title[1]}</em>
             </h1>
-          </Reveal>
+          </div>
 
-          <Reveal delay={120}>
+          <div>
             <p className="mt-5 max-w-xl text-lg leading-snug font-medium text-foreground sm:mt-6 sm:text-xl">
               {h.offer}
             </p>
-          </Reveal>
+          </div>
 
           {/* On phones the buttons must fit the first screen, so nothing long sits above them. */}
-          <Reveal
-            delay={160}
-            className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
-          >
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
             <a
               href="#projekty"
               className="group inline-flex items-center justify-center gap-2 rounded-full bg-violet-gradient px-6 py-3.5 text-sm font-medium text-primary-foreground shadow-soft transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5 hover:shadow-lift"
@@ -124,7 +128,7 @@ export function Hero() {
                 aria-hidden
               />
             </a>
-          </Reveal>
+          </div>
 
           <Reveal
             delay={220}
@@ -145,9 +149,9 @@ export function Hero() {
           </Reveal>
         </div>
 
-        <Reveal delay={200} className="px-8 sm:px-10 lg:col-span-5 lg:px-0 lg:pl-10">
+        <div className="px-8 sm:px-10 lg:col-span-5 lg:px-0 lg:pl-10">
           <Portrait />
-        </Reveal>
+        </div>
       </div>
     </section>
   );

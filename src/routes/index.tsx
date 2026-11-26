@@ -21,6 +21,7 @@ export const Route = createFileRoute("/")({
     meta: [
       { title: meta.title },
       { name: "description", content: meta.description },
+      { name: "seznam-wmt", content: "xnQEye5IrXvqlbcfH7ZkiZAagmcaBgAd" },
       { property: "og:title", content: meta.title },
       { property: "og:description", content: meta.description },
       { property: "og:type", content: "profile" },
