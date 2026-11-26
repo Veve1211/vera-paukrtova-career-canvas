@@ -54,7 +54,7 @@ const screenshots: Partial<Record<Project["id"], { desktop: string; mobile: stri
 
 /**
  * Starts only when the visitor presses play (never by itself, so nothing moves uninvited —
- * WCAG 2.2.2); until then (or without JS) the screenshot poster stays. Once playing, it pauses
+ * WCAG 2.2.2); until then (or without JS) the screenshot stays. Once playing, it pauses
  * while scrolled out of view and resumes on return. preload="none" keeps the page light.
  */
 /**
@@ -94,6 +94,7 @@ function LoopVideo({
   const inView = useRef(true);
   const [ready, setReady] = useState(false);
   const [playing, setPlaying] = useState(false);
+  const [started, setStarted] = useState(false);
 
   const sync = () => {
     const video = ref.current;
@@ -136,7 +137,6 @@ function LoopVideo({
       <video
         ref={ref}
         src={src}
-        poster={poster}
         muted
         loop
         playsInline
@@ -144,10 +144,24 @@ function LoopVideo({
         aria-label={label}
         width={1440}
         height={900}
-        onPlay={() => setPlaying(true)}
+        onPlaying={() => {
+          setStarted(true);
+          setPlaying(true);
+        }}
         onPause={() => setPlaying(false)}
         className="size-full object-cover object-top"
       />
+      {!started && (
+        <img
+          src={poster}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          width={1440}
+          height={900}
+          className="pointer-events-none absolute inset-0 size-full object-cover object-top"
+        />
+      )}
       {ready && (
         <button
           type="button"
@@ -430,17 +444,17 @@ function ProjectCard({
       as="article"
       aria-labelledby={`project-${project.id}`}
       className={cn(
-        "group relative grid gap-10 rounded-[1.75rem] border p-5 transition-colors duration-500 sm:p-8 lg:grid-cols-12 lg:items-center lg:gap-12 lg:p-10",
+        "group relative grid min-w-0 grid-cols-1 gap-10 rounded-[1.75rem] border p-5 transition-colors duration-500 sm:p-8 lg:grid-cols-12 lg:items-center lg:gap-12 lg:p-10",
         concept
           ? "border-dashed border-primary/30 bg-background"
           : "border-border bg-card/70 bg-aura hover:border-primary/25",
       )}
     >
-      <div className={cn("lg:col-span-7", flip && "lg:order-2")}>
+      <div className={cn("min-w-0 lg:col-span-7", flip && "lg:order-2")}>
         <Preview project={project} />
       </div>
 
-      <div className={cn("lg:col-span-5", flip && "lg:order-1")}>
+      <div className={cn("min-w-0 lg:col-span-5", flip && "lg:order-1")}>
         {/* Upcoming projects sit under their own heading, so they get no number or status badge. */}
         {!concept && (
           <div className="flex flex-wrap items-center gap-3">
