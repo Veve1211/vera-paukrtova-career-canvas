@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { CvButton } from "./CvButton";
 
 export function Header() {
+  const [ready, setReady] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState<string | null>(null);
@@ -14,6 +15,7 @@ export function Header() {
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
+    setReady(true);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -97,6 +99,7 @@ export function Header() {
           <button
             type="button"
             className="grid size-10 place-items-center rounded-full border border-border lg:hidden"
+            disabled={!ready}
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? content.ui.menuClose : content.ui.menuOpen}
