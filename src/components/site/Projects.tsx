@@ -73,6 +73,7 @@ const playSpots: Partial<Record<Project["id"], { x: number; y: number }>> = {
   "cesky-kral": { x: 86, y: 45 },
   paukrt: { x: 80, y: 83 },
   kompleto: { x: 43, y: 37 },
+  "ciste-recenze": { x: 88, y: 42 },
 };
 const defaultPlaySpot = { x: 10, y: 85 };
 

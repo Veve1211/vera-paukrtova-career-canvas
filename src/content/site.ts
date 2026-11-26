@@ -277,6 +277,10 @@ const cs = {
         role: "Návrh a\u00a0řízení prototypu v\u00a0Lovable, texty a\u00a0testování výsledků.",
         state:
           "Prototyp jsem postavila za jeden den čisté práce (rozložený do 3\u00a0dnů) a\u00a0běží na ukázkových datech a\u00a0podnicích v\u00a0Praze. S\u00a0dalším vývojem určitě počítám, chci ho dotáhnout tak, aby byl opravdu užitečný.",
+        video: {
+          src: "/ciste-recenze-ukazka.mp4",
+          alt: "ukázka prototypu: zadání podniku, kontrola recenzí a\u00a0výsledek, skóre důvěryhodnosti 24 ze 100, porovnání českých a\u00a0zahraničních recenzentů a\u00a0podezřelé vzorce",
+        },
         tech: ["Lovable", "React", "TanStack Start"],
         urlLabel: "Vyzkoušet prototyp",
         ...projectMeta["ciste-recenze"],
