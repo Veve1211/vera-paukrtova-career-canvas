@@ -2,7 +2,7 @@ import { Fragment, useEffect, useRef, useState } from "react";
 
 import { ArrowDown, ArrowRight } from "lucide-react";
 
-import { content } from "@/content/site";
+import { content, expertWebsitesPath } from "@/content/site";
 
 import { Reveal } from "./Reveal";
 
@@ -129,6 +129,14 @@ export function Hero() {
               />
             </a>
           </div>
+
+          <a
+            href={expertWebsitesPath}
+            className="mt-4 inline-flex min-h-11 items-center gap-2 text-sm font-medium text-primary underline underline-offset-4"
+          >
+            {content.expertWebsites.linkLabel}
+            <ArrowRight className="size-4" aria-hidden />
+          </a>
 
           <Reveal
             delay={220}

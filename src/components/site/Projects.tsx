@@ -20,7 +20,7 @@ import kompletoMobile from "@/assets/project-kompleto-mobile.webp";
 import kompletoShot from "@/assets/project-kompleto.webp";
 import paukrtMobile from "@/assets/project-paukrt-mobile.webp";
 import paukrtShot from "@/assets/project-paukrt.webp";
-import { content, type MissionId, type Project } from "@/content/site";
+import { content, expertWebsitesPath, type MissionId, type Project } from "@/content/site";
 import { cn } from "@/lib/utils";
 
 import { Reveal } from "./Reveal";
@@ -509,7 +509,14 @@ export function Projects() {
       />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading index={p.index} label={p.label} title={p.title} intro={p.intro} />
-        <div className="mt-14 grid gap-8 sm:mt-16 sm:gap-10">
+        <a
+          href={expertWebsitesPath}
+          className="mt-4 inline-flex min-h-11 items-center gap-2 text-sm font-medium text-primary underline underline-offset-4"
+        >
+          {content.expertWebsites.linkLabel}
+          <ArrowRight className="size-4" aria-hidden />
+        </a>
+        <div className="mt-8 grid gap-8 sm:mt-10 sm:gap-10">
           {live.map((project, i) => (
             <ProjectCard key={project.id} project={project} index={i} />
           ))}

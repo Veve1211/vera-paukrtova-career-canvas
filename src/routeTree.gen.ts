@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CvRouteImport } from './routes/cv'
+import { Route as WebyProOdbornikyRouteImport } from './routes/weby-pro-odborniky'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,31 +23,40 @@ const CvRoute = CvRouteImport.update({
   path: '/cv',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WebyProOdbornikyRoute = WebyProOdbornikyRouteImport.update({
+  id: '/weby-pro-odborniky',
+  path: '/weby-pro-odborniky',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/cv': typeof CvRoute
+  '/weby-pro-odborniky': typeof WebyProOdbornikyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/cv': typeof CvRoute
+  '/weby-pro-odborniky': typeof WebyProOdbornikyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/cv': typeof CvRoute
+  '/weby-pro-odborniky': typeof WebyProOdbornikyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/cv'
+  fullPaths: '/' | '/cv' | '/weby-pro-odborniky'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/cv'
-  id: '__root__' | '/' | '/cv'
+  to: '/' | '/cv' | '/weby-pro-odborniky'
+  id: '__root__' | '/' | '/cv' | '/weby-pro-odborniky'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CvRoute: typeof CvRoute
+  WebyProOdbornikyRoute: typeof WebyProOdbornikyRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +75,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CvRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/weby-pro-odborniky': {
+      id: '/weby-pro-odborniky'
+      path: '/weby-pro-odborniky'
+      fullPath: '/weby-pro-odborniky'
+      preLoaderRoute: typeof WebyProOdbornikyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CvRoute: CvRoute,
+  WebyProOdbornikyRoute: WebyProOdbornikyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
