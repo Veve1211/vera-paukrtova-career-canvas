@@ -30,13 +30,7 @@ export function ContactForm() {
       </label>
       <label className="grid gap-1.5 text-sm font-medium">
         {copy.message}
-        <textarea
-          className={field}
-          name="message"
-          rows={4}
-          maxLength={4000}
-          required
-        />
+        <textarea className={field} name="message" rows={4} maxLength={4000} required />
       </label>
 
       <p className="text-sm text-muted-foreground">{copy.dataUse}</p>
