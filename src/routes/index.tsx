@@ -15,7 +15,7 @@ const meta = content.meta;
 const imageAlt = "Věra Paukrtová – weby a aplikace s pomocí AI, QA a zákaznická zkušenost";
 const pageUrl = `${siteUrl}/`;
 // Bump the file name whenever the image changes: LinkedIn caches previews by image URL.
-const ogImage = `${siteUrl}/og-image-v3.jpg`;
+const ogImage = `${siteUrl}/og-image-v4.jpg`;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -32,7 +32,7 @@ export const Route = createFileRoute("/")({
       { property: "og:image", content: ogImage },
       { property: "og:image:type", content: "image/jpeg" },
       { property: "og:image:width", content: "1200" },
-      { property: "og:image:height", content: "630" },
+      { property: "og:image:height", content: "627" },
       {
         property: "og:image:alt",
         content: imageAlt,
