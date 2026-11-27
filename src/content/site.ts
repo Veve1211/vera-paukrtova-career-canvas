@@ -138,9 +138,6 @@ const cs = {
     email: "Váš e-mail",
     message: "Zpráva",
     submit: "Odeslat zprávu",
-    submitting: "Odesílám…",
-    success: "Děkuji, zpráva byla předána k doručení.",
-    error: "Zprávu se nepodařilo odeslat. Zkuste to znovu nebo mi napište přímo na uvedený e-mail.",
     subject: "Nová zpráva z webu Věry Paukrtové",
     dataUse:
       "E-mail a zprávu použiji k vyřízení vašeho dotazu. Formulář doručuje služba FormSubmit.",

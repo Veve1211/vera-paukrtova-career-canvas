@@ -115,31 +115,33 @@ test("the menu closes with Escape", async ({ page }) => {
   await expect(page.locator("#mobile-menu")).toBeHidden();
 });
 
-test("the contact form sends in the browser and preserves the message after a failure", async ({
-  page,
-}) => {
+test("the contact form submits to FormSubmit with bot protection enabled", async ({ page }) => {
   const contact = page.locator("#kontakt");
   const copy = content.contactForm;
   const email = "visitor@example.com";
   const message = "Mám zájem o vlastní web.";
-  let attempts = 0;
+  const endpoint = `https://formsubmit.co/${links.email}`;
 
-  await page.route(`https://formsubmit.co/ajax/${links.email}`, async (route) => {
-    expect(route.request().postDataJSON()).toMatchObject({ email, message });
-    attempts += 1;
-    await route.fulfill({ json: { success: attempts > 1 ? "true" : "false" } });
+  await page.route(endpoint, async (route) => {
+    await route.fulfill({ contentType: "text/plain", body: "FormSubmit" });
   });
 
   await expect(contact.locator('a[href^="mailto:"]')).toHaveCount(0);
   await expect(contact.locator(`a[href="${links.linkedin}"]`)).toBeVisible();
   await contact.getByLabel(copy.email).fill(email);
   await contact.getByLabel(copy.message).fill(message);
+
+  const submission = page.waitForRequest(
+    (request) => request.url() === endpoint && request.method() === "POST",
+  );
   await contact.getByRole("button", { name: copy.submit }).click();
-  await expect(contact.getByRole("status")).toHaveText(copy.error);
-  await expect(contact.getByLabel(copy.message)).toHaveValue(message);
-  await contact.getByRole("button", { name: copy.submit }).click();
-  await expect(contact.getByRole("status")).toHaveText(copy.success);
-  await expect(contact.getByLabel(copy.message)).toHaveValue("");
+  const fields = new URLSearchParams((await submission).postData() ?? "");
+  expect(fields.get("email")).toBe(email);
+  expect(fields.get("message")).toBe(message);
+  expect(fields.get("_subject")).toBe(copy.subject);
+  expect(fields.get("_honey")).toBe("");
+  expect(fields.has("_captcha")).toBe(false);
+  await expect(page).toHaveURL(endpoint);
 });
 
 test("the service page is linked, indexable and has its own enquiry form", async ({ page }) => {
