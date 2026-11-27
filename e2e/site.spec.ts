@@ -1,7 +1,7 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
-import { content, cvPagePath, links } from "../src/content/site";
+import { content, cvPagePath, expertWebsitesPath, links, siteUrl } from "../src/content/site";
 
 test.beforeEach(async ({ page }) => {
   // Wait for hydration: the menu button only works once React has taken over the page.
@@ -115,10 +115,51 @@ test("the menu closes with Escape", async ({ page }) => {
   await expect(page.locator("#mobile-menu")).toBeHidden();
 });
 
-test("contact links point to the real e-mail and LinkedIn", async ({ page }) => {
+test("the contact form sends in the browser and preserves the message after a failure", async ({
+  page,
+}) => {
   const contact = page.locator("#kontakt");
-  if (links.email) await expect(contact.locator(`a[href="mailto:${links.email}"]`)).toBeVisible();
+  const copy = content.contactForm;
+  const email = "visitor@example.com";
+  const message = "Mám zájem o vlastní web.";
+  let attempts = 0;
+
+  await page.route(`https://formsubmit.co/ajax/${links.email}`, async (route) => {
+    expect(route.request().postDataJSON()).toMatchObject({ email, message });
+    attempts += 1;
+    await route.fulfill({ json: { success: attempts > 1 ? "true" : "false" } });
+  });
+
+  await expect(contact.locator('a[href^="mailto:"]')).toHaveCount(0);
   await expect(contact.locator(`a[href="${links.linkedin}"]`)).toBeVisible();
+  await contact.getByLabel(copy.email).fill(email);
+  await contact.getByLabel(copy.message).fill(message);
+  await contact.getByRole("button", { name: copy.submit }).click();
+  await expect(contact.getByRole("status")).toHaveText(copy.error);
+  await expect(contact.getByLabel(copy.message)).toHaveValue(message);
+  await contact.getByRole("button", { name: copy.submit }).click();
+  await expect(contact.getByRole("status")).toHaveText(copy.success);
+  await expect(contact.getByLabel(copy.message)).toHaveValue("");
+});
+
+test("the service page is linked, indexable and has its own enquiry form", async ({ page }) => {
+  const copy = content.expertWebsites;
+  await page.locator("#top").getByRole("link", { name: copy.linkLabel }).click();
+  await expect(page).toHaveURL(new RegExp(`${expertWebsitesPath}$`));
+  await expect(page).toHaveTitle(copy.title);
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+    "href",
+    `${siteUrl}${expertWebsitesPath}`,
+  );
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(copy.heading);
+  await page.getByRole("link", { name: copy.contactLink }).click();
+  await expect(page.locator("#poptavka").getByLabel(content.contactForm.email)).toBeVisible();
+  const sitemap = await page.request.get("/sitemap.xml");
+  expect(await sitemap.text()).toContain(`${siteUrl}${expertWebsitesPath}`);
+  const results = await new AxeBuilder({ page })
+    .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
+    .analyze();
+  expect(results.violations.map((v) => `${v.id}: ${v.nodes.length}`)).toEqual([]);
 });
 
 test("the forbidden Lovable preview link is nowhere on the page", async ({ page }) => {
@@ -208,6 +249,34 @@ test("search engine verification tags are in the server-rendered head", async ({
     "pG8AJgeqJ4lg7fjad5r0OpUpLkGvCx7khLQAfTJm6tA",
   ]) {
     expect(head).toContain(`<meta name="google-site-verification" content="${token}"`);
+  }
+});
+
+test("the server advertises a crawlable favicon and social preview", async ({ request }) => {
+  const html = await (await request.get("/")).text();
+  const head = html.split("</head>")[0];
+  expect(head).toContain(`rel="canonical" href="${siteUrl}/"`);
+  expect(head).toContain('property="og:image:width" content="1200"');
+  expect(head).toContain('property="og:image:height" content="627"');
+  const imageUrl = head.match(/property="og:image" content="([^"]+)"/)?.[1];
+  expect(imageUrl).toBe(`${siteUrl}/og-image-v4.jpg`);
+  expect(head).toContain(`name="twitter:image" content="${imageUrl}"`);
+  const preview = await request.get(new URL(imageUrl!).pathname, {
+    headers: { "user-agent": "facebookexternalhit/1.1" },
+  });
+  expect(preview.ok()).toBe(true);
+  expect(preview.headers()["content-type"]).toContain("image/jpeg");
+
+  for (const size of [48, 96]) {
+    const path = `/favicon-${size}.png`;
+    expect(head).toContain(`href="${path}"`);
+    for (const bot of ["Googlebot-Image/1.0", "SeznamBot/4.0"]) {
+      const icon = await request.get(path, { headers: { "user-agent": bot } });
+      expect(icon.ok()).toBe(true);
+      expect(icon.headers()["content-type"]).toContain("image/png");
+      const png = await icon.body();
+      expect([png.readUInt32BE(16), png.readUInt32BE(20)]).toEqual([size, size]);
+    }
   }
 });
 

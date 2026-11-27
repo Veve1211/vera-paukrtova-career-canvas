@@ -1,7 +1,8 @@
-import { ArrowUpRight, Linkedin, Mail } from "lucide-react";
+import { ArrowUpRight, Linkedin } from "lucide-react";
 
 import { content, links } from "@/content/site";
 
+import { ContactForm } from "./ContactForm";
 import { CvButton } from "./CvButton";
 import { Reveal } from "./Reveal";
 
@@ -44,16 +45,10 @@ export function Contact() {
               <p className="text-lg leading-relaxed text-night-foreground/85 sm:text-xl">
                 {c.text}
               </p>
-              <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                {links.email && (
-                  <a
-                    href={`mailto:${links.email}`}
-                    className="group inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-night-foreground px-8 py-4 text-base font-medium text-night transition-transform duration-300 hover:-translate-y-0.5"
-                  >
-                    <Mail className="size-5" aria-hidden />
-                    {c.emailCta}
-                  </a>
-                )}
+              <div className="mt-8">
+                <ContactForm />
+              </div>
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <a
                   href={links.linkedin}
                   target="_blank"
@@ -69,6 +64,7 @@ export function Contact() {
                   <span className="sr-only">{content.ui.newTab}</span>
                 </a>
               </div>
+              {links.email && <p className="mt-3 text-sm break-all">{links.email}</p>}
               {/* Appears automatically once links.cvPdf is set */}
               <CvButton className="mt-6 border-night-foreground/30 px-6 py-3.5 text-night-foreground hover:bg-night-foreground hover:text-night" />
             </Reveal>

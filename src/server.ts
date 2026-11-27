@@ -1,5 +1,6 @@
 import "./lib/error-capture";
 
+import { siteUrl } from "./content/site";
 import { consumeLastCapturedError } from "./lib/error-capture";
 import { renderErrorPage } from "./lib/error-page";
 import { withSecurityHeaders } from "./lib/security-headers";
@@ -50,6 +51,15 @@ function isH3SwallowedErrorBody(body: string): boolean {
 // twice and renders garbled.
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
+    const url = new URL(request.url);
+    // The Vercel wildcard redirects assets and subpaths, but its bare root can reach SSR.
+    if (url.hostname === "www.verapaukrtova.cz") {
+      const destination = new URL(siteUrl);
+      destination.pathname = url.pathname;
+      destination.search = url.search;
+      return Response.redirect(destination, 308);
+    }
+
     try {
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);

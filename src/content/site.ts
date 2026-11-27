@@ -16,6 +16,7 @@ export const links = {
 
 /** Page that starts the CV download; its page views in Vercel Analytics count the downloads. */
 export const cvPagePath = "/cv";
+export const expertWebsitesPath = "/weby-pro-odborniky";
 
 /** The bigger goal a project belongs to; shown as a tag on the card and in the detail. */
 export type MissionId = "jobs" | "education";
@@ -97,12 +98,52 @@ const projectMeta = {
 
 const cs = {
   meta: {
-    title:
-      "Věra Paukrtová – weby a\u00a0aplikace s\u00a0pomocí AI | QA a\u00a0zákaznická zkušenost",
+    title: "Věra Paukrtová – tvorba webů a\u00a0aplikací s\u00a0AI",
     description:
-      "Věra Paukrtová tvoří weby a\u00a0aplikace s\u00a0pomocí AI a\u00a0propojuje je s\u00a0praxí z\u00a0QA, UAT testování a\u00a0zákaznické zkušenosti. Projekty Cvéčko a\u00a0Český král.",
+      "Věra Paukrtová navrhuje, tvoří a\u00a0testuje weby a\u00a0aplikace s\u00a0AI. V\u00a0portfoliu najdete Cvéčko, které pomocí AI automatizuje tvorbu životopisu, a\u00a0hru Český král.",
     /** Topics for the search-engine profile (JSON-LD). */
     knowsAbout: ["Tvorba webů s\u00a0pomocí AI", "QA", "UAT testování", "Zákaznická zkušenost"],
+  },
+  expertWebsites: {
+    title: "Tvorba webů na míru pro odborníky | Věra Paukrtová",
+    heading: "Weby na míru pro odborníky",
+    description:
+      "Tvořím weby na míru pro konzultanty, specialisty a další odborníky. Pomůžu vám srozumitelně představit vaši práci, projekty a služby.",
+    linkLabel: "Tvorba webů na míru",
+    back: "Zpět na portfolio",
+    contactLink: "Poptat web",
+    offerHeading: "Co bude na vašem webu",
+    offer: [
+      {
+        title: "Odbornost a služby",
+        text: "Ujasníme si, co má návštěvník hned pochopit a se kterými zakázkami se na vás může obrátit.",
+      },
+      {
+        title: "Projekty a reference",
+        text: "Vybereme ukázky vaší práce a vysvětlíme, jaké zadání jste řešili a jaká byla vaše role.",
+      },
+      {
+        title: "Kontakt a spuštění",
+        text: "Připravím způsob, jak vás mohou lidé oslovit. Před spuštěním zkontroluji web na mobilu i počítači.",
+      },
+    ],
+    caseHeading: "Profesní web Jiřího Paukerta",
+    caseText:
+      "Pro dopravního inženýra jsem navrhla dvojjazyčné portfolio, které propojuje jeho kariéru, odbornost a projekty. Ilustrativní interaktivní mapa ukazuje, s čím pracuje při návrhu silnic a křižovatek.",
+    caseLink: "Prohlédnout web Jiřího Paukerta",
+    contactHeading: "Jaký web potřebujete?",
+    contactIntro: "Napište mi, čemu se věnujete a co má váš web lidem ukázat.",
+  },
+  contactForm: {
+    email: "Váš e-mail",
+    message: "Zpráva",
+    submit: "Odeslat zprávu",
+    submitting: "Odesílám…",
+    success: "Děkuji, zpráva byla předána k doručení.",
+    error: "Zprávu se nepodařilo odeslat. Zkuste to znovu nebo mi napište přímo na uvedený e-mail.",
+    subject: "Nová zpráva z webu Věry Paukrtové",
+    dataUse:
+      "E-mail a zprávu použiji k vyřízení vašeho dotazu. Formulář doručuje služba FormSubmit.",
   },
   skipLink: "Přeskočit na obsah",
   nav: [
@@ -174,7 +215,7 @@ const cs = {
         statusLabel: "Živá aplikace",
         mission: "jobs",
         summary:
-          "Napíšete o\u00a0sobě pár vět a\u00a0AI z\u00a0nich poskládá přehledný životopis — bez formulářů, rovnou jako PDF.",
+          "AI aplikace, která automatizuje tvorbu životopisu. Napíšete o\u00a0sobě pár vět a\u00a0Cvéčko z\u00a0nich připraví přehledné PDF.",
         about:
           "Napíšete o\u00a0sobě pár vět a\u00a0AI z\u00a0nich poskládá přehledný životopis — bez vyplňování formulářů, s\u00a0výsledkem jako PDF ve formátu A4.",
         problem:
@@ -591,7 +632,6 @@ const cs = {
       "Tvorba webových stránek",
       "Osobní weby a\u00a0portfolia",
     ],
-    emailCta: "Napište mi e-mail",
   },
   /** The /cv page: starts the CV download (each visit = one download in Vercel Analytics). */
   cvPage: {

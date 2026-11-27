@@ -2,6 +2,12 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
     {
+      "source": "/",
+      "has": [{ "type": "host", "value": "www.verapaukrtova.cz" }],
+      "destination": "https://verapaukrtova.cz/",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "www.verapaukrtova.cz" }],
       "destination": "https://verapaukrtova.cz/:path*",

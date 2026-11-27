@@ -2,7 +2,7 @@ import { Fragment, useEffect, useRef, useState } from "react";
 
 import { ArrowDown, ArrowRight } from "lucide-react";
 
-import { content } from "@/content/site";
+import { content, expertWebsitesPath } from "@/content/site";
 
 import { Reveal } from "./Reveal";
 
@@ -33,7 +33,7 @@ function Portrait() {
           <picture>
             <source
               type="image/webp"
-              srcSet="/portrait-640.webp 640w, /portrait-1024.webp 1024w"
+              srcSet="/portrait-512.webp 512w, /portrait-640.webp 640w, /portrait-864.webp 864w, /portrait-1024.webp 1024w"
               sizes="(min-width: 1280px) 425px, (min-width: 1024px) 35vw, (min-width: 640px) 384px, (min-width: 424px) 320px, calc(100vw - 104px)"
             />
             <img
@@ -129,6 +129,14 @@ export function Hero() {
               />
             </a>
           </div>
+
+          <a
+            href={expertWebsitesPath}
+            className="mt-4 inline-flex min-h-11 items-center gap-2 text-sm font-medium text-primary underline underline-offset-4"
+          >
+            {content.expertWebsites.linkLabel}
+            <ArrowRight className="size-4" aria-hidden />
+          </a>
 
           <Reveal
             delay={220}

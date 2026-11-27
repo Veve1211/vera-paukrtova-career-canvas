@@ -12,9 +12,10 @@ import { Quality } from "@/components/site/Quality";
 import { content, links, siteUrl } from "@/content/site";
 
 const meta = content.meta;
+const imageAlt = "Věra Paukrtová – weby a aplikace s pomocí AI, QA a zákaznická zkušenost";
 const pageUrl = `${siteUrl}/`;
 // Bump the file name whenever the image changes: LinkedIn caches previews by image URL.
-const ogImage = `${siteUrl}/og-image-v2.jpg`;
+const ogImage = `${siteUrl}/og-image-v4.jpg`;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -29,11 +30,12 @@ export const Route = createFileRoute("/")({
       { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1" },
       { property: "og:url", content: pageUrl },
       { property: "og:image", content: ogImage },
+      { property: "og:image:type", content: "image/jpeg" },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "627" },
       {
         property: "og:image:alt",
-        content: "Věra Paukrtová – weby a aplikace s pomocí AI, QA a zákaznická zkušenost",
+        content: imageAlt,
       },
       { property: "og:locale", content: "cs_CZ" },
       { property: "profile:first_name", content: "Věra" },
@@ -42,6 +44,10 @@ export const Route = createFileRoute("/")({
       { name: "twitter:title", content: meta.title },
       { name: "twitter:description", content: meta.description },
       { name: "twitter:image", content: ogImage },
+      {
+        name: "twitter:image:alt",
+        content: imageAlt,
+      },
     ],
     links: [{ rel: "canonical", href: pageUrl }],
     scripts: [
